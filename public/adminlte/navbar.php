@@ -15,14 +15,14 @@
     <ul class="sidebar-menu">
       <li class="header">LIST MENU</li>
       <li class="treeview">
-        <a href="index.html">
+        <a href="index.php">
           <i class="fa fa-home"></i>
-          <span>Home</span>
+          <span>Dashboard</span>
         </a>
       </li>
       <li>
-        <a href="pages/schedule.html">
-          <i class="fa fa-calendar"></i> <span>Lihat Schedule</span>
+        <a href="list-proyek.php">
+          <i class="fa fa-calendar"></i> <span>Daftar Proyek</span>
         </a>
       </li>
       <li>
