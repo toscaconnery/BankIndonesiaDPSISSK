@@ -16,3 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('satu', 'ProjectController@satu');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('logout', function() {
+	Auth::logout();
+	return redirect('/');
+});
