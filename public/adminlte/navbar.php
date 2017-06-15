@@ -7,7 +7,7 @@
         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Fathihah Ulya</p>
+        <p>User</p>
         <small>5114100076</small>
       </div>
     </div>

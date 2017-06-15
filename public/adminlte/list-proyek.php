@@ -48,80 +48,66 @@
                       <th>PIC</th>
                       <th>Tanggal Mulai</th>
                       <th>Tanggal Selesai</th>
+                      <th>Jenis</th>
                       <th>Status</th>
+                      <th>Detail</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 4.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td> 4</td>
-                      <td>X</td>
+                      <td>PR001</td>
+                      <td>APIK</td>
+                      <td>PS</td>
+                      <td>Pak Alam</td>
+                      <td>2 Juli 2017</td>
+                      <td>3 Agustus 2017</td>
+                      <td>Inhouse</td>
+                      <td>Selesai</td>
+                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 5.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5</td>
-                      <td>C</td>
+                      <td>PR002</td>
+                      <td>SIMKU</td>
+                      <td>PS</td>
+                      <td>Pak Andris</td>
+                      <td>2 Agustus 2017</td>
+                      <td>3 September 2017</td>
+                      <td>Inhouse</td>
+                      <td>Selesai</td>
+                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 5.5
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5.5</td>
-                      <td>A</td>
+                      <td>PR003</td>
+                      <td>SSS</td>
+                      <td>PS</td>
+                      <td>Pak Oktav</td>
+                      <td>2 September 2017</td>
+                      <td>3 Oktober 2017</td>
+                      <td>Inhouse</td>
+                      <td>Selesai</td>
+                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 6
-                      </td>
-                      <td>Win 98+</td>
-                      <td>6</td>
-                      <td>A</td>
+                      <td>PR004</td>
+                      <td>SI Uang Baru</td>
+                      <td>Kecil</td>
+                      <td>Pak Alam</td>
+                      <td>1 Juli 2017</td>
+                      <td>1 Agustus 2017</td>
+                      <td>Outsourcing</td>
+                      <td>Selesai</td>
+                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet Explorer 7</td>
-                      <td>Win XP SP2+</td>
-                      <td>7</td>
-                      <td>A</td>
-                    </tr>
-                    <tr>
-                      <td>Trident</td>
-                      <td>AOL browser (AOL desktop)</td>
-                      <td>Win XP</td>
-                      <td>6</td>
-                      <td>A</td>
-                    </tr>
-                    <tr>
-                      <td>Gecko</td>
-                      <td>Firefox 1.0</td>
-                      <td>Win 98+ / OSX.2+</td>
-                      <td>1.7</td>
-                      <td>A</td>
-                    </tr>
-                    <tr>
-                      <td>Gecko</td>
-                      <td>Firefox 1.5</td>
-                      <td>Win 98+ / OSX.2+</td>
-                      <td>1.8</td>
-                      <td>A</td>
-                    </tr>
-                    <tr>
-                      <td>Gecko</td>
-                      <td>Firefox 2.0</td>
-                      <td>Win 98+ / OSX.2+</td>
-                      <td>1.8</td>
-                      <td>A</td>
+                      <td>PR005</td>
+                      <td>SI Bina Bangsa</td>
+                      <td>PS</td>
+                      <td>Mbak Chacha</td>
+                      <td>2 Juni 2017</td>
+                      <td>3 Agustus 2017</td>
+                      <td>Inhouse</td>
+                      <td>Selesai</td>
+                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                 </table>
               </div>
