@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('autentikasi', function() {
+	return view('auth.login-register');
+});
+
 Route::get('logout', function() {
 	Auth::logout();
 	return redirect('/');
