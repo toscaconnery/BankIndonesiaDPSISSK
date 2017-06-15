@@ -30,7 +30,7 @@
         </h1>
       </div>
       <br>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
@@ -84,7 +84,20 @@
                 <div class="col-sm-5">
                   <input type="date" class="form-control" id="inputEmail3">
                 </div>
-                
+              </div>
+
+              <!--Status-->
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Status</label>
+
+                <div class="col-sm-10">
+
+                    <input type="radio"  name="r1" class="minimal"> Outsource
+
+
+                    <input type="radio"  name="r1" class="minimal"> Insource
+
+                </div>
               </div>
 
 
