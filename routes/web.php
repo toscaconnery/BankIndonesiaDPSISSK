@@ -29,3 +29,7 @@ Route::get('logout', function() {
 	Auth::logout();
 	return redirect('/');
 });
+
+Route::get('kosong', function() {
+	return view('kosong');
+});
