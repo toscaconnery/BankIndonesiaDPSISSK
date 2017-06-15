@@ -112,7 +112,7 @@
                       <td><a href="#">Download</a></td>
                     </tr>
                     <tr>
-                      <td>File A</td>
+                      <td>File B</td>
                       <td>Unfinished</td>
                       <td><a href="#">Download</a></td>
                     </tr>
