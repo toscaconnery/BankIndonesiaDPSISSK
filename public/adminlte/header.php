@@ -3,7 +3,7 @@
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>R</b>R</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>Reservation</b>Room</span>
+    <span class="logo-lg"><b>Bootstrap</b>Temp</span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top">
