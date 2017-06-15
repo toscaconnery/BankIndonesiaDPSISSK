@@ -47,10 +47,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //dd("masuk validator");
+        // $cek = Validator::make($data, [
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        //     'nip' => 'required|string|min:5',
+        //     'password' => 'required|string|min:6|confirmed',
+        // ]);
+        // dd($cek);
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'nip' => 'required',
+            'nip' => 'required|string|min:5',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }

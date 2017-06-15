@@ -71,7 +71,7 @@
             <label>
               NIP<span class="req">*</span>
             </label>
-            <input id="nip" name="nip" type="nip" required autocomplete="off"/>
+            <input id="nip" name="nip" type="text" required autocomplete="off"/>
           </div>
           @if ( $errors->has('nip'))
             <span class="help-block">
@@ -109,7 +109,7 @@
             <label>
               Confirm Password<span class="req">*</span>
             </label>
-            <input id="password-confirm" name="password-confirmation" type="password" required autocomplete="off"/>
+            <input id="password-confirm" name="password_confirmation" type="password" required autocomplete="off"/>
           </div>
           
           <button type="submit" class="button button-block">Register</button>
