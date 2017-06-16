@@ -65,7 +65,7 @@
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 468.468.484</td>
-                  <td><a href="#">Detail</a></td>
+                  <td><a href="report-anggaran-bulanan.php">Detail</a></td>
                 </tr>
                 <tr>
                   <td>2016</td>
@@ -75,7 +75,7 @@
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 468.468.484</td>
-                  <td><a href="#">Detail</a></td>
+                  <td><a href="report-anggaran-bulanan.php">Detail</a></td>
                 </tr>
                 <tr>
                   <td>2017</td>
@@ -85,7 +85,7 @@
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 468.468.484</td>
-                  <td><a href="#">Detail</a></td>
+                  <td><a href="report-anggaran-bulanan.php">Detail</a></td>
                 </tr>
               </tbody>
             </table>
