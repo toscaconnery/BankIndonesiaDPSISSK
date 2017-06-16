@@ -56,13 +56,23 @@
               <!-- Date -->
               <div class="form-group">
               <label>Nama Tahapan</label>
-                <input type="text" class="form-control" id="namatahapan" placeholder="Nama Tahapan">
+                <select class="form-control select2" style="width: 100%;">
+                  <option>Pengajuan</option>
+                  <option>Desain</option>
+                  <option>Pemrograman</option>
+                  <option>Pengujian</option>
+                  <option>Implementasi</option>
+                </select>
+              </div>
+              <div class="form-group">
+              <label>PIC</label>
+                <input type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
               </div>
               <!-- /.form group -->
 
               <!-- Date range -->
               <div class="form-group">
-                <label>Jadwal Proyek:</label>
+                <label>Jadwal Tahapan:</label>
 
                 <div class="input-group">
                   <div class="input-group-addon">
@@ -98,21 +108,29 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Nama Tahapan</th>
-                      <th>Jadwal Proyek</th>
-                      <th>Jadwal Realisasi</th>
-                      <th>PIC</th>
-                      <th>Status</th>
-                      <th>Detail</th>
+                      <th rowspan="2">Nama Tahapan</th>
+                      <th colspan="2">Jadwal Tahapan</th>
+                      <th colspan="2">Jadwal Realisasi</th>
+                      <th rowspan="2">PIC</th>
+                      <th rowspan="2">Status</th>
+                      <th rowspan="2">Detail</th>
+                    </tr>
+                    <tr>
+                      <th>Mulai</th>
+                      <th>Selesai</th>
+                      <th>Mulai</th>
+                      <th>Selesai</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Analisis Kebutuhan</td>
-                      <td>2 Juni 2017 - 2 Juli 2017</td>
-                      <td>2 Juni 2017 - 8 Juni 2017</td>
+                      <td>Pengajuan</td>
+                      <td>2 Juni 2017</td>
+                      <td>2 Juli 2017</td>
+                      <td>2 Juni 2017</td>
+                      <td>8 Juni 2017</td>
                       <td>Pak Alam</td>
-                      <td>OK</td>
+                      <td>Finish</td>
                       <center><td><a href='inp-detail-tahapan.php'><button class="btn btn-primary">Update</button></td></center>
                     </tr>
                 </table>

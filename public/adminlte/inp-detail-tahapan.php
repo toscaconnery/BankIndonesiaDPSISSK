@@ -50,7 +50,7 @@
           <div class="col-md-4">
           <div class="box box-primary col-md-6">
             <div class="box-header">
-              <h3 class="box-title">Tahapan Analisis</h3>
+              <h3 class="box-title">Tahapan Pengajuan</h3>
             </div>
             <div class="box-body">
               <!-- Date -->
@@ -58,28 +58,10 @@
               <label>PIC</label>
                 <input type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
               </div>
-              <!-- /.form group -->
+              
               <div class="form-group">
-                <label>Jadwal Realisasi:</label>
-
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="rencanajadwal2">
-                </div>
-                <!-- /.input group -->
-              </div>
-              <div class="form-group">
-              <label>Status</label>
-                <div class="input-group">
-                <label>Finish
-                  <input type="radio" name="r1" class="minimal" checked>
-                </label>
-                <label style='margin-left:30px;'>On Progress
-                  <input type="radio" name="r1" class="minimal">
-                </label>
-                </div>
+              <label>Upload Dokumen</label>
+                <input type="file" class="form-control" id="file">
               </div>
               
               <a href='inp-thp-proyek.php'><button class="btn btn-primary" style="float: right;">Submit</button>
@@ -96,22 +78,20 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Nama Tahapan</th>
-                      <th>Jadwal Proyek</th>
-                      <th>Jadwal Realisasi</th>
+                      <th>Nama Dokumen</th>
+                      <th>Tanggal Upload</th>
+                      <th>Jadwal Realisasi Tahapan</th>
                       <th>PIC</th>
-                      <th>Status</th>
-                      <th>Detail</th>
+                      <th>Dokumen</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Analisis Kebutuhan</td>
-                      <td>2 Juni 2017 - 2 Juli 2017</td>
+                      <td>Spesifikasi Kebutuhan</td>
+                      <td>2 Juli 2017</td>
                       <td>2 Juni 2017 - 8 Juni 2017</td>
                       <td>Pak Alam</td>
-                      <td>OK</td>
-                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Update</button></td></center>
+                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Download</button></td></center>
                     </tr>
                 </table>
               </div>
