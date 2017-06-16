@@ -27,17 +27,12 @@
       </li>
       <li>
         <a href="pages/forms/reservasi.html">
-          <i class="fa fa-book"></i> <span>Reservasi</span>
+          <i class="fa fa-money"></i> <span>Anggaran</span>
         </a>
       </li>
       <li>
         <a href="pages/tables/status.html">
-          <i class="fa fa-table"></i> <span>Status</span>
-        </a>
-      </li>
-      <li>
-        <a href="pages/tables/finish.html">
-          <i class="fa fa-check"></i> <span>Proses Selesai</span>
+          <i class="fa fa-newspaper-o"></i> <span>Issues</span>
         </a>
       </li>
     </ul>

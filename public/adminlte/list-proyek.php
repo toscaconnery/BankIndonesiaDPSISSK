@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ReservationRoom</title>
+  <title>SI PMO&RMS</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -45,15 +45,21 @@
                 <br>
                   <thead>
                     <tr>
-                      <th>ID Proyek</th>
-                      <th>Nama Proyek</th>
-                      <th>Kategori</th>
-                      <th>PIC</th>
-                      <th>Tanggal Mulai</th>
-                      <th>Tanggal Selesai</th>
-                      <th>Jenis</th>
-                      <th>Status</th>
-                      <th>Detail</th>
+                      <th rowspan="2">ID Proyek</th>
+                      <th rowspan="2">Nama Proyek</th>
+                      <th rowspan="2">Kategori</th>
+                      <th rowspan="2">PIC</th>
+                      <th colspan="2">Tanggal Target</th>
+                      <th colspan="2">Tanggal Realisasi</th>
+                      <th rowspan="2">Jenis</th>
+                      <th rowspan="2">Status</th>
+                      <th rowspan="2">Detail</th>
+                    </tr>
+                    <tr>
+                      <th>Mulai</th>
+                      <th>Selesai</th>
+                      <th>Mulai</th>
+                      <th>Selesai</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -62,6 +68,8 @@
                       <td>APIK</td>
                       <td>PS</td>
                       <td>Pak Alam</td>
+                      <td>2 Juli 2017</td>
+                      <td>3 Agustus 2017</td>
                       <td>2 Juli 2017</td>
                       <td>3 Agustus 2017</td>
                       <td>Inhouse</td>
@@ -75,6 +83,8 @@
                       <td>Pak Andris</td>
                       <td>2 Agustus 2017</td>
                       <td>3 September 2017</td>
+                      <td>2 Agustus 2017</td>
+                      <td>3 September 2017</td>
                       <td>Inhouse</td>
                       <td>Selesai</td>
                       <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
@@ -84,6 +94,8 @@
                       <td>SSS</td>
                       <td>PS</td>
                       <td>Pak Oktav</td>
+                      <td>2 September 2017</td>
+                      <td>3 Oktober 2017</td>
                       <td>2 September 2017</td>
                       <td>3 Oktober 2017</td>
                       <td>Inhouse</td>
@@ -97,6 +109,8 @@
                       <td>Pak Alam</td>
                       <td>1 Juli 2017</td>
                       <td>1 Agustus 2017</td>
+                      <td>1 Juli 2017</td>
+                      <td>1 Agustus 2017</td>
                       <td>Outsourcing</td>
                       <td>Selesai</td>
                       <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
@@ -106,6 +120,8 @@
                       <td>SI Bina Bangsa</td>
                       <td>PS</td>
                       <td>Mbak Chacha</td>
+                      <td>2 Juni 2017</td>
+                      <td>3 Agustus 2017</td>
                       <td>2 Juni 2017</td>
                       <td>3 Agustus 2017</td>
                       <td>Inhouse</td>
