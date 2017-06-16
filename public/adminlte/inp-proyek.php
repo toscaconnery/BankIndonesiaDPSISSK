@@ -30,107 +30,98 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
-    <?php include 'header.php';?>
-    <?php include 'navbar.php';?>
-    <div class="content-wrapper">
-      <section class="content-header">
-        <h1>
-          Proyek APIK
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-home"></i> Proyek Apik</a></li>
-        </ol>
-      </section>
-
-      <section class="content">
-        <div class="row">
-          <div class="col-md-4">
-          <div class="box box-primary col-md-6">
-            <div class="box-header">
-              <h3 class="box-title">Input Tahapan</h3>
-            </div>
+<div class="wrapper">
+  <?php include 'header.php';?>
+  <?php include 'navbar.php';?>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <div class="col-md-12">
+        <h2>
+          Tambah Proyek
+        </h2>
+      </div>
+      <br>
+      <div class="col-md-7">
+        <!-- Horizontal Form -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Form Tambah Proyek</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal">
             <div class="box-body">
-              <!-- Date -->
+              
+              <!--Name-->
               <div class="form-group">
-              <label>Nama Tahapan</label>
-                <input type="text" class="form-control" id="namatahapan" placeholder="Nama Tahapan">
+                <label for="namaproyek" class="col-sm-3 control-label">Nama Proyek</label>
+
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="namaproyek">
+                </div>
               </div>
-              <!-- /.form group -->
 
-              <!-- Date range -->
+              <!--Category-->
               <div class="form-group">
-                <label>Jadwal Proyek:</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
 
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
+                <div class="col-sm-9">
+                  <select class="form-control select2" style="width: 100%;">
+                  <option>Program Strategis</option>
+                  <option>Ad-Hoc</option>
+                  <option>Small</option>
+                </select>
+                </div>
+              </div>
+
+              <!--PIC-->
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">PIC</label>
+
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="inputEmail3">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Rencana Jadwal</label>
+                <div class="col-sm-9">
                   <input type="text" class="form-control pull-right" id="rencanajadwal">
                 </div>
-                <!-- /.input group -->
               </div>
-              <div class="form-group">
-                <label>Rencana Realisasi:</label>
 
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="rencanajadwal2">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">
+                  Kategori
+                </label>
+                <div class="col-sm-9">
+                <label>Inhouse
+                  <input type="radio" name="r1" class="minimal" checked>
+                </label>
+                <label style='margin-left:30px;'>Outsource
+                  <input type="radio" name="r1" class="minimal">
+                </label>
                 </div>
-                <!-- /.input group -->
               </div>
-              
-              <a href='inp-thp-proyek.php'><button class="btn btn-primary" style="float: right;">Submit</button>
-              
-              <!-- /.form group -->
             </div>
             <!-- /.box-body -->
-          </div>
-          </div>
-          <div class="col-xs-12">
-            <div class="box">
-              <!-- /.box-header -->
-              <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Nama Tahapan</th>
-                      <th>Jadwal Proyek</th>
-                      <th>Jadwal Realisasi</th>
-                      <th>PIC</th>
-                      <th>Status</th>
-                      <th>Detail</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Analisis Kebutuhan</td>
-                      <td>2 Juni 2017 - 2 Juli 2017</td>
-                      <td>2 Juni 2017 - 8 Juni 2017</td>
-                      <td>Pak Alam</td>
-                      <td>OK</td>
-                      <center><td><a href='inp-detail-tahapan.php'><button class="btn btn-primary">Update</button></td></center>
-                    </tr>
-                </table>
-              </div>
-              <!-- /.box-body -->
+            
+            <!-- /.box-footer -->
+          </form>
+          <div class="box-footer">
+              <a href='inp-thp-proyek.php'><button class="btn btn-primary" style="float: right;">Submit</button></a>
             </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </section>
-
-
-      <br>
-    </div>
-    <?php include 'footer.php';?>
+        <!-- /.box -->
+      </div>
+    </section>
+    <br>
   </div>
+  <?php include 'footer.php';?>
+</div>
 
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -192,7 +183,6 @@
 
     //Date range picker
     $('#rencanajadwal').daterangepicker();
-    $('#rencanajadwal2').daterangepicker();
     //Date range picker with time picker
     $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
     //Date range as a button

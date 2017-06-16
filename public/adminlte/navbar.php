@@ -14,7 +14,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">LIST MENU</li>
-      <li class="treeview">
+      <li>
         <a href="index.php">
           <i class="fa fa-home"></i>
           <span>Dashboard</span>
@@ -22,7 +22,7 @@
       </li>
       <li>
         <a href="list-proyek.php">
-          <i class="fa fa-calendar"></i> <span>Daftar Proyek</span>
+          <i class="fa fa-cubes"></i> <span>Proyek</span>
         </a>
       </li>
       <li>

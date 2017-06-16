@@ -39,7 +39,10 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
+                <a href='inp-proyek.php'><button class="btn btn-lg btn-primary">Tambah Proyek</button>
                 <table id="example1" class="table table-bordered table-striped">
+                <br>
+                <br>
                   <thead>
                     <tr>
                       <th>ID Proyek</th>

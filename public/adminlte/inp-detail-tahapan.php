@@ -50,30 +50,17 @@
           <div class="col-md-4">
           <div class="box box-primary col-md-6">
             <div class="box-header">
-              <h3 class="box-title">Input Tahapan</h3>
+              <h3 class="box-title">Tahapan Analisis</h3>
             </div>
             <div class="box-body">
               <!-- Date -->
               <div class="form-group">
-              <label>Nama Tahapan</label>
-                <input type="text" class="form-control" id="namatahapan" placeholder="Nama Tahapan">
+              <label>PIC</label>
+                <input type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
               </div>
               <!-- /.form group -->
-
-              <!-- Date range -->
               <div class="form-group">
-                <label>Jadwal Proyek:</label>
-
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="rencanajadwal">
-                </div>
-                <!-- /.input group -->
-              </div>
-              <div class="form-group">
-                <label>Rencana Realisasi:</label>
+                <label>Jadwal Realisasi:</label>
 
                 <div class="input-group">
                   <div class="input-group-addon">
@@ -82,6 +69,17 @@
                   <input type="text" class="form-control pull-right" id="rencanajadwal2">
                 </div>
                 <!-- /.input group -->
+              </div>
+              <div class="form-group">
+              <label>Status</label>
+                <div class="input-group">
+                <label>Finish
+                  <input type="radio" name="r1" class="minimal" checked>
+                </label>
+                <label style='margin-left:30px;'>On Progress
+                  <input type="radio" name="r1" class="minimal">
+                </label>
+                </div>
               </div>
               
               <a href='inp-thp-proyek.php'><button class="btn btn-primary" style="float: right;">Submit</button>
@@ -113,7 +111,7 @@
                       <td>2 Juni 2017 - 8 Juni 2017</td>
                       <td>Pak Alam</td>
                       <td>OK</td>
-                      <center><td><a href='inp-detail-tahapan.php'><button class="btn btn-primary">Update</button></td></center>
+                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Update</button></td></center>
                     </tr>
                 </table>
               </div>
