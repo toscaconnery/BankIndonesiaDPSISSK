@@ -44,7 +44,6 @@
           <li><a href="#"><i class="fa fa-home"></i> Proyek Apik</a></li>
         </ol>
       </section>
-
       <section class="content">
         <div class="row">
           <div class="col-md-4">
