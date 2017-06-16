@@ -5,50 +5,45 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ReservationRoom</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
-  <link rel="stylesheet" href="plugins/morris/morris.css">
-  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
-
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-  <?php include 'header.php';?>
-  <?php include 'navbar.php';?>
-  <div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        Dashboard
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-home"></i> Anggaran</a></li>
-      </ol>
-    </section>
-    <br>
-    <div class="col-sm-7">
-      <!-- Horizontal Form -->
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h2 class="box-title">Pencairan</h2>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form class="form-horizontal">
-          <div class="box-body">
+  <div class="wrapper">
+    <?php include 'header.php';?>
+    <?php include 'navbar.php';?>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <h1>
+          Pencairan TA Januari 2017
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+        </ol>
+      </section>
 
-            <table id="example2" class="table table-bordered table-hover">
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th width="10">No</th>
-                  <th>Bulan</th>
+                  <th width="10">Tanggal</th>
+                  <th>Status</th>
                   <th>Nominal</th>
                   <th>Rincian</th>
                 </tr>
@@ -56,113 +51,224 @@
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td>Januari</td>
+                  <td>OP</td>
                   <td>23423</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>Februari</td>
+                  <td>RI</td>
                   <td>200230</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>Maret</td>
+                  <td>RI</td>
                   <td>342343</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>April</td>
+                  <td>OP</td>
                   <td>234242</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td>Mei</td>
+                  <td>OP</td>
                   <td>231542</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>6</td>
-                  <td>Juni</td>
+                  <td>RI</td>
                   <td>234232</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>7</td>
-                  <td>Juli</td>
+                  <td>RI</td>
                   <td>234234</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>8</td>
-                  <td>Agustus</td>
+                  <td>OP</td>
                   <td>237784</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>9</td>
-                  <td>September</td>
+                  <td>RI</td>
                   <td>2000</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>10</td>
-                  <td>Oktober</td>
+                  <td>RI</td>
                   <td>834753</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>11</td>
-                  <td>Nopember</td>
+                  <td>OP</td>
                   <td>1023423</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
                 <tr>
                   <td>12</td>
-                  <td>Desember</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>17</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>18</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>19</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>20</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>22</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>23</td>
+                  <td>Tidak ada pencairan</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>24</td>
+                  <td>Tidak ada pencairan</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td>Tidak ada pencairan</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>26</td>
+                  <td>Tidak ada pencairan</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>27</td>
+                  <td>Tidak ada pencairan</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>28</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>29</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>30</td>
+                  <td>OP</td>
+                  <td>234987</td>
+                  <td><a href="#">A, B, C</a></td>
+                </tr>
+                <tr>
+                  <td>31</td>
+                  <td>OP</td>
                   <td>234987</td>
                   <td><a href="#">A, B, C</a></td>
                 </tr>
 
               </tbody>
             </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
           </div>
-          <!-- /.box-body -->
-        </form>
-      </div>
-      <!-- /.box -->
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+
+
+      <br>
     </div>
+    <?php include 'footer.php';?>
   </div>
-  <?php include 'footer.php';?>
-</div>
 
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script>$.widget.bridge('uibutton', $.ui.button);</script>
 <!-- Bootstrap 3.3.6 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="plugins/morris/morris.min.js"></script>
-<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="plugins/knob/jquery.knob.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="plugins/fastclick/fastclick.js"></script>
-<script src="dist/js/app.min.js"></script>
-<script src="dist/js/pages/dashboard.js"></script>
-<script src="dist/js/demo.js"></script>
+<!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- page script -->
 <script>
   $(function () {
     $("#example1").DataTable();
