@@ -28,10 +28,14 @@
         <h1>
           Dashboard
         </h1>
+        <ol class="breadcrumb">
+          <li><a href="{{url('')}}/dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+        </ol>
       </section>
-      <br>
 
       <!--Anggaran-->
+      <section class="content">
+      <div class="row">
       <div class="col-sm-12">
         <!-- Horizontal Form -->
         <div class="box box-info">
@@ -259,6 +263,8 @@
         </div>
         <!-- /.box -->
       </div>
+      </div>
+      </section>
     </div>
   @include('layouts.footer')
 </div>

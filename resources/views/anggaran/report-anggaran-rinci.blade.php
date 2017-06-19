@@ -29,7 +29,7 @@
           Anggaran Rinci Bulan Januari 2017
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-home"></i> Anggaran Rinci</a></li>
+          <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
         </ol>
       </section>
 

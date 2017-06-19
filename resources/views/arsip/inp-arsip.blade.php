@@ -38,13 +38,17 @@
   @include('layouts.navbar')
   <div class="content-wrapper">
     <section class="content-header">
-      <div class="col-md-12">
-        <h2>
+        <h1>
           Tambah Folder
-        </h2>
-      </div>
-      <br>
-      <div class="col-md-7">
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-file"></i> Arsip</a></li>
+        </ol>
+      </section>
+    
+    <section class="content-header"> 
+      <div class="row"> 
+      <div class="col-md-5">
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
@@ -82,6 +86,7 @@
             </div>
         </div>
         <!-- /.box -->
+      </div>
       </div>
     </section>
     <br>

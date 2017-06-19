@@ -26,13 +26,14 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Dashboard
+        Pencairan Anggaran
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-home"></i> Anggaran</a></li>
+        <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
       </ol>
     </section>
-    <br>
+    <section class="content">
+    <div class="row">
     <div class="col-sm-7">
       <!-- Horizontal Form -->
       <div class="box box-info">
@@ -135,6 +136,8 @@
       </div>
       <!-- /.box -->
     </div>
+    </div>
+    </section>
   </div>
   @include('layouts.footer')
 </div>

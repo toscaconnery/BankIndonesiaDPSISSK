@@ -36,10 +36,10 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Dashboard
+        Tambah Pencairan
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-home"></i> Anggaran</a></li>
+        <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
       </ol>
     </section>
     <br>
@@ -47,7 +47,7 @@
       <!-- Horizontal Form -->
       <div class="box box-info">
         <div class="box-header with-border">
-          <h2 class="box-title">Pencairan</h2>
+          <h2 class="box-title">Form Tambah Pencairan</h2>
         </div>
         <!-- /.box-header -->
         <!-- form start -->

@@ -38,12 +38,15 @@
   @include('layouts.navbar')
   <div class="content-wrapper">
     <section class="content-header">
-      <div class="col-md-12">
-        <h2>
+        <h1>
           Tambah Proyek
-        </h2>
-      </div>
-      <br>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="{{url('')}}/list-proyek"><i class="fa fa-cubes"></i> Proyek</a></li>
+        </ol>
+    </section>
+    <section class="content">
+    <div class="row">
       <div class="col-md-7">
         <!-- Horizontal Form -->
         <div class="box box-info">
@@ -116,6 +119,7 @@
             </div>
         </div>
         <!-- /.box -->
+      </div>
       </div>
     </section>
     <br>

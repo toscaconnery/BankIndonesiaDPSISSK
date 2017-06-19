@@ -30,7 +30,7 @@
           Daftar Proyek
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+          <li><a href="{{url('')}}/list-proyek"><i class="fa fa-cubes"></i> Proyek</a></li>
         </ol>
       </section>
 

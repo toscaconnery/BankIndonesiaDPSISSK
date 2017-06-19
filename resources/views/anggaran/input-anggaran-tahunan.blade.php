@@ -29,11 +29,11 @@
         Input Anggaran Tahunan
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
       </ol>
     </section>
     <br>
-    <div class="col-sm-7">
+    <div class="col-sm-6">
       <!-- Horizontal Form -->
       <div class="box box-info">
         <div class="box-header with-border">
@@ -57,6 +57,20 @@
             <!--Nominal-->
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-3 control-label">Nominal</label>
+              <div class="col-sm-9">
+                <input name="nominal" type="number" class="form-control" id="inputEmail3">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Anggaran RI</label>
+              <div class="col-sm-9">
+                <input name="nominal" type="number" class="form-control" id="inputEmail3">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Anggaran OP</label>
               <div class="col-sm-9">
                 <input name="nominal" type="number" class="form-control" id="inputEmail3">
               </div>

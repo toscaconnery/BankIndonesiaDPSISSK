@@ -26,47 +26,54 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Issue
+        Tambah Issue
       </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-newspaper-o"></i> Issue</a></li>
+      </ol>
     </section>
-    <br>
-    <div class="col-sm-7">
-      <!-- Horizontal Form -->
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h2 class="box-title">Tambahkan Issue</h2>
+    
+    <section class="content">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h2 class="box-title">Form Tambah Issue</h2>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                
+                <!--Judul-->
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
+                  <div class="col-sm-10">
+                    <input name="judul" type="text" class="form-control" id="inputEmail3">
+                  </div>
+                </div>
+
+                <!--Issue-->
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
+                  <div class="col-sm-10">
+                    <textarea name="isi" class="form-control" rows="8"></textarea>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+              <!-- /.box-footer -->
+            </form>
+            <div class="box-footer">
+              <a href="{{url('')}}/list-issue"><button class="btn btn-primary pull-right">Submit</button></a>
+            </div>
+          </div>
+          <!-- /.box -->
         </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form class="form-horizontal">
-          <div class="box-body">
-            
-            <!--Judul-->
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
-              <div class="col-sm-10">
-                <input name="judul" type="text" class="form-control" id="inputEmail3">
-              </div>
-            </div>
-
-            <!--Issue-->
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
-              <div class="col-sm-10">
-                <textarea name="isi" class="form-control" rows="8"></textarea>
-              </div>
-            </div>
-
-          </div>
-          <!-- /.box-body -->
-          <!-- /.box-footer -->
-        </form>
-        <div class="box-footer">
-            <a href="{{url('')}}/list-issue"><button class="btn btn-primary pull-right">Submit</button></a>
-          </div>
       </div>
-      <!-- /.box -->
-    </div>
+    </section>
   </div>
   @include('layouts.footer')
 </div>

@@ -29,7 +29,7 @@
           Anggaran Tiap Tahun
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+          <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
         </ol>
       </section>
 

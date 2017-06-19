@@ -26,18 +26,19 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Dashboard
+          Daftar Issue
         </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-newspaper-o"></i> Issue</a></li>
+        </ol>
       </section>
       
       <!--Issue-->
       <section class="content">
+      <div class="row">
       <div class="col-xs-12">
         <!-- Horizontal Form -->
         <div class="box box-info">
-          <div class="box-header with-border">
-            <h2 class="box-title">Issue</h2>
-          </div>
           <!-- /.box-header -->
           <!-- content start -->
           <div class="box-body">
@@ -73,9 +74,9 @@
                       </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-primary btn-xs">Informasi</a>
+                        <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
                         <a class="btn btn-success btn-xs">Selesai</a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 28 Juli 12:05</span>
+                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 28 Juli 2017</span>
                       </div>
                     </div>
                   </li>
@@ -103,9 +104,9 @@
                       </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-primary btn-xs">Diskusi</a>
+                        <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
                         <a class="btn btn-warning btn-xs">Dalam progress</a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 12:05</span>
+                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 2017</span>
                       </div>
                     </div>
                   </li>
@@ -132,9 +133,9 @@
                       </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-primary btn-xs">Diskusi</a>
+                        <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
                         <a class="btn btn-danger btn-xs">Penting</a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 12:05</span>
+                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 2017</span>
                       </div>
                     </div>
                   </li>
@@ -152,6 +153,7 @@
         </div>
         <!-- /.box -->
       </div>
+    </div>
     </div>
     </section>
   @include('layouts.footer')
