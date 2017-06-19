@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function satu()
+    public function list_proyek()
     {
-    	return view('satu');
+    	return view('proyek.list-proyek');
     }
 }
