@@ -33,8 +33,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-    <?php include 'header.php';?>
-    <?php include 'navbar.php';?>
+    @include('layouts.header')
+    @include('layouts.navbar')
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
@@ -93,7 +93,7 @@
                 <!-- /.input group -->
               </div>
               
-              <a href='inp-thp-proyek.php'><button class="btn btn-primary" style="float: right;">Submit</button>
+              <a href='{{url('')}}/input-detail-tahapan'><button class="btn btn-primary" style="float: right;">Submit</button>
               
               <!-- /.form group -->
             </div>
@@ -130,7 +130,7 @@
                       <td>8 Juni 2017</td>
                       <td>Pak Alam</td>
                       <td>Finish</td>
-                      <center><td><a href='inp-detail-tahapan.php'><button class="btn btn-primary">Update</button></td></center>
+                      <center><td><a href='{{url('')}}/input-detail-tahapan'><button class="btn btn-primary">Update</button></td></center>
                     </tr>
                 </table>
               </div>
@@ -146,7 +146,7 @@
 
       <br>
     </div>
-    <?php include 'footer.php';?>
+    @include('layouts.footer')
   </div>
 
 <!-- jQuery 2.2.3 -->

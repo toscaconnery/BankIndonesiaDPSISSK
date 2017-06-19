@@ -6,6 +6,12 @@ Route::get('/', function () {
 
 Route::get('list-proyek', 'ProjectController@list_proyek');
 
+Route::get('input-proyek', 'ProjectController@input_proyek');
+
+Route::get('input-tahap-proyek', 'ProjectController@input_tahap_proyek');
+
+Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
+
 Route::get('satu', 'ProjectController@satu');
 
 Auth::routes();

@@ -21,7 +21,7 @@
         </a>
       </li>
       <li>
-        <a href="{{url('')}}/listproyek">
+        <a href="{{url('')}}/list-proyek">
           <i class="fa fa-cubes"></i> <span>Proyek</span>
         </a>
       </li>

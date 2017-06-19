@@ -40,7 +40,7 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
-                <a href='inp-proyek.php'><button class="btn btn-lg btn-primary">Tambah Proyek</button>
+                <a href='{{url('')}}/input-proyek'><button class="btn btn-lg btn-primary">Tambah Proyek</button>
                 <table id="example1" class="table table-bordered table-striped">
                 <br>
                 <br>
@@ -75,7 +75,7 @@
                       <td>3 Agustus 2017</td>
                       <td>Inhouse</td>
                       <td>Selesai</td>
-                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
+                      <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
                       <td>PR002</td>
@@ -88,7 +88,7 @@
                       <td>3 September 2017</td>
                       <td>Inhouse</td>
                       <td>Selesai</td>
-                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
+                      <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
                       <td>PR003</td>
@@ -101,7 +101,7 @@
                       <td>3 Oktober 2017</td>
                       <td>Inhouse</td>
                       <td>Selesai</td>
-                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
+                      <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
                       <td>PR004</td>
@@ -114,7 +114,7 @@
                       <td>1 Agustus 2017</td>
                       <td>Outsourcing</td>
                       <td>Selesai</td>
-                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
+                      <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                     <tr>
                       <td>PR005</td>
@@ -127,7 +127,7 @@
                       <td>3 Agustus 2017</td>
                       <td>Inhouse</td>
                       <td>Selesai</td>
-                      <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Detail</button></td></center>
+                      <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
                     </tr>
                 </table>
               </div>
