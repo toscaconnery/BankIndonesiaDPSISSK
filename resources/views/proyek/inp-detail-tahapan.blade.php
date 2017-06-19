@@ -64,7 +64,7 @@
                 <input type="file" class="form-control" id="file">
               </div>
               
-              <a href='inp-thp-proyek.php'><button class="btn btn-primary" style="float: right;">Submit</button></a>
+              <a href='{{url('')}}/input-detail-tahapan'><button class="btn btn-primary" style="float: right;">Submit</button></a>
               <!-- /.form group -->
             </div>
             <!-- /.box-body -->

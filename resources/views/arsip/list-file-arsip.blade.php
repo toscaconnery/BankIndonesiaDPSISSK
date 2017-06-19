@@ -68,7 +68,7 @@
                   <div class="row">
                   <h4>Upload Dokumen</h4>
                   <input type="file" class="form-control" id="file">
-                  <span><button class="btn btn-primary">Upload</button></span>
+                  <span><a href="{{url('')}}/list-file-arsip"><button class="btn btn-primary">Upload</button></a></span>
                   </div>
                 </div>
                 </div>

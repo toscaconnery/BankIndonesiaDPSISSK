@@ -64,11 +64,11 @@
 
           </div>
           <!-- /.box-body -->
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary pull-right">Submit</button>
-          </div>
-          <!-- /.box-footer -->
         </form>
+        <div class="box-footer">
+          <a href="{{url('')}}/report-anggaran-tahunan">
+            <button class="btn btn-primary pull-right">Submit</button></a>
+          </div>
       </div>
       <!-- /.box -->
     </div>

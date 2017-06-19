@@ -15,7 +15,7 @@
     <ul class="sidebar-menu">
       <li class="header">LIST MENU</li>
       <li>
-        <a href="index.php">
+        <a href="{{url('')}}/dashboard">
           <i class="fa fa-home"></i>
           <span>Dashboard</span>
         </a>

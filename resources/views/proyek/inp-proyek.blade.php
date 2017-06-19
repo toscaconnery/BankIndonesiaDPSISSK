@@ -112,7 +112,7 @@
             <!-- /.box-footer -->
           </form>
           <div class="box-footer">
-              <a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary" style="float: right;">Submit</button></a>
+              <a href='{{url('')}}/list-proyek'><button class="btn btn-primary" style="float: right;">Submit</button></a>
             </div>
         </div>
         <!-- /.box -->
