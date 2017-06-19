@@ -21,8 +21,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include 'header.php';?>
-  <?php include 'navbar.php';?>
+  @include('layouts.header')
+  @include('layouts.navbar')
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
@@ -58,73 +58,73 @@
                   <td>1</td>
                   <td>Januari</td>
                   <td>23423</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>Februari</td>
                   <td>200230</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>Maret</td>
                   <td>342343</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">5</a></td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>April</td>
                   <td>234242</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
                 </tr>
                 <tr>
                   <td>5</td>
                   <td>Mei</td>
                   <td>231542</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>6</td>
                   <td>Juni</td>
                   <td>234232</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">5</a></td>
                 </tr>
                 <tr>
                   <td>7</td>
                   <td>Juli</td>
                   <td>234234</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">6</a></td>
                 </tr>
                 <tr>
                   <td>8</td>
                   <td>Agustus</td>
                   <td>237784</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>9</td>
                   <td>September</td>
                   <td>2000</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
                 </tr>
                 <tr>
                   <td>10</td>
                   <td>Oktober</td>
                   <td>834753</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
                 </tr>
                 <tr>
                   <td>11</td>
                   <td>Nopember</td>
                   <td>1023423</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>12</td>
                   <td>Desember</td>
                   <td>234987</td>
-                  <td><a href="#">A, B, C</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
                 </tr>
 
               </tbody>
@@ -136,7 +136,7 @@
       <!-- /.box -->
     </div>
   </div>
-  <?php include 'footer.php';?>
+  @include('layouts.footer')
 </div>
 
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>

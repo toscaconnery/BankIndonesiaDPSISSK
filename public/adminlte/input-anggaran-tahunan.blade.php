@@ -21,12 +21,12 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  @include('layouts.header')
-  @include('layouts.navbar')
+  <?php include 'header.php';?>
+  <?php include 'navbar.php';?>
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Input Anggaran Tahunan
+        Dashboard
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
@@ -37,7 +37,7 @@
       <!-- Horizontal Form -->
       <div class="box box-info">
         <div class="box-header with-border">
-          <h2 class="box-title">Anggaran Tahunan</h2>
+          <h2 class="box-title">Anggaran</h2>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -48,16 +48,16 @@
 
             <!--Tahun Anggaran-->
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Tahun Anggaran</label>
-              <div class="col-sm-9">
+              <label for="inputEmail3" class="col-sm-2 control-label">Tahun Anggaran</label>
+              <div class="col-sm-10">
                 <input name="tahun" type="number" class="form-control" id="inputEmail3">
               </div>
             </div>
 
             <!--Nominal-->
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Nominal</label>
-              <div class="col-sm-9">
+              <label for="inputEmail3" class="col-sm-2 control-label">Nominal</label>
+              <div class="col-sm-10">
                 <input name="nominal" type="number" class="form-control" id="inputEmail3">
               </div>
             </div>
@@ -65,7 +65,8 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-info pull-right">Submit</button>
           </div>
           <!-- /.box-footer -->
         </form>
@@ -73,7 +74,7 @@
       <!-- /.box -->
     </div>
   </div>
-  @include('layouts.footer')
+  <?php include 'footer.php';?>
 </div>
 
 <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>

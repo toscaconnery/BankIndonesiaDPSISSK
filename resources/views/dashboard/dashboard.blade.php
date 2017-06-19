@@ -21,8 +21,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include 'header.php';?>
-  <?php include 'navbar.php';?>
+    @include('layouts.header')
+    @include('layouts.navbar')
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
@@ -223,7 +223,7 @@
         <!-- /.box -->
       </div>
     </div>
-  <?php include 'footer.php';?>
+  @include('layouts.footer')
 </div>
 
 <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>

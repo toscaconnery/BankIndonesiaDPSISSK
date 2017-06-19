@@ -9,9 +9,29 @@ use Auth;
 
 class AnggaranController extends Controller
 {
+    public function report_anggaran_tahunan()
+    {
+        return view('anggaran.report-anggaran-tahunan');
+    }
+
+    public function report_anggaran_bulanan()
+    {
+        return view('anggaran.report-anggaran-bulanan');
+    }
+
     public function input_anggaran_tahunan()
     {
     	return view('anggaran.input-anggaran-tahunan');
+    }
+
+    public function input_pencairan_anggaran_bulanan()
+    {
+        return view('anggaran.input-pencairan-anggaran-bln');
+    }
+
+    public function report_anggaran_rinci()
+    {
+        return view('anggaran.report-anggaran-rinci');
     }
 
     public function save_input_anggaran_tahunan()

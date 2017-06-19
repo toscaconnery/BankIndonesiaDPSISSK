@@ -20,6 +20,16 @@ Route::get('input-arsip', 'ArsipController@input_arsip');
 
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
 
+Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
+
+Route::get('report-anggaran-bulanan', 'AnggaranController@report_anggaran_bulanan');
+
+Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
+
+Route::get('input-pencairan-anggaran-bulanan', 'AnggaranController@input_pencairan_anggaran_bulanan');
+
+Route::get('report-anggaran-rinci', 'AnggaranController@report_anggaran_rinci');
+
 Route::get('satu', 'ProjectController@satu');
 
 Auth::routes();

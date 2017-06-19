@@ -21,15 +21,15 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-    <?php include 'header.php';?>
-    <?php include 'navbar.php';?>
+    @include('layouts.header')
+    @include('layouts.navbar')
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Anggaran Tiap Tahun
+          Anggaran Rinci Bulan Januari 2017
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+          <li><a href="#"><i class="fa fa-home"></i> Anggaran Rinci</a></li>
         </ol>
       </section>
 
@@ -42,57 +42,28 @@
                 <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th rowspan="2">Tahun</th>
-                  <th colspan="3">Dianggarkan</th>
-                  <th colspan="4">Realisasi</th>
-                  <th rowspan="2">Detail</th>
-                </tr>
-                <tr>
-                  <th>RI</th>
-                  <th>OP</th>
-                  <th>Total</th>
-                  <th>RI</th>
-                  <th>OP</th>
-                  <th>Total</th>
-                  <th>Sisa</th>
+                  <th>Tanggal</th>
+                  <th>Kategori</th>
+                  <th>Nominal</th>
+                  <th>Keterangan</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>2015</td>
+                  <td>2 Juli 2017</td>
+                  <td>OP</td>
                   <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 200.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Bersisa Rp. 34.000.000</td>
-                  <td><a href="report-anggaran-bulanan.php">Detail</a></td>
+                  <td>Dianggarkan untuk proyek APIK</td>
                 </tr>
                 <tr>
-                  <td>2016</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 212.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Bersisa Rp. 22.000.000</td>
-                  <td><a href="report-anggaran-bulanan.php">Detail</a></td>
-                </tr>
-                <tr>
-                  <td>2017</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Terpakai semua</td>
-                  <td><a href="report-anggaran-bulanan.php">Detail</a></td>
+                  <td>4 Juli 2017</td>
+                  <td>RI</td>
+                  <td>Rp. 230.234.242</td>
+                  <td>Dianggarkan untuk desain proyek APIK</td>
                 </tr>
               </tbody>
             </table>
+            <center><a href='{{url('')}}/input-pencairan-anggaran-bulanan'><button class="btn btn-default" style="font-weight: bold;">Tambah Pengeluaran</button></a></center>
               </div>
               <!-- /.box-body -->
             </div>
@@ -106,7 +77,7 @@
 
       <br>
     </div>
-    <?php include 'footer.php';?>
+    @include('layouts.footer')
   </div>
 
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>

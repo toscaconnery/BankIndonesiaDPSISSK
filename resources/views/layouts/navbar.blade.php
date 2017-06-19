@@ -26,7 +26,7 @@
         </a>
       </li>
       <li>
-        <a href="report-anggaran-tahunan.php">
+        <a href="{{url('')}}/report-anggaran-tahunan">
           <i class="fa fa-money"></i> <span>Anggaran</span>
         </a>
       </li>
