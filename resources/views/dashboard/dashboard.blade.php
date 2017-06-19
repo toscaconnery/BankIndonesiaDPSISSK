@@ -161,7 +161,17 @@
                     <i class="fa fa-info bg-blue"></i>
                     <!--issue content goes here-->
                     <div class="timeline-item">
-                      <h3 class="timeline-header"><a href="#"><big>Issue Sistem Keuangan</big></a></h3>
+                      <h3 class="timeline-header">
+                        <a href="#">
+                          <big>
+                            Issue Sistem Keuangan
+                          </big>
+                        </a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </h3>
+
                       <div class="timeline-body">
                         Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
                         weebly ning heekya handango imeem plugg dopplr jibjab, movity
@@ -169,6 +179,7 @@
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
                       <div class="timeline-footer">
+                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <a class="btn btn-primary btn-xs">Informasi</a>
                         <a class="btn btn-success btn-xs">Selesai</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 28 Juli 12:05</span>
@@ -180,7 +191,17 @@
                     <i class="fa fa-info bg-blue"></i>
                     <!--issue content goes here-->
                     <div class="timeline-item">
-                      <h3 class="timeline-header"><a href="#"><big>Issue Pembaruan Sistem</big></a></h3>
+                      <h3 class="timeline-header">
+                        <a href="#">
+                          <big>
+                            Issue Pembaruan Sistem
+                          </big>
+                        </a>
+                        <button type="button" class="close">
+                          <small><span aria-hidden="true"><i class="fa fa-remove"></i></span></small>
+                        </button>
+                        
+                      </h3>
                       <div class="timeline-body">
                         Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
                         weebly ning heekya handango imeem plugg dopplr jibjab, movity
@@ -188,6 +209,7 @@
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
                       <div class="timeline-footer">
+                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <a class="btn btn-primary btn-xs">Diskusi</a>
                         <a class="btn btn-warning btn-xs">Dalam progress</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 12:05</span>
@@ -199,7 +221,16 @@
                     <i class="fa fa-info bg-blue"></i>
                     <!--issue content goes here-->
                     <div class="timeline-item">
-                      <h3 class="timeline-header"><a href="#"><big>Issue Pengembangan Sistem</big></a></h3>
+                      <h3 class="timeline-header">
+                        <a href="#">
+                          <big>
+                            Issue Pengembangan Sistem
+                          </big>
+                        </a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </h3>
                       <div class="timeline-body">
                         Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
                         weebly ning heekya handango imeem plugg dopplr jibjab, movity
@@ -207,6 +238,7 @@
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
                       <div class="timeline-footer">
+                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <a class="btn btn-primary btn-xs">Diskusi</a>
                         <a class="btn btn-danger btn-xs">Penting</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 12:05</span>
@@ -214,7 +246,12 @@
                     </div>
                   </li>
 
-                  
+                  <li>
+                    <div class="timeline-item">
+                      <a href="{{url('')}}/input-issue" class="btn btn-primary">Tambahkan issue</a>
+                    </div>
+                  </li>
+
                 </ul>
               </div>
             </div>
