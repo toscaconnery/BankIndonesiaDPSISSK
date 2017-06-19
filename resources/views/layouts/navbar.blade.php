@@ -31,7 +31,7 @@
         </a>
       </li>
       <li>
-        <a href="pages/tables/status.html">
+        <a href="{{url('')}}/list-issue">
           <i class="fa fa-newspaper-o"></i> <span>Issues</span>
         </a>
       </li>

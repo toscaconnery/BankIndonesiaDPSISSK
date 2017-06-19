@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
-    public function tambahkan_issue()
+    public function list_issue()
+    {
+        return view('issue.list-issue');
+    }
+
+    public function input_issue()
     {
     	return view('issue.input-issue');
     }

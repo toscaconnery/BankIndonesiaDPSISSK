@@ -21,8 +21,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include 'header.php';?>
-  <?php include 'navbar.php';?>
+  @include('layouts.header')
+  @include('layouts.navbar')
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
@@ -59,17 +59,16 @@
 
           </div>
           <!-- /.box-body -->
-          <div class="box-footer">
-            <button type="submit" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-info pull-right">Submit</button>
-          </div>
           <!-- /.box-footer -->
         </form>
+        <div class="box-footer">
+            <a href="{{url('')}}/list-issue"><button class="btn btn-primary pull-right">Submit</button></a>
+          </div>
       </div>
       <!-- /.box -->
     </div>
   </div>
-  <?php include 'footer.php';?>
+  @include('layouts.footer')
 </div>
 
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>

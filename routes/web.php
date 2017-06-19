@@ -30,6 +30,8 @@ Route::get('input-pencairan-anggaran-bulanan', 'AnggaranController@input_pencair
 
 Route::get('report-anggaran-rinci', 'AnggaranController@report_anggaran_rinci');
 
+Route::get('list-issue', 'IssueController@list_issue');
+
 Route::get('satu', 'ProjectController@satu');
 
 Auth::routes();
@@ -52,7 +54,7 @@ Route::get('kosong', function() {
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
 Route::post('input-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
 
-Route::get('input-issue', 'IssueController@tambahkan_issue');
-Route::post('input-issue', 'IssueController@save_tambahkan_issue');
+Route::get('input-issue', 'IssueController@input_issue');
+Route::post('input-issue', 'IssueController@save_input_issue');
 Route::get('edit-issue', 'IssueController@edit_issue');
 Route::post('edit-issue', 'IssueController@save_edit_issue');
