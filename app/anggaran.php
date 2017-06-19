@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class anggaran extends Model
 {
+	protected $table = 'anggaran';
     protected $fillable = [
-    	'tahun', 'nominal', 'pic', 'ri', 'op', 'used_ri', 'used_op',
+    	'tahun', 'nominal', 'pic', 
     	
     ];
 }

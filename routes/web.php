@@ -30,3 +30,6 @@ Route::get('logout', function() {
 Route::get('kosong', function() {
 	return view('kosong');
 });
+
+Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
+Route::post('input-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
