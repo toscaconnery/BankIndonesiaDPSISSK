@@ -41,3 +41,8 @@ Route::get('kosong', function() {
 
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
 Route::post('input-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
+
+Route::get('input-issue', 'IssueController@tambahkan_issue');
+Route::post('input-issue', 'IssueController@save_tambahkan_issue');
+Route::get('edit-issue', 'IssueController@edit_issue');
+Route::post('edit-issue', 'IssueController@save_edit_issue');

@@ -6,5 +6,23 @@ use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
-    //
+    public function tambahkan_issue()
+    {
+    	return view('issue.input-issue');
+    }
+
+    public function edit_issue()
+    {
+    	return view('issue.edit-issue');
+    }
+
+    public function save_tambahkan_issue()
+    {
+    	//
+    }
+
+    public function save_edit_issue()
+    {
+    	//
+    }
 }
