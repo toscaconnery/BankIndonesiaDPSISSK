@@ -35,6 +35,11 @@
           <i class="fa fa-newspaper-o"></i> <span>Issues</span>
         </a>
       </li>
+      <li>
+        <a href="{{url('')}}/list-arsip">
+          <i class="fa fa-file"></i> <span>Arsip</span>
+        </a>
+      </li>
     </ul>
   </section>
 </aside>

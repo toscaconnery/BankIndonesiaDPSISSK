@@ -14,6 +14,12 @@ Route::get('input-tahap-proyek', 'ProjectController@input_tahap_proyek');
 
 Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
 
+Route::get('list-arsip', 'ArsipController@list_arsip');
+
+Route::get('input-arsip', 'ArsipController@input_arsip');
+
+Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
+
 Route::get('satu', 'ProjectController@satu');
 
 Auth::routes();

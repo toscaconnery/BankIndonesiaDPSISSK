@@ -93,7 +93,7 @@
                 <!-- /.input group -->
               </div>
               
-              <a href='{{url('')}}/input-detail-tahapan'><button class="btn btn-primary" style="float: right;">Submit</button>
+              <a href='{{url('')}}/input-detail-tahapan'><button class="btn btn-primary" style="float: right;">Submit</button></a>
               
               <!-- /.form group -->
             </div>

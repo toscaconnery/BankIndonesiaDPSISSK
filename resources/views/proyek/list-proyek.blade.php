@@ -40,7 +40,7 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
-                <a href='{{url('')}}/input-proyek'><button class="btn btn-lg btn-primary">Tambah Proyek</button>
+                <a href='{{url('')}}/input-proyek'><button class="btn btn-lg btn-primary">Tambah Proyek</button></a>
                 <table id="example1" class="table table-bordered table-striped">
                 <br>
                 <br>
