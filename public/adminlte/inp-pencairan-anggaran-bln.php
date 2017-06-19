@@ -65,6 +65,17 @@
               </div>
             </div>
 
+            <!--Kategori-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Kategori</label>
+              <div class="col-sm-10">
+                <select class="form-control">
+                  <option>RI</option>
+                  <option>OP</option>                 
+                </select>
+              </div>
+            </div>
+
             <!--Nominal-->
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Nominal</label>
@@ -72,6 +83,15 @@
                 <input name="pic" type="number" class="form-control" id="inputEmail3">
               </div>
             </div>
+
+            <!--Keterangan-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Keterangan</label>
+              <div class="col-sm-10">
+                <textarea name="pic" type="text" class="form-control" id="inputEmail3"></textarea>
+              </div>
+            </div>
+
 
           </div>
           <!-- /.box-body -->

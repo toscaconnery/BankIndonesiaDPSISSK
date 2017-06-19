@@ -44,7 +44,7 @@
                 <tr>
                   <th rowspan="2">Tahun</th>
                   <th colspan="3">Dianggarkan</th>
-                  <th colspan="3">Realisasi</th>
+                  <th colspan="4">Realisasi</th>
                   <th rowspan="2">Detail</th>
                 </tr>
                 <tr>
@@ -54,6 +54,7 @@
                   <th>RI</th>
                   <th>OP</th>
                   <th>Total</th>
+                  <th>Sisa</th>
                 </tr>
               </thead>
               <tbody>
@@ -63,8 +64,9 @@
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 468.468.484</td>
                   <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
+                  <td>Rp. 200.234.242</td>
                   <td>Rp. 468.468.484</td>
+                  <td>Bersisa Rp. 34.000.000</td>
                   <td><a href="report-anggaran-bulanan.php">Detail</a></td>
                 </tr>
                 <tr>
@@ -73,8 +75,9 @@
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 468.468.484</td>
                   <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
+                  <td>Rp. 212.234.242</td>
                   <td>Rp. 468.468.484</td>
+                  <td>Bersisa Rp. 22.000.000</td>
                   <td><a href="report-anggaran-bulanan.php">Detail</a></td>
                 </tr>
                 <tr>
@@ -85,6 +88,7 @@
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 234.234.242</td>
                   <td>Rp. 468.468.484</td>
+                  <td>Terpakai semua</td>
                   <td><a href="report-anggaran-bulanan.php">Detail</a></td>
                 </tr>
               </tbody>
