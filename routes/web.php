@@ -4,6 +4,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('dashboard', 'DashboardController@index');
+
 Route::get('list-proyek', 'ProjectController@list_proyek');
 
 Route::get('input-proyek', 'ProjectController@input_proyek');
