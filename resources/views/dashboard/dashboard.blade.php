@@ -5,18 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SI PMO&RMS</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="bootstrap2/css/bootstrap.min.css">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
-  <link rel="stylesheet" href="plugins/morris/morris.css">
-  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -36,33 +35,32 @@
       <!--Anggaran-->
       <section class="content">
       <div class="row">
-      <div class="col-sm-12">
+      <div class="col-md-12">
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
-            <h2 class="box-title">Anggaran</h2>
+          <a href="{{url('')}}/report-anggaran-tahunan"><h2 class="box-title">Anggaran</h2></a>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
           </div>
-          <!-- /.box-header -->
-          <!-- content start -->
           <div class="box-body">
-            
-            <!-- BAR CHART -->
-              <div class="chart">
-                <canvas id="barChart" style="height:230px"></canvas>
-              </div>
-            <!-- /.box -->
-
+            <div class="chart">
+              <canvas id="barchart" style="height:230px"></canvas>
+            </div>
           </div>
         </div>
         <!-- /.box -->
       </div>
 
       <!--Project-->
-      <div class="col-sm-6">
+      <div class="col-md-6">
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
-            <h2 class="box-title">Project</h2>
+            <a href="{{url('')}}/list-proyek"><h2 class="box-title">Project</h2></a>
           </div>
           <!-- /.box-header -->
           <!-- content start -->
@@ -147,7 +145,7 @@
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
-            <h2 class="box-title">Issue</h2>
+            <a href="{{url('')}}/list-issue"><h2 class="box-title">Issue</h2></a>
           </div>
           <!-- /.box-header -->
           <!-- content start -->
@@ -269,45 +267,18 @@
   @include('layouts.footer')
 </div>
 
-<script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script>$.widget.bridge('uibutton', $.ui.button);</script>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="{{url('')}}/plugins/morris/morris.min.js"></script>
-<script src="{{url('')}}/plugins/sparkline/jquery.sparkline.min.js"></script>
-<script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="{{url('')}}/plugins/knob/jquery.knob.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
-<script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-<script src="{{url('')}}/dist/js/app.min.js"></script>
-<script src="{{url('')}}/dist/js/pages/dashboard.js"></script>
-<script src="{{url('')}}/dist/js/demo.js"></script>
-<script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="/plugins/chartjs/Chart.min.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
-
+<script src="bootstrap2/js/bootstrap.min.js"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="plugins/chartjs/Chart.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- page script -->
 <script>
   $(function () {
     /* ChartJS
@@ -402,7 +373,7 @@
     //-------------
     //- BAR CHART -
     //-------------
-    var barChartCanvas = $("#barChart").get(0).getContext("2d");
+    var barChartCanvas = $("#barchart").get(0).getContext("2d");
     var barChart = new Chart(barChartCanvas);
     var barChartData = areaChartData;
     barChartData.datasets[1].fillColor = "#00a65a";
