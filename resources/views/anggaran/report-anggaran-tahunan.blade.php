@@ -47,7 +47,7 @@
                 <tr>
                   <th rowspan="2">Tahun</th>
                   <th colspan="3">Dianggarkan</th>
-                  <th colspan="4">Realisasi</th>
+                  <th colspan="8">Realisasi</th>
                   <th rowspan="2">Detail</th>
                 </tr>
                 <tr>
@@ -58,10 +58,24 @@
                   <th colspan="2">OP</th>
                   <th colspan="2">Total</th>
                   <th colspan="2">Sisa</th>
-
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>2016</td>
+                  <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
+                  <td>Rp. 234.234.242</td>  {{-- op dianggarkan --}}
+                  <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
+                  <td>Rp. 234.234.242</td>  {{-- ri realisasi --}}
+                  <td width="10px">100%</td>  {{-- persen ri realisasi --}}
+                  <td>Rp. 200.234.242</td>  {{-- op realisasi --}}
+                  <td width="10px">90%</td> {{-- persen op realisasi --}}
+                  <td>Rp. 468.468.484</td>  {{-- total realisasi --}}
+                  <td width="10px">80%</td> {{-- persen total realisasi --}}
+                  <td>Bersisa Rp. 34.000.000</td> {{-- sisa anggaran --}}
+                  <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
+                  <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
+                </tr>
                 <tr>
                   <td>2015</td>
                   <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
@@ -73,29 +87,23 @@
                   <td width="10px">90%</td> {{-- persen op realisasi --}}
                   <td>Rp. 468.468.484</td>  {{-- total realisasi --}}
                   <td width="10px">80%</td> {{-- persen total realisasi --}}
-                  <td>Bersisa Rp. 34.000.000</td>
+                  <td>Bersisa Rp. 34.000.000</td> {{-- sisa anggaran --}}
+                  <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
                   <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
                 </tr>
                 <tr>
-                  <td>2016</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 212.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Bersisa Rp. 22.000.000</td>
-                  <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
-                </tr>
-                <tr>
-                  <td>2017</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Terpakai semua</td>
+                  <td>2014</td>
+                  <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
+                  <td>Rp. 234.234.242</td>  {{-- op dianggarkan --}}
+                  <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
+                  <td>Rp. 234.234.242</td>  {{-- ri realisasi --}}
+                  <td width="10px">100%</td>  {{-- persen ri realisasi --}}
+                  <td>Rp. 200.234.242</td>  {{-- op realisasi --}}
+                  <td width="10px">90%</td> {{-- persen op realisasi --}}
+                  <td>Rp. 468.468.484</td>  {{-- total realisasi --}}
+                  <td width="10px">80%</td> {{-- persen total realisasi --}}
+                  <td>Bersisa Rp. 34.000.000</td> {{-- sisa anggaran --}}
+                  <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
                   <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
                 </tr>
               </tbody>
