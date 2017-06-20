@@ -144,7 +144,7 @@
                   <li>
                     <div class="timeline-item">
                       <a href="{{url('')}}/input-issue"><button class="btn btn-standard">Tambahkan issue</button></a>
-                      <a href="{{url('')}}/list-all-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
+                      <a href="{{url('')}}/input-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
                     </div>
                   </li>
                   </center>

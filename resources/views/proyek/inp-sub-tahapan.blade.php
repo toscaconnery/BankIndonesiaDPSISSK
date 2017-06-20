@@ -56,8 +56,8 @@
                 <!-- Date -->
                 <div class="form-group">
 
-                  <label>Nama Sub Tahapan</label>
-                  <input type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
+                  <label>Sub Tahapan</label>
+                  <input type="text" class="form-control" id="namatahapan" placeholder="Nama Sub Tahapan">
                 </div>
                 <div class="form-group">
                   <label>PIC</label>

@@ -11,6 +11,11 @@ class IssueController extends Controller
         return view('issue.list-issue');
     }
 
+    public function list_all_issue()
+    {
+        return view('issue.list-all-issue');
+    }
+
     public function input_issue()
     {
     	return view('issue.input-issue');
