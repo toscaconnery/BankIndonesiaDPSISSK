@@ -11,7 +11,6 @@ class AnggaranController extends Controller
 {
     public function report_anggaran_tahunan()
     {
-        dd('haha');
         return view('anggaran.report-anggaran-tahunan');
     }
 
