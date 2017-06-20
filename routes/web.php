@@ -12,7 +12,8 @@ Route::get('input-proyek', 'ProjectController@input_proyek');
 
 Route::get('input-tahap-proyek', 'ProjectController@input_tahap_proyek');
 
-Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
+// Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
+Route::get('input-sub-tahapan', 'ProjectController@input_sub_tahapan');
 
 Route::get('list-arsip', 'ArsipController@list_arsip');
 

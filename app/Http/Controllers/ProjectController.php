@@ -21,8 +21,13 @@ class ProjectController extends Controller
     	return view('proyek.inp-thp-proyek');
     }
 
-    public function input_detail_tahapan()
+    // public function input_detail_tahapan()
+    // {
+    // 	return view('proyek.inp-detail-tahapan');
+    // }
+
+    public function input_sub_tahapan()
     {
-    	return view('proyek.inp-detail-tahapan');
+        return view('proyek.inp-sub-tahapan');
     }
 }
