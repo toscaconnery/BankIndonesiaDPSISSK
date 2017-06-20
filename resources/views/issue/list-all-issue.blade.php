@@ -26,7 +26,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Daftar Issue
+          Daftar Semua Issue
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-newspaper-o"></i> Issue</a></li>
@@ -44,12 +44,8 @@
           <div class="box-body">
             <div class="row">
               <div class="col-md-12">
+              <div style="overflow-y: scroll; height: 30em">
                 <ul class="timeline">
-                  <li class="time-label">
-                    <span class="bg-blue">
-                      Issue yang perlu diperhatikan
-                    </span>
-                  </li>
                   <!--list issue-->
                   <li>
                     <i class="fa fa-info bg-blue"></i>
@@ -134,21 +130,19 @@
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
-                        <a class="btn btn-danger btn-xs">Penting</a>
+                        <a class="btn btn-danger btn-xs">Pending</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 2017</span>
                       </div>
                     </div>
                   </li>
-
-                  <center>
-                  <li>
-                    <div class="timeline-item">
-                      <a href="{{url('')}}/input-issue"><button class="btn btn-standard">Tambahkan issue</button></a>
-                      <a href="{{url('')}}/input-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
-                    </div>
-                  </li>
-                  </center>
                 </ul>
+                </div>
+                <br>
+                <center>
+                  <div class="timeline-item">
+                    <a href="{{url('')}}/input-issue"><button class="btn btn-standard">Tambahkan issue</button></a>
+                  </div>
+                </center>
               </div>
             </div>
           </div>

@@ -44,6 +44,7 @@
           <div class="box-body">
             <div class="row">
               <div class="col-md-12">
+              <div style="overflow-y: scroll; height: 30em">
                 <ul class="timeline">
                   <li class="time-label">
                     <span class="bg-blue">
@@ -139,16 +140,15 @@
                       </div>
                     </div>
                   </li>
-
-                  <center>
-                  <li>
-                    <div class="timeline-item">
-                      <a href="{{url('')}}/input-issue"><button class="btn btn-standard">Tambahkan issue</button></a>
-                      <a href="{{url('')}}/list-all-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
-                    </div>
-                  </li>
-                  </center>
                 </ul>
+                </div>
+                <br>
+                <center>
+                  <div class="timeline-item">
+                    <a href="{{url('')}}/input-issue"><button class="btn btn-standard">Tambahkan issue</button></a>
+                    <a href="{{url('')}}/list-all-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
+                  </div>
+                </center>
               </div>
             </div>
           </div>

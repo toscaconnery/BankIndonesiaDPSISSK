@@ -67,7 +67,7 @@
           <div class="box-body">
             
           <!--Content Project Progress-->
-
+          <div style="overflow-y: scroll; height: 30em">
             <div class="info-box bg-aqua">
               <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
               <div class="info-box-content">
@@ -83,8 +83,6 @@
               </div>
               <!-- /.info-box-content -->
             </div>
-
-            
 
             <div class="info-box bg-aqua">
               <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
@@ -133,8 +131,7 @@
               </div>
               <!-- /.info-box-content -->
             </div>
-
-
+            </div>
           </div>
         </div>
         <!-- /.box -->
@@ -152,6 +149,7 @@
           <div class="box-body">
             <div class="row">
               <div class="col-md-12">
+              <div style="overflow-y: scroll; height: 30em">
                 <ul class="timeline">
                   <li class="time-label">
                     <span class="bg-blue">
@@ -251,8 +249,8 @@
                       <a href="{{url('')}}/input-issue" class="btn btn-primary">Tambahkan issue</a>
                     </div>
                   </li>
-
                 </ul>
+                </div>
               </div>
             </div>
           </div>
