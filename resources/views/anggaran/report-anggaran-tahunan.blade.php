@@ -54,21 +54,25 @@
                   <th>RI</th>
                   <th>OP</th>
                   <th>Total</th>
-                  <th>RI</th>
-                  <th>OP</th>
-                  <th>Total</th>
-                  <th>Sisa</th>
+                  <th colspan="2">RI</th>
+                  <th colspan="2">OP</th>
+                  <th colspan="2">Total</th>
+                  <th colspan="2">Sisa</th>
+
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>2015</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 468.468.484</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Rp. 200.234.242</td>
-                  <td>Rp. 468.468.484</td>
+                  <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
+                  <td>Rp. 234.234.242</td>  {{-- op dianggarkan --}}
+                  <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
+                  <td>Rp. 234.234.242</td>  {{-- ri realisasi --}}
+                  <td width="10px">100%</td>  {{-- persen ri realisasi --}}
+                  <td>Rp. 200.234.242</td>  {{-- op realisasi --}}
+                  <td width="10px">90%</td> {{-- persen op realisasi --}}
+                  <td>Rp. 468.468.484</td>  {{-- total realisasi --}}
+                  <td width="10px">80%</td> {{-- persen total realisasi --}}
                   <td>Bersisa Rp. 34.000.000</td>
                   <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
                 </tr>
