@@ -182,8 +182,7 @@
                       </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-primary btn-xs">Informasi</a>
-                        <a class="btn btn-success btn-xs">Selesai</a>
+                        <a class="btn btn-success btn-xs">Finish</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 28 Juli 12:05</span>
                       </div>
                     </div>
@@ -212,8 +211,7 @@
                       </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-primary btn-xs">Diskusi</a>
-                        <a class="btn btn-warning btn-xs">Dalam progress</a>
+                        <a class="btn btn-warning btn-xs">On Progress</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 12:05</span>
                       </div>
                     </div>
@@ -241,8 +239,7 @@
                       </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-primary btn-xs">Diskusi</a>
-                        <a class="btn btn-danger btn-xs">Penting</a>
+                        <a class="btn btn-danger btn-xs">Pending</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 12:05</span>
                       </div>
                     </div>

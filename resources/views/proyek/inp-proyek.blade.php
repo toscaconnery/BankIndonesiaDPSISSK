@@ -67,6 +67,13 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                <label for="kodema" class="col-sm-3 control-label">Kode MA</label>
+
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="kodema">
+                </div>
+              </div>
               <!--Category-->
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>

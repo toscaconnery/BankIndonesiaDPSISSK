@@ -60,6 +60,7 @@
                   <option>Desain</option>
                   <option>Pemrograman</option>
                   <option>Pengujian</option>
+                  <option>Siap Implementasi</option>
                   <option>Implementasi</option>
                 </select>
               </div>
@@ -78,17 +79,6 @@
                     <i class="fa fa-calendar"></i>
                   </div>
                   <input type="text" class="form-control pull-right" id="rencanajadwal">
-                </div>
-                <!-- /.input group -->
-              </div>
-              <div class="form-group">
-                <label>Rencana Realisasi:</label>
-
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="rencanajadwal2">
                 </div>
                 <!-- /.input group -->
               </div>
