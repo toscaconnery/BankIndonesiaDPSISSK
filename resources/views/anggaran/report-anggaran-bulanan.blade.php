@@ -48,10 +48,15 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th width="10">No</th>
-                  <th>Bulan</th>
-                  <th>Nominal Dikeluarkan</th>
-                  <th>Rincian</th>
+                  <th rowspan="2" width="10">No</th>
+                  <th rowspan="2">Bulan</th>
+                  <th colspan="6">Nominal Dikeluarkan</th>
+                  <th rowspan="2">Rincian</th>
+                </tr>
+                <tr>
+                  <th colspan="2">RI</th>
+                  <th colspan="2">OP</th>
+                  <th colspan="2">Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -59,75 +64,134 @@
                   <td>1</td>
                   <td>Januari</td>
                   <td>23423</td>
+                  <td>100%</td>
+                  <td>23222</td>
+                  <td>90%</td>
+                  <td>46845</td>
+                  <td>95%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>Februari</td>
-                  <td>200230</td>
+                  <td>23423</td>
+                  <td>10%</td>
+                  <td>23222</td>
+                  <td>9%</td>
+                  <td>46845</td>
+                  <td>5%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>Maret</td>
-                  <td>342343</td>
+                  <td>23423</td>
+                  <td>20%</td>
+                  <td>23222</td>
+                  <td>15%</td>
+                  <td>46845</td>
+                  <td>22%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">5</a></td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>April</td>
-                  <td>234242</td>
+                  <td>23423</td>
+                  <td>24%</td>
+                  <td>23222</td>
+                  <td>21%</td>
+                  <td>46845</td>
+                  <td>29%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
                 </tr>
                 <tr>
                   <td>5</td>
                   <td>Mei</td>
-                  <td>231542</td>
+                  <td>23423</td>
+                  <td>29%</td>
+                  <td>23222</td>
+                  <td>32%</td>
+                  <td>46845</td>
+                  <td>36%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>6</td>
                   <td>Juni</td>
-                  <td>234232</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">5</a></td>
+                  <td>23423</td>
+                  <td>35%</td>
+                  <td>23222</td>
+                  <td>44%</td>
+                  <td>46845</td>
+                  <td>48%</td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">6</a></td>
                 </tr>
                 <tr>
                   <td>7</td>
                   <td>Juli</td>
-                  <td>234234</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">6</a></td>
+                  <td>23423</td>
+                  <td>45%</td>
+                  <td>23222</td>
+                  <td>49%</td>
+                  <td>46845</td>
+                  <td>52%</td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">2</a></td>
                 </tr>
                 <tr>
                   <td>8</td>
                   <td>Agustus</td>
-                  <td>237784</td>
+                  <td>23423</td>
+                  <td>45%</td>
+                  <td>23222</td>
+                  <td>58%</td>
+                  <td>46845</td>
+                  <td>58%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>9</td>
                   <td>September</td>
-                  <td>2000</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
+                  <td>23423</td>
+                  <td>45%</td>
+                  <td>23222</td>
+                  <td>58%</td>
+                  <td>46845</td>
+                  <td>58%</td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>10</td>
                   <td>Oktober</td>
-                  <td>834753</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
+                  <td>23423</td>
+                  <td>45%</td>
+                  <td>23222</td>
+                  <td>58%</td>
+                  <td>46845</td>
+                  <td>58%</td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>11</td>
                   <td>Nopember</td>
-                  <td>1023423</td>
+                  <td>23423</td>
+                  <td>45%</td>
+                  <td>23222</td>
+                  <td>58%</td>
+                  <td>46845</td>
+                  <td>58%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>12</td>
                   <td>Desember</td>
-                  <td>234987</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
+                  <td>23423</td>
+                  <td>45%</td>
+                  <td>23222</td>
+                  <td>58%</td>
+                  <td>46845</td>
+                  <td>58%</td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
-
               </tbody>
             </table>
           </div>
