@@ -168,6 +168,7 @@
                           <big>
                             Issue Sistem Keuangan
                           </big>
+
                         </a>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>

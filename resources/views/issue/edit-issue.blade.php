@@ -48,19 +48,38 @@
                 
                 <!--Judul-->
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
-                  <div class="col-sm-10">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Judul</label>
+                  <div class="col-sm-9">
                     <input name="judul" type="text" class="form-control" id="inputEmail3" value="Issue Sistem Keuangan">
                   </div>
                 </div>
 
                 <!--Issue-->
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
-                  <div class="col-sm-10">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Issue</label>
+                  <div class="col-sm-9">
                     <textarea name="isi" class="form-control" rows="8">Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...</textarea>
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Tindak Lanjut</label>
+                  <div class="col-sm-9">
+                    <textarea name="isi" class="form-control" rows="4">Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya </textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Status</label>
+
+                <div class="col-sm-9">
+                  <select class="form-control select2" style="width: 100%;">
+                  <option>Pending</option>
+                  <option>On Progress</option>
+                  <option>Finish</option>
+                </select>
+                </div>
+              </div>
 
               </div>
               <!-- /.box-body -->
