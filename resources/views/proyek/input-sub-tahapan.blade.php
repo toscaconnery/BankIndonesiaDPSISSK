@@ -93,8 +93,8 @@
                   <thead>
                     <tr>
                       <th>Nama Dokumen</th>
-                      <th>Tanggal Upload</th>
-                      <th>Jadwal Realisasi Tahapan</th>
+                      <th>Jadwal Sub Tahapan</th>
+                      <th>Realisasi Sub Tahapan</th>
                       <th>PIC</th>
                       <th>Status</th>
                       <th>Dokumen</th>
@@ -103,8 +103,8 @@
                   <tbody>
                     <tr>
                       <td>Spesifikasi Kebutuhan 1</td>
-                      <td>2 Juli 2017</td>
                       <td>2 Juni 2017 - 8 Juni 2017</td>
+                      <td>3 Juni 2017 - Sekarang</td>
                       <td>Pak Alam</td>
                       <td>Belum selesai</td>
                       <td width="11em">
@@ -115,10 +115,22 @@
                     </tr>
                     <tr>
                       <td>Spesifikasi Kebutuhan 2</td>
-                      <td>2 Juli 2017</td>
+                      <td>2 Juni 2017 - 9 Juni 2017</td>
                       <td>2 Juni 2017 - 8 Juni 2017</td>
                       <td>Pak Alam</td>
                       <td>Selesai</td>
+                      <td width="11em">
+                        <center>
+                          <button style="width: 8em" type="button" id="showModal" class="btn btn-primary" data-toggle="modal" data-target="#authenticationModal">Detail</button>
+                        </center>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Spesifikasi Kebutuhan 3</td>
+                      <td>8 Juli 2017 - 12 Juli 2017</td>
+                      <td>Belum ada progress</td>
+                      <td>Pak Alam</td>
+                      <td>Belum selesai</td>
                       <td width="11em">
                         <center>
                           <button style="width: 8em" type="button" id="showModal" class="btn btn-primary" data-toggle="modal" data-target="#authenticationModal">Detail</button>
@@ -137,14 +149,15 @@
                         <!--CONTENT-->
                         <div style="overflow-y: scroll; height: 30em">
                           <div style="margin-left: 1em; margin-right: 1em">
-                            <h3>2016</h3>
+                            <h3><b>2016</b></h3>
                             <table class="table table-bordered table-striped">
                               <thead>
                                 <tr>
                                   <th width="1em">No</th>
                                   <th>Nama File</th>
                                   <th>PIC</th>
-                                  <th style="width: 8em">Action</th>
+                                  <th>Tanggal</th>
+                                  <th style="width: 8em"><center>Action</center></th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -152,31 +165,35 @@
                                   <td width="1em">1</td>
                                   <td>File A 2017</td>
                                   <td>Sherlock</td>
+                                  <td>27/06/2012</td>
                                   <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
                                 </tr>
                                 <tr>
                                   <td width="1em">2</td>
                                   <td>File B 2017</td>
                                   <td>Sherlock</td>
+                                  <td>27/06/2012</td>
                                   <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
                                 </tr>
                                 <tr>
                                   <td width="1em">3</td>
                                   <td>File C 2017</td>
                                   <td>Sherlock</td>
+                                  <td>27/06/2012</td>
                                   <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
                                 </tr>
                               </tbody>
                             </table>
                           </div>
                           <div style="margin-left: 1em; margin-right: 1em;">
-                            <h3>2017</h3>
+                            <h3><b>2017</b></h3>
                             <table class="table table-bordered table-striped">
                               <thead>
                                 <tr>
                                   <th width="1em">No</th>
                                   <th>Nama File</th>
                                   <th>PIC</th>
+                                  <th>Tanggal</th>
                                   <th style="width: 8em">Action</th>
                                 </tr>
                               </thead>
@@ -185,18 +202,21 @@
                                   <td width="1em">1</td>
                                   <td>File A 2017</td>
                                   <td>Sherlock</td>
+                                  <td>27/06/2012</td>
                                   <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
                                 </tr>
                                 <tr>
                                   <td width="1em">2</td>
                                   <td>File B 2017</td>
                                   <td>Sherlock</td>
+                                  <td>27/06/2012</td>
                                   <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
                                 </tr>
                                 <tr>
                                   <td width="1em">3</td>
                                   <td>File C 2017</td>
                                   <td>Sherlock</td>
+                                  <td>27/06/2012</td>
                                   <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
                                 </tr>
                               </tbody>
@@ -215,12 +235,35 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          
+                          <button style="width: 9em" type="button" id="showConfirmation" class="btn btn-default" data-toggle="modal" data-target="#finishConfirmation">Mark as Finished</button>
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-3"></div>
+                  </div>
+                  <div id="finishConfirmation" class="modal fade">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title"><center>Konfirmasi tindakan</center></h4>
+                        </div>
+                        <!--CONTENT-->
+                        <div style="margin: 1em; font-size: 2em">
+                          <center>Selesaikan Sub Tahapan?</center>
+                        </div>
+                          <center>
+                            <div>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Selesai</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                          </div>
+                          <br>
+                          </center>
+                      </div>
+                    </div>
+                    <div class="col-lg-4"></div>
                   </div>
                 </div>
                 <!-- /.box-body -->
@@ -241,6 +284,20 @@
     <script type="text/javascript">
         var modal = document.getElementById('authenticationModal');
         var btn = document.getElementById('showModal');
+
+        btn.onclick = function {
+            modal.display = "block";
+        }
+
+        window.onclick = function(event) {
+            if(event.target == modal) {
+                modal.display = "none";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        var modal = document.getElementById('finishConfirmation');
+        var btn = document.getElementById('showConfirmation');
 
         btn.onclick = function {
             modal.display = "block";

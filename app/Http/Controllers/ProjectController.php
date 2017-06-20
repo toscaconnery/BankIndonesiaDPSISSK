@@ -13,12 +13,12 @@ class ProjectController extends Controller
 
     public function input_proyek()
     {
-    	return view('proyek.inp-proyek');
+    	return view('proyek.input-proyek');
     }
 
     public function input_tahap_proyek()
     {
-    	return view('proyek.inp-thp-proyek');
+    	return view('proyek.input-tahap-proyek');
     }
 
     // public function input_detail_tahapan()
@@ -28,6 +28,6 @@ class ProjectController extends Controller
 
     public function input_sub_tahapan()
     {
-        return view('proyek.inp-sub-tahapan');
+        return view('proyek.input-sub-tahapan');
     }
 }

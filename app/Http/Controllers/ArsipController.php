@@ -13,7 +13,7 @@ class ArsipController extends Controller
 
     public function input_arsip()
     {
-    	return view('arsip.inp-arsip');
+    	return view('arsip.input-arsip');
     }
 
     public function list_file_arsip()
