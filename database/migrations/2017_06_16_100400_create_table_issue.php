@@ -18,6 +18,7 @@ class CreateTableIssue extends Migration
             $table->string('judul');
             $table->text('isi');
             $table->string('status');
+            $table->integer('pic');
             $table->timestamps();
         });
     }
