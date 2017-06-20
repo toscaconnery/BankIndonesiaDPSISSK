@@ -179,6 +179,13 @@
                         jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
+                      <div class="timeline-body">
+                        <small>
+                          <cite>
+                            Sherlock Holmes
+                          </cite>
+                        </small>
+                      </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <a class="btn btn-success btn-xs">Finish</a>
@@ -208,9 +215,16 @@
                         jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
+                      <div class="timeline-body">
+                        <small>
+                          <cite>
+                            Sherlock Holmes
+                          </cite>
+                        </small>
+                      </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-warning btn-xs">On Progress</a>
+                        <a class="btn btn-info btn-xs">On Progress</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 12:05</span>
                       </div>
                     </div>
@@ -236,9 +250,16 @@
                         jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
+                      <div class="timeline-body">
+                        <small>
+                          <cite>
+                            Sherlock Holmes
+                          </cite>
+                        </small>
+                      </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-danger btn-xs">Pending</a>
+                        <a class="btn btn-warning btn-xs">Pending</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 12:05</span>
                       </div>
                     </div>

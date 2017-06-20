@@ -44,7 +44,7 @@
           <div class="box-body">
             <div class="row">
               <div class="col-md-12">
-              <div style="overflow-y: scroll; height: 30em">
+              <div style="overflow-y: scroll; height: 36em">
                 <ul class="timeline">
                   <li class="time-label">
                     <span class="bg-blue">
@@ -72,6 +72,13 @@
                         weebly ning heekya handango imeem plugg dopplr jibjab, movity
                         jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
                         quora plaxo ideeli hulu weebly balihoo...
+                      </div>
+                      <div class="timeline-body">
+                        <small>
+                          <cite>
+                            Sherlock Holmes
+                          </cite>
+                        </small>
                       </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
@@ -103,10 +110,17 @@
                         jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
+                      <div class="timeline-body">
+                        <small>
+                          <cite>
+                            Sherlock Holmes
+                          </cite>
+                        </small>
+                      </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
-                        <a class="btn btn-warning btn-xs">On Progress</a>
+                        <a class="btn btn-info btn-xs">On Progress</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 2017</span>
                       </div>
                     </div>
@@ -132,14 +146,59 @@
                         jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
                         quora plaxo ideeli hulu weebly balihoo...
                       </div>
+                      <div class="timeline-body">
+                        <small>
+                          <cite>
+                            Sherlock Holmes
+                          </cite>
+                        </small>
+                      </div>
                       <div class="timeline-footer">
                         <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
-                        <a class="btn btn-danger btn-xs">Penting</a>
+                        <a class="btn btn-warning btn-xs">Pending</a>
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 2017</span>
                       </div>
                     </div>
                   </li>
+
+                  <li>
+                    <i class="fa fa-info bg-blue"></i>
+                    <!--issue content goes here-->
+                    <div class="timeline-item">
+                      <h3 class="timeline-header">
+                        <a href="#">
+                          <big>
+                            Issue Pembaruan Sistem
+                          </big>
+                        </a>
+                        <button type="button" class="close">
+                          <small><span aria-hidden="true"><i class="fa fa-remove"></i></span></small>
+                        </button>
+                        
+                      </h3>
+                      <div class="timeline-body">
+                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                        quora plaxo ideeli hulu weebly balihoo...
+                      </div>
+                      <div class="timeline-body">
+                        <small>
+                          <cite>
+                            Sherlock Holmes
+                          </cite>
+                        </small>
+                      </div>
+                      <div class="timeline-footer">
+                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                        <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
+                        <a class="btn btn-info btn-xs">On Progress</a>
+                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 2017</span>
+                      </div>
+                    </div>
+                  </li>
+
                 </ul>
                 </div>
                 <br>
