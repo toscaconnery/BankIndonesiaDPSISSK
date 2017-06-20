@@ -120,7 +120,7 @@
                       <td>8 Juni 2017</td>
                       <td>Pak Alam</td>
                       <td>Finish</td>
-                      <center><td><a href='{{url('')}}/input-detail-tahapan'><button class="btn btn-primary">Update</button></td></center>
+                      <center><td><a href='{{url('')}}/input-sub-tahapan'><button class="btn btn-primary">Update</button></td></center>
                     </tr>
                 </table>
               </div>

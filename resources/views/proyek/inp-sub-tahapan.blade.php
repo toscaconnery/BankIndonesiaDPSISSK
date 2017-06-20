@@ -134,37 +134,74 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Sub Proyek Pengajuan : Sub 1</h4>
                         </div>
-                        <div style="margin-left: 1em; margin-right: 1em">
-                          <table class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th>No</th>
-                                <th>Nama File</th>
-                                <th>PIC</th>
-                                <th style="width: 8em">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>File A 2017</td>
-                                <td>Sherlock</td>
-                                <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>File B 2017</td>
-                                <td>Sherlock</td>
-                                <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
-                              </tr>
-                              <tr>
-                                <td>3</td>
-                                <td>File C 2017</td>
-                                <td>Sherlock</td>
-                                <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <!--CONTENT-->
+                        <div style="overflow-y: scroll; height: 30em">
+                          <div style="margin-left: 1em; margin-right: 1em">
+                            <h3>2016</h3>
+                            <table class="table table-bordered table-striped">
+                              <thead>
+                                <tr>
+                                  <th width="1em">No</th>
+                                  <th>Nama File</th>
+                                  <th>PIC</th>
+                                  <th style="width: 8em">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td width="1em">1</td>
+                                  <td>File A 2017</td>
+                                  <td>Sherlock</td>
+                                  <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
+                                </tr>
+                                <tr>
+                                  <td width="1em">2</td>
+                                  <td>File B 2017</td>
+                                  <td>Sherlock</td>
+                                  <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
+                                </tr>
+                                <tr>
+                                  <td width="1em">3</td>
+                                  <td>File C 2017</td>
+                                  <td>Sherlock</td>
+                                  <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div style="margin-left: 1em; margin-right: 1em;">
+                            <h3>2017</h3>
+                            <table class="table table-bordered table-striped">
+                              <thead>
+                                <tr>
+                                  <th width="1em">No</th>
+                                  <th>Nama File</th>
+                                  <th>PIC</th>
+                                  <th style="width: 8em">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td width="1em">1</td>
+                                  <td>File A 2017</td>
+                                  <td>Sherlock</td>
+                                  <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
+                                </tr>
+                                <tr>
+                                  <td width="1em">2</td>
+                                  <td>File B 2017</td>
+                                  <td>Sherlock</td>
+                                  <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
+                                </tr>
+                                <tr>
+                                  <td width="1em">3</td>
+                                  <td>File C 2017</td>
+                                  <td>Sherlock</td>
+                                  <td width="8em"><center><button class="btn btn-primary">Download</button></center></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                         <div style="margin-left: 1em; margin-right: 1em">
                           <form>
