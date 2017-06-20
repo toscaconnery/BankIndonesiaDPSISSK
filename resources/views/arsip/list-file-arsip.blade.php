@@ -39,6 +39,18 @@
           <div class="col-xs-12">
             <div class="box">
               <!-- /.box-header -->
+              <div class="box-header">
+                <div class="col-lg-4">
+                  <h4>Upload Dokumen</h4>
+                  <div class="input-group">
+                    <input type="file" class="form-control">
+                    <div class="input-group-btn">
+                      <button type="button" class="btn btn-primary">Upload</button>
+                    </div>
+                    <!-- /btn-group -->
+                  </div>
+                </div>
+              </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -63,15 +75,6 @@
                       <center><td><a href='inp-thp-proyek.php'><button class="btn btn-primary">Download</button></a></td></center>
                     </tr>
                 </table>
-                <div class="col-lg-4">
-                <div class="form-group">
-                  <div class="row">
-                  <h4>Upload Dokumen</h4>
-                  <input type="file" class="form-control" id="file">
-                  <span><a href="{{url('')}}/list-file-arsip"><button class="btn btn-primary">Upload</button></a></span>
-                  </div>
-                </div>
-                </div>
               </div>
               <!-- /.box-body -->
             </div>

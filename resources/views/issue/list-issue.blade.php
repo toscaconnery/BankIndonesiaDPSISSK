@@ -125,43 +125,7 @@
                       </div>
                     </div>
                   </li>
-
-                  <li>
-                    <i class="fa fa-info bg-blue"></i>
-                    <!--issue content goes here-->
-                    <div class="timeline-item">
-                      <h3 class="timeline-header">
-                        <a href="#">
-                          <big>
-                            Issue Pengembangan Sistem
-                          </big>
-                        </a>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </h3>
-                      <div class="timeline-body">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                        quora plaxo ideeli hulu weebly balihoo...
-                      </div>
-                      <div class="timeline-body">
-                        <small>
-                          <cite>
-                            Sherlock Holmes
-                          </cite>
-                        </small>
-                      </div>
-                      <div class="timeline-footer">
-                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
-                        <a class="btn btn-warning btn-xs">Pending</a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 2017</span>
-                      </div>
-                    </div>
-                  </li>
-
+          
                   <li>
                     <i class="fa fa-info bg-blue"></i>
                     <!--issue content goes here-->
