@@ -51,42 +51,46 @@
             <div class="box-header">
               <h3 class="box-title">Input Tahapan</h3>
             </div>
-            <div class="box-body">
-              <!-- Date -->
-              <div class="form-group">
-              <label>Nama Tahapan</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option>Pengajuan</option>
-                  <option>Desain</option>
-                  <option>Pemrograman</option>
-                  <option>Pengujian</option>
-                  <option>Siap Implementasi</option>
-                  <option>Implementasi</option>
-                </select>
-              </div>
-              <div class="form-group">
-              <label>PIC</label>
-                <input type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
-              </div>
-              <!-- /.form group -->
-
-              <!-- Date range -->
-              <div class="form-group">
-                <label>Jadwal Tahapan:</label>
-
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="rencanajadwal">
+            <form action="" method="post">
+              <div class="box-body">
+                
+                {{ csrf_field() }}
+                <input type="hidden" name="id_proyek" value="{{$id_proyek}}">
+                <div class="form-group">
+                <label>Nama Tahapan</label>
+                  <select name="nama" class="form-control select2" style="width: 100%;">
+                    <option>Pengajuan</option>
+                    <option>Desain</option>
+                    <option>Pemrograman</option>
+                    <option>Pengujian</option>
+                    <option>Siap Implementasi</option>
+                    <option>Implementasi</option>
+                  </select>
                 </div>
-                <!-- /.input group -->
+                <div class="form-group">
+                <label>PIC</label>
+                  <input name="pic" type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
+                </div>
+                <!-- /.form group -->
+
+                <!-- Date range -->
+                <div class="form-group">
+                  <label>Jadwal Tahapan:</label>
+
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input name="tanggal" type="text" class="form-control pull-right" id="rencanajadwal">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+                
+                <!-- /.form group -->
               </div>
-              
-              <a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary" style="float: right;">Submit</button></a>
-              
-              <!-- /.form group -->
-            </div>
+            </form>
             <!-- /.box-body -->
           </div>
           </div>
