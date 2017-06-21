@@ -12,8 +12,8 @@ class IssueController extends Controller
 {
     public function list_issue()
     {
-        $this->data['issue'] = DB::select('SELECT i.* FROM issue i WHERE i.status = "On Progress" OR i.status = "Pending" ');
-        dd($this->data);
+        $this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE i.status = "On Progress" OR i.status = "Pending" AND u.id = i.pic ');
+
         return view('issue.list-issue', $this->data);
     }
 
