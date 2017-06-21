@@ -79,11 +79,20 @@
                 <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
 
                 <div class="col-sm-9">
-                  <select class="form-control select2" style="width: 100%;">
-                  <option>Program Strategis</option>
-                  <option>Ad-Hoc</option>
-                  <option>Small</option>
-                </select>
+                  <!-- <select name="browser" onchange='if(this.options[this.selectedIndex].value=='customOption'){toggleField(this,this.nextSibling); this.selectedIndex='0';}' class="form-control" style="width: 100%;">
+                    <option>Program Strategis</option>
+                    <option>Ad-Hoc</option>
+                    <option>Small</option>
+                    <option value="customOption">Lainnya</option>
+                    <input name="browser" style="display:none;" disabled="disabled" onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+                  </select> -->
+
+                  <input type="text" list="kategori" class="form-control"/>
+                  <datalist id="kategori">
+                    <option>Program Strategis</option>
+                    <option>Ad-Hoc</option>
+                    <option>Small</option>
+                  </datalist>
                 </div>
               </div>
 
@@ -168,17 +177,13 @@
 <script src="{{url('')}}/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
+  function toggleField(hideObj,showObj){
+   hideObj.disabled=true;   
+   hideObj.style.display='none';
+   showObj.disabled=false;  
+   showObj.style.display='inline';
+   showObj.focus();
+ }
 </script>
 <script>
   $(function () {
