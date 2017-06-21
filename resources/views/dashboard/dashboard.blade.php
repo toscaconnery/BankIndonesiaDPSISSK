@@ -6,16 +6,16 @@
   <title>SI PMO&RMS</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="bootstrap2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url('')}}/bootstrap2/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -284,17 +284,17 @@
   @include('layouts.footer')
 </div>
 
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap2/js/bootstrap.min.js"></script>
+<script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
 <!-- ChartJS 1.0.1 -->
-<script src="plugins/chartjs/Chart.min.js"></script>
+<script src="{{url('')}}/plugins/chartjs/Chart.min.js"></script>
 <!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
+<script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="{{url('')}}/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="{{url('')}}/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
   $(function () {

@@ -61,18 +61,18 @@
               
               <!--Name-->
               <div class="form-group">
-                <label for="namafolder" class="col-sm-3 control-label">Nama Folder</label>
+                <label for="namafolder" class="col-sm-4 control-label">Nama Folder</label>
 
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                   <input type="text" class="form-control" id="namafolder">
                 </div>
               </div>
 
               <!--Category-->
               <div class="form-group">
-                <label for="kategori" class="col-sm-3 control-label">Kategori</label>
+                <label for="kategori" class="col-sm-4 control-label">Kategori</label>
 
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                   <input type="text" class="form-control" id="kategori">
                 </div>
               </div>        
