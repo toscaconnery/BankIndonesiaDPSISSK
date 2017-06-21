@@ -166,6 +166,21 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($proyek as $proyek)
+              <tr>
+                <td>{{$proyek->id}}</td>
+                <td>{{$proyek->nama}}</td>
+                <td>{{$proyek->kategori}}</td>
+                <td>{{$proyek->pic}}</td>
+                <td>{{$proyek->tgl_mulai}}</td>
+                <td>{{$proyek->tgl_selesai}}</td>
+                <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : 'Belum dimulai'}}</td>
+                <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : 'Belum selesai'}}</td>
+                <td>{{$proyek->jenis}}</td>
+                <td>{{$proyek->status}}</td>
+                <center><td><a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'><button class="btn btn-primary">Detail</button></td></center>
+              </tr>
+            @endforeach
             <tr>
               <td>PR001</td>
               <td>APIK</td>
@@ -177,7 +192,7 @@
               <td>3 Agustus 2017</td>
               <td>Inhouse</td>
               <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
+              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
             </tr>
             <tr>
               <td>PR002</td>
@@ -190,7 +205,7 @@
               <td>3 September 2017</td>
               <td>Inhouse</td>
               <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
+              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
             </tr>
             <tr>
               <td>PR003</td>
@@ -203,7 +218,7 @@
               <td>3 Oktober 2017</td>
               <td>Inhouse</td>
               <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
+              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
             </tr>
             <tr>
               <td>PR004</td>
@@ -216,7 +231,7 @@
               <td>1 Agustus 2017</td>
               <td>Outsourcing</td>
               <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
+              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
             </tr>
             <tr>
               <td>PR005</td>
@@ -229,7 +244,7 @@
               <td>3 Agustus 2017</td>
               <td>Inhouse</td>
               <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary">Detail</button></td></center>
+              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
             </tr>
           </table>
         </div>

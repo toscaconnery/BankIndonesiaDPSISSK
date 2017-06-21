@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableProyek extends Migration
+class CreateTableTahapanProyek extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateTableProyek extends Migration
      */
     public function up()
     {
-        Schema::create('proyek', function (Blueprint $table) {
+        Schema::create('tahapan_proyek', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_proyek');
             $table->string('nama');
-            $table->string('kodema');
-            $table->string('kategori');
             $table->string('pic');
-            $table->string('status');
-            $table->string('jenis');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
             $table->date('tgl_real_mulai')->nullable();
@@ -36,6 +33,6 @@ class CreateTableProyek extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyek');
+        Schema::dropIfExists('tahapan_proyek');
     }
 }

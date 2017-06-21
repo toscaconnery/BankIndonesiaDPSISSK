@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Proyek;
 use Input;
+use DB;
 
 class ProjectController extends Controller
 {
     public function list_proyek()
     {
-    	return view('proyek.list-proyek');
+        $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p');
+    	return view('proyek.list-proyek', $this->data);
     }
 
     // public function input_proyek()
@@ -20,9 +22,6 @@ class ProjectController extends Controller
 
     public function save_input_proyek()
     {
-        //06/21/2017 - 03/03/2018
-        // dd(Input::get());
-        //'nama', 'kodema', 'kategori', 'pic', 'status', 'jenis', 'tgl_mulai', 'tgl_selesai', 'tgl_real_mulai', 'tgl_real_selesai',
         $proyek = new Proyek;
         $proyek->nama = Input::get('nama');
         $proyek->kodema = Input::get('kodema');
@@ -48,6 +47,7 @@ class ProjectController extends Controller
 
     public function input_tahap_proyek()
     {
+        $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t');
     	return view('proyek.input-tahap-proyek');
     }
 
