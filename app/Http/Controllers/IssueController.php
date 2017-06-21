@@ -39,7 +39,6 @@ class IssueController extends Controller
     	$issue = new Issue;
         $issue->judul = Input::get('judul');
         $issue->isi = Input::get('isi');
-
         if( Auth::check() ){
             $issue->pic = Auth::id();
         }
@@ -47,7 +46,6 @@ class IssueController extends Controller
             $issue->pic = 0;
         }
         $issue->status = 'Pending';
-
         $issue->save();
         return redirect('list-issue');
     }

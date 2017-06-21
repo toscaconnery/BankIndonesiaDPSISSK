@@ -17,7 +17,11 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="{{url('')}}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-            <span class="hidden-xs">Fathihah Ulya</span>
+            <span class="hidden-xs">
+              @if(Auth::check())
+                {{Auth::user()->name}}
+              @endif
+            </span>
           </a>
           <ul class="dropdown-menu">
             <li clasimgs="user-header">
