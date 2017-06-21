@@ -20,8 +20,8 @@
             <span class="hidden-xs">Fathihah Ulya</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="user-header">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            <li clasimgs="user-header">
+              <img src="{{url('')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
               <p>
                 Fathihah Ulya - 5114100076
               </p>
