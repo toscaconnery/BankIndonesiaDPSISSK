@@ -43,9 +43,10 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="" method="post">
               <div class="box-body">
                 
+                {{ csrf_field() }}
                 <!--Judul-->
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
@@ -65,10 +66,11 @@
               </div>
               <!-- /.box-body -->
               <!-- /.box-footer -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+              </div>
             </form>
-            <div class="box-footer">
-              <a href="{{url('')}}/list-issue"><button class="btn btn-primary pull-right">Submit</button></a>
-            </div>
+            
           </div>
           <!-- /.box -->
         </div>

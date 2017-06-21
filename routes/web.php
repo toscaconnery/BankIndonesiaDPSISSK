@@ -41,7 +41,7 @@ Route::post('input-issue', 'IssueController@save_input_issue');
 
 Route::get('edit-issue', 'IssueController@edit_issue');
 
-Route::post('edit-issue', 'IssueController@save_edit_issue');
+Route::post('edit-issue/{id}', 'IssueController@save_edit_issue');
 
 Route::get('satu', 'ProjectController@satu');
 
