@@ -24,9 +24,9 @@ class AnggaranController extends Controller
     	return view('anggaran.input-anggaran-tahunan');
     }
 
-    public function input_pencairan_anggaran_bulanan()
+    public function input_pencairan_anggaran()
     {
-        return view('anggaran.input-pencairan-anggaran-bln');
+        return view('anggaran.input-pencairan-anggaran');
     }
 
     public function report_anggaran_rinci()

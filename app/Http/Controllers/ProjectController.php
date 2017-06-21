@@ -11,9 +11,14 @@ class ProjectController extends Controller
     	return view('proyek.list-proyek');
     }
 
-    public function input_proyek()
+    // public function input_proyek()
+    // {
+    // 	return view('proyek.input-proyek');
+    // }
+
+    public function save_input_proyek()
     {
-    	return view('proyek.input-proyek');
+        dd("proyek akan disave");
     }
 
     public function input_tahap_proyek()

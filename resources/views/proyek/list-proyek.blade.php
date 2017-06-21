@@ -62,9 +62,9 @@
                         <h4 class="modal-title" id="myModalLabel">Form Tambah Proyek</h4>
                       </div>
                       <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="{{url('')}}/save-input-proyek" method="post">
 
-
+                        {{ csrf_field() }}
                           <!--Name-->
                           <div class="form-group">
                             <label for="namaproyek" class="col-sm-3 control-label">Nama Proyek</label>
