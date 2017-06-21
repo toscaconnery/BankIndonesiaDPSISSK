@@ -5,18 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SI PMO&RMS</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bootstrap2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url('')}}/bootstrap2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
-  <link rel="stylesheet" href="plugins/morris/morris.css">
-  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/morris/morris.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/datatables/dataTables.bootstrap.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -129,11 +129,12 @@
   });
 </script>
 <script>
+  var mulai = 2017
   var min = new Date().getFullYear(),
   max = min + 9,
   select = document.getElementById('selectElementId');
 
-  for (var i = min; i<=max; i++){
+  for (var i = mulai; i<=max; i++){
     var opt = document.createElement('option');
     opt.value = i;
     opt.innerHTML = i;
