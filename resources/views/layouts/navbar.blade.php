@@ -7,8 +7,16 @@
         <img src="{{url('')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>User</p>
-        <small>5114100076</small>
+        <p>
+          @if(Auth::check())
+          {{Auth::user()->name}}
+          @endif
+        </p>
+        <small>
+          @if(Auth::check())
+          {{Auth::user()->nip}}
+          @endif
+        </small>
       </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->

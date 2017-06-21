@@ -13,7 +13,7 @@ class IssueController extends Controller
     public function list_issue()
     {
         $this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE i.status = "On Progress" OR i.status = "Pending" AND u.id = i.pic ORDER BY i.created_at DESC');
-
+        // dd($this->data['issue']);
         return view('issue.list-issue', $this->data);
     }
 
@@ -35,7 +35,7 @@ class IssueController extends Controller
     }
 
     public function save_input_issue()
-    {
+    {   
     	$issue = new Issue;
         $issue->judul = Input::get('judul');
         $issue->isi = Input::get('isi');

@@ -45,7 +45,7 @@ Route::get('autentikasi', function() {
 
 Route::get('logout', function() {
 	Auth::logout();
-	return redirect('/');
+	return redirect('autentikasi');
 });
 
 
