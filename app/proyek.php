@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proyek extends Model
 {
+	protected $table = 'proyek';
     protected $fillable = [
-    	'nama', 'pic', 'keterangan', 'tanggal_mulai', 'tanggal_selesai', 'real_tanggal_mulai', 'real_tanggal_selesai', 'status',
+    	'nama', 'kodema', 'kategori', 'pic', 'status', 'jenis', 'tgl_mulai', 'tgl_selesai', 'tgl_real_mulai', 'tgl_real_selesai',
     ];
     
 }

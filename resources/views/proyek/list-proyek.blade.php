@@ -70,7 +70,7 @@
                             <label for="namaproyek" class="col-sm-3 control-label">Nama Proyek</label>
 
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="namaproyek">
+                              <input name="nama" type="text" class="form-control" id="namaproyek">
                             </div>
                           </div>
 
@@ -78,7 +78,7 @@
                             <label for="kodema" class="col-sm-3 control-label">Kode MA</label>
 
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="kodema">
+                              <input name="kodema" type="text" class="form-control" id="kodema">
                             </div>
                           </div>
                           <!--Category-->
@@ -86,11 +86,11 @@
                             <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
 
                             <div class="col-sm-9">
-                              <input type="text" list="kategori" class="form-control"/>
+                              <input name="kategori" type="text" list="kategori" class="form-control"/>
                               <datalist id="kategori">
-                                <option>Program Strategis</option>
-                                <option>Ad-Hoc</option>
-                                <option>Small</option>
+                                <option value="Program Strategis">Program Strategis</option>
+                                <option value="Ad-Hoc">Ad-Hoc</option>
+                                <option value="Small">Small</option>
                               </datalist>
                             </div>
                           </div>
@@ -105,27 +105,27 @@
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label">PIC</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputEmail3">
+                      <input name="pic" type="text" class="form-control" id="inputEmail3">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label">Rencana Jadwal</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control pull-right" id="rencanajadwal">
+                      <input name="tanggal" type="text" class="form-control pull-right" id="rencanajadwal">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-sm-3 control-label">
-                      Kategori
+                      Status
                     </label>
                     <div class="col-sm-9">
                       <label>Inhouse
-                        <input type="radio" name="r1" class="minimal" checked>
+                        <input name="jenis" type="radio" name="status" value="Inhouse" class="minimal" checked>
                       </label>
                       <label style='margin-left:30px;'>Outsource
-                        <input type="radio" name="r1" class="minimal">
+                        <input  name="jenis" type="radio" name="status" value="Outsource" class="minimal">
                       </label>
                     </div>
                   </div>

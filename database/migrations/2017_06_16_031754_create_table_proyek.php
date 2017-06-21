@@ -16,9 +16,12 @@ class CreateTableProyek extends Migration
         Schema::create('proyek', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->integer('id_pic');
-            $table->string('keterangan');
+            $table->string('kodema');
+            $table->string('kategori');
+            $table->string('pic');
+            //$table->string('keterangan')->nullable();
             $table->string('status');
+            $table->string('jenis');
             $table->date('tgl_mulai')->nullable();
             $table->date('tgl_selesai')->nullable();
             $table->date('tgl_real_mulai')->nullable();

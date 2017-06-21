@@ -1,8 +1,10 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'DashboardController@index');
 
 Route::get('dashboard', 'DashboardController@index');
 
