@@ -63,7 +63,68 @@
                 </tr>
               </tbody>
             </table>
-            <center><a href='{{url('')}}/input-pencairan-anggaran-bulanan'><button class="btn btn-default" style="font-weight: bold;">Tambah Pengeluaran</button></a></center>
+            <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Tambah Pengeluaran</button></center>
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Form Tambah Pengeluaran</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form class="form-horizontal" method="POST">
+                          <div class="box-body">
+
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-3 control-label">Tanggal</label>
+                              <div class="col-sm-9">
+                                <input type="date" class="form-control pull-right" id="datepicker">
+                                
+                              </div>
+                            </div>
+
+                            <!--Kategori-->
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
+                              <div class="col-sm-9">
+                                <select class="form-control">
+                                  <option>RI</option>
+                                  <option>OP</option>                 
+                                </select>
+                              </div>
+                            </div>
+
+                            <!--Nominal-->
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-3 control-label">Nominal</label>
+                              <div class="col-sm-9">
+                                <input name="pic" type="number" class="form-control" id="inputEmail3">
+                              </div>
+                            </div>
+
+                            <!--Keterangan-->
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-3 control-label">Keterangan</label>
+                              <div class="col-sm-9">
+                                <textarea name="pic" type="text" class="form-control" id="inputEmail3"></textarea>
+                              </div>
+                            </div>
+
+                          </div>
+                          <!-- /.box-body -->
+                          <div class="form-group">
+                            <div class="modal-footer">
+                              <button type="reset" class="btn btn-default" data-dismiss="modal">Reset</button>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <!-- /.box-body -->
             </div>

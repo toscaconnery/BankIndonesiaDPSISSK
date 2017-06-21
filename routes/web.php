@@ -25,7 +25,7 @@ Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan'
 Route::post('input-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
 Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
 Route::get('report-anggaran-bulanan', 'AnggaranController@report_anggaran_bulanan');
-Route::get('input-pencairan-anggaran', 'AnggaranController@input_pencairan_anggaran_bulanan');
+Route::get('input-pencairan-anggaran', 'AnggaranController@input_pencairan_anggaran');
 Route::get('report-anggaran-rinci', 'AnggaranController@report_anggaran_rinci');
 
 Route::get('list-issue', 'IssueController@list_issue');
