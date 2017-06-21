@@ -48,30 +48,31 @@
 
             <!--Tahun Anggaran-->
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Tahun Anggaran</label>
-              <div class="col-sm-9">
-                <input name="tahun" type="number" class="form-control" id="inputEmail3">
+              <label for="inputEmail3" class="col-sm-4 control-label">Tahun Anggaran</label>
+              <div class="col-sm-8">
+                <select id="selectElementId" class="form-control select2" style="width: 100%;">
+                </select>
               </div>
             </div>
 
             <!--Nominal-->
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Nominal</label>
-              <div class="col-sm-9">
+              <label for="inputEmail3" class="col-sm-4 control-label">Nominal</label>
+              <div class="col-sm-8">
                 <input name="nominal" type="number" class="form-control" id="inputEmail3">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Anggaran RI</label>
-              <div class="col-sm-9">
+              <label for="inputEmail3" class="col-sm-4 control-label">Anggaran RI</label>
+              <div class="col-sm-8">
                 <input name="nominal" type="number" class="form-control" id="inputEmail3">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-3 control-label">Anggaran OP</label>
-              <div class="col-sm-9">
+              <label for="inputEmail3" class="col-sm-4 control-label">Anggaran OP</label>
+              <div class="col-sm-8">
                 <input name="nominal" type="number" class="form-control" id="inputEmail3">
               </div>
             </div>
@@ -126,6 +127,18 @@
       "autoWidth": false
     });
   });
+</script>
+<script>
+  var min = new Date().getFullYear(),
+  max = min + 9,
+  select = document.getElementById('selectElementId');
+
+  for (var i = min; i<=max; i++){
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = i;
+    select.appendChild(opt);
+  }
 </script>
 </body>
 </html>
