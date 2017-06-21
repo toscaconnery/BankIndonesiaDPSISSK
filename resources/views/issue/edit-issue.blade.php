@@ -75,9 +75,9 @@
 
                 <div class="col-sm-9">
                   <select name="status" class="form-control select2" style="width: 100%;">
-                  <option {{$issue->status = 'Pending' ? 'selected' : ''}} value="Pending">Pending</option>
-                  <option {{$issue->status = 'On Progress' ? 'selected' : ''}} value="On Progress">On Progress</option>
-                  <option {{$issue->status = 'Finish' ? 'selected' : ''}} value="Finish">Finish</option>
+                  <option {{$issue->status == 'Pending' ? 'selected' : ''}} value="Pending">Pending</option>
+                  <option {{$issue->status == 'On Progress' ? 'selected' : ''}} value="On Progress">On Progress</option>
+                  <option {{$issue->status == 'Finish' ? 'selected' : ''}} value="Finish">Finish</option>
                 </select>
                 </div>
               </div>

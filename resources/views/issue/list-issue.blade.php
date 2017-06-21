@@ -63,9 +63,9 @@
                               {{$issue->judul}}
                             </big>
                           </a>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+{{--                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                          </button>
+                          </button> --}}
                         </h3>
 
                         <div class="timeline-body">
@@ -79,7 +79,7 @@
                           </small>
                         </div>
                         <div class="timeline-footer">
-                          <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                          <a href="{{url('')}}/edit-issue/{{$issue->id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                           <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
                           @if($issue->status == 'Finish')
                             <a class="btn btn-success btn-xs">Finish</a>

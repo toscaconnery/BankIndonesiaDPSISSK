@@ -47,6 +47,54 @@
               <div style="overflow-y: scroll; height: 30em">
                 <ul class="timeline">
                   <!--list issue-->
+
+                  @foreach($issue as $issue)
+                    <li>
+                      <i class="fa fa-info bg-blue"></i>
+                      <!--issue content goes here-->
+                      <div class="timeline-item">
+                        <h3 class="timeline-header">
+                          <a href="#">
+                            <big>
+                              {{$issue->judul}}
+                            </big>
+                          </a>
+{{--                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button> --}}
+                        </h3>
+
+                        <div class="timeline-body">
+                          {{$issue->isi}}
+                        </div>
+                        <div class="timeline-body">
+                          <small>
+                            <cite>
+                              {{ $issue->name }}
+                            </cite>
+                          </small>
+                        </div>
+                        <div class="timeline-footer">
+                          <a href="{{url('')}}/edit-issue/{{$issue->id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                          <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
+                          @if($issue->status == 'Finish')
+                            <a class="btn btn-success btn-xs">Finish</a>
+                          @elseif($issue->status == 'On Progress')
+                            <a class="btn btn-info btn-xs">On Progress</a>
+                          @elseif($issue->status == 'Pending')
+                            <a class="btn btn-warning btn-xs">Pending</a>
+                          @else
+                            <a class="btn btn-primary">{{$issue->status}}</a>
+                          @endif
+                          <span class="time pull-right"><i class="fa fa-clock-o"></i> 
+                            {{ $issue->created_at }}
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  @endforeach
+
+
                   <li>
                     <i class="fa fa-info bg-blue"></i>
                     <!--issue content goes here-->

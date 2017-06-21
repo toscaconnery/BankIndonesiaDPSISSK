@@ -12,14 +12,15 @@ class IssueController extends Controller
 {
     public function list_issue()
     {
-        $this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE i.status = "On Progress" OR i.status = "Pending" AND u.id = i.pic ');
+        $this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE i.status = "On Progress" OR i.status = "Pending" AND u.id = i.pic ORDER BY i.created_at DESC');
 
         return view('issue.list-issue', $this->data);
     }
 
     public function list_all_issue()
     {
-        return view('issue.list-all-issue');
+        $this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE u.id = i.pic ORDER BY i.created_at DESC');
+        return view('issue.list-all-issue', $this->data);
     }
 
     public function input_issue()
