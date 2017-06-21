@@ -5,18 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SI PMO&RMS</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url('')}}/bootstrap2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
-  <link rel="stylesheet" href="plugins/morris/morris.css">
-  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/morris/morris.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/datatables/dataTables.bootstrap.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -43,14 +43,15 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="" method="post">
               <div class="box-body">
                 
+                {{ csrf_field() }}
                 <!--Judul-->
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Judul</label>
                   <div class="col-sm-9">
-                    <input name="judul" type="text" class="form-control" id="inputEmail3" value="Issue Sistem Keuangan">
+                    <input name="judul" type="text" class="form-control" id="inputEmail3" value="{{$issue->judul ? $issue->judul : ''}}">
                   </div>
                 </div>
 
@@ -58,14 +59,14 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Issue</label>
                   <div class="col-sm-9">
-                    <textarea name="isi" class="form-control" rows="8">Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...</textarea>
+                    <textarea name="isi" class="form-control" rows="8">{{$issue->isi ? $issue->isi : ''}}</textarea>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Tindak Lanjut</label>
                   <div class="col-sm-9">
-                    <textarea name="isi" class="form-control" rows="4">Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya </textarea>
+                    <textarea name="tindak_lanjut" class="form-control" rows="4">{{$issue->tindak_lanjut ? $issue->tindak_lanjut : ''}}</textarea>
                   </div>
                 </div>
 
@@ -73,21 +74,22 @@
                 <label for="inputEmail3" class="col-sm-3 control-label">Status</label>
 
                 <div class="col-sm-9">
-                  <select class="form-control select2" style="width: 100%;">
-                  <option>Pending</option>
-                  <option>On Progress</option>
-                  <option>Finish</option>
+                  <select name="status" class="form-control select2" style="width: 100%;">
+                  <option {{$issue->status = 'Pending' ? 'selected' : ''}} value="Pending">Pending</option>
+                  <option {{$issue->status = 'On Progress' ? 'selected' : ''}} value="On Progress">On Progress</option>
+                  <option {{$issue->status = 'Finish' ? 'selected' : ''}} value="Finish">Finish</option>
                 </select>
                 </div>
               </div>
 
               </div>
               <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+              </div>
               <!-- /.box-footer -->
             </form>
-            <div class="box-footer">
-              <a href="{{url('')}}/list-issue"><button class="btn btn-primary pull-right">Submit</button></a>
-            </div>
+            
           </div>
           <!-- /.box -->
         </div>

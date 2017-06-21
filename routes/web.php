@@ -39,7 +39,7 @@ Route::get('input-issue', 'IssueController@input_issue');
 
 Route::post('input-issue', 'IssueController@save_input_issue');
 
-Route::get('edit-issue', 'IssueController@edit_issue');
+Route::get('edit-issue/{id}', 'IssueController@edit_issue');
 
 Route::post('edit-issue/{id}', 'IssueController@save_edit_issue');
 
