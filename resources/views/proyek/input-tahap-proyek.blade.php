@@ -6,30 +6,30 @@
   <title>SI PMO&RMS</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url('')}}/bootstrap2/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/datepicker/datepicker3.css">
   <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="plugins/iCheck/all.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/iCheck/all.css">
   <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/colorpicker/bootstrap-colorpicker.min.css">
   <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Select2 -->
-  <link rel="stylesheet" href="plugins/select2/select2.min.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/select2/select2.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="{{url('')}}/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -140,37 +140,37 @@
   </div>
 
 <!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
 <!-- Select2 -->
-<script src="plugins/select2/select2.full.min.js"></script>
+<script src="{{url('')}}/plugins/select2/select2.full.min.js"></script>
 <!-- InputMask -->
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="{{url('')}}/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="{{url('')}}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="{{url('')}}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <!-- date-range-picker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- bootstrap color picker -->
-<script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="{{url('')}}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="{{url('')}}/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
-<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="{{url('')}}/plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
+<script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="{{url('')}}/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="{{url('')}}/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
   $(function () {
