@@ -219,44 +219,44 @@
                       <a href="{{url('')}}/list-all-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
                     </div>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Issue</h3></center>
-                        </div>
-                        <div class="modal-body">
-                          <form class="form-horizontal" method="post" action="{{url('')}}/input-issue">
-                            <div class="box-body">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Issue</h3></center>
+                          </div>
+                          <div class="modal-body">
+                            <form class="form-horizontal" method="post" action="{{url('')}}/input-issue">
+                              <div class="box-body">
 
-                              {{ csrf_field() }}
-                              <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
-                                <div class="col-sm-10">
-                                  <input name="judul" type="text" class="form-control" id="inputEmail3">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                  <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
+                                  <div class="col-sm-10">
+                                    <input name="judul" type="text" class="form-control" id="inputEmail3">
+                                  </div>
                                 </div>
-                              </div>
 
-                              <!--Issue-->
-                              <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
-                                <div class="col-sm-10">
-                                  <textarea name="isi" class="form-control" rows="8"></textarea>
+                                <!--Issue-->
+                                <div class="form-group">
+                                  <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
+                                  <div class="col-sm-10">
+                                    <textarea name="isi" class="form-control" rows="8"></textarea>
+                                  </div>
                                 </div>
-                              </div>
 
-                              <div class="form-group">
-                                <div class="modal-footer">
-                                  <button type="reset" class="btn btn-danger">Reset</button>
-                                  <button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="form-group">
+                                  <div class="modal-footer">
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                  </div>
                                 </div>
-                              </div>
-                            </form>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </center>
+                    </center>
                   </div>
                 </div>
               </div>

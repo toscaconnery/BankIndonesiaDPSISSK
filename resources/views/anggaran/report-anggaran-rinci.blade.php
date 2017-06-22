@@ -16,7 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+  folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,91 +40,30 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Tanggal</th>
-                  <th>Kategori</th>
-                  <th>Nominal</th>
-                  <th>Keterangan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2 Juli 2017</td>
-                  <td>OP</td>
-                  <td>Rp. 234.234.242</td>
-                  <td>Dianggarkan untuk proyek APIK</td>
-                </tr>
-                <tr>
-                  <td>4 Juli 2017</td>
-                  <td>RI</td>
-                  <td>Rp. 230.234.242</td>
-                  <td>Dianggarkan untuk desain proyek APIK</td>
-                </tr>
-              </tbody>
-            </table>
-            <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Tambah Pengeluaran</button></center>
-            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pengeluaran</h3></center>
-                      </div>
-                      <div class="modal-body">
-                        <form class="form-horizontal" method="POST">
-                          <div class="box-body">
-
-                            {{ csrf_field() }}
-
-                            <div class="form-group">
-                              <label for="inputEmail3" class="col-sm-3 control-label">Tanggal</label>
-                              <div class="col-sm-9">
-                                <input type="date" class="form-control pull-right" id="datepicker">
-                                
-                              </div>
-                            </div>
-
-                            <!--Kategori-->
-                            <div class="form-group">
-                              <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
-                              <div class="col-sm-9">
-                                <select class="form-control">
-                                  <option>RI</option>
-                                  <option>OP</option>                 
-                                </select>
-                              </div>
-                            </div>
-
-                            <!--Nominal-->
-                            <div class="form-group">
-                              <label for="inputEmail3" class="col-sm-3 control-label">Nominal</label>
-                              <div class="col-sm-9">
-                                <input name="pic" type="number" class="form-control" id="inputEmail3">
-                              </div>
-                            </div>
-
-                            <!--Keterangan-->
-                            <div class="form-group">
-                              <label for="inputEmail3" class="col-sm-3 control-label">Keterangan</label>
-                              <div class="col-sm-9">
-                                <textarea name="pic" type="text" class="form-control" id="inputEmail3"></textarea>
-                              </div>
-                            </div>
-
-                          </div>
-                          <!-- /.box-body -->
-                          <div class="form-group">
-                            <div class="modal-footer">
-                              <button type="reset" class="btn btn-default">Reset</button>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  <thead>
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>Kategori</th>
+                      <th>Nominal</th>
+                      <th>Keterangan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>2 Juli 2017</td>
+                      <td>OP</td>
+                      <td>Rp. 234.234.242</td>
+                      <td>Dianggarkan untuk proyek APIK</td>
+                    </tr>
+                    <tr>
+                      <td>4 Juli 2017</td>
+                      <td>RI</td>
+                      <td>Rp. 230.234.242</td>
+                      <td>Dianggarkan untuk desain proyek APIK</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Tambah Pengeluaran</button></center>
               </div>
               <!-- /.box-body -->
             </div>
@@ -140,6 +79,68 @@
     </div>
     @include('layouts.footer')
   </div>
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pengeluaran</h3></center>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" method="POST">
+
+
+            {{ csrf_field() }}
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
+              <div class="col-md-9">
+                <input type="date" class="form-control pull-right" id="datepicker">
+              </div>
+            </div>
+
+            <!--Kategori-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
+              <div class="col-md-9">
+                <select class="form-control">
+                  <option>RI</option>
+                  <option>OP</option>                 
+                </select>
+              </div>
+            </div>
+
+            <!--Nominal-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
+              <div class="col-md-9">
+                <input name="pic" type="number" class="form-control" id="inputEmail3">
+              </div>
+            </div>
+
+            <!--Keterangan-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
+              <div class="col-md-9">
+                <textarea name="pic" type="text" class="form-control" id="inputEmail3"></textarea>
+              </div>
+            </div>
+
+
+            <!-- /.box-body -->
+            <div class="form-group">
+              <div class="modal-footer">
+                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

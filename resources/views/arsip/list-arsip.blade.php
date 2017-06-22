@@ -16,7 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+  folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -42,8 +42,8 @@
               <div class="box-body">
                 <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Tambah Folder</button>
                 <table id="example1" class="table table-bordered table-striped">
-                <br>
-                <br>
+                  <br>
+                  <br>
                   <thead>
                     <tr href='{{url('')}}/list-file-arsip'>
                       <th>Nama Folder</th>
@@ -77,50 +77,87 @@
                       <td>Pak Alam</td>
                       <td>2 Juli 2017</td>
                     </tr>
-                </table>
+                  </table>
+                </div>
+                <!-- /.box-body -->
               </div>
-              <!-- /.box-body -->
+              <!-- /.box -->
             </div>
-            <!-- /.box -->
+            <!-- /.col -->
           </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </section>
+          <!-- /.row -->
+        </section>
 
 
-      <br>
+        <br>
+      </div>
+      @include('layouts.footer')
     </div>
-    @include('layouts.footer')
-  </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Folder</h3></center>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" method="post" action="{{url('')}}/input-issue">
+                {{ csrf_field() }}
+                <div class="form-group">
+                  <label for="namafolder" class="col-md-5 control-label">Nama Folder</label>
 
-<script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="{{url('')}}/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{url('')}}/dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
-</body>
-</html>
+                  <div class="col-md-7">
+                    <input type="text" class="form-control" id="namafolder">
+                  </div>
+                </div>
+
+                <!--Category-->
+                <div class="form-group">
+                  <label for="kategori" class="col-md-5 control-label">Kategori</label>
+
+                  <div class="col-md-7">
+                    <input type="text" class="form-control" id="kategori">
+                  </div>
+                </div> 
+
+                <div class="form-group">
+                  <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+      <!-- Bootstrap 3.3.6 -->
+      <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+      <!-- DataTables -->
+      <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+      <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+      <!-- SlimScroll -->
+      <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+      <!-- FastClick -->
+      <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+      <!-- AdminLTE App -->
+      <script src="{{url('')}}/dist/js/app.min.js"></script>
+      <!-- AdminLTE for demo purposes -->
+      <script src="{{url('')}}/dist/js/demo.js"></script>
+      <!-- page script -->
+      <script>
+        $(function () {
+          $("#example1").DataTable();
+          $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+          });
+        });
+      </script>
+    </body>
+    </html>
