@@ -8,6 +8,7 @@ Route::get('/', 'DashboardController@index');
 
 Route::get('dashboard', 'DashboardController@index');
 
+// PROYEK
 Route::get('list-proyek', 'ProjectController@list_proyek');
 Route::post('save-input-proyek', 'ProjectController@save_input_proyek');
 Route::get('input-tahap-proyek/{id}', 'ProjectController@input_tahap_proyek');
@@ -16,11 +17,12 @@ Route::get('input-sub-tahapan', 'ProjectController@input_sub_tahapan');
 //Route::get('input-proyek', 'ProjectController@input_proyek');
 // Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
 
-
+// ARSIP
 Route::get('list-arsip', 'ArsipController@list_arsip');
 Route::get('input-arsip', 'ArsipController@input_arsip');
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
 
+// ANGGARAN
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
 Route::post('report-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
 Route::post('input-pencairan-anggaran', 'AnggaranController@save_input_pengeluaran');
@@ -28,6 +30,7 @@ Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahuna
 Route::get('report-anggaran-bulanan', 'AnggaranController@report_anggaran_bulanan');
 Route::get('report-anggaran-rinci', 'AnggaranController@report_anggaran_rinci');
 
+// ISSUE
 Route::get('list-issue', 'IssueController@list_issue');
 Route::get('list-all-issue', 'IssueController@list_all_issue');
 Route::get('input-issue', 'IssueController@input_issue');

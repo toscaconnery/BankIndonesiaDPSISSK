@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Input;
 use App\Anggaran;
+use App\Pencairan;
 use Auth;
 
 class AnggaranController extends Controller
@@ -66,21 +67,19 @@ class AnggaranController extends Controller
         $nominal = Input::get('nominal');
         $keterangan = Input::get('keterangan');
         
-        $pengeluaran = new Pengeluaran;
+        $pengeluaran = new Pencairan;
         $pengeluaran->tanggal_pencairan = $tanggal;
-        $pengeluaran->nominal = $kategori;
-        $pengeluaran->ri = $ri;
-        $pengeluaran->op = $op;
+        $pengeluaran->nominal = $nominal;
+        $pengeluaran->kategori = $kategori;
+        $pengeluaran->keterangan = $keterangan;
         $pengeluaran->pic = 0;
-        $pengeluaran->used_ri = 0;
-        $pengeluaran->used_op = 0;
         // if( Auth::check() ) {
         //  $anggaran->pic = Auth::user()->get('id');
         // }
         // else {
         //  $anggaran->pic = 0;
         // }
-        $anggaran->save();
+        $pengeluaran->save();
         return redirect('report-anggaran-tahunan');
     }
 }

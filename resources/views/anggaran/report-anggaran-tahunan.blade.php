@@ -188,7 +188,7 @@
             <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pengeluaran</h3></center>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="{{url('')}}\input-pencairan-anggaran">
+            <form class="form-horizontal" method="POST" action="{{url('')}}/input-pencairan-anggaran">
               {{ csrf_field() }}
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
