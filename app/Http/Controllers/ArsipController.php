@@ -33,7 +33,7 @@ class ArsipController extends Controller
         //  $anggaran->pic = 0;
         // }
         if($folder->save()){
-            mkdir($namafolder);
+            mkdir('tesfolder/'.$namafolder);
         }
         
         return redirect('list-arsip');
