@@ -104,4 +104,9 @@ class ProjectController extends Controller
         $sub->save();
         return redirect('input-sub-tahapan/'.$id);
     }
+
+    public function list_file_proyek()
+    {
+        return view('proyek.list-file-proyek');
+    }
 }

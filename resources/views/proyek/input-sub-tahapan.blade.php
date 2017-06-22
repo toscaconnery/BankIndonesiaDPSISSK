@@ -91,12 +91,12 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Nama Dokumen</th>
+                      <th>Nama Sub Tahapan</th>
                       <th>Jadwal Sub Tahapan</th>
                       <th>Realisasi Sub Tahapan</th>
                       <th>PIC</th>
                       <th>Status</th>
-                      <th>Dokumen</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
