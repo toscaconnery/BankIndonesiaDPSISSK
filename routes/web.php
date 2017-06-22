@@ -13,7 +13,8 @@ Route::get('list-proyek', 'ProjectController@list_proyek');
 Route::post('save-input-proyek', 'ProjectController@save_input_proyek');
 Route::get('input-tahap-proyek/{id}', 'ProjectController@input_tahap_proyek');
 Route::post('input-tahap-proyek/{id}', 'ProjectController@save_input_tahap_proyek');
-Route::get('input-sub-tahapan', 'ProjectController@input_sub_tahapan');
+Route::get('input-sub-tahapan/{id}', 'ProjectController@input_sub_tahapan');
+Route::post('input-sub-tahapan/{id}', 'ProjectController@save_input_sub_tahapan');
 //Route::get('input-proyek', 'ProjectController@input_proyek');
 // Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
 

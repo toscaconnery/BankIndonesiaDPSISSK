@@ -132,7 +132,7 @@
                       </tr>
                     @endforeach
                     <tr>
-                      <td>Pengajuan</td>
+                      <td>Test..</td>
                       <td>2 Juni 2017</td>
                       <td>2 Juli 2017</td>
                       <td>2 Juni 2017</td>

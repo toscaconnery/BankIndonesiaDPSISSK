@@ -22,6 +22,7 @@ class CreateTableSubTahapanProyek extends Migration
             $table->date('tgl_selesai');
             $table->date('tgl_real_mulai')->nullable();
             $table->date('tgl_real_selesai')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

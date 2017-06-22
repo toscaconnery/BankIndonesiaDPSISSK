@@ -7,6 +7,7 @@ use App\Proyek;
 use App\TahapanProyek;
 use Input;
 use DB;
+use App\SubTahapanProyek;
 
 class ProjectController extends Controller
 {
@@ -50,7 +51,7 @@ class ProjectController extends Controller
     {
         $this->data['id_proyek'] = $id;
         $this->data['jenis_proyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id)[0]->jenis;
-        $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id);
+        $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id.' ORDER BY t.created_at ASC');
     	return view('proyek.input-tahap-proyek', $this->data);
     }
 
@@ -68,6 +69,7 @@ class ProjectController extends Controller
         $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
         $tahap->tgl_mulai = $tgl_mulai;
         $tahap->tgl_selesai = $tgl_selesai;
+        $tahap->status = 'Not started';
         $tahap->save();
         return redirect('input-tahap-proyek/'.$id);
     }
@@ -77,8 +79,29 @@ class ProjectController extends Controller
     // 	return view('proyek.inp-detail-tahapan');
     // }
 
-    public function input_sub_tahapan()
+    public function input_sub_tahapan($id)
     {
-        return view('proyek.input-sub-tahapan');
+        $this->data['sub'] = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
+        $this->data['id_tahapan'] = $id;
+        return view('proyek.input-sub-tahapan', $this->data);
+    }
+
+    public function save_input_sub_tahapan($id)
+    {
+        $sub = new SubTahapanProyek;
+        $sub->id_tahapan = Input::get('id_tahapan');
+        $sub->nama = Input::get('nama');
+        $sub->pic = Input::get('pic');
+        $tanggal = Input::get('tanggal');
+
+        $text_tgl_mulai = substr($tanggal, 0 ,10);
+        $text_tgl_selesai = substr($tanggal, 13, 23);
+        $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $sub->tgl_mulai = $tgl_mulai;
+        $sub->tgl_selesai = $tgl_selesai;
+        $sub->status = 'Belum selesai';
+        $sub->save();
+        return redirect('input-sub-tahapan/'.$id);
     }
 }

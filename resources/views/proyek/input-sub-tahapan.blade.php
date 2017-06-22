@@ -54,31 +54,30 @@
               </div>
               <div class="box-body">
                 <!-- Date -->
-                <div class="form-group">
-
-                  <label>Sub Tahapan</label>
-                  <input type="text" class="form-control" id="namatahapan" placeholder="Nama Sub Tahapan">
-                </div>
-                <div class="form-group">
-                  <label>PIC</label>
-                  <input type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
-                </div>
-                <!-- /.form group -->
-
-                <!-- Date range -->
-                <div class="form-group">
-                  <label>Jadwal Sub Tahapan:</label>
-
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control pull-right" id="rencanajadwal">
+                <form action="" method="post">
+                  <div class="form-group">
+                    <label>Sub Tahapan</label>
+                    <input name="nama" type="text" class="form-control" id="namatahapan" placeholder="Nama Sub Tahapan">
                   </div>
-                  <!-- /.input group -->
-                </div>
-
-                <a href='{{url('')}}/input-tahap-proyek'><button class="btn btn-primary" style="float: right;">Submit</button></a>
+                  <div class="form-group">
+                    <label>PIC</label>
+                    <input name="pic" type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
+                  </div>
+                  <div class="form-group">
+                    <label>Jadwal Sub Tahapan:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input name="tanggal" type="text" class="form-control pull-right" id="rencanajadwal">
+                    </div>
+                  </div>
+                  <div>
+                    <input type="hidden" name="id_tahapan" value="{{$id_tahapan}}">
+                    {{ csrf_field() }}
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+                </form>
 
                 <!-- /.form group -->
               </div>
@@ -113,6 +112,28 @@
                         </center>
                       </td>
                     </tr>
+                    @foreach($sub as $sub)
+                      <tr>
+                        <td>{{$sub->nama}}</td>
+                        <td>{{$sub->tgl_mulai}} - {{$sub->tgl_selesai}}</td>
+                        <td>
+                          @if($sub->tgl_real_selesai)
+                            {{$sub->tgl_real_mulai}} - {{$sub->tgl_real_selesai}}
+                          @elseif($sub->tgl_real_mulai)
+                            {{$sub->tgl_real_mulai}} - Sekarang
+                          @else
+                            Belum ada progress
+                          @endif
+                        </td>
+                        <td>{{$sub->pic}}</td>
+                        <td>{{$sub->status}}</td>
+                        <td width="11em">
+                          <center>
+                            <button style="width: 8em" type="button" id="showModal" class="btn btn-primary" data-toggle="modal" data-target="#authenticationModal">Detail</button>
+                          </center>
+                        </td>
+                      </tr>
+                    @endforeach
                     <tr>
                       <td>Spesifikasi Kebutuhan 2</td>
                       <td>2 Juni 2017 - 9 Juni 2017</td>
