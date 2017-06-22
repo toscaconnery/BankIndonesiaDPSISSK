@@ -88,7 +88,7 @@
                           <!-- /.box-body -->
                           <div class="form-group">
                             <div class="modal-footer">
-                              <button type="reset" class="btn btn-default">Reset</button>
+                              <button type="reset" class="btn btn-danger">Reset</button>
                               <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                           </div>
