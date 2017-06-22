@@ -7,12 +7,14 @@ use Input;
 use App\Anggaran;
 use App\Pencairan;
 use Auth;
+use DB;
 
 class AnggaranController extends Controller
 {
     public function report_anggaran_tahunan()
     {
-        return view('anggaran.report-anggaran-tahunan');
+        $this->data['anggaran'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
+        return view('anggaran.report-anggaran-tahunan', $this->data);
     }
 
     public function report_anggaran_bulanan()

@@ -174,8 +174,8 @@
                 <td>{{$proyek->pic}}</td>
                 <td>{{$proyek->tgl_mulai}}</td>
                 <td>{{$proyek->tgl_selesai}}</td>
-                <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : 'Belum dimulai'}}</td>
-                <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : 'Belum selesai'}}</td>
+                <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : '-'}}</td>
+                <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
                 <td>{{$proyek->jenis}}</td>
                 <td>{{$proyek->status}}</td>
                 <center><td><a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'><button class="btn btn-primary">Detail</button></td></center>
