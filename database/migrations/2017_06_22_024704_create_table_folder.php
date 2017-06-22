@@ -32,6 +32,6 @@ class CreateTableFolder extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tabel_folder');
     }
 }

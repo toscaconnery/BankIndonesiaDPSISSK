@@ -20,6 +20,9 @@ class proyek_seeder extends Seeder
         	'jenis' => 'Inhouse',
         	'tgl_mulai' => '2018-09-06',
         	'tgl_selesai' => '2018-09-07',
+        	'status' => 'Not started',
+        	'created_at' => '2017-06-06',
+        	'updated_at' => '2017-06-06',
         ));
     }
 }

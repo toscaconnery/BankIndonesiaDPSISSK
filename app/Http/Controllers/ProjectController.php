@@ -12,7 +12,7 @@ class ProjectController extends Controller
 {
     public function list_proyek()
     {
-        $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p');
+        $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p ORDER BY p.created_at DESC');
     	return view('proyek.list-proyek', $this->data);
     }
 
@@ -49,7 +49,7 @@ class ProjectController extends Controller
     public function input_tahap_proyek($id)
     {
         $this->data['id_proyek'] = $id;
-        $this->data['jenis_proyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id);
+        $this->data['jenis_proyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id)[0]->jenis;
         $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id);
     	return view('proyek.input-tahap-proyek', $this->data);
     }

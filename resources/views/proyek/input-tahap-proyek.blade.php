@@ -61,7 +61,9 @@
                   <select name="nama" class="form-control select2" style="width: 100%;">
                     <option value="Pengajuan">Pengajuan</option>
                     <option value="Desain">Desain</option>
-
+                    @if($jenis_proyek == 'Outsource')
+                      <option value="Pengadaan">Pengadaan</option>
+                    @endif
                     <option value="Pemrograman">Pemrograman</option>
                     <option value="Pengujian">Pengujian</option>
                     <option value="Siap Implementasi">Siap Implementasi</option>
@@ -125,7 +127,7 @@
                         <td>{{$tahapan->tgl_real_mulai ? $tahapan->tgl_real_mulai : '-'}}</td>
                         <td>{{$tahapan->tgl_real_selesai ? $tahapan->tgl_real_selesai : '-'}}</td>
                         <td>{{$tahapan->pic}}</td>
-                        <td>Finish</td>
+                        <td>{{$tahapan->status}}</td>
                         <center><td><a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'><button class="btn btn-primary">Update</button></td></center>
                       </tr>
                     @endforeach
