@@ -140,7 +140,7 @@
               <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Tahun Anggaran</label>
                 <div class="col-md-9">
-                  <select id="selectElementId" class="form-control select2" style="width: 100%;">
+                  <select id="selectElementId" class="form-control select2" style="width: 100%;" name="tahun">
                   </select>
                 </div>
               </div>
@@ -149,21 +149,21 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
                 <div class="col-md-9">
-                  <input name="nominal" type="number" class="form-control" id="inputEmail3">
+                  <input name="nominal" type="number" class="form-control" id="inputEmail3" name="nominal">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran RI</label>
                 <div class="col-md-9">
-                  <input name="nominal" type="number" class="form-control" id="inputEmail3">
+                  <input type="number" class="form-control" id="inputEmail3" name="ri">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran OP</label>
                 <div class="col-md-9">
-                  <input name="nominal" type="number" class="form-control" id="inputEmail3">
+                  <input type="number" class="form-control" id="inputEmail3" name="op">
                 </div>
               </div>
 
@@ -188,15 +188,12 @@
             <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pengeluaran</h3></center>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="POST">
-
-
+            <form class="form-horizontal" method="POST" action="{{url('')}}\input-pencairan-anggaran">
               {{ csrf_field() }}
-
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
                 <div class="col-md-9">
-                  <input type="date" class="form-control pull-right" id="datepicker">
+                  <input type="date" class="form-control pull-right" id="datepicker" name="tanggal">
                 </div>
               </div>
 
@@ -204,9 +201,9 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
                 <div class="col-md-9">
-                  <select class="form-control">
-                    <option>RI</option>
-                    <option>OP</option>                 
+                  <select class="form-control" name="kategori">
+                    <option value="RI">RI</option>
+                    <option value="OP">OP</option>                 
                   </select>
                 </div>
               </div>
@@ -215,7 +212,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
                 <div class="col-md-9">
-                  <input name="pic" type="number" class="form-control" id="inputEmail3">
+                  <input name="nominal" type="number" class="form-control" id="inputEmail3">
                 </div>
               </div>
 
@@ -223,7 +220,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
                 <div class="col-md-9">
-                  <textarea name="pic" type="text" class="form-control" id="inputEmail3"></textarea>
+                  <textarea name="keterangan" type="text" class="form-control" id="inputEmail3"></textarea>
                 </div>
               </div>
 

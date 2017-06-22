@@ -38,17 +38,49 @@ class AnggaranController extends Controller
     {
     	$tahun = Input::get('tahun');
     	$nominal = Input::get('nominal');
+        $ri = Input::get('ri');
+        $op = Input::get('op');
     	
     	$anggaran = new Anggaran;
     	$anggaran->tahun = $tahun;
     	$anggaran->nominal = $nominal;
-    	if( Auth::check() ) {
-    		$anggaran->pic = Auth::user()->get('id');
-    	}
-    	else {
-    		$anggaran->pic = 0;
-    	}
+        $anggaran->ri = $ri;
+        $anggaran->op = $op;
+        $anggaran->pic = 0;
+        $anggaran->used_ri = 0;
+        $anggaran->used_op = 0;
+    	// if( Auth::check() ) {
+    	// 	$anggaran->pic = Auth::user()->get('id');
+    	// }
+    	// else {
+    	// 	$anggaran->pic = 0;
+    	// }
     	$anggaran->save();
-    	return redirect('input-anggaran-tahunan');
+    	return redirect('report-anggaran-tahunan');
+    }
+
+    public function save_input_pengeluaran()
+    {
+        $tanggal = Input::get('tanggal');
+        $kategori = Input::get('kategori');
+        $nominal = Input::get('nominal');
+        $keterangan = Input::get('keterangan');
+        
+        $pengeluaran = new Pengeluaran;
+        $pengeluaran->tanggal_pencairan = $tanggal;
+        $pengeluaran->nominal = $kategori;
+        $pengeluaran->ri = $ri;
+        $pengeluaran->op = $op;
+        $pengeluaran->pic = 0;
+        $pengeluaran->used_ri = 0;
+        $pengeluaran->used_op = 0;
+        // if( Auth::check() ) {
+        //  $anggaran->pic = Auth::user()->get('id');
+        // }
+        // else {
+        //  $anggaran->pic = 0;
+        // }
+        $anggaran->save();
+        return redirect('report-anggaran-tahunan');
     }
 }
