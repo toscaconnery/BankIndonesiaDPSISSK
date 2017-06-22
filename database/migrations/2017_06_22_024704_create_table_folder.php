@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableArsip extends Migration
+class CreateTableFolder extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateTableArsip extends Migration
      */
     public function up()
     {
-        Schema::create('arsip', function(Blueprint $table) {
+        Schema::create('tabel_folder', function(Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
+            $table->string('pic');
+            $table->string('kategori');
             $table->integer('id_proyek');
-            $table->integer('id_step')->nullable();
+            $table->integer('tahun');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateTableArsip extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('arsip');
+        //
     }
 }

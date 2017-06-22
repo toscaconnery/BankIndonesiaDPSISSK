@@ -49,7 +49,8 @@ class ProjectController extends Controller
     public function input_tahap_proyek($id)
     {
         $this->data['id_proyek'] = $id;
-        //$this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t');
+        $this->data['jenis_proyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id);
+        $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id);
     	return view('proyek.input-tahap-proyek', $this->data);
     }
 

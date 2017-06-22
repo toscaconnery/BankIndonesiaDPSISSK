@@ -59,12 +59,13 @@
                 <div class="form-group">
                 <label>Nama Tahapan</label>
                   <select name="nama" class="form-control select2" style="width: 100%;">
-                    <option>Pengajuan</option>
-                    <option>Desain</option>
-                    <option>Pemrograman</option>
-                    <option>Pengujian</option>
-                    <option>Siap Implementasi</option>
-                    <option>Implementasi</option>
+                    <option value="Pengajuan">Pengajuan</option>
+                    <option value="Desain">Desain</option>
+
+                    <option value="Pemrograman">Pemrograman</option>
+                    <option value="Pengujian">Pengujian</option>
+                    <option value="Siap Implementasi">Siap Implementasi</option>
+                    <option value="Implementasi">Implementasi</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -116,6 +117,18 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($tahapan as $tahapan)
+                      <tr>
+                        <td>{{$tahapan->nama}}</td>
+                        <td>{{$tahapan->tgl_mulai}}</td>
+                        <td>{{$tahapan->tgl_selesai}}</td>
+                        <td>{{$tahapan->tgl_real_mulai ? $tahapan->tgl_real_mulai : '-'}}</td>
+                        <td>{{$tahapan->tgl_real_selesai ? $tahapan->tgl_real_selesai : '-'}}</td>
+                        <td>{{$tahapan->pic}}</td>
+                        <td>Finish</td>
+                        <center><td><a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'><button class="btn btn-primary">Update</button></td></center>
+                      </tr>
+                    @endforeach
                     <tr>
                       <td>Pengajuan</td>
                       <td>2 Juni 2017</td>
@@ -124,7 +137,7 @@
                       <td>8 Juni 2017</td>
                       <td>Pak Alam</td>
                       <td>Finish</td>
-                      <center><td><a href='{{url('')}}/input-sub-tahapan'><button class="btn btn-primary">Update</button></td></center>
+                      <center><td><a href='{{url('')}}/input-sub-tahapan/1'><button class="btn btn-primary">Update</button></td></center>
                     </tr>
                 </table>
               </div>
