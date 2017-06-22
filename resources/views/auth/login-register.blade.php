@@ -19,7 +19,7 @@
     </ul> -->
 
     <ul class="tab-group">
-        <li class="tab active"><a href="#login">Log In</a></li>
+        <li class="tab active"><a href="#login">Log Inx</a></li>
         <li class="tab"><a href="#register">Register</a></li>
     </ul>
 
@@ -30,9 +30,9 @@
           <!--NIP-->
           <div class="field-wrap">
             <label>
-              NIP<span class="req">*</span>
+              Email<span class="req">*</span>
             </label>
-            <input id="nip" name="nip" type="text" required autocomplete="off"/>
+            <input id="email" name="email" type="text" required autocomplete="off"/>
           </div>
 
           <!--Password-->
@@ -45,7 +45,7 @@
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
-          <button class="button button-block">Log In</button>
+          <button type="submit" class="button button-block">Log In</button>
 
         </form>
       </div>

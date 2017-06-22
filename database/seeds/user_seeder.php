@@ -11,6 +11,11 @@ class user_seeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('users')->insert(array(
+        	'name' => 'Administrator',
+        	'nip' => '123456',
+        	'email' => 'admin@gmail.com',
+        	'password' => bcrypt('123456'),
+        ));
     }
 }
