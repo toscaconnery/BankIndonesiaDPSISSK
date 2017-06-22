@@ -39,12 +39,10 @@ class ProjectController extends Controller
         $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
-
         $proyek->status = "Not started";
 
         $proyek->save();
         return redirect('list-proyek');
-
     }
 
     public function input_tahap_proyek($id)

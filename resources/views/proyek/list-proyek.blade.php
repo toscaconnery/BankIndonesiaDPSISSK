@@ -28,7 +28,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+  folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -64,7 +64,7 @@
                       <div class="modal-body">
                         <form class="form-horizontal" action="{{url('')}}/save-input-proyek" method="post">
 
-                        {{ csrf_field() }}
+                          {{ csrf_field() }}
                           <!--Name-->
                           <div class="form-group">
                             <label for="namaproyek" class="col-sm-3 control-label">Nama Proyek</label>
@@ -131,10 +131,10 @@
                   </div>
 
                   <div class="form-group">
-                  <div class="modal-footer">
-                    <button type="reset" class="btn btn-danger">Reset</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
+                    <div class="modal-footer">
+                      <button type="reset" class="btn btn-danger">Reset</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                   </div>
                   <!-- /.box-body -->
                   <!-- /.box-footer -->
@@ -167,19 +167,19 @@
           </thead>
           <tbody>
             @foreach($proyek as $proyek)
-              <tr>
-                <td>{{$proyek->id}}</td>
-                <td>{{$proyek->nama}}</td>
-                <td>{{$proyek->kategori}}</td>
-                <td>{{$proyek->pic}}</td>
-                <td>{{$proyek->tgl_mulai}}</td>
-                <td>{{$proyek->tgl_selesai}}</td>
-                <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : '-'}}</td>
-                <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
-                <td>{{$proyek->jenis}}</td>
-                <td>{{$proyek->status}}</td>
-                <center><td><a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'><button class="btn btn-primary">Detail</button></td></center>
-              </tr>
+            <tr>
+              <td>{{$proyek->id}}</td>
+              <td>{{$proyek->nama}}</td>
+              <td>{{$proyek->kategori}}</td>
+              <td>{{$proyek->pic}}</td>
+              <td>{{$proyek->tgl_mulai}}</td>
+              <td>{{$proyek->tgl_selesai}}</td>
+              <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : '-'}}</td>
+              <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
+              <td>{{$proyek->jenis}}</td>
+              <td>{{$proyek->status}}</td>
+              <center><td><a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'><button class="btn btn-primary">Detail</button></td></center>
+            </tr>
             @endforeach
             <tr>
               <td>PR001</td>
@@ -314,21 +314,21 @@
     $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
     //Date range as a button
     $('#daterange-btn').daterangepicker(
-        {
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment()
-        },
-        function (start, end) {
-          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
+    {
+      ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      },
+      startDate: moment().subtract(29, 'days'),
+      endDate: moment()
+    },
+    function (start, end) {
+      $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
     );
 
     //Date picker
