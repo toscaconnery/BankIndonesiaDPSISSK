@@ -40,7 +40,7 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
-                <a href='{{url('')}}/input-arsip'><button class="btn btn-lg btn-primary">Tambah Folder</button></a>
+                <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Tambah Folder</button>
                 <table id="example1" class="table table-bordered table-striped">
                 <br>
                 <br>

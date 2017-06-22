@@ -45,7 +45,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Form Tambah Anggaran Tahunan</h4>
+                        <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Anggaran Tahunan</h3></center>
                       </div>
                       <div class="modal-body">
                         <form class="form-horizontal" method="POST">
@@ -88,7 +88,7 @@
                           <!-- /.box-body -->
                           <div class="form-group">
                             <div class="modal-footer">
-                              <button type="reset" class="btn btn-default" data-dismiss="modal">Reset</button>
+                              <button type="reset" class="btn btn-default">Reset</button>
                               <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                           </div>
@@ -171,7 +171,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Form Tambah Pengeluaran</h4>
+                        <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pengeluaran</h3></center>
                       </div>
                       <div class="modal-body">
                         <form class="form-horizontal" method="POST">
@@ -218,7 +218,7 @@
                           <!-- /.box-body -->
                           <div class="form-group">
                             <div class="modal-footer">
-                              <button type="reset" class="btn btn-default" data-dismiss="modal">Reset</button>
+                              <button type="reset" class="btn btn-default">Reset</button>
                               <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                           </div>
