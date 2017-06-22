@@ -151,21 +151,21 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
                 <div class="col-md-9">
-                  <input name="nominal" type="number" class="form-control" id="inputEmail3" name="nominal">
+                  <input name="nominal" type="number" class="form-control" id="nominal">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran RI</label>
                 <div class="col-md-9">
-                  <input type="number" class="form-control" id="inputEmail3" name="ri">
+                  <input type="number" class="form-control" id="ri" name="ri">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran OP</label>
                 <div class="col-md-9">
-                  <input type="number" class="form-control" id="inputEmail3" name="op">
+                  <input type="number" class="form-control" id="op" name="op">
                 </div>
               </div>
 
@@ -282,5 +282,11 @@
       select.appendChild(opt);
     }
   </script>
+  <script>
+    $(function() {
+      $("#ri, #op").on("keydown keyup", sum);
+      function sum() {
+        $("#nominal").val(Number($("#ri").val()) + Number($("#op").val()));
+      </script>
 </body>
 </html>

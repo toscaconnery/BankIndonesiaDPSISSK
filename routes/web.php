@@ -21,14 +21,15 @@ Route::get('list-file-proyek', 'ProjectController@list_file_proyek');
 
 // ARSIP
 Route::get('list-arsip', 'ArsipController@list_arsip');
+Route::post('list-arsip', 'ArsipController@save_input_folder');
 Route::get('input-arsip', 'ArsipController@input_arsip');
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
 
 // ANGGARAN
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
+Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
 Route::post('report-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
 Route::post('input-pencairan-anggaran', 'AnggaranController@save_input_pengeluaran');
-Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
 Route::get('report-anggaran-bulanan', 'AnggaranController@report_anggaran_bulanan');
 Route::get('report-anggaran-rinci', 'AnggaranController@report_anggaran_rinci');
 

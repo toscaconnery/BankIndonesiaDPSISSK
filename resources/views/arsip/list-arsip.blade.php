@@ -101,22 +101,20 @@
             <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Folder</h3></center>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="post" action="{{url('')}}/input-issue">
+            <form class="form-horizontal" method="POST" action="">
                 {{ csrf_field() }}
                 <div class="form-group">
                   <label for="namafolder" class="col-md-5 control-label">Nama Folder</label>
-
                   <div class="col-md-7">
-                    <input type="text" class="form-control" id="namafolder">
+                    <input type="text" class="form-control" id="namafolder" name="namafolder">
                   </div>
                 </div>
 
                 <!--Category-->
                 <div class="form-group">
                   <label for="kategori" class="col-md-5 control-label">Kategori</label>
-
                   <div class="col-md-7">
-                    <input type="text" class="form-control" id="kategori">
+                    <input type="text" class="form-control" id="kategori" name="kategori">
                   </div>
                 </div> 
 
