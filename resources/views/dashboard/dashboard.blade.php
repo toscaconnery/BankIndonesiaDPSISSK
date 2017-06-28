@@ -175,10 +175,21 @@
                         <div class="timeline-body">
                           {{$issue->isi}}
                         </div>
+
+                        @if($issue->tindak_lanjut)
+                          <div class="timeline-body">
+                            <big>
+                              <b>Tindak Lanjut:</b>
+                            </big>
+                            <br>
+                            {{$issue->tindak_lanjut}}
+                          </div>
+                        @endif
+
                         <div class="timeline-body">
                           <small>
                             <cite>
-                              {{ $issue->name }}
+                              {{ $issue->pic }}
                             </cite>
                           </small>
                         </div>
@@ -203,7 +214,7 @@
                   @endforeach
                   
 
-                  <li>
+{{--                   <li>
                     <i class="fa fa-info bg-blue"></i>
                     <!--issue content goes here-->
                     <div class="timeline-item">
@@ -309,7 +320,7 @@
                         <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 12:05</span>
                       </div>
                     </div>
-                  </li>
+                  </li> --}}
 
                   <li>
                     <div class="timeline-item">

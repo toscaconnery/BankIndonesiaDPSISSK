@@ -13,7 +13,10 @@ class DashboardController extends Controller
     	// if(Auth::check())
     	// {
 
-    	$this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE i.status = "On Progress" OR i.status = "Pending" AND u.id = i.pic ORDER BY i.created_at DESC');
+    	$this->data['issue'] = DB::select('SELECT i.* FROM issue i 
+                                            WHERE i.status = "On Progress" 
+                                            OR i.status = "Pending" 
+                                            ORDER BY i.created_at DESC');
     	return view('dashboard.dashboard', $this->data);
     	
     	// else
