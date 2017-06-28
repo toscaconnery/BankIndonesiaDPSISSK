@@ -18,9 +18,9 @@ class CreateTableIssue extends Migration
             $table->string('judul');
             $table->text('isi');
             $table->string('status');
-            $table->integer('pic');
+            $table->string('pic');
             $table->text('tindak_lanjut')->nullable();
-            $table->integer('pic_tindak_lanjut')->nullable();
+            $table->string('pic_tindak_lanjut')->nullable();
             $table->timestamps();
         });
     }

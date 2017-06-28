@@ -12,14 +12,18 @@ class IssueController extends Controller
 {
     public function list_issue()
     {
-        $this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE i.status = "On Progress" OR i.status = "Pending" AND u.id = i.pic ORDER BY i.created_at DESC');
-        // dd($this->data['issue']);
+        $this->data['issue'] = DB::select('SELECT i.* FROM issue i 
+                                            WHERE i.status = "On Progress" 
+                                            OR i.status = "Pending" 
+                                            ORDER BY i.created_at DESC');
+        //dd($this->data['issue']);
         return view('issue.list-issue', $this->data);
     }
 
     public function list_all_issue()
     {
-        $this->data['issue'] = DB::select('SELECT i.*, u.name FROM issue i, users u WHERE u.id = i.pic ORDER BY i.created_at DESC');
+        $this->data['issue'] = DB::select('SELECT i.* FROM issue i 
+                                            ORDER BY i.created_at DESC');
         return view('issue.list-all-issue', $this->data);
     }
 
@@ -40,10 +44,10 @@ class IssueController extends Controller
         $issue->judul = Input::get('judul');
         $issue->isi = Input::get('isi');
         if( Auth::check() ){
-            $issue->pic = Auth::id();
+            $issue->pic = Auth::user()->name;
         }
         else{
-            $issue->pic = 0;
+            $issue->pic = 'Unknown';
         }
         $issue->status = 'Pending';
         $issue->save();
@@ -58,10 +62,10 @@ class IssueController extends Controller
         $issue->status = Input::get('status');
         $issue->tindak_lanjut = Input::get('tindak_lanjut');
         if( Auth::check() ){
-            $issue->pic_tindak_lanjut = Auth::id();
+            $issue->pic_tindak_lanjut = Auth::user()->name;
         }
         else{
-            $issue->pic_tindak_lanjut = 0;
+            $issue->pic_tindak_lanjut = "Unknown";
         }
         $issue->save();
         return redirect('list-issue');

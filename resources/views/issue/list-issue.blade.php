@@ -52,264 +52,174 @@
                           </span>
                         </li>
                         <!--list issue-->
-                        @foreach($issue as $issue)
+                        @if($issue)
+                          @foreach($issue as $issue)
+                          <li>
+                            <i class="fa fa-info bg-blue"></i>
+                            <!--issue content goes here-->
+                            <div class="timeline-item">
+                              <h3 class="timeline-header">
+                                <a href="#">
+                                  <big>
+                                    {{$issue->judul}}
+                                  </big>
+                                </a>
+                              </h3>
+
+                              <div class="timeline-body">
+                                {{$issue->isi}}
+                              </div>
+
+                              @if($issue->tindak_lanjut)
+                                <div class="timeline-body">
+                                  <big>
+                                    <b>Tindak Lanjut:</b>
+                                  </big>
+                                  <br>
+                                  {{$issue->tindak_lanjut}}
+                                </div>
+                              @endif
+
+                              <div class="timeline-body">
+                                <small>
+                                  <cite>
+                                    {{ $issue->pic }}
+                                  </cite>
+                                </small>
+                              </div>
+                              <div class="timeline-footer">
+                                <a href="{{url('')}}/edit-issue/{{$issue->id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
+                                @if($issue->status == 'Finish')
+                                <a class="btn btn-success btn-xs">Finish</a>
+                                @elseif($issue->status == 'On Progress')
+                                <a class="btn btn-info btn-xs">On Progress</a>
+                                @elseif($issue->status == 'Pending')
+                                <a class="btn btn-warning btn-xs">Pending</a>
+                                @else
+                                <a class="btn btn-primary">{{$issue->status}}</a>
+                                @endif
+                                <span class="time pull-right"><i class="fa fa-clock-o"></i> 
+                                  {{ $issue->created_at }}
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+                          @endforeach
+                        @else
                         <li>
                           <i class="fa fa-info bg-blue"></i>
-                          <!--issue content goes here-->
                           <div class="timeline-item">
                             <h3 class="timeline-header">
                               <a href="#">
                                 <big>
-                                  {{$issue->judul}}
+                                  Tidak ada issue.
                                 </big>
                               </a>
-                              {{--                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button> --}}
-                          </h3>
-
-                          <div class="timeline-body">
-                            {{$issue->isi}}
+                            </h3>
                           </div>
-                          <div class="timeline-body">
-                            <small>
-                              <cite>
-                                {{ $issue->name }}
-                              </cite>
-                            </small>
-                          </div>
-                          <div class="timeline-footer">
-                            <a href="{{url('')}}/edit-issue/{{$issue->id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                            <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
-                            @if($issue->status == 'Finish')
-                            <a class="btn btn-success btn-xs">Finish</a>
-                            @elseif($issue->status == 'On Progress')
-                            <a class="btn btn-info btn-xs">On Progress</a>
-                            @elseif($issue->status == 'Pending')
-                            <a class="btn btn-warning btn-xs">Pending</a>
-                            @else
-                            <a class="btn btn-primary">{{$issue->status}}</a>
-                            @endif
-                            <span class="time pull-right"><i class="fa fa-clock-o"></i> 
-                              {{ $issue->created_at }}
-                            </span>
-                          </div>
-                        </div>
-                      </li>
-                      @endforeach
-
-
-                      <li>
-                        <i class="fa fa-info bg-blue"></i>
-                        <!--issue content goes here-->
-                        <div class="timeline-item">
-                          <h3 class="timeline-header">
-                            <a href="#">
-                              <big>
-                                Issue Sistem Keuangan
-                              </big>
-                            </a>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </h3>
-
-                          <div class="timeline-body">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                            quora plaxo ideeli hulu weebly balihoo...
-                          </div>
-                          <div class="timeline-body">
-                            <small>
-                              <cite>
-                                Sherlock Holmes
-                              </cite>
-                            </small>
-                          </div>
-                          <div class="timeline-footer">
-                            <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                            <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
-                            <a class="btn btn-warning btn-xs">Pending</a>
-                            <span class="time pull-right"><i class="fa fa-clock-o"></i> 28 Juli 2017</span>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <i class="fa fa-info bg-blue"></i>
-                        <!--issue content goes here-->
-                        <div class="timeline-item">
-                          <h3 class="timeline-header">
-                            <a href="#">
-                              <big>
-                                Issue Pembaruan Sistem
-                              </big>
-                            </a>
-                            <button type="button" class="close">
-                              <small><span aria-hidden="true"><i class="fa fa-remove"></i></span></small>
-                            </button>
-
-                          </h3>
-                          <div class="timeline-body">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                            quora plaxo ideeli hulu weebly balihoo...
-                          </div>
-                          <div class="timeline-body">
-                            <small>
-                              <cite>
-                                Sherlock Holmes
-                              </cite>
-                            </small>
-                          </div>
-                          <div class="timeline-footer">
-                            <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                            <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
-                            <a class="btn btn-info btn-xs">On Progress</a>
-                            <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 2017</span>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <i class="fa fa-info bg-blue"></i>
-                        <!--issue content goes here-->
-                        <div class="timeline-item">
-                          <h3 class="timeline-header">
-                            <a href="#">
-                              <big>
-                                Issue Pembaruan Sistem
-                              </big>
-                            </a>
-                            <button type="button" class="close">
-                              <small><span aria-hidden="true"><i class="fa fa-remove"></i></span></small>
-                            </button>
-
-                          </h3>
-                          <div class="timeline-body">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                            quora plaxo ideeli hulu weebly balihoo...
-                          </div>
-                          <div class="timeline-body">
-                            <small>
-                              <cite>
-                                Sherlock Holmes
-                              </cite>
-                            </small>
-                          </div>
-                          <div class="timeline-footer">
-                            <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                            <!-- <a class="btn btn-primary btn-xs">Diskusi</a> -->
-                            <a class="btn btn-info btn-xs">On Progress</a>
-                            <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 2017</span>
-                          </div>
-                        </div>
-                      </li>
-
-                    </ul>
-                  </div>
-                  <br>
-                  <center>
-                    <div class="timeline-item">
-                      <button class="btn btn-standard" data-toggle="modal" data-target="#myModal">Tambahkan issue</button>
-                      <a href="{{url('')}}/list-all-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
+                        </li>
+                        @endif
+                      </ul>
                     </div>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Issue</h3></center>
-                          </div>
-                          <div class="modal-body">
-                            <form class="form-horizontal" method="post" action="{{url('')}}/input-issue">
-                              <div class="box-body">
+                    <br>
+                    <center>
+                      <div class="timeline-item">
+                        <button class="btn btn-standard" data-toggle="modal" data-target="#myModal">Tambahkan issue</button>
+                        <a href="{{url('')}}/list-all-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
+                      </div>
+                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Issue</h3></center>
+                            </div>
+                            <div class="modal-body">
+                              <form class="form-horizontal" method="post" action="{{url('')}}/input-issue">
+                                <div class="box-body">
 
-                                {{ csrf_field() }}
-                                <div class="form-group">
-                                  <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
-                                  <div class="col-sm-10">
-                                    <input name="judul" type="text" class="form-control" id="inputEmail3">
+                                  {{ csrf_field() }}
+                                  <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
+                                    <div class="col-sm-10">
+                                      <input name="judul" type="text" class="form-control" id="inputEmail3">
+                                    </div>
                                   </div>
-                                </div>
 
-                                <!--Issue-->
-                                <div class="form-group">
-                                  <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
-                                  <div class="col-sm-10">
-                                    <textarea name="isi" class="form-control" rows="8"></textarea>
+                                  <!--Issue-->
+                                  <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
+                                    <div class="col-sm-10">
+                                      <textarea name="isi" class="form-control" rows="8"></textarea>
+                                    </div>
                                   </div>
-                                </div>
 
-                                <div class="form-group">
-                                  <div class="modal-footer">
-                                    <button type="reset" class="btn btn-danger">Reset</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                  <div class="form-group">
+                                    <div class="modal-footer">
+                                      <button type="reset" class="btn btn-danger">Reset</button>
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
                                   </div>
-                                </div>
-                              </form>
+                                </form>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </center>
+                      </center>
+                    </div>
                   </div>
                 </div>
               </div>
+              <!-- /.box -->
             </div>
-            <!-- /.box -->
           </div>
         </div>
-      </div>
-    </section>
-    @include('layouts.footer')
-  </div>
+      </section>
+      @include('layouts.footer')
+    </div>
 
-  <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <script>$.widget.bridge('uibutton', $.ui.button);</script>
-  <!-- Bootstrap 3.3.6 -->
-  <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="{{url('')}}/plugins/morris/morris.min.js"></script>
-  <script src="{{url('')}}/plugins/sparkline/jquery.sparkline.min.js"></script>
-  <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-  <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-  <script src="{{url('')}}/plugins/knob/jquery.knob.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-  <script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
-  <script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
-  <script src="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-  <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-  <script src="{{url('')}}/dist/js/app.min.js"></script>
-  <script src="{{url('')}}/dist/js/pages/dashboard.js"></script>
-  <script src="{{url('')}}/dist/js/demo.js"></script>
-  <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-  <!-- SlimScroll -->
-  <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <script src="/plugins/chartjs/Chart.min.js"></script>
-  <script>
-    $(function () {
-      $("#example1").DataTable();
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false
+    <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script>$.widget.bridge('uibutton', $.ui.button);</script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="{{url('')}}/plugins/morris/morris.min.js"></script>
+    <script src="{{url('')}}/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="{{url('')}}/plugins/knob/jquery.knob.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+    <script src="{{url('')}}/dist/js/app.min.js"></script>
+    <script src="{{url('')}}/dist/js/pages/dashboard.js"></script>
+    <script src="{{url('')}}/dist/js/demo.js"></script>
+    <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="/plugins/chartjs/Chart.min.js"></script>
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
       });
-    });
-  </script>
+    </script>
 
-  <script>
-    $(function () {
+    <script>
+      $(function () {
     /* ChartJS
      * -------
      * Here we will create a few charts using ChartJS
