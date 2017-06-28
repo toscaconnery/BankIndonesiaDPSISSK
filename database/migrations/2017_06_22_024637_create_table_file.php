@@ -19,6 +19,7 @@ class CreateTableFile extends Migration
             $table->string('pic');
             $table->integer('tahun');
             $table->string('path');
+            $table->integer('id_sub_tahapan');
             $table->timestamps();
         });
     }
