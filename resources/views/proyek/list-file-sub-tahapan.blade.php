@@ -39,7 +39,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          File Sub Tahapan X
+          File {{$namaSubTahapan}}
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/list-proyek"><i class="fa fa-cubes"></i> Proyek</a></li>
@@ -53,96 +53,96 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <div>
-                    <button class="btn btn-lg btn-primary" >Tambah File</button>
-                    <button class="btn btn-lg btn-primary" >Tambah Folder</button>
-                    <br>
-                    <br>
-                    <form>
-                      <input type="file" name="file">
-                    </form>
+                  <button class="btn btn-lg btn-primary" >Tambah File</button>
+                  <button class="btn btn-lg btn-primary" >Tambah Folder</button>
+                  <br>
+                  <br>
+                  <form>
+                    <input type="file" name="file">
+                  </form>
                 </div>
                 <br>
                 <big><b>Lokasi : sfdlkef/fsjdlf/sdf</b></big>
-                  <table class="table table-bordered table-striped">
-                    <br>
-                    <br>
-                    <thead>
-                      <tr>
-                        <th width="1em">No</th>
-                        <th>Nama File</th>
-                        <th>PIC</th>
-                        <th>Tanggal</th>
-                        <th width="2em">
-                          <center>
-                            Action
-                          </center>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>File A 201x</td>
-                        <td>Sherlock</td>
-                        <td>27/06/2012</td>
+                <table class="table table-bordered table-striped">
+                  <br>
+                  <br>
+                  <thead>
+                    <tr>
+                      <th width="1em">No</th>
+                      <th>Nama File</th>
+                      <th>PIC</th>
+                      <th>Tanggal</th>
+                      <th width="2em">
                         <center>
-                          <td width="2em">
-                            <button class="btn btn-primary">Download</button>
-                          </td>
+                          Action
                         </center>
-                      </tr>
-                    </table>
-                  </div>
-                  <!-- /.box-body -->
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>File A 201x</td>
+                      <td>Sherlock</td>
+                      <td>27/06/2012</td>
+                      <center>
+                        <td width="2em">
+                          <button class="btn btn-primary">Download</button>
+                        </td>
+                      </center>
+                    </tr>
+                  </table>
                 </div>
-                <!-- /.box -->
+                <!-- /.box-body -->
               </div>
-              <!-- /.col -->
+              <!-- /.box -->
             </div>
-            <!-- /.row -->
-          </section>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </section>
 
 
-          <br>
-        </div>
-        @include('layouts.footer')
+        <br>
       </div>
+      @include('layouts.footer')
+    </div>
 
-      <!-- jQuery 2.2.3 -->
-      <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-      <!-- Bootstrap 3.3.6 -->
-      <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-      <!-- Select2 -->
-      <script src="{{url('')}}/plugins/select2/select2.full.min.js"></script>
-      <!-- InputMask -->
-      <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.js"></script>
-      <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-      <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-      <!-- date-range-picker -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-      <script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
-      <!-- bootstrap datepicker -->
-      <script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
-      <!-- bootstrap color picker -->
-      <script src="{{url('')}}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-      <!-- bootstrap time picker -->
-      <script src="{{url('')}}/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-      <!-- DataTables -->
-      <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-      <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-      <!-- SlimScroll -->
-      <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-      <!-- iCheck 1.0.1 -->
-      <script src="{{url('')}}/plugins/iCheck/icheck.min.js"></script>
-      <!-- FastClick -->
-      <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-      <!-- AdminLTE App -->
-      <script src="{{url('')}}/dist/js/app.min.js"></script>
-      <!-- AdminLTE for demo purposes -->
-      <script src="{{url('')}}/dist/js/demo.js"></script>
-      <!-- page script -->
-      <script>
-        $(function () {
+    <!-- jQuery 2.2.3 -->
+    <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+    <!-- Select2 -->
+    <script src="{{url('')}}/plugins/select2/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="{{url('')}}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <!-- bootstrap time picker -->
+    <script src="{{url('')}}/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!-- DataTables -->
+    <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="{{url('')}}/plugins/iCheck/icheck.min.js"></script>
+    <!-- FastClick -->
+    <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{url('')}}/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{url('')}}/dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+      $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
 

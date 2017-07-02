@@ -131,16 +131,7 @@
                         <center><td><a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'><button class="btn btn-primary">Update</button></td></center>
                       </tr>
                     @endforeach
-                    <tr>
-                      <td>Test..</td>
-                      <td>2 Juni 2017</td>
-                      <td>2 Juli 2017</td>
-                      <td>2 Juni 2017</td>
-                      <td>8 Juni 2017</td>
-                      <td>Pak Alam</td>
-                      <td>Finish</td>
-                      <center><td><a href='{{url('')}}/input-sub-tahapan/1'><button class="btn btn-primary">Update</button></td></center>
-                    </tr>
+
                 </table>
               </div>
               <!-- /.box-body -->

@@ -103,8 +103,11 @@ class ProjectController extends Controller
         return redirect('input-sub-tahapan/'.$id);
     }
 
-    public function list_file_proyek()
+    public function list_file_sub_tahapan($id)
     {
-        return view('proyek.list-file-proyek');
+        $subTahapan = SubTahapanProyek::find($id);
+        $this->data['namaSubTahapan'] = $subTahapan->nama;
+        //dd($this->data['namaSubTahapan']);
+        return view('proyek.list-file-sub-tahapan', $this->data);
     }
 }

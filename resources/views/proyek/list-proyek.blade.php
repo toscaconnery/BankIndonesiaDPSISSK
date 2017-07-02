@@ -94,210 +94,137 @@
                               </datalist>
                             </div>
                           </div>
-                  <!-- <select name="browser" onchange='if(this.options[this.selectedIndex].value=='customOption'){toggleField(this,this.nextSibling); this.selectedIndex='0';}' class="form-control" style="width: 100%;">
-                    <option>Program Strategis</option>
-                    <option>Ad-Hoc</option>
-                    <option>Small</option>
-                    <option value="customOption">Lainnya</option>
-                    <input name="browser" style="display:none;" disabled="disabled" onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
-                  </select> -->
-                  <!--PIC-->
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">PIC</label>
-                    <div class="col-sm-9">
-                      <input name="pic" type="text" class="form-control" id="inputEmail3">
-                    </div>
-                  </div>
+                          <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">PIC</label>
+                            <div class="col-sm-9">
+                              <input name="pic" type="text" class="form-control" id="inputEmail3">
+                            </div>
+                          </div>
 
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">Rencana Jadwal</label>
-                    <div class="col-sm-9">
-                      <input name="tanggal" type="text" class="form-control pull-right" id="rencanajadwal">
-                    </div>
-                  </div>
+                          <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Rencana Jadwal</label>
+                            <div class="col-sm-9">
+                              <input name="tanggal" type="text" class="form-control pull-right" id="rencanajadwal">
+                            </div>
+                          </div>
 
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                      Status
-                    </label>
-                    <div class="col-sm-9">
-                      <label>Inhouse
-                        <input name="jenis" type="radio" name="status" value="Inhouse" class="minimal" checked>
-                      </label>
-                      <label style='margin-left:30px;'>Outsource
-                        <input  name="jenis" type="radio" name="status" value="Outsource" class="minimal">
-                      </label>
-                    </div>
-                  </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                              Status
+                            </label>
+                            <div class="col-sm-9">
+                              <label>Inhouse
+                                <input name="jenis" type="radio" name="status" value="Inhouse" class="minimal" checked>
+                              </label>
+                              <label style='margin-left:30px;'>Outsource
+                                <input  name="jenis" type="radio" name="status" value="Outsource" class="minimal">
+                              </label>
+                            </div>
+                          </div>
 
-                  <div class="form-group">
-                    <div class="modal-footer">
-                      <button type="reset" class="btn btn-danger">Reset</button>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                          <div class="form-group">
+                            <div class="modal-footer">
+                              <button type="reset" class="btn btn-danger">Reset</button>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </div>
+                          <!-- /.box-body -->
+                          <!-- /.box-footer -->
+                        </form>
+                      </div>
                     </div>
                   </div>
-                  <!-- /.box-body -->
-                  <!-- /.box-footer -->
-                </form>
+                </div>
+                <table id="example1" class="table table-bordered table-striped">
+                  <br>
+                  <br>
+                  <thead>
+                    <tr>
+                      <th rowspan="2">ID Proyek</th>
+                      <th rowspan="2">Nama Proyek</th>
+                      <th rowspan="2">Kategori</th>
+                      <th rowspan="2">PIC</th>
+                      <th colspan="2">Tanggal Target</th>
+                      <th colspan="2">Tanggal Realisasi</th>
+                      <th rowspan="2">Jenis</th>
+                      <th rowspan="2">Status</th>
+                      <th rowspan="2">Detail</th>
+                    </tr>
+                    <tr>
+                      <th>Mulai</th>
+                      <th>Selesai</th>
+                      <th>Mulai</th>
+                      <th>Selesai</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($proyek as $proyek)
+                    <tr>
+                      <td>{{$proyek->id}}</td>
+                      <td>{{$proyek->nama}}</td>
+                      <td>{{$proyek->kategori}}</td>
+                      <td>{{$proyek->pic}}</td>
+                      <td>{{$proyek->tgl_mulai}}</td>
+                      <td>{{$proyek->tgl_selesai}}</td>
+                      <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : '-'}}</td>
+                      <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
+                      <td>{{$proyek->jenis}}</td>
+                      <td>{{$proyek->status}}</td>
+                      <center><td><a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'><button class="btn btn-primary">Detail</button></td></center>
+                    </tr>
+                    @endforeach
+                  </table>
+                </div>
+                <!-- /.box-body -->
               </div>
+              <!-- /.box -->
             </div>
+            <!-- /.col -->
           </div>
-        </div>
-        <table id="example1" class="table table-bordered table-striped">
-          <br>
-          <br>
-          <thead>
-            <tr>
-              <th rowspan="2">ID Proyek</th>
-              <th rowspan="2">Nama Proyek</th>
-              <th rowspan="2">Kategori</th>
-              <th rowspan="2">PIC</th>
-              <th colspan="2">Tanggal Target</th>
-              <th colspan="2">Tanggal Realisasi</th>
-              <th rowspan="2">Jenis</th>
-              <th rowspan="2">Status</th>
-              <th rowspan="2">Detail</th>
-            </tr>
-            <tr>
-              <th>Mulai</th>
-              <th>Selesai</th>
-              <th>Mulai</th>
-              <th>Selesai</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($proyek as $proyek)
-            <tr>
-              <td>{{$proyek->id}}</td>
-              <td>{{$proyek->nama}}</td>
-              <td>{{$proyek->kategori}}</td>
-              <td>{{$proyek->pic}}</td>
-              <td>{{$proyek->tgl_mulai}}</td>
-              <td>{{$proyek->tgl_selesai}}</td>
-              <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : '-'}}</td>
-              <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
-              <td>{{$proyek->jenis}}</td>
-              <td>{{$proyek->status}}</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'><button class="btn btn-primary">Detail</button></td></center>
-            </tr>
-            @endforeach
-            <tr>
-              <td>PR001</td>
-              <td>APIK</td>
-              <td>PS</td>
-              <td>Pak Alam</td>
-              <td>2 Juli 2017</td>
-              <td>3 Agustus 2017</td>
-              <td>2 Juli 2017</td>
-              <td>3 Agustus 2017</td>
-              <td>Inhouse</td>
-              <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
-            </tr>
-            <tr>
-              <td>PR002</td>
-              <td>SIMKU</td>
-              <td>PS</td>
-              <td>Pak Andris</td>
-              <td>2 Agustus 2017</td>
-              <td>3 September 2017</td>
-              <td>2 Agustus 2017</td>
-              <td>3 September 2017</td>
-              <td>Inhouse</td>
-              <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
-            </tr>
-            <tr>
-              <td>PR003</td>
-              <td>SSS</td>
-              <td>PS</td>
-              <td>Pak Oktav</td>
-              <td>2 September 2017</td>
-              <td>3 Oktober 2017</td>
-              <td>2 September 2017</td>
-              <td>3 Oktober 2017</td>
-              <td>Inhouse</td>
-              <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
-            </tr>
-            <tr>
-              <td>PR004</td>
-              <td>SI Uang Baru</td>
-              <td>Kecil</td>
-              <td>Pak Alam</td>
-              <td>1 Juli 2017</td>
-              <td>1 Agustus 2017</td>
-              <td>1 Juli 2017</td>
-              <td>1 Agustus 2017</td>
-              <td>Outsourcing</td>
-              <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
-            </tr>
-            <tr>
-              <td>PR005</td>
-              <td>SI Bina Bangsa</td>
-              <td>PS</td>
-              <td>Mbak Chacha</td>
-              <td>2 Juni 2017</td>
-              <td>3 Agustus 2017</td>
-              <td>2 Juni 2017</td>
-              <td>3 Agustus 2017</td>
-              <td>Inhouse</td>
-              <td>Selesai</td>
-              <center><td><a href='{{url('')}}/input-tahap-proyek/1'><button class="btn btn-primary">Detail</button></td></center>
-            </tr>
-          </table>
-        </div>
-        <!-- /.box-body -->
+          <!-- /.row -->
+        </section>
+
+
+        <br>
       </div>
-      <!-- /.box -->
+      @include('layouts.footer')
     </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-</section>
 
-
-<br>
-</div>
-@include('layouts.footer')
-</div>
-
-<!-- jQuery 2.2.3 -->
-<script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="{{url('')}}/plugins/select2/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="{{url('')}}/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="{{url('')}}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="{{url('')}}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="{{url('')}}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="{{url('')}}/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- DataTables -->
-<script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="{{url('')}}/plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="{{url('')}}/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{url('')}}/dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  $(function () {
+    <!-- jQuery 2.2.3 -->
+    <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+    <!-- Select2 -->
+    <script src="{{url('')}}/plugins/select2/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="{{url('')}}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="{{url('')}}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <!-- bootstrap time picker -->
+    <script src="{{url('')}}/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!-- DataTables -->
+    <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="{{url('')}}/plugins/iCheck/icheck.min.js"></script>
+    <!-- FastClick -->
+    <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{url('')}}/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{url('')}}/dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+      $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
 
