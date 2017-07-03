@@ -47,8 +47,42 @@
             </div>
           </div>
           <div class="box-body">
-            <div class="chart">
-              <canvas id="barChart" style="height:230px"></canvas>
+            <div class="col-sm-3">
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>Prediksi</h3>
+
+                  <p>New Orders</p>
+                </div>
+                <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+                </div>
+              </div>
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>Dianggarkan</h3>
+
+                  <p>RI : Rp 6.000.000</p>
+                  <p>OP : Rp 2.000.000</p>
+                </div>
+                <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+                </div>
+              </div>
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>Terpakai</h3>
+
+                  <p>RI : Rp 4.000.000</p>
+                  <p>OP : Rp 1.000.000</p>
+                </div>
+                <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-9">
+            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             </div>
           </div>
         </div>
@@ -138,7 +172,7 @@
       </div>
 
       <!--Issue-->
-      <div class="col-sm-6">
+      <div class="col-md-6">
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
@@ -322,12 +356,10 @@
                     </div>
                   </li> --}}
 
-                  <li>
-                    <div class="timeline-item">
-                      <a href="{{url('')}}/input-issue" class="btn btn-primary">Tambahkan issue</a>
-                    </div>
-                  </li>
                 </ul>
+                <div class="timeline-item">
+                  <a href="{{url('')}}/input-issue" class="btn btn-primary">Tambahkan issue</a>
+                </div>
                 </div>
               </div>
             </div>
@@ -558,6 +590,64 @@
     barChartOptions.datasetFill = false;
     barChart.Bar(barChartData, barChartOptions);
   });
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafik Anggaran 2017'
+    },
+    xAxis: {
+        categories: [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Anggaran (Rp)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>Rp {point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'RI',
+        data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51]
+
+    }, {
+        name: 'OP',
+        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 50]
+
+    }]
+});
 </script>
 </body>
 </html>
