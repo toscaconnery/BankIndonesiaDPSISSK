@@ -32,7 +32,7 @@
             <label>
               Email<span class="req">*</span>
             </label>
-            <input id="email" name="email" type="text" required autocomplete="off"/>
+            <input id="nip" name="nip" type="text" required autocomplete="off"/>
           </div>
 
           <!--Password-->

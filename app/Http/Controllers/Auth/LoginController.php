@@ -25,6 +25,9 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+    protected $username = 'nip';
+    
     protected $redirectTo = '/';
 
     /**

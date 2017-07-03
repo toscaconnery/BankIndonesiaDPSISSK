@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Input;
 use DB;
-use App\Folder;
+use App\folder;
 
 class ArsipController extends Controller
 {

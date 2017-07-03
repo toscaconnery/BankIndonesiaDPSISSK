@@ -18,7 +18,7 @@ class DashboardController extends Controller
                                             OR i.status = "Pending" 
                                             ORDER BY i.created_at DESC');
     	return view('dashboard.dashboard', $this->data);
-    	
+    	// }
     	// else
     	// {
     	// 	return redirect('autentikasi');
