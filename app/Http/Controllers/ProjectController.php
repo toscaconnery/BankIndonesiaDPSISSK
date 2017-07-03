@@ -41,7 +41,9 @@ class ProjectController extends Controller
         $proyek->tgl_selesai = $tgl_selesai;
         $proyek->status = "Not started";
 
-        $proyek->save();
+        if($proyek->save()){
+            mkdir('file-proyek/'.$proyek->nama);
+        }
         return redirect('list-proyek');
     }
 
@@ -50,12 +52,13 @@ class ProjectController extends Controller
         $this->data['id_proyek'] = $id;
         $this->data['jenis_proyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id)[0]->jenis;
         $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id.' ORDER BY t.created_at ASC');
+        $proyek = Proyek::find($id);
+        $this->data['namaProyek'] = $proyek->nama;
     	return view('proyek.input-tahap-proyek', $this->data);
     }
 
     public function save_input_tahap_proyek($id)
     {
-        //dd('data tahap proyek akan disave ');
         $tahap = new TahapanProyek;
         $tahap->nama = Input::get('nama');
         $tahap->pic = Input::get('pic');
@@ -68,14 +71,14 @@ class ProjectController extends Controller
         $tahap->tgl_mulai = $tgl_mulai;
         $tahap->tgl_selesai = $tgl_selesai;
         $tahap->status = 'Not started';
-        $tahap->save();
+
+        $proyek = Proyek::find($tahap->id_proyek);
+
+        if($tahap->save()){
+            mkdir('file-proyek/'.$proyek->nama.'/'.$tahap->nama);
+        }
         return redirect('input-tahap-proyek/'.$id);
     }
-
-    // public function input_detail_tahapan()
-    // {
-    // 	return view('proyek.inp-detail-tahapan');
-    // }
 
     public function input_sub_tahapan($id)
     {
@@ -106,8 +109,12 @@ class ProjectController extends Controller
     public function list_file_sub_tahapan($id)
     {
         $subTahapan = SubTahapanProyek::find($id);
+        $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+        $proyek = Proyek::find($tahapan->id_proyek);
         $this->data['namaSubTahapan'] = $subTahapan->nama;
-        //dd($this->data['namaSubTahapan']);
+        $this->data['namaTahapan'] = $tahapan->nama;
+        $this->data['namaProyek'] = $proyek->nama;
+        //dd($this->data['namaProyek']);
         return view('proyek.list-file-sub-tahapan', $this->data);
     }
 }

@@ -39,7 +39,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          File {{$namaSubTahapan}}
+          {{ $namaProyek }} > {{ $namaTahapan }} > {{ $namaSubTahapan }}
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/list-proyek"><i class="fa fa-cubes"></i> Proyek</a></li>
