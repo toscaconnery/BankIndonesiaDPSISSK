@@ -80,14 +80,17 @@ class ProjectController extends Controller
         return redirect('input-tahap-proyek/'.$id);
     }
 
-    public function input_sub_tahapan($id)
+    public function input_sub_tahapan($id)  //ini ID tahapan
     {
         $this->data['sub'] = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
         $this->data['id_tahapan'] = $id;
+        $tahapan = TahapanProyek::find($id);
+        $proyek = Proyek::find($tahapan->id_proyek);
+        $this->data['namaProyek'] = $proyek->nama;
         return view('proyek.input-sub-tahapan', $this->data);
     }
 
-    public function save_input_sub_tahapan($id)
+    public function save_input_sub_tahapan($id) //ini ID tahapan
     {
         $sub = new SubTahapanProyek;
         $sub->id_tahapan = Input::get('id_tahapan');
@@ -102,7 +105,14 @@ class ProjectController extends Controller
         $sub->tgl_mulai = $tgl_mulai;
         $sub->tgl_selesai = $tgl_selesai;
         $sub->status = 'Belum selesai';
-        $sub->save();
+
+        $tahapan = TahapanProyek::find($id);
+        $proyek = Proyek::find($tahapan->id_proyek);
+
+        if($sub->save()){
+            mkdir('file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$sub->nama);
+        }
+
         return redirect('input-sub-tahapan/'.$id);
     }
 
