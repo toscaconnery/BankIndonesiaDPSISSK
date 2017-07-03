@@ -53,14 +53,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- @foreach($tabel_folder as $tabel_folder) -->
+                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
+                      <td>Folder New</td>
+                      <td>Proyek</td>
+                      <td>Tosca</td>
+                      <td>2 Januari 2017</td>
+                    </tr>
+                    @foreach($tabel_folder as $tabel_folder)
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
                       <td>{{$tabel_folder->nama}}</td>
                       <td>{{$tabel_folder->kategori}}</td>
                       <td>{{$tabel_folder->pic}}</td>
-                      <td>{{$tabel_folder->created_at}}</td>
+                      <td>{{Carbon\Carbon::parse($tabel_folder->created_at)->format('d-m-Y')}}</td>
                     </tr>
-                    <!-- @endforeach -->
+                    @endforeach
                   </table>
                 </div>
                 <!-- /.box-body -->

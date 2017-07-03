@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Input;
 use DB;
-use App\folder;
+use App\TabelFolder;
+use Auth;
+use DateTime;
 
 class ArsipController extends Controller
 {
     public function list_arsip()
     {
         $this->data['tabel_folder'] = DB::select('SELECT tf.* FROM tabel_folder tf ORDER BY tf.created_at DESC');
-        return view('folder.list-arsip', $this->data);
+        return view('arsip.list-arsip', $this->data);
     	// return view('arsip.list-arsip');
     }
 
@@ -21,12 +23,12 @@ class ArsipController extends Controller
         $namafolder = Input::get('namafolder');
         $kategori = Input::get('kategori');
          
-        $folder = new Folder;
+        $folder = new TabelFolder;
         $folder->nama = $namafolder;
         $folder->kategori = $kategori;
-        $folder->pic = 0;
+        $folder->pic = Auth::user()->name;
         $folder->id_proyek = 0;
-        $folder->tahun = 0;
+        $folder->tahun = (new DateTime)->format("Y");
         $folder->path = 0;
         // if( Auth::check() ) {
         //  $anggaran->pic = Auth::user()->get('id');
