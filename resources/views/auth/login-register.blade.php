@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Sign-Up/Login Form</title>
+  <title>Sign-Up/Login PMO&RMS</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/style.css">
@@ -19,7 +19,7 @@
     </ul> -->
 
     <ul class="tab-group">
-        <li class="tab active"><a href="#login">Log Inx</a></li>
+        <li class="tab active"><a href="#login">Log In</a></li>
         <li class="tab"><a href="#register">Register</a></li>
     </ul>
 
