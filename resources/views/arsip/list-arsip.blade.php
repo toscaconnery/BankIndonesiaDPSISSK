@@ -53,30 +53,14 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- @foreach($tabel_folder as $tabel_folder) -->
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
-                      <td>Proyek Apik</td>
-                      <td>Proyek</td>
-                      <td>Pak Alam</td>
-                      <td>2 Juli 2017</td>
+                      <td>{{$tabel_folder->nama}}</td>
+                      <td>{{$tabel_folder->kategori}}</td>
+                      <td>{{$tabel_folder->pic}}</td>
+                      <td>{{$tabel_folder->created_at}}</td>
                     </tr>
-                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
-                      <td>Proyek Apik</td>
-                      <td>Proyek</td>
-                      <td>Pak Alam</td>
-                      <td>2 Juli 2017</td>
-                    </tr>
-                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
-                      <td>Proyek Apik</td>
-                      <td>Proyek</td>
-                      <td>Pak Alam</td>
-                      <td>2 Juli 2017</td>
-                    </tr>
-                    <tr href='{{url('')}}/input-proyek'>
-                      <td>Proyek Apik</td>
-                      <td>Proyek</td>
-                      <td>Pak Alam</td>
-                      <td>2 Juli 2017</td>
-                    </tr>
+                    <!-- @endforeach -->
                   </table>
                 </div>
                 <!-- /.box-body -->

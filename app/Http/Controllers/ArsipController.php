@@ -11,7 +11,9 @@ class ArsipController extends Controller
 {
     public function list_arsip()
     {
-    	return view('arsip.list-arsip');
+        $this->data['tabel_folder'] = DB::select('SELECT tf.* FROM tabel_folder tf ORDER BY tf.created_at DESC');
+        return view('folder.list-arsip', $this->data);
+    	// return view('arsip.list-arsip');
     }
 
     public function save_input_folder()
