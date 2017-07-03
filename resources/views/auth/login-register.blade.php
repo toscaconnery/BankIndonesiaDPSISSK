@@ -30,7 +30,7 @@
           <!--NIP-->
           <div class="field-wrap">
             <label>
-              Email<span class="req">*</span>
+              NIP<span class="req">*</span>
             </label>
             <input id="nip" name="nip" type="text" required autocomplete="off"/>
           </div>
