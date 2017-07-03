@@ -25,6 +25,7 @@ Route::get('list-arsip', 'ArsipController@list_arsip');
 Route::post('list-arsip', 'ArsipController@save_input_folder');
 Route::get('input-arsip', 'ArsipController@input_arsip');
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
+Route::post('tambah-folder-file-proyek', 'ArsipController@tambah_folder_file_proyek');
 
 // ANGGARAN
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');

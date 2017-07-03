@@ -54,7 +54,8 @@
               <div class="box-body">
                 <div>
                   <button class="btn btn-lg btn-primary" >Tambah File</button>
-                  <button class="btn btn-lg btn-primary" >Tambah Folder</button>
+                  <button class="btn btn-lg btn-primary" >Tambah Fo</button>
+                  <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalTambahFolder">Tambah Folder</button>
                   <br>
                   <br>
                   <form action="" method="post" enctype="multipart/form-data">
@@ -108,6 +109,40 @@
           </div>
           <!-- /.row -->
         </section>
+
+        <div class="modal fade" id="modalTambahFolder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center><h3 class="modal-title" id="modalTambahFolder" style="font-weight: bold;">Form Tambah Folder</h3></center>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal" action="{{url('')}}/tambah-folder-file-proyek" method="post">
+
+                  {{ csrf_field() }}
+                  <!--Name-->
+                  <div class="form-group">
+                    <label for="namaproyek" class="col-sm-3 control-label">Nama Folder</label>
+                    <input type="hidden" name="direktori" value="{{ $lokasi }}">
+                    <div class="col-sm-9">
+                      <input name="namaFolder" type="text" class="form-control" id="namaproyek">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="modal-footer">
+                      <button type="reset" class="btn btn-danger">Reset</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                  <!-- /.box-footer -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
         <br>

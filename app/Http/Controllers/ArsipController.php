@@ -48,4 +48,9 @@ class ArsipController extends Controller
     {
     	return view('arsip.list-file-arsip');
     }
+
+    public function tambah_folder_file_proyek()
+    {
+        dd('aha');
+    }
 }
