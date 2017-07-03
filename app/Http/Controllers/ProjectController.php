@@ -8,6 +8,8 @@ use App\TahapanProyek;
 use Input;
 use DB;
 use App\SubTahapanProyek;
+use App\TabelFile;
+use Auth;
 
 class ProjectController extends Controller
 {
@@ -116,15 +118,48 @@ class ProjectController extends Controller
         return redirect('input-sub-tahapan/'.$id);
     }
 
-    public function list_file_sub_tahapan($id)
+    public function list_file_sub_tahapan($id)  //ini ID sub tahapan
     {
         $subTahapan = SubTahapanProyek::find($id);
         $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
         $proyek = Proyek::find($tahapan->id_proyek);
+        $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.id_sub_tahapan = '.$id);
         $this->data['namaSubTahapan'] = $subTahapan->nama;
         $this->data['namaTahapan'] = $tahapan->nama;
         $this->data['namaProyek'] = $proyek->nama;
+        $this->data['lokasi'] = 'file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
         //dd($this->data['namaProyek']);
         return view('proyek.list-file-sub-tahapan', $this->data);
+    }
+
+    public function save_list_file_sub_tahapan(Request $request, $id) //ini ID sub tahapan
+    {
+        $subTahapan = SubTahapanProyek::find($id);
+        $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+        $proyek = Proyek::find($tahapan->id_proyek);
+
+        $file = $request->file('berkas');
+        $fileExtension = $file->getClientOriginalExtension();
+        $fileSize = $file->getSize();
+        $fileMime = $file->getMimeType();
+        $fileName = $file->getClientOriginalName();
+        $path = 'file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
+
+        $berkas = new TabelFile;
+        $berkas->nama = $fileName;
+        if(Auth::check()){
+            $berkas->pic = Auth::user()->name;
+        }
+        else {
+            $berkas->pic = 'Unregistered User';
+        }
+        $berkas->tahun = date("Y");
+        $berkas->path = $path;
+        $berkas->id_sub_tahapan = $id;
+        $berkas->save();
+
+        $file->move($path, $fileName);
+
+        return redirect('list-file-sub-tahapan/'.$id);
     }
 }

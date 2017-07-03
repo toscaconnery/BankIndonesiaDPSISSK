@@ -57,12 +57,14 @@
                   <button class="btn btn-lg btn-primary" >Tambah Folder</button>
                   <br>
                   <br>
-                  <form>
-                    <input type="file" name="file">
+                  <form action="" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <input type="file" name="berkas">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
                 <br>
-                <big><b>Lokasi : sfdlkef/fsjdlf/sdf</b></big>
+                <big>Lokasi : {{ $lokasi }}</big>
                 <table class="table table-bordered table-striped">
                   <br>
                   <br>
@@ -80,17 +82,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>File A 201x</td>
-                      <td>Sherlock</td>
-                      <td>27/06/2012</td>
-                      <center>
-                        <td width="2em">
-                          <button class="btn btn-primary">Download</button>
-                        </td>
-                      </center>
-                    </tr>
+                    @php
+                      $x = 1;
+                    @endphp
+                    @foreach($fileSubTahapan as $data)
+                      <tr>
+                        <td>{{ $x++ }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->pic }}</td>
+                        <td>{{ $data->created_at }}</td>
+                        <center>
+                          <td width="2em">
+                            <button class="btn btn-primary">Download</button>
+                          </td>
+                        </center>
+                      </tr>
+                    @endforeach
                   </table>
                 </div>
                 <!-- /.box-body -->
