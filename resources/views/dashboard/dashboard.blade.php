@@ -603,18 +603,18 @@ Highcharts.chart('container', {
     },
     xAxis: {
         categories: [
-            'January',
-            'February',
-            'March',
+            'Januari',
+            'Februari',
+            'Maret',
             'April',
-            'May',
-            'June',
-            'July',
-            'August',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
             'September',
-            'October',
+            'Oktober',
             'November',
-            'December'
+            'Desember'
         ],
         crosshair: true
     },

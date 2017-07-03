@@ -48,15 +48,15 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th rowspan="2" width="10">No</th>
-                  <th rowspan="2">Bulan</th>
-                  <th colspan="6">Nominal Dikeluarkan</th>
-                  <th rowspan="2">Rincian</th>
+                  <th style="vertical-align:middle;text-align:center" rowspan="2" width="10">No</th>
+                  <th style="vertical-align:middle;text-align:center" rowspan="2">Bulan</th>
+                  <th style="text-align:center;" colspan="6">Nominal Dikeluarkan</th>
+                  <th style="vertical-align:middle;text-align:center" rowspan="2">Rincian</th>
                 </tr>
                 <tr>
-                  <th colspan="2">RI</th>
-                  <th colspan="2">OP</th>
-                  <th colspan="2">Total</th>
+                  <th style="text-align:center;" colspan="2">RI</th>
+                  <th style="text-align:center;" colspan="2">OP</th>
+                  <th style="text-align:center;" colspan="2">Total</th>
                 </tr>
               </thead>
               <tbody>
