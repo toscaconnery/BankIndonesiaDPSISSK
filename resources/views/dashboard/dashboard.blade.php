@@ -358,7 +358,7 @@
 
                 </ul>
                 <div class="timeline-item">
-                  <a href="{{url('')}}/input-issue" class="btn btn-primary">Tambahkan issue</a>
+                  <a href="{{url('')}}/input-issue" class="btn btn-primary">Tampilkan Semua</a>
                 </div>
                 </div>
               </div>

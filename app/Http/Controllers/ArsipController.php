@@ -26,16 +26,16 @@ class ArsipController extends Controller
         $folder = new TabelFolder;
         $folder->nama = $namafolder;
         $folder->kategori = $kategori;
-        $folder->pic = Auth::user()->name;
+        if( Auth::check() ){
+            $folder->pic = Auth::user()->name;
+        }
+        else{
+            $folder->pic = "Unknown";
+        }
         $folder->id_proyek = 0;
         $folder->tahun = (new DateTime)->format("Y");
-        $folder->path = 0;
-        // if( Auth::check() ) {
-        //  $anggaran->pic = Auth::user()->get('id');
-        // }
-        // else {
-        //  $anggaran->pic = 0;
-        // }
+        $folder->path = 'tesfolder/'.$namafolder;
+        
         if($folder->save()){
             mkdir('tesfolder/'.$namafolder);
         }
