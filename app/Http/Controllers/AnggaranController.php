@@ -108,6 +108,10 @@ class AnggaranController extends Controller
         //  $anggaran->pic = 0;
         // }
         $pengeluaran->save();
+        // if($kategori=='OP')
+        // {
+        //     $opterpakai = DB::select('SELECT SUM(nominal) from pencairan  where tahun='.$tahun.'');
+        // }
         // $anggaran = DB::select('Update ')
         return redirect('report-anggaran-tahunan');
     }
