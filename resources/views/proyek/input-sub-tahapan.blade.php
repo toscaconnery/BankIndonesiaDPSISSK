@@ -117,7 +117,15 @@
                       <td>{{$sub->status}}</td>
                       <td width="11em">
                         <center>
-                          <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}"><button type="button" style="width: 8em" class="btn btn-primary">Detail</button></a>
+                          @if($sub->status == "Pending")
+                            <a href="{{url('')}}/mulai-sub-tahapan-proyek/{{ $sub->id }}">
+                              <button type="button" style="width: 8em" class="btn btn-primary">Mulai</button>
+                            </a>
+                          @else
+                            <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
+                              <button type="button" style="width: 8em" class="btn btn-primary">Detail</button>
+                            </a>
+                          @endif
                         </center>
                       </td>
                     </tr>
