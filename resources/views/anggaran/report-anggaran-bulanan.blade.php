@@ -26,7 +26,7 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Pencairan Anggaran {{$tahun_ang}}
+        Pencairan Anggaran {{$tahun_anggaran}}
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
@@ -60,18 +60,23 @@
                 </tr>
               </thead>
               <tbody>
+              @php
+              $i=1;
+              @endphp
+              @foreach($jlh_pengeluaran_bulanan as $jlh_pengeluaran_bulanan)
                 <tr>
-                  <td>1</td>
-                  <td>Januari</td>
+                  <td>{{$i++}}</td>
+                  <td>{{$jlh_pengeluaran_bulanan->Bulan}}</td>
                   <td>23423</td>
                   <td>100%</td>
                   <td>23222</td>
                   <td>90%</td>
                   <td>46845</td>
                   <td>95%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
+                  <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/{{$jlh_pengeluaran_bulanan->idbulan}}">{{$jlh_pengeluaran_bulanan->Jumlah}}</a></td>
                 </tr>
-                <tr>
+              @endforeach
+                <!-- <tr>
                   <td>2</td>
                   <td>Februari</td>
                   <td>23423</td>
@@ -191,7 +196,7 @@
                   <td>46845</td>
                   <td>58%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>

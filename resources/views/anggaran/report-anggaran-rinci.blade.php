@@ -49,18 +49,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach($pengeluaran_rinci as $pengeluaran_rinci)
                     <tr>
-                      <td>2 Juli 2017</td>
-                      <td>OP</td>
-                      <td>Rp. 234.234.242</td>
-                      <td>Dianggarkan untuk proyek APIK</td>
+                      <td>{{$pengeluaran_rinci->tanggal_pencairan}}</td>
+                      <td>{{$pengeluaran_rinci->kategori}}</td>
+                      <td>{{$pengeluaran_rinci->nominal}}</td>
+                      <td>{{$pengeluaran_rinci->keterangan}}</td>
                     </tr>
-                    <tr>
+                  @endforeach
+                    <!-- <tr>
                       <td>4 Juli 2017</td>
                       <td>RI</td>
                       <td>Rp. 230.234.242</td>
                       <td>Dianggarkan untuk desain proyek APIK</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
                 <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Tambah Pengeluaran</button></center>

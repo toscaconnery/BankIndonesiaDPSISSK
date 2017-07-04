@@ -30,9 +30,9 @@ class AnggaranController extends Controller
     public function report_anggaran_bulanan($tahun)
     {
         $this->data['tahun_anggaran'] = $tahun;
-        $this->data['jlh_pengeluaran_bulanan'] = DB::select('SELECT MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = CAST(2018 AS INTEGER) GROUP BY MONTH(tanggal_pencairan)');
-        $anggaran = Anggaran::find($tahun);
-        dd($anggaran);
+        $this->data['jlh_pengeluaran_bulanan'] = DB::select('SELECT MONTH(tanggal_pencairan) as idbulan, MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = '.$tahun.' GROUP BY MONTH(tanggal_pencairan)');
+        $anggaran = DB::select('SELECT * from anggaran where tahun='.$tahun.'');
+        // dd($anggaran);
         //$this->data['tahun_ang'] = $anggaran->tahun;
         return view('anggaran.report-anggaran-bulanan', $this->data);
         // return view('anggaran.report-anggaran-bulanan');
@@ -53,9 +53,14 @@ class AnggaranController extends Controller
         return view('anggaran.input-pencairan-anggaran');
     }
 
-    public function report_anggaran_rinci()
+    public function report_anggaran_rinci($tahun_anggaran,$idbulan)
     {
-        return view('anggaran.report-anggaran-rinci');
+        $this->data['tahun_anggar'] = $tahun_anggaran;
+        $this->data['numbulan'] = $idbulan;
+        // dd($this->data['tahun_anggar']);
+        // dd($this->data['numbulan']);
+        $this->data['pengeluaran_rinci'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.'');
+        return view('anggaran.report-anggaran-rinci', $this->data);
     }
 
     public function save_input_anggaran_tahunan()
