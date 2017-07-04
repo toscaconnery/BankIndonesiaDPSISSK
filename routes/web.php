@@ -18,6 +18,7 @@ Route::post('input-sub-tahapan/{id}', 'ProjectController@save_input_sub_tahapan'
 Route::get('list-file-sub-tahapan/{id}/{deeppath?}', 'ProjectController@list_file_sub_tahapan');			//Akses Folder & File
 Route::post('list-file-sub-tahapan/{id}/{deeppath?}', 'ProjectController@save_list_file_sub_tahapan');		//Upload File
 Route::post('tambah-folder-sub-tahapan/{id}/{deeppath?}', 'ProjectController@tambah_folder_sub_tahapan');	//Tambah Folder
+Route::get('mulai-proyek/{id}', 'ProjectController@mulai_proyek');
 
 //Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
 

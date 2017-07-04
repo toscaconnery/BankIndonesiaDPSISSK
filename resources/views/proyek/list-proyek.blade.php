@@ -171,7 +171,19 @@
                       <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
                       <td>{{$proyek->jenis}}</td>
                       <td>{{$proyek->status}}</td>
-                      <center><td><a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'><button class="btn btn-primary">Detail</button></td></center>
+                      <center>
+                        <td>
+                          @if($proyek->status == "Pending")
+                            <a href='{{url('')}}/mulai-proyek/{{$proyek->id}}'>
+                              <button class="btn btn-primary">Mulai</button>
+                            </a>
+                          @else
+                            <a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'>
+                              <button class="btn btn-primary">Detail</button>
+                            </a>
+                          @endif
+                        </td>
+                      </center>
                       <center><td><button class="btn btn-info" data-id="{!! $proyek->id !!}" data-toggle="modal" data-target="#Modal2{{$proyek->id}}">Progress</button></td></center>
                     </tr>
                     @endforeach
