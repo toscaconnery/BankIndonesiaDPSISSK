@@ -85,6 +85,20 @@
                     @php
                       $x = 1;
                     @endphp
+                    @foreach($folderSubTahapan as $data)
+                      <tr>
+                        <td>{{ $x++ }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>Folder</td>
+                        <td>{{ $data->pic }}</td>
+                        <td>{{ $data->created_at }}</td>
+                        <center>
+                          <td width="2em">
+                            <button class="btn btn-primary">Buka</button>
+                          </td>
+                        </center>
+                      </tr>
+                    @endforeach
                     @foreach($fileSubTahapan as $data)
                       <tr>
                         <td>{{ $x++ }}</td>
@@ -118,7 +132,7 @@
                 <center><h3 class="modal-title" id="modalTambahFolder" style="font-weight: bold;">Form Tambah Folder</h3></center>
               </div>
               <div class="modal-body">
-                <form class="form-horizontal" action="{{url('')}}/tambah-folder-file-proyek" method="post">
+                <form class="form-horizontal" action="{{url('')}}/tambah-folder-sub-tahapan/{{$id_sub_tahapan}}" method="post">
                   {{ csrf_field() }}
                   <!--Name-->
                   <div class="form-group">
