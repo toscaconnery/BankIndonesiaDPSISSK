@@ -58,9 +58,20 @@
                   <br>
                   <form action="" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <input type="file" name="berkas">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <!-- <input type="file" name="berkas">
+                    <button type="submit" class="btn btn-primary">Submit</button> -->
+                    <h4>Upload Dokumen</h4>
+                    <div class="col-md-4">
+                    <div class="input-group">
+                      <input type="file" name="berkas" class="form-control">
+                      <div class="input-group-btn">
+                      <button type="submit" class="btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                    </div>
                   </form>
+                  <br>
+                  <br>
                 </div>
                 <br>
                 <big>Lokasi : {{ $path }}</big>
