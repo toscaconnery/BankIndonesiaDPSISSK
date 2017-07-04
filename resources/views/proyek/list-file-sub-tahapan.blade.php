@@ -56,7 +56,7 @@
                   <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalTambahFolder">Tambah Folder</button>
                   <br>
                   <br>
-                  <form action="tambah-file-sub-tahapan-proyek" method="post" enctype="multipart/form-data">
+                  <form action="" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="file" name="berkas">
                     <button type="submit" class="btn btn-primary">Submit</button>

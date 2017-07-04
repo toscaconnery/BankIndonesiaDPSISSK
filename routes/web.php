@@ -15,7 +15,10 @@ Route::get('input-tahap-proyek/{id}', 'ProjectController@input_tahap_proyek');
 Route::post('input-tahap-proyek/{id}', 'ProjectController@save_input_tahap_proyek');
 Route::get('input-sub-tahapan/{id}', 'ProjectController@input_sub_tahapan');
 Route::post('input-sub-tahapan/{id}', 'ProjectController@save_input_sub_tahapan');
-Route::post('list-file-sub-tahapan', 'ProjectController@list_file_sub_tahapan');
+Route::get('list-file-sub-tahapan/{id}/{deeppath?}', 'ProjectController@list_file_sub_tahapan');
+Route::post('list-file-sub-tahapan/{id}/{deeppath?}', 'ProjectController@save_list_file_sub_tahapan');
+//Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
+
 // Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
 // Route::post('list-file-sub-tahapan/{id}', 'ProjectController@save_list_file_sub_tahapan');
 //Route::get('input-proyek', 'ProjectController@input_proyek');
