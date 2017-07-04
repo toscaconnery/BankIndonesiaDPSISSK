@@ -15,17 +15,21 @@ Route::get('input-tahap-proyek/{id}', 'ProjectController@input_tahap_proyek');
 Route::post('input-tahap-proyek/{id}', 'ProjectController@save_input_tahap_proyek');
 Route::get('input-sub-tahapan/{id}', 'ProjectController@input_sub_tahapan');
 Route::post('input-sub-tahapan/{id}', 'ProjectController@save_input_sub_tahapan');
-Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
-Route::post('list-file-sub-tahapan/{id}', 'ProjectController@save_list_file_sub_tahapan');
+Route::post('list-file-sub-tahapan', 'ProjectController@list_file_sub_tahapan');
+// Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
+// Route::post('list-file-sub-tahapan/{id}', 'ProjectController@save_list_file_sub_tahapan');
 //Route::get('input-proyek', 'ProjectController@input_proyek');
 // Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
+
+// Route::get('list-file-sub-tahapan', 'ProjectController@list_file_sub_tahapan');
+// Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
 
 // ARSIP
 Route::get('list-arsip', 'ArsipController@list_arsip');
 Route::post('list-arsip', 'ArsipController@save_input_folder');
 Route::get('input-arsip', 'ArsipController@input_arsip');
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
-Route::post('tambah-folder-file-proyek', 'ArsipController@tambah_folder_file_proyek');
+Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
 
 // ANGGARAN
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');

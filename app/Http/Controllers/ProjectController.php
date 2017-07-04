@@ -9,6 +9,7 @@ use Input;
 use DB;
 use App\SubTahapanProyek;
 use App\TabelFile;
+use App\TabelFolder;
 use Auth;
 
 class ProjectController extends Controller
@@ -19,12 +20,7 @@ class ProjectController extends Controller
     	return view('proyek.list-proyek', $this->data);
     }
 
-    // public function input_proyek()
-    // {
-    // 	return view('proyek.input-proyek');
-    // }
-
-    public function save_input_proyek()
+    public function save_input_proyek() //done
     {
         $proyek = new Proyek;
         $proyek->nama = Input::get('nama');
@@ -44,7 +40,41 @@ class ProjectController extends Controller
         $proyek->status = "Not started";
 
         if($proyek->save()){
-            mkdir('file-proyek/'.$proyek->nama);
+            $folder = new TabelFolder;
+            $folder->nama = $proyek->nama;
+            $folder->pic = $proyek->pic;
+            $folder->kategori = "Proyek";
+            $folder->id_proyek = $proyek->id;
+            $folder->tahun = date("Y");
+            $folder->path = $folder->tahun.'/';
+            if(!is_dir($folder->tahun)){
+                mkdir($folder->tahun);
+            }
+            mkdir($folder->tahun.'/'.$proyek->nama);
+            $folder->save();
+
+
+            //Membuat folder P3A dan MLBI
+            $folderP = new TabelFolder;
+            $folderP->nama = "P3A";
+            $folderP->pic = $folder->pic;
+            $folderP->kategori = "Proyek";
+            $folderP->id_proyek = $folder->id_proyek;
+            $folderP->tahun = $folder->tahun;
+            $folderP->path = $folderP->tahun.'/'.$proyek->nama.'/';
+            mkdir($folderP->tahun.'/'.$proyek->nama.'/'.'P3A');
+            $folderP->save();
+
+            $folderM = new TabelFolder;
+            $folderM->nama = "MLBI";
+            $folderM->pic = $folder->pic;
+            $folderM->kategori = "Proyek";
+            $folderM->id_proyek = $folder->id_proyek;
+            $folderM->tahun = $folder->tahun;
+            $folderM->path = $folderP->tahun.'/'.$proyek->nama.'/';
+            mkdir($folderM->tahun.'/'.$proyek->nama.'/'.'MLBI');
+            $folderM->save();
+
         }
         return redirect('list-proyek');
     }
@@ -72,12 +102,19 @@ class ProjectController extends Controller
         $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
         $tahap->tgl_mulai = $tgl_mulai;
         $tahap->tgl_selesai = $tgl_selesai;
-        $tahap->status = 'Not started';
-
-        $proyek = Proyek::find($tahap->id_proyek);
+        $tahap->status = 'Suspend';
 
         if($tahap->save()){
-            mkdir('file-proyek/'.$proyek->nama.'/'.$tahap->nama);
+            $folder = new TabelFolder;
+            $folder->nama = $tahap->nama;
+            $folder->pic = $tahap->pic;
+            $folder->kategori = "Proyek";
+            $folder->id_proyek = $tahap->id_proyek;
+            $namaProyek = Proyek::find($folder->id_proyek)->nama;
+            $folder->tahun = date("Y");
+            $folder->path = $folder->tahun.'/'.$namaProyek.'/'.'P3A/';
+            mkdir($folder->tahun.'/'.$namaProyek.'/'.'P3A/'.$folder->nama.'/');
+            $folder->save();
         }
         return redirect('input-tahap-proyek/'.$id);
     }
@@ -112,27 +149,71 @@ class ProjectController extends Controller
         $proyek = Proyek::find($tahapan->id_proyek);
 
         if($sub->save()){
-            mkdir('file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$sub->nama);
+            $folder = new TabelFolder;
+            $folder->nama = $sub->nama;
+            $folder->pic = $sub->pic;
+            $folder->kategori = "Proyek";
+            $folder->id_proyek = $proyek->id;
+            $namaProyek = $proyek->nama;
+            $namaTahapan = $tahapan->nama;
+            $folder->tahun = date("Y");
+            $folder->path = $folder->tahun.'/'.$namaProyek.'/'.'P3A/'.$namaTahapan.'/';
+            mkdir($folder->tahun.'/'.$namaProyek.'/'.'P3A/'.$namaTahapan.'/'.$folder->nama.'/');
+            $folder->save();
         }
 
         return redirect('input-sub-tahapan/'.$id);
     }
 
-    public function list_file_sub_tahapan($id)  //ini ID sub tahapan
-    {
-        $subTahapan = SubTahapanProyek::find($id);
-        $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
-        $proyek = Proyek::find($tahapan->id_proyek);
-        $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.id_sub_tahapan = '.$id);
-        $this->data['namaSubTahapan'] = $subTahapan->nama;
-        $this->data['namaTahapan'] = $tahapan->nama;
-        $this->data['namaProyek'] = $proyek->nama;
-        $this->data['lokasi'] = 'file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
-        //dd($this->data['namaProyek']);
-        return view('proyek.list-file-sub-tahapan', $this->data);
+    // public function list_file_sub_tahapan(Request $request, $id)  //ini ID sub tahapan
+    // {
+    //     $subTahapan = SubTahapanProyek::find($id);
+    //     $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+    //     $proyek = Proyek::find($tahapan->id_proyek);
+    //     // $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.id_sub_tahapan = '.$id);
+    //     $this->data['namaSubTahapan'] = $subTahapan->nama;
+    //     $this->data['namaTahapan'] = $tahapan->nama;
+    //     $this->data['namaProyek'] = $proyek->nama;
+    //           pathis->data['lokasi'] = 'file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
+
+    //     $this->data['path'] = $request->path;
+    //     if($this->data['path']){
+    //         $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = '.$this->data['path']);
+    //         $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = '.$this->data['path']);
+    //     } 
+    //     else{
+    //         $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.id_sub_tahapan = '.$id);
+    //         $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.id_sub_tahapan = '.$id);
+    //     }
+    //     //dd($this->data['namaProyek']);
+    //     return view('proyek.list-file-sub-tahapan', $this->data);
+    // }
+
+    public function list_file_sub_tahapan(Request $request){
+        $path = $request->path;
+        if($path){
+            //jika ke deeper folder
+        }
+        else{
+            //jika ke root file sub tahapan
+            $idSubTahapan = $request->idSubTahapan;
+            $subTahapan = SubTahapanProyek::find($idSubTahapan);
+            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+            $proyek = Proyek::find($tahapan->id_proyek);
+            $this->data['namaSubTahapan'] = $subTahapan->nama;
+            $this->data['namaTahapan'] = $tahapan->nama;
+            $this->data['namaProyek'] = $proyek->nama;
+            $this->data['path'] = 'file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
+            $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.id_sub_tahapan = '.$idSubTahapan);
+            //dd($this->data['fileSubTahapan']);
+            return view('proyek.list-file-sub-tahapan', $this->data);
+            
+        }
     }
 
-    public function save_list_file_sub_tahapan(Request $request, $id) //ini ID sub tahapan
+    
+
+    public function xtambah_file_sub_tahapan_proyek(Request $request, $id) //ini ID sub tahapan
     {
         $subTahapan = SubTahapanProyek::find($id);
         $tahapan = TahapanProyek::find($subTahapan->id_tahapan);

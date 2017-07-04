@@ -53,26 +53,25 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <div>
-                  <button class="btn btn-lg btn-primary" >Tambah File</button>
-                  <button class="btn btn-lg btn-primary" >Tambah Fo</button>
                   <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalTambahFolder">Tambah Folder</button>
                   <br>
                   <br>
-                  <form action="" method="post" enctype="multipart/form-data">
+                  <form action="tambah-file-sub-tahapan-proyek" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="file" name="berkas">
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
                 <br>
-                <big>Lokasi : {{ $lokasi }}</big>
+                <big>Lokasi : {{ $path }}</big>
                 <table class="table table-bordered table-striped">
                   <br>
                   <br>
                   <thead>
                     <tr>
                       <th width="1em">No</th>
-                      <th>Nama File</th>
+                      <th>Nama</th>
+                      <th>Tipe</th>
                       <th>PIC</th>
                       <th>Tanggal</th>
                       <th width="2em">
@@ -90,6 +89,7 @@
                       <tr>
                         <td>{{ $x++ }}</td>
                         <td>{{ $data->nama }}</td>
+                        <td>File</td>
                         <td>{{ $data->pic }}</td>
                         <td>{{ $data->created_at }}</td>
                         <center>
@@ -119,12 +119,11 @@
               </div>
               <div class="modal-body">
                 <form class="form-horizontal" action="{{url('')}}/tambah-folder-file-proyek" method="post">
-
                   {{ csrf_field() }}
                   <!--Name-->
                   <div class="form-group">
                     <label for="namaproyek" class="col-sm-3 control-label">Nama Folder</label>
-                    <input type="hidden" name="direktori" value="{{ $lokasi }}">
+                    <input type="hidden" name="path" value="{{ $path }}">
                     <div class="col-sm-9">
                       <input name="namaFolder" type="text" class="form-control" id="namaproyek">
                     </div>
@@ -136,8 +135,6 @@
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
-                  <!-- /.box-body -->
-                  <!-- /.box-footer -->
                 </form>
               </div>
             </div>
