@@ -5,13 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Input;
 use DB;
-<<<<<<< 6b37c16fa1e500dc08aff462ef3806cc55188b13
 use App\TabelFolder;
 use Auth;
 use DateTime;
-=======
 use App\TabelFile;
->>>>>>> memperbaiki file proyek
 
 class ArsipController extends Controller
 {
