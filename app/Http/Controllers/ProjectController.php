@@ -164,12 +164,29 @@ class ProjectController extends Controller
         return redirect('input-sub-tahapan/'.$id);
     }
 
-    public function list_file_sub_tahapan( $id, $deeppath = null )  //ini ID sub tahapan
+    //Untuk mengakses isi folder dan menampilkannya
+    public function list_file_sub_tahapan( $id, $deeppath = null )  //ini ID sub tahapan, deep path adalah id folder
     { 
         if($deeppath){
-            dd('ini deep path, perlu penanganan lebih lanjut');
+            //dd("KEMUNGKINAN 1 : DEEP PATH / AKSES FOLDER DEEP");
+            $subTahapan = SubTahapanProyek::find($id);
+            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+            $proyek = Proyek::find($tahapan->id_proyek);
+            $tahun = date("Y");
+            $this->data['id_sub_tahapan'] = $id;
+            $this->data['deeppath'] = $deeppath;
+            $this->data['namaSubTahapan'] = $subTahapan->nama;
+            $this->data['namaTahapan'] = $tahapan->nama;
+            $this->data['namaProyek'] = $proyek->nama;
+            $folder = TabelFolder::find($deeppath);
+            $this->data['path'] = $folder->path.$folder->nama.'/';
+            // dd($this->data['path']);
+            $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
+            $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
+            return view('proyek.list-file-sub-tahapan', $this->data);
         }
         else{
+            //dd("KEMUNGKINAN 2 : NORMAL / AKSES FOLDER NORMAL");
             $subTahapan = SubTahapanProyek::find($id);
             $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
             $proyek = Proyek::find($tahapan->id_proyek);
@@ -189,9 +206,37 @@ class ProjectController extends Controller
     public function save_list_file_sub_tahapan (Request $request, $id, $deeppath = null )    //ini ID sub tahapan
     {
         if($deeppath){
-            dd('ini deep path, perlu penanganan lebih lanjut');
+            //dd("KEMUNGKINAN 3 : DEEP PATH / UPLOAD FILE DEEP");
+            $subTahapan = SubTahapanProyek::find($id);
+            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+            $proyek = Proyek::find($tahapan->id_proyek);
+            $tanggal = date_create($subTahapan->tgl_mulai);
+            $tahun = date_format($tanggal, 'Y');
+            $file = $request->file('berkas');
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileSize = $file->getSize();
+            $fileName = $file->getClientOriginalName();
+            $folder = TabelFolder::find($deeppath);
+            $path = $folder->path.$folder->nama.'/';
+
+            $berkas = new TabelFile;
+            $berkas->nama = $fileName;
+            if(Auth::user()){
+                $berkas->pic = Auth::user()->name;
+            }
+            else{
+                $berkas->pic = "Unregistered User";
+            }
+            $berkas->tahun = $tahun;
+            $berkas->path = $path;
+            $berkas->id_sub_tahapan = $id;
+            if($berkas->save()){
+                $file->move($path, $fileName);
+            }
+            return redirect('list-file-sub-tahapan/'.$id.'/'.$deeppath);
         }
         else{
+            //DD("KEMUNGKINAN 4 : NORMAL / UPLOAD FILE NORMAL");
             $subTahapan = SubTahapanProyek::find($id);
             $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
             $proyek = Proyek::find($tahapan->id_proyek);
@@ -225,7 +270,25 @@ class ProjectController extends Controller
     public function tambah_folder_sub_tahapan(Request $request, $id, $deeppath = null)      //ini ID sub tahapan
     {
         if($deeppath){
-            dd('ini adalah deeppath');
+            $subTahapan = SubTahapanProyek::find($id);
+            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+            $proyek = Proyek::find($tahapan->id_proyek);
+            $folder = new TabelFolder;
+            $folder->nama = $request->namaFolder;
+            if(Auth::check()){
+                $folder->pic = Auth::user()->name;
+            }
+            else{
+                $folder->pic = "Unregistered User";
+            }
+            $folder->id_proyek = $tahapan->id_proyek;
+            $folder->tahun = date("Y");
+            $folder->path = $request->path;
+            $folder->kategori = "Proyek";
+            if($folder->save()){
+                mkdir($folder->path.$folder->nama);
+            }
+            return redirect('list-file-sub-tahapan/'.$id.'/'.$deeppath);
         }
         else{
             $subTahapan = SubTahapanProyek::find($id);

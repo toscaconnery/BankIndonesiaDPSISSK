@@ -94,7 +94,7 @@
                         <td>{{ $data->created_at }}</td>
                         <center>
                           <td width="2em">
-                            <button class="btn btn-primary">Buka</button>
+                            <a href="{{url('')}}/list-file-sub-tahapan/{{ $id_sub_tahapan }}/{{ $data->id }}"><button class="btn btn-primary">Buka</button></a>
                           </td>
                         </center>
                       </tr>
@@ -132,7 +132,7 @@
                 <center><h3 class="modal-title" id="modalTambahFolder" style="font-weight: bold;">Form Tambah Folder</h3></center>
               </div>
               <div class="modal-body">
-                <form class="form-horizontal" action="{{url('')}}/tambah-folder-sub-tahapan/{{$id_sub_tahapan}}" method="post">
+                <form class="form-horizontal" action="{{url('')}}/tambah-folder-sub-tahapan/{{$id_sub_tahapan}}{{ isset($deeppath) ? '/'.$deeppath : ''}}" method="post">
                   {{ csrf_field() }}
                   <!--Name-->
                   <div class="form-group">
