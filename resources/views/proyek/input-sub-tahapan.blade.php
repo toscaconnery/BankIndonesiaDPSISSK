@@ -117,11 +117,12 @@
                       <td>{{$sub->status}}</td>
                       <td width="11em">
                         <center>
-                          <form action="{{url('')}}/list-file-sub-tahapan" method="post">
+                          <form action="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="idSubTahapan" value="{{ $sub->id }}">
-                            <button type="submit" style="width: 8em" class="btn btn-primary">Detail</button>
+                            <button type="submit" style="width: 8em" class="btn btn-primary">X</button>
                           </form>
+                          <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}"><button type="button" style="width: 8em" class="btn btn-primary">Detail</button></a>
                         </center>
                       </td>
                     </tr>
