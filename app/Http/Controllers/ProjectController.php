@@ -110,7 +110,7 @@ class ProjectController extends Controller
         $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
         $tahap->tgl_mulai = $tgl_mulai;
         $tahap->tgl_selesai = $tgl_selesai;
-        $tahap->status = 'Suspend';
+        $tahap->status = 'Pending';
 
         if($tahap->save()){
             $folder = new TabelFolder;
@@ -125,6 +125,14 @@ class ProjectController extends Controller
             $folder->save();
         }
         return redirect('input-tahap-proyek/'.$id);
+    }
+
+    public function mulai_tahap_proyek($id)
+    {
+        $tahapan = TahapanProyek::find($id);
+        $tahapan->status = "On Progress";
+        $tahapan->save();
+        return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
     }
 
     public function input_sub_tahapan($id)  //ini ID tahapan
@@ -151,7 +159,7 @@ class ProjectController extends Controller
         $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
         $sub->tgl_mulai = $tgl_mulai;
         $sub->tgl_selesai = $tgl_selesai;
-        $sub->status = 'Belum selesai';
+        $sub->status = 'Pending';
 
         $tahapan = TahapanProyek::find($id);
         $proyek = Proyek::find($tahapan->id_proyek);
@@ -169,8 +177,15 @@ class ProjectController extends Controller
             mkdir($folder->tahun.'/'.$namaProyek.'/'.'P3A/'.$namaTahapan.'/'.$folder->nama.'/');
             $folder->save();
         }
-
         return redirect('input-sub-tahapan/'.$id);
+    }
+
+    public function mulai_sub_tahapan_proyek($id)
+    {
+        $subTahapan = SubTahapanProyek::find($id);
+        $subTahapan->status = "On Progress";
+        $subTahapan->save();
+        return redirect('input-sub-tahapan/'.$subTahapan->id_tahapan);
     }
 
     //Untuk mengakses isi folder dan menampilkannya

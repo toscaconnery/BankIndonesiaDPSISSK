@@ -128,7 +128,20 @@
                         <td>{{$tahapan->tgl_real_selesai ? $tahapan->tgl_real_selesai : '-'}}</td>
                         <td>{{$tahapan->pic}}</td>
                         <td>{{$tahapan->status}}</td>
-                        <center><td><a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'><button class="btn btn-primary">Update</button></td></center>
+                          <center>
+                            <td>
+                              @if($tahapan->status == "Pending")
+                                <a href='{{url('')}}/mulai-tahap-proyek/{{$tahapan->id}}'>
+                                  <button class="btn btn-primary">Mulai</button>
+                                </a>
+                              @else
+                                <a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'>
+                                  <button class="btn btn-primary">Update</button>
+                                </a>
+                              @endif
+                                
+                            </td>
+                          </center>
                       </tr>
                     @endforeach
                 </table>
