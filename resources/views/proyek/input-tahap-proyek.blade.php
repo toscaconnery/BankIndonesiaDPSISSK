@@ -131,7 +131,6 @@
                         <center><td><a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'><button class="btn btn-primary">Update</button></td></center>
                       </tr>
                     @endforeach
-
                 </table>
               </div>
               <!-- /.box-body -->

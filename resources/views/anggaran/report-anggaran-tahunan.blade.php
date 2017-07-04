@@ -64,8 +64,8 @@
                   @foreach($anggaran as $anggaran)
                     <tr>
                       <td>{{$anggaran->tahun}}</td>
-                      <td>{{$anggaran->ri}}</td>  {{-- ri dianggarkan --}}
-                      <td>{{$anggaran->op}}</td>  {{-- op dianggarkan --}}
+                      <td>Rp. {{ number_format($anggaran->ri) }}</td>  {{-- ri dianggarkan --}}
+                      <td>Rp. {{ number_format($anggaran->op) }}</td>  {{-- op dianggarkan --}}
                       <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
                       <td>{{$anggaran->used_ri}}</td>  {{-- ri realisasi --}}
                       <td width="10px">100%</td>  {{-- persen ri realisasi --}}
@@ -80,21 +80,6 @@
                   @endforeach
                     <tr>
                       <td>2015</td>
-                      <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
-                      <td>Rp. 234.234.242</td>  {{-- op dianggarkan --}}
-                      <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
-                      <td>Rp. 234.234.242</td>  {{-- ri realisasi --}}
-                      <td width="10px">100%</td>  {{-- persen ri realisasi --}}
-                      <td>Rp. 200.234.242</td>  {{-- op realisasi --}}
-                      <td width="10px">90%</td> {{-- persen op realisasi --}}
-                      <td>Rp. 468.468.484</td>  {{-- total realisasi --}}
-                      <td width="10px">80%</td> {{-- persen total realisasi --}}
-                      <td>Rp. 34.000.000</td> {{-- sisa anggaran --}}
-                      <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
-                      <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
-                    </tr>
-                    <tr>
-                      <td>2014</td>
                       <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
                       <td>Rp. 234.234.242</td>  {{-- op dianggarkan --}}
                       <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
