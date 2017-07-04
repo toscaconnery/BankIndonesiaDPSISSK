@@ -34,6 +34,7 @@ Route::get('list-arsip', 'ArsipController@list_arsip');
 Route::post('list-arsip', 'ArsipController@save_input_folder');
 Route::get('input-arsip', 'ArsipController@input_arsip');
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
+Route::get('download-file/{id}', 'ArsipController@download_file');
 //Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
 
 // ANGGARAN

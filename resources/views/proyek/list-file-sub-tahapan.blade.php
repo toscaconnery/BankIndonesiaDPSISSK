@@ -108,7 +108,7 @@
                         <td>{{ $data->created_at }}</td>
                         <center>
                           <td width="2em">
-                            <button class="btn btn-primary">Download</button>
+                            <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
                           </td>
                         </center>
                       </tr>

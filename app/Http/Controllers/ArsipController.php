@@ -9,6 +9,7 @@ use App\TabelFolder;
 use Auth;
 use DateTime;
 use App\TabelFile;
+use Response;
 
 class ArsipController extends Controller
 {
@@ -52,6 +53,13 @@ class ArsipController extends Controller
     public function list_file_arsip()
     {
     	return view('arsip.list-file-arsip');
+    }
+
+    public function download_file($id)
+    {
+        $dataFile = TabelFile::find($id);
+        $file = $dataFile->path.$dataFile->nama;
+        return Response::download($file);
     }
 
     // public function tambah_file_sub_tahapan_proyek(Request $request)
