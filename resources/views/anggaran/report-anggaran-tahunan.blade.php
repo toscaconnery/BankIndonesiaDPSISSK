@@ -75,7 +75,7 @@
                       <td width="10px">80%</td> {{-- persen total realisasi --}}
                       <td>Rp. 34.000.000</td> {{-- sisa anggaran --}}
                       <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
-                      <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
+                      <td><a href="{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}">Detail</a></td>
                     </tr>
                   @endforeach
                     <tr>

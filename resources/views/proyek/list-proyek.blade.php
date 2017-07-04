@@ -195,7 +195,7 @@
                               </tr>
                               <tr>
                                 <td>1.</td>
-                                <td>Update software</td>
+                                <td>Pengajuan</td>
                                 <td>
                                   <div class="progress progress-xs">
                                     <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
@@ -206,7 +206,7 @@
                               </tr>
                               <tr>
                                 <td>2.</td>
-                                <td>Clean database</td>
+                                <td>Desain</td>
                                 <td>
                                   <div class="progress progress-xs">
                                     <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
@@ -217,7 +217,7 @@
                               </tr>
                               <tr>
                                 <td>3.</td>
-                                <td>Cron job running</td>
+                                <td>Pemrograman</td>
                                 <td>
                                   <div class="progress progress-xs progress-striped active">
                                     <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
@@ -228,7 +228,29 @@
                               </tr>
                               <tr>
                                 <td>4.</td>
-                                <td>Fix and squish bugs</td>
+                                <td>Pengujian</td>
+                                <td>
+                                  <div class="progress progress-xs progress-striped active">
+                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                  </div>
+                                </td>
+                                <td><span class="badge bg-green">90%</span></td>
+                                <td>Pak Alam</td>
+                              </tr>
+                              <tr>
+                                <td>5.</td>
+                                <td>Siap Implementasi</td>
+                                <td>
+                                  <div class="progress progress-xs progress-striped active">
+                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                  </div>
+                                </td>
+                                <td><span class="badge bg-green">90%</span></td>
+                                <td>Pak Alam</td>
+                              </tr>
+                              <tr>
+                                <td>6.</td>
+                                <td>Implementasi</td>
                                 <td>
                                   <div class="progress progress-xs progress-striped active">
                                     <div class="progress-bar progress-bar-success" style="width: 90%"></div>

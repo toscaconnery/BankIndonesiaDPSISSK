@@ -26,7 +26,7 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Pencairan Anggaran
+        Pencairan Anggaran {{$tahun_ang}}
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>

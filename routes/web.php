@@ -39,7 +39,7 @@ Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan'
 Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
 Route::post('report-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
 Route::post('input-pencairan-anggaran', 'AnggaranController@save_input_pengeluaran');
-Route::get('report-anggaran-bulanan', 'AnggaranController@report_anggaran_bulanan');
+Route::get('report-anggaran-bulanan/{tahun}', 'AnggaranController@report_anggaran_bulanan');
 Route::get('report-anggaran-rinci', 'AnggaranController@report_anggaran_rinci');
 
 // ISSUE

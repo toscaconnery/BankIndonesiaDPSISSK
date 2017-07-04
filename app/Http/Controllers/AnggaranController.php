@@ -17,10 +17,31 @@ class AnggaranController extends Controller
         return view('anggaran.report-anggaran-tahunan', $this->data);
     }
 
-    public function report_anggaran_bulanan()
+    // public function input_tahap_proyek($id)
+    // {
+    //     $this->data['id_proyek'] = $id;
+    //     $this->data['jenis_proyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id)[0]->jenis;
+    //     $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id.' ORDER BY t.created_at ASC');
+    //     $proyek = Proyek::find($id);
+    //     $this->data['namaProyek'] = $proyek->nama;
+    //     return view('proyek.input-tahap-proyek', $this->data);
+    // }
+
+    public function report_anggaran_bulanan($tahun)
     {
-        return view('anggaran.report-anggaran-bulanan');
+        $this->data['tahun_anggaran'] = $tahun;
+        $this->data['jlh_pengeluaran_bulanan'] = DB::select('SELECT MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = CAST(2018 AS INTEGER) GROUP BY MONTH(tanggal_pencairan)');
+        $anggaran = Anggaran::find($tahun);
+        dd($anggaran);
+        //$this->data['tahun_ang'] = $anggaran->tahun;
+        return view('anggaran.report-anggaran-bulanan', $this->data);
+        // return view('anggaran.report-anggaran-bulanan');
     }
+
+    // public function report_anggaran_bulanan()
+    // {
+    //     return view('anggaran.report-anggaran-bulanan');
+    // }
 
     public function input_anggaran_tahunan()
     {
