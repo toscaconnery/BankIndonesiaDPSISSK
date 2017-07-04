@@ -66,7 +66,7 @@
                       <td>{{$anggaran->tahun}}</td>
                       <td>Rp. {{ number_format($anggaran->ri) }}</td>  {{-- ri dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->op) }}</td>  {{-- op dianggarkan --}}
-                      <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
+                      <td>Rp. {{ number_format($anggaran->nominal) }}</td>  {{-- total dianggarkan --}}
                       <td>{{$anggaran->used_ri}}</td>  {{-- ri realisasi --}}
                       <td width="10px">100%</td>  {{-- persen ri realisasi --}}
                       <td>{{$anggaran->used_op}}</td>  {{-- op realisasi --}}

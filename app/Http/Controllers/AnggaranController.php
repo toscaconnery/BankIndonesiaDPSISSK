@@ -108,6 +108,7 @@ class AnggaranController extends Controller
         //  $anggaran->pic = 0;
         // }
         $pengeluaran->save();
+        $anggaran = DB::select('Update ')
         return redirect('report-anggaran-tahunan');
     }
 }
