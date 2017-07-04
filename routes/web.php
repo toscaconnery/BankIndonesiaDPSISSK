@@ -17,6 +17,8 @@ Route::get('input-sub-tahapan/{id}', 'ProjectController@input_sub_tahapan');
 Route::post('input-sub-tahapan/{id}', 'ProjectController@save_input_sub_tahapan');
 Route::get('list-file-sub-tahapan/{id}/{deeppath?}', 'ProjectController@list_file_sub_tahapan');
 Route::post('list-file-sub-tahapan/{id}/{deeppath?}', 'ProjectController@save_list_file_sub_tahapan');
+Route::post('tambah-folder-sub-tahapan/{id}/{deeppath?}', 'ProjectController@tambah_folder_sub_tahapan');
+
 //Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
 
 // Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
@@ -32,7 +34,8 @@ Route::get('list-arsip', 'ArsipController@list_arsip');
 Route::post('list-arsip', 'ArsipController@save_input_folder');
 Route::get('input-arsip', 'ArsipController@input_arsip');
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
-Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
+Route::get('download-file/{id}', 'ArsipController@download_file');
+//Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
 
 // ANGGARAN
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');

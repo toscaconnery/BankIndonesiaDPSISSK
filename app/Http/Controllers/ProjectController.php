@@ -174,11 +174,13 @@ class ProjectController extends Controller
             $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
             $proyek = Proyek::find($tahapan->id_proyek);
             $tahun = date("Y");
+            $this->data['id_sub_tahapan'] = $id;
             $this->data['namaSubTahapan'] = $subTahapan->nama;
             $this->data['namaTahapan'] = $tahapan->nama;
             $this->data['namaProyek'] = $proyek->nama;
             $this->data['path'] = $tahun.'/'.$proyek->nama.'/'.'P3A/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
             $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
+            $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
             
             return view('proyek.list-file-sub-tahapan', $this->data);
         }
@@ -219,36 +221,37 @@ class ProjectController extends Controller
 
         }
     }
-    
 
-    public function xtambah_file_sub_tahapan_proyek(Request $request, $id) //ini ID sub tahapan
+    public function tambah_folder_sub_tahapan(Request $request, $id, $deeppath = null)      //ini ID sub tahapan
     {
-        $subTahapan = SubTahapanProyek::find($id);
-        $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
-        $proyek = Proyek::find($tahapan->id_proyek);
-
-        $file = $request->file('berkas');
-        $fileExtension = $file->getClientOriginalExtension();
-        $fileSize = $file->getSize();
-        $fileMime = $file->getMimeType();
-        $fileName = $file->getClientOriginalName();
-        $path = 'file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
-
-        $berkas = new TabelFile;
-        $berkas->nama = $fileName;
-        if(Auth::check()){
-            $berkas->pic = Auth::user()->name;
+        if($deeppath){
+            dd('ini adalah deeppath');
         }
-        else {
-            $berkas->pic = 'Unregistered User';
+        else{
+            $subTahapan = SubTahapanProyek::find($id);
+            $tahapan  = TahapanProyek::find($subTahapan->id_tahapan);
+            $folder = new TabelFolder;
+            $folder->nama = $request->namaFolder;
+            if(Auth::check()){
+                $folder->pic = Auth::user()->name;
+            }
+            else{
+                $folder->pic = "Unregistered User";
+            }
+            $folder->id_proyek = $tahapan->id_proyek;
+            $folder->tahun = date("Y");
+            $folder->path = $request->path;
+            $folder->kategori = "Proyek";
+            if($folder->save()){
+                mkdir($folder->path.$folder->nama);
+            }
+            return redirect('list-file-sub-tahapan/'.$id);
         }
-        $berkas->tahun = date("Y");
-        $berkas->path = $path;
-        $berkas->id_sub_tahapan = $id;
-        $berkas->save();
-
-        $file->move($path, $fileName);
-
-        return redirect('list-file-sub-tahapan/'.$id);
     }
+    
 }
+
+
+
+
+
