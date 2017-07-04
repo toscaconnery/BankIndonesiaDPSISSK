@@ -50,9 +50,9 @@
             <div class="col-sm-3">
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>Prediksi</h3>
+                  <h3>Forecast</h3>
 
-                  <p>New Orders</p>
+                  <p>Surplus Rp 53.000.000</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -60,10 +60,9 @@
               </div>
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>Dianggarkan</h3>
-
-                  <p>RI : Rp 6.000.000</p>
-                  <p>OP : Rp 2.000.000</p>
+                  <h3>Budget</h3>
+                  <p>RI : Rp 6433.000.000</p>
+                  <p>OP : Rp 2343.000.000</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -71,7 +70,7 @@
               </div>
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>Terpakai</h3>
+                  <h3>Rest</h3>
 
                   <p>RI : Rp 4.000.000</p>
                   <p>OP : Rp 1.000.000</p>
