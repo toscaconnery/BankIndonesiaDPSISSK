@@ -17,6 +17,7 @@ class ProjectController extends Controller
     public function list_proyek()
     {
         $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p ORDER BY p.created_at DESC');
+        $this->data['modalProyek'] = $this->data['proyek'];
     	return view('proyek.list-proyek', $this->data);
     }
 

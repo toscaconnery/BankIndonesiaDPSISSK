@@ -176,95 +176,97 @@
                     </tr>
                     @endforeach
                   </table>
-                  
-                  <div class="modal" id="Modal2{{$proyek->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Progress {{$proyek->nama}}</h3></center>
-                          </div>
-                          <div class="modal-body">
-                            <table class="table table-bordered">
-                              <tr>
-                                <th style="width: 10px">No</th>
-                                <th>Tahapan</th>
-                                <th>Progres</th>
-                                <th style="width: 40px">Presentase</th>
-                                <th>PIC</th>
-                              </tr>
-                              <tr>
-                                <td>1.</td>
-                                <td>Pengajuan</td>
-                                <td>
-                                  <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-red">55%</span></td>
-                                <td>Pak Alam</td>
-                              </tr>
-                              <tr>
-                                <td>2.</td>
-                                <td>Desain</td>
-                                <td>
-                                  <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-yellow">70%</span></td>
-                                <td>Pak Alam</td>
-                              </tr>
-                              <tr>
-                                <td>3.</td>
-                                <td>Pemrograman</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-light-blue">30%</span></td>
-                                <td>Pak Alam</td>
-                              </tr>
-                              <tr>
-                                <td>4.</td>
-                                <td>Pengujian</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-green">90%</span></td>
-                                <td>Pak Alam</td>
-                              </tr>
-                              <tr>
-                                <td>5.</td>
-                                <td>Siap Implementasi</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-green">90%</span></td>
-                                <td>Pak Alam</td>
-                              </tr>
-                              <tr>
-                                <td>6.</td>
-                                <td>Implementasi</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-green">90%</span></td>
-                                <td>Pak Alam</td>
-                              </tr>
-                            </table>
-                          </div>
+
+                  @foreach($modalProyek as $data)
+                  <div class="modal" id="Modal2{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Progress {{$data->nama}}</h3></center>
+                        </div>
+                        <div class="modal-body">
+                          <table class="table table-bordered">
+                            <tr>
+                              <th style="width: 10px">No</th>
+                              <th>Tahapan</th>
+                              <th>Progres</th>
+                              <th style="width: 40px">Presentase</th>
+                              <th>PIC</th>
+                            </tr>
+                            <tr>
+                              <td>1.</td>
+                              <td>Pengajuan</td>
+                              <td>
+                                <div class="progress progress-xs">
+                                  <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-red">55%</span></td>
+                              <td>Pak Alam</td>
+                            </tr>
+                            <tr>
+                              <td>2.</td>
+                              <td>Desain</td>
+                              <td>
+                                <div class="progress progress-xs">
+                                  <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-yellow">70%</span></td>
+                              <td>Pak Alam</td>
+                            </tr>
+                            <tr>
+                              <td>3.</td>
+                              <td>Pemrograman</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-light-blue">30%</span></td>
+                              <td>Pak Alam</td>
+                            </tr>
+                            <tr>
+                              <td>4.</td>
+                              <td>Pengujian</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-green">90%</span></td>
+                              <td>Pak Alam</td>
+                            </tr>
+                            <tr>
+                              <td>5.</td>
+                              <td>Siap Implementasi</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-green">90%</span></td>
+                              <td>Pak Alam</td>
+                            </tr>
+                            <tr>
+                              <td>6.</td>
+                              <td>Implementasi</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-green">90%</span></td>
+                              <td>Pak Alam</td>
+                            </tr>
+                          </table>
                         </div>
                       </div>
                     </div>
-                    
+                  </div>
+                  @endforeach
+
                 </div>
                 <!-- /.box-body -->
               </div>
