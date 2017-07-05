@@ -282,6 +282,7 @@ class ProjectController extends Controller
         return redirect('input-sub-tahapan/'.$id);
     }
 
+
     public function input_sub_tahapan($id)  //ini ID tahapan
     {
         $this->data['sub'] = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
@@ -327,11 +328,20 @@ class ProjectController extends Controller
         return redirect('input-sub-tahapan/'.$id);
     }
 
-    public function mulai_sub_tahapan_proyek($id)
+    public function mulai_sub_tahapan_proyek($id)   //ini ID sub tahapan
     {
         $subTahapan = SubTahapanProyek::find($id);
         $subTahapan->status = "On Progress";
         $subTahapan->tgl_real_mulai = date("Y-m-d");
+        $subTahapan->save();
+        return redirect('input-sub-tahapan/'.$subTahapan->id_tahapan);
+    }
+
+    public function selesaikan_sub_tahapan_proyek($id)  //ini ID sub tahapan
+    {
+        $subTahapan = SubTahapanProyek::find($id);
+        $subTahapan->tgl_real_selesai = date("Y-m-d");
+        $subTahapan->status = "Finish";
         $subTahapan->save();
         return redirect('input-sub-tahapan/'.$subTahapan->id_tahapan);
     }
