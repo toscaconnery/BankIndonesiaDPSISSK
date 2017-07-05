@@ -17,6 +17,7 @@ class DashboardController extends Controller
                                             WHERE i.status = "On Progress" 
                                             OR i.status = "Pending" 
                                             ORDER BY i.created_at DESC');
+        $this->data['anggaran'] = DB::select('SELECT * from anggaran where tahun=YEAR(now())');
     	return view('dashboard.dashboard', $this->data);
     	// }
     	// else

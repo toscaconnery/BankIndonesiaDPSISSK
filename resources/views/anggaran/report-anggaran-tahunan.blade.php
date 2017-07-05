@@ -72,13 +72,13 @@
                       <td>Rp. {{ number_format($anggaran->used_op) }}</td>  {{-- op realisasi --}}
                       <td width="10px">{{$anggaran->persen_op}}%</td> {{-- persen op realisasi --}}
                       <td>Rp. {{ number_format($anggaran->used_total) }}</td>  {{-- total realisasi --}}
-                      <td width="10px">80%</td> {{-- persen total realisasi --}}
+                      <td width="10px">{{$anggaran->persen_realisasi}}%</td> {{-- persen total realisasi --}}
                       <td>Rp. {{ number_format($anggaran->sisa) }}</td> {{-- sisa anggaran --}}
                       <td width="5px">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
                       <td><a href="{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}">Detail</a></td>
                     </tr>
                   @endforeach
-                    <tr>
+                    <!-- <tr>
                       <td>2015</td>
                       <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
                       <td>Rp. 234.234.242</td>  {{-- op dianggarkan --}}
@@ -92,7 +92,7 @@
                       <td>Rp. 34.000.000</td> {{-- sisa anggaran --}}
                       <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
                       <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
                 <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Tambah Pengeluaran</button></center>
@@ -243,14 +243,8 @@
   <!-- page script -->
   <script>
     $(function () {
-      $("#example1").DataTable();
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false
+      $('#example1').DataTable({
+        "order": [[ 0, "desc" ]]
       });
     });
   </script>

@@ -8,12 +8,13 @@ use App\Anggaran;
 use App\Pencairan;
 use Auth;
 use DB;
+use Redirect;
 
 class AnggaranController extends Controller
 {
     public function report_anggaran_tahunan()
     {
-        $this->data['anggaran'] = DB::select('SELECT a.*,used_ri+used_op as used_total, ROUND(used_ri * 100.0 / ri, 1) as persen_ri, ROUND(used_op * 100.0 / op, 1) as persen_op, nominal-used_ri-used_op as sisa, ROUND((used_ri+used_op) * 100.0 / nominal, 1) as persen_used FROM anggaran a ORDER BY a.created_at DESC');
+        $this->data['anggaran'] = DB::select('SELECT a.*,used_ri+used_op as used_total, ROUND(used_ri * 100.0 / ri, 2) as persen_ri, ROUND(used_op * 100.0 / op, 2) as persen_op, nominal-used_ri-used_op as sisa, ROUND((used_ri+used_op) * 100.0 / nominal, 2) as persen_realisasi, ROUND(100-(used_ri+used_op) * 100.0 / nominal, 2) as persen_used FROM anggaran a ORDER BY a.created_at DESC');
         return view('anggaran.report-anggaran-tahunan', $this->data);
     }
 
@@ -59,7 +60,7 @@ class AnggaranController extends Controller
         $this->data['numbulan'] = $idbulan;
         // dd($this->data['tahun_anggar']);
         // dd($this->data['numbulan']);
-        $this->data['pengeluaran_rinci'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.'');
+        $this->data['pengeluaran_rinci'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.' ORDER BY tanggal_pencairan');
         return view('anggaran.report-anggaran-rinci', $this->data);
     }
 
@@ -94,7 +95,9 @@ class AnggaranController extends Controller
         $kategori = Input::get('kategori');
         $nominal = Input::get('nominal');
         $keterangan = Input::get('keterangan');
-        
+        $year = intval($tanggal);
+        // dd($year);
+
         $pengeluaran = new Pencairan;
         $pengeluaran->tanggal_pencairan = $tanggal;
         $pengeluaran->nominal = $nominal;
@@ -108,11 +111,14 @@ class AnggaranController extends Controller
         //  $anggaran->pic = 0;
         // }
         $pengeluaran->save();
-        // if($kategori=='OP')
-        // {
-        //     $opterpakai = DB::select('SELECT SUM(nominal) from pencairan  where tahun='.$tahun.'');
-        // }
-        // $anggaran = DB::select('Update ')
-        return redirect('report-anggaran-tahunan');
+        if($kategori=='OP')
+        {
+            DB::select('UPDATE anggaran SET used_op=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="OP") where tahun='.$year.'');
+        }
+        else if($kategori=='RI')
+        {
+            DB::select('UPDATE anggaran SET used_ri=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="RI") where tahun='.$year.'');
+        }
+        return Redirect::back();
     }
 }

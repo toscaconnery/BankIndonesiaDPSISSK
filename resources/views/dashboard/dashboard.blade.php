@@ -190,8 +190,6 @@
                     </span>
                   </li>
                   <!--list issue-->
-                  
-
                   @foreach($issue as $issue)
                     <li>
                       <i class="fa fa-info bg-blue"></i>

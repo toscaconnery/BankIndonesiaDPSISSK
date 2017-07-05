@@ -47,7 +47,6 @@
       </section>
       <section class="content">
         <div class="row">
-
           <div class="col-md-4">
           <button type="submit" class="btn btn-primary" style="float: right;">MLBI</button>
           <div class="box box-primary col-md-6">

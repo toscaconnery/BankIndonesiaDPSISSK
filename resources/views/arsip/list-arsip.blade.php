@@ -53,12 +53,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
-                      <td>Folder New</td>
-                      <td>Proyek</td>
-                      <td>Tosca</td>
-                      <td>2 Januari 2017</td>
-                    </tr>
                     @foreach($tabel_folder as $tabel_folder)
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
                       <td>{{$tabel_folder->nama}}</td>
@@ -136,7 +130,9 @@
       <!-- page script -->
       <script>
         $(function () {
-          $("#example1").DataTable();
+          $('#example1').DataTable({
+            "order": [[ 0, "desc" ]]
+          });
           $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
