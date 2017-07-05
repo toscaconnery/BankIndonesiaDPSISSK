@@ -83,6 +83,7 @@ class ProjectController extends Controller
     {
         $proyek = Proyek::find($id);
         $proyek->status = "On Progress";
+        $proyek->tgl_real_mulai = date("Y-m-d");
         $proyek->save();
         return redirect('list-proyek');
     }
@@ -131,6 +132,7 @@ class ProjectController extends Controller
     {
         $tahapan = TahapanProyek::find($id);
         $tahapan->status = "On Progress";
+        $tahapan->tgl_real_mulai = date("Y-m-d");
         $tahapan->save();
         return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
     }
