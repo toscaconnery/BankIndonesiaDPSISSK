@@ -61,8 +61,8 @@
               <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3>Budget</h3>
-                  <p>RI : Rp 6433.000.000</p>
-                  <p>OP : Rp 2343.000.000</p>
+                  <p>RI : Rp {{ number_format($anggaran[0]->ri) }}</p>
+                  <p>OP : Rp {{ number_format($anggaran[0]->op) }}</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -72,8 +72,8 @@
                 <div class="inner">
                   <h3>Rest</h3>
 
-                  <p>RI : Rp 4.000.000</p>
-                  <p>OP : Rp 1.000.000</p>
+                  <p>RI : Rp {{ number_format($anggaran[0]->used_ri) }}</p>
+                  <p>OP : Rp {{ number_format($anggaran[0]->used_op) }}</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
