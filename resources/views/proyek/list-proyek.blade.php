@@ -188,14 +188,17 @@
                     </tr>
                     @endforeach
                   </table>
-
-                  @foreach($modalProyek as $data)
-                  <div class="modal" id="Modal2{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  {{-- @php
+                    dd($kelengkapanProyek);
+                  @endphp --}}
+                  @foreach($kelengkapanProyek as $data)
+                  {{-- {{dd($data)}} --}}
+                  <div class="modal" id="Modal2{{$data['id']}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Progress {{$data->nama}}</h3></center>
+                          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Progress {{$data['nama']}}</h3></center>
                         </div>
                         <div class="modal-body">
                           <table class="table table-bordered">
@@ -210,33 +213,33 @@
                               <td>1.</td>
                               <td>Pengajuan</td>
                               <td>
-                                <div class="progress progress-xs">
-                                  <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengajuan']}}%"></div>
                                 </div>
                               </td>
-                              <td><span class="badge bg-red">55%</span></td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengajuan'],0); ?>%</span></td>
                               <td>Pak Alam</td>
                             </tr>
                             <tr>
                               <td>2.</td>
-                              <td>Desain</td>
+                              <td>Disain</td>
                               <td>
-                                <div class="progress progress-xs">
-                                  <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenDisain']}}%"></div>
                                 </div>
                               </td>
-                              <td><span class="badge bg-yellow">70%</span></td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenDisain'],0); ?>%</span></td>
                               <td>Pak Alam</td>
                             </tr>
                             <tr>
                               <td>3.</td>
-                              <td>Pemrograman</td>
+                              <td>Pengembangan</td>
                               <td>
                                 <div class="progress progress-xs progress-striped active">
-                                  <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengembangan']}}%"></div>
                                 </div>
                               </td>
-                              <td><span class="badge bg-light-blue">30%</span></td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengembangan'],0); ?>%</span></td>
                               <td>Pak Alam</td>
                             </tr>
                             <tr>
@@ -244,10 +247,10 @@
                               <td>Pengujian</td>
                               <td>
                                 <div class="progress progress-xs progress-striped active">
-                                  <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengujian']}}%"></div>
                                 </div>
                               </td>
-                              <td><span class="badge bg-green">90%</span></td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengujian'],0); ?>%</span></td>
                               <td>Pak Alam</td>
                             </tr>
                             <tr>
@@ -255,10 +258,10 @@
                               <td>Siap Implementasi</td>
                               <td>
                                 <div class="progress progress-xs progress-striped active">
-                                  <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenSiapImplementasi']}}%"></div>
                                 </div>
                               </td>
-                              <td><span class="badge bg-green">90%</span></td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenSiapImplementasi'],0); ?>%</span></td>
                               <td>Pak Alam</td>
                             </tr>
                             <tr>
@@ -266,10 +269,10 @@
                               <td>Implementasi</td>
                               <td>
                                 <div class="progress progress-xs progress-striped active">
-                                  <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenImplementasi']}}%"></div>
                                 </div>
                               </td>
-                              <td><span class="badge bg-green">90%</span></td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenImplementasi'],0); ?>%</span></td>
                               <td>Pak Alam</td>
                             </tr>
                           </table>
