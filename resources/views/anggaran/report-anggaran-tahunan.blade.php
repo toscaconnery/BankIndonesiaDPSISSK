@@ -67,14 +67,14 @@
                       <td>Rp. {{ number_format($anggaran->ri) }}</td>  {{-- ri dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->op) }}</td>  {{-- op dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->nominal) }}</td>  {{-- total dianggarkan --}}
-                      <td>{{$anggaran->used_ri}}</td>  {{-- ri realisasi --}}
-                      <td width="10px">100%</td>  {{-- persen ri realisasi --}}
-                      <td>{{$anggaran->used_op}}</td>  {{-- op realisasi --}}
-                      <td width="10px">90%</td> {{-- persen op realisasi --}}
-                      <td>Rp. 468.468.484</td>  {{-- total realisasi --}}
+                      <td>Rp. {{ number_format($anggaran->used_ri) }}</td>  {{-- ri realisasi --}}
+                      <td width="10px">{{$anggaran->persen_ri}}%</td>  {{-- persen ri realisasi --}}
+                      <td>Rp. {{ number_format($anggaran->used_op) }}</td>  {{-- op realisasi --}}
+                      <td width="10px">{{$anggaran->persen_op}}%</td> {{-- persen op realisasi --}}
+                      <td>Rp. {{ number_format($anggaran->used_total) }}</td>  {{-- total realisasi --}}
                       <td width="10px">80%</td> {{-- persen total realisasi --}}
-                      <td>Rp. 34.000.000</td> {{-- sisa anggaran --}}
-                      <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
+                      <td>Rp. {{ number_format($anggaran->sisa) }}</td> {{-- sisa anggaran --}}
+                      <td width="5px">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
                       <td><a href="{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}">Detail</a></td>
                     </tr>
                   @endforeach

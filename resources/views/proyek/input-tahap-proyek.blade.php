@@ -40,13 +40,16 @@
         <h1>
           Proyek {{$namaProyek}}
         </h1>
+
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/list-proyek"><i class="fa fa-cubes"></i> Proyek</a></li>
         </ol>
       </section>
       <section class="content">
         <div class="row">
+
           <div class="col-md-4">
+          <button type="submit" class="btn btn-primary" style="float: right;">MLBI</button>
           <div class="box box-primary col-md-6">
             <div class="box-header">
               <h3 class="box-title">Input Tahapan</h3>

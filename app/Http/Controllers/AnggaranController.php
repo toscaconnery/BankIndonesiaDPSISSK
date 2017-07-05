@@ -13,7 +13,7 @@ class AnggaranController extends Controller
 {
     public function report_anggaran_tahunan()
     {
-        $this->data['anggaran'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
+        $this->data['anggaran'] = DB::select('SELECT a.*,used_ri+used_op as used_total, ROUND(used_ri * 100.0 / ri, 1) as persen_ri, ROUND(used_op * 100.0 / op, 1) as persen_op, nominal-used_ri-used_op as sisa, ROUND((used_ri+used_op) * 100.0 / nominal, 1) as persen_used FROM anggaran a ORDER BY a.created_at DESC');
         return view('anggaran.report-anggaran-tahunan', $this->data);
     }
 
