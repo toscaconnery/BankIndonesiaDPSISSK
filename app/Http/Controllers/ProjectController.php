@@ -271,8 +271,8 @@ class ProjectController extends Controller
             }
         }
         
-        //update tahapan menjadi selesai
         if($selesai == 1){
+            //update tahapan menjadi selesai
             $tahapan = TahapanProyek::find($id);
             $tahapan->status = "Finish";
             $tahapan->tgl_real_selesai = date("Y-m-d");
@@ -343,6 +343,91 @@ class ProjectController extends Controller
         $subTahapan->tgl_real_selesai = date("Y-m-d");
         $subTahapan->status = "Finish";
         $subTahapan->save();
+
+        //update kelengkapan proyek
+        $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+        if($subTahapan->nama == "Spesifikasi Kebutuhan"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['spesifikasi_kebutuhan' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Use Case & Effort Estimation"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['use_case_effort_estimation' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Solusi SI"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['solusi_si' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Proposal"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['proposal' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Jadwal"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['jadwal' => "Done"]);
+        }
+        elseif($subTahapan->nama == "FNDS"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['fnds' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Disain Rinci"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['disain_rinci' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Traceability Matrix"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['traceability_matrix' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Dokumentasi Program"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['dokumentasi_program' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Paket Unit Test"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['paket_unit_test' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Laporan Unit Test"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['laporan_unit_test' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Rencana SIT"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['rencana_sit' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Paket SIT"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['paket_sit' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Laporan SIT"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['laporan_sit' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Paket Test UAT"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['paket_test_uat' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Rencana UAT"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['rencana_uat' => "Done"]);
+        }
+        elseif($subTahapan->nama == "BA UAT"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['ba_uat' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Laporan UAT"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['laporan_uat' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Juknis Instalasi"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['juknis_instalasi' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Juknis Operasional"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['juknis_operasional' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Rencana Deployment"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['rencana_deployment' => "Done"]);
+        }
+        elseif($subTahapan->nama == "BA Migrasi Data"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['ba_migrasi_data' => "Done"]);
+        }
+        elseif($subTahapan->nama == "BA Serah Terima Operasional"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['ba_serah_terima_operasional' => "Done"]);
+        }
+        elseif($subTahapan->nama == "BA Serah Terima PSI"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['ba_serah_terima_psi' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Rencana Implementasi"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['rencana_implementasi' => "Done"]);
+        }
+        elseif($subTahapan->nama == "Juknis Aplikasi"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['juknis_aplikasi' => "Done"]);
+        }
+        elseif($subTahapan->nama == "BA Implementasi"){
+            DB::table('kelengkapan_proyek')->where('id_proyek', $tahapan->id_proyek)->update(['ba_implementasi' => "Done"]);
+        }
+
         return redirect('input-sub-tahapan/'.$subTahapan->id_tahapan);
     }
 

@@ -62,11 +62,11 @@
                 <label>Nama Tahapan</label>
                   <select name="nama" class="form-control select2" style="width: 100%;">
                     <option value="Pengajuan">Pengajuan</option>
-                    <option value="Desain">Desain</option>
+                    <option value="Desain">Disain</option>
                     @if($jenis_proyek == 'Outsource')
                       <option value="Pengadaan">Pengadaan</option>
                     @endif
-                    <option value="Pemrograman">Pemrograman</option>
+                    <option value="Pemrograman">Pengembangan</option>
                     <option value="Pengujian">Pengujian</option>
                     <option value="Siap Implementasi">Siap Implementasi</option>
                     <option value="Implementasi">Implementasi</option>
