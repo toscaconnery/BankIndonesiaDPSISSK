@@ -184,21 +184,19 @@
                           @endif
                         </td>
                       </center>
-                      <center><td><button class="btn btn-info" data-id="{!! $proyek->id !!}" data-toggle="modal" data-target="#Modal2{{$proyek->id}}">Progress</button></td></center>
+                      <center><td><button class="btn btn-info" data-id="{!! $proyek->id !!}" data-toggle="modal" data-target="#modalKelengkapan{{$proyek->id}}">Progress</button></td></center>
                     </tr>
                     @endforeach
+                    </tbody>
                   </table>
-                  {{-- @php
-                    dd($kelengkapanProyek);
-                  @endphp --}}
+
                   @foreach($kelengkapanProyek as $data)
-                  {{-- {{dd($data)}} --}}
-                  <div class="modal" id="Modal2{{$data['id']}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal" id="modalKelengkapan{{$data['id']}}" tabindex="-1" role="dialog" aria-labelledby="kelengkapanLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Progress {{$data['nama']}}</h3></center>
+                          <center><h3 class="modal-title" id="kelengkapanLabel" style="font-weight: bold;">Progress {{$data['nama']}}</h3></center>
                         </div>
                         <div class="modal-body">
                           <table class="table table-bordered">

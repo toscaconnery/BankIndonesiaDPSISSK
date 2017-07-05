@@ -76,6 +76,7 @@
                     <input type="hidden" name="id_tahapan" value="{{$id_tahapan}}">
                     {{ csrf_field() }}
                   </div>
+                  <a href="{{url('')}}/selesaikan-semua-sub-tahapan/{{$id_tahapan}}"><button type="button" class="btn btn-primary" style="float: left;">Semuanya Telah Selesai</button></a>
                   <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
                 </form>
 

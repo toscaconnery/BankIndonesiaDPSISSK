@@ -20,6 +20,7 @@ class ProjectController extends Controller
         $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p ORDER BY p.created_at DESC');
         $this->data['modalProyek'] = $this->data['proyek'];
         $kelengkapanProyek = DB::select('SELECT k.*, p.nama FROM kelengkapan_proyek k, proyek p WHERE p.id = k.id_proyek ORDER BY k.created_at DESC');
+        $this->data['kelengkapanProyek'] = array();
         foreach($kelengkapanProyek as $data){
             $this->data['kelengkapanProyek'][$data->id]['nama'] = $data->nama;
             $this->data['kelengkapanProyek'][$data->id]['id'] = $data->id;
@@ -259,6 +260,28 @@ class ProjectController extends Controller
         return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
     }
 
+    public function selesaikan_tahapan_proyek($id)  //ini ID tahapan
+    {
+        //cek semua sub tahapan telah selesai
+        $subTahapan = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
+        $selesai = 1;
+        foreach($subTahapan as $data){
+            if(is_null($data->tgl_real_selesai)){
+                $selesai = 0;
+            }
+        }
+        
+        //update tahapan menjadi selesai
+        if($selesai == 1){
+            $tahapan = TahapanProyek::find($id);
+            $tahapan->status = "Finish";
+            $tahapan->tgl_real_selesai = date("Y-m-d");
+            $tahapan->save();
+            return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
+        }
+        return redirect('input-sub-tahapan/'.$id);
+    }
+
     public function input_sub_tahapan($id)  //ini ID tahapan
     {
         $this->data['sub'] = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
@@ -308,6 +331,7 @@ class ProjectController extends Controller
     {
         $subTahapan = SubTahapanProyek::find($id);
         $subTahapan->status = "On Progress";
+        $subTahapan->tgl_real_mulai = date("Y-m-d");
         $subTahapan->save();
         return redirect('input-sub-tahapan/'.$subTahapan->id_tahapan);
     }
