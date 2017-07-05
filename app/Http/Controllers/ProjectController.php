@@ -10,6 +10,7 @@ use DB;
 use App\SubTahapanProyek;
 use App\TabelFile;
 use App\TabelFolder;
+use App\KelengkapanProyek;
 use Auth;
 
 class ProjectController extends Controller
@@ -18,6 +19,120 @@ class ProjectController extends Controller
     {
         $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p ORDER BY p.created_at DESC');
         $this->data['modalProyek'] = $this->data['proyek'];
+        $kelengkapanProyek = DB::select('SELECT k.*, p.nama FROM kelengkapan_proyek k, proyek p WHERE p.id = k.id_proyek ORDER BY k.created_at DESC');
+        $this->data['kelengkapanProyek'] = array();
+        foreach($kelengkapanProyek as $data){
+            $this->data['kelengkapanProyek'][$data->id]['nama'] = $data->nama;
+            $this->data['kelengkapanProyek'][$data->id]['id'] = $data->id;
+            $this->data['kelengkapanProyek'][$data->id]['pengajuan'] = 0;
+            $this->data['kelengkapanProyek'][$data->id]['disain'] = 0;
+            $this->data['kelengkapanProyek'][$data->id]['pengembangan'] = 0;
+            $this->data['kelengkapanProyek'][$data->id]['pengujian'] = 0;
+            $this->data['kelengkapanProyek'][$data->id]['siapImplementasi'] = 0;
+            $this->data['kelengkapanProyek'][$data->id]['implementasi'] = 0;
+
+            //Menghitung tahap pengajuan
+            if($data->spesifikasi_kebutuhan == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+            }
+            if($data->use_case_effort_estimation == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+            }
+            if($data->solusi_si == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+            }
+            if($data->proposal == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+            }
+            if($data->jadwal == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+            }
+
+            //Menghitung tahap disain
+            if($data->fnds == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['disain']++;
+            }
+            if($data->disain_rinci == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['disain']++;
+            }
+            if($data->traceability_matrix == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['disain']++;
+            }
+
+            //Menghitung tahap pengembangan
+            if($data->dokumentasi_program == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengembangan']++;
+            }
+            if($data->paket_unit_test == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengembangan']++;
+            }
+            if($data->laporan_unit_test == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengembangan']++;
+            }
+            
+
+            //Menghitung tahap pengujian
+            if($data->rencana_sit == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+            }
+            if($data->paket_sit == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+            }
+            if($data->laporan_sit == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+            }
+            if($data->paket_test_uat == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+            }
+            if($data->rencana_uat == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+            }
+            if($data->ba_uat == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+            }
+            if($data->laporan_uat == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+            }
+            
+            //Menghitung tahap siap implementasi
+            if($data->juknis_instalasi == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+            }
+            if($data->juknis_operasional == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+            }
+            if($data->rencana_deployment == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+            }
+            if($data->ba_migrasi_data == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+            }
+            if($data->ba_serah_terima_operasional == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+            }
+            if($data->ba_serah_terima_psi == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+            }
+
+            //Menghitung tahap implementasi
+            if($data->rencana_implementasi == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['implementasi']++;
+            }
+            if($data->juknis_aplikasi == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['implementasi']++;
+            }
+            if($data->ba_implementasi == 'Done'){
+                $this->data['kelengkapanProyek'][$data->id]['implementasi']++;
+            }
+            
+            $this->data['kelengkapanProyek'][$data->id]['persenPengajuan'] = ($this->data['kelengkapanProyek'][$data->id]['pengajuan']/5) * 100;
+            $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/3) * 100;
+            $this->data['kelengkapanProyek'][$data->id]['persenPengembangan'] = ($this->data['kelengkapanProyek'][$data->id]['pengembangan']/3) * 100;
+            $this->data['kelengkapanProyek'][$data->id]['persenPengujian'] = ($this->data['kelengkapanProyek'][$data->id]['pengujian']/7) * 100;
+            $this->data['kelengkapanProyek'][$data->id]['persenSiapImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['siapImplementasi']/6) * 100;
+            $this->data['kelengkapanProyek'][$data->id]['persenImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['implementasi']/3) * 100;
+        }
+        //dd($this->data['kelengkapanProyek']);
     	return view('proyek.list-proyek', $this->data);
     }
 
@@ -41,6 +156,8 @@ class ProjectController extends Controller
         $proyek->status = "Pending";
 
         if($proyek->save()){
+
+            //Membuat folder proyek
             $folder = new TabelFolder;
             $folder->nama = $proyek->nama;
             $folder->pic = $proyek->pic;
@@ -54,7 +171,7 @@ class ProjectController extends Controller
             mkdir($folder->tahun.'/'.$proyek->nama);
             $folder->save();
 
-            //Membuat folder P3A dan MLBI
+            //Membuat folder P3A
             $folderP = new TabelFolder;
             $folderP->nama = "P3A";
             $folderP->pic = $folder->pic;
@@ -65,6 +182,7 @@ class ProjectController extends Controller
             mkdir($folderP->tahun.'/'.$proyek->nama.'/'.'P3A');
             $folderP->save();
 
+            //Membuat folder MLBI
             $folderM = new TabelFolder;
             $folderM->nama = "MLBI";
             $folderM->pic = $folder->pic;
@@ -75,6 +193,11 @@ class ProjectController extends Controller
             mkdir($folderM->tahun.'/'.$proyek->nama.'/'.'MLBI');
             $folderM->save();
 
+
+            //Mempersiapkan kelengkapan file proyek
+            $kelengkapan = new KelengkapanProyek;
+            $kelengkapan->id_proyek = $proyek->id;
+            $kelengkapan->save();
         }
         return redirect('list-proyek');
     }
@@ -83,6 +206,7 @@ class ProjectController extends Controller
     {
         $proyek = Proyek::find($id);
         $proyek->status = "On Progress";
+        $proyek->tgl_real_mulai = date("Y-m-d");
         $proyek->save();
         return redirect('list-proyek');
     }
@@ -131,9 +255,33 @@ class ProjectController extends Controller
     {
         $tahapan = TahapanProyek::find($id);
         $tahapan->status = "On Progress";
+        $tahapan->tgl_real_mulai = date("Y-m-d");
         $tahapan->save();
         return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
     }
+
+    public function selesaikan_tahapan_proyek($id)  //ini ID tahapan
+    {
+        //cek semua sub tahapan telah selesai
+        $subTahapan = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
+        $selesai = 1;
+        foreach($subTahapan as $data){
+            if(is_null($data->tgl_real_selesai)){
+                $selesai = 0;
+            }
+        }
+        
+        //update tahapan menjadi selesai
+        if($selesai == 1){
+            $tahapan = TahapanProyek::find($id);
+            $tahapan->status = "Finish";
+            $tahapan->tgl_real_selesai = date("Y-m-d");
+            $tahapan->save();
+            return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
+        }
+        return redirect('input-sub-tahapan/'.$id);
+    }
+
 
     public function input_sub_tahapan($id)  //ini ID tahapan
     {
@@ -180,10 +328,20 @@ class ProjectController extends Controller
         return redirect('input-sub-tahapan/'.$id);
     }
 
-    public function mulai_sub_tahapan_proyek($id)
+    public function mulai_sub_tahapan_proyek($id)   //ini ID sub tahapan
     {
         $subTahapan = SubTahapanProyek::find($id);
         $subTahapan->status = "On Progress";
+        $subTahapan->tgl_real_mulai = date("Y-m-d");
+        $subTahapan->save();
+        return redirect('input-sub-tahapan/'.$subTahapan->id_tahapan);
+    }
+
+    public function selesaikan_sub_tahapan_proyek($id)  //ini ID sub tahapan
+    {
+        $subTahapan = SubTahapanProyek::find($id);
+        $subTahapan->tgl_real_selesai = date("Y-m-d");
+        $subTahapan->status = "Finish";
         $subTahapan->save();
         return redirect('input-sub-tahapan/'.$subTahapan->id_tahapan);
     }

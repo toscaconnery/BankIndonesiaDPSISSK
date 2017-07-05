@@ -76,6 +76,7 @@
                     <input type="hidden" name="id_tahapan" value="{{$id_tahapan}}">
                     {{ csrf_field() }}
                   </div>
+                  <a href="{{url('')}}/selesaikan-semua-sub-tahapan/{{$id_tahapan}}"><button type="button" class="btn btn-primary" style="float: left;">Semuanya Telah Selesai</button></a>
                   <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
                 </form>
 
@@ -115,15 +116,22 @@
                       </td>
                       <td>{{$sub->pic}}</td>
                       <td>{{$sub->status}}</td>
-                      <td width="11em">
+                      <td>
                         <center>
                           @if($sub->status == "Pending")
                             <a href="{{url('')}}/mulai-sub-tahapan-proyek/{{ $sub->id }}">
-                              <button type="button" style="width: 8em" class="btn btn-primary">Mulai</button>
+                              <button type="button" style="width: 9em" class="btn btn-primary">Mulai</button>
                             </a>
-                          @else
+                          @elseif($sub->status == "On Progress")
                             <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
-                              <button type="button" style="width: 8em" class="btn btn-primary">Detail</button>
+                              <button type="button" style="width: 4em" class="btn btn-primary">Detail</button>
+                            </a>
+                            <a href="{{url('')}}/selesaikan-sub-tahapan/{{ $sub->id }}">
+                              <button type="button" style="width: 5em" class="btn btn-primary">Selesai</button>
+                            </a>
+                          @elseif($sub->status == "Finish")
+                            <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
+                              <button type="button" style="width: 9em" class="btn btn-primary">Detail</button>
                             </a>
                           @endif
                         </center>

@@ -138,7 +138,7 @@
                                 </a>
                               @else
                                 <a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'>
-                                  <button class="btn btn-primary">Update</button>
+                                  <button class="btn btn-primary">Detail</button>
                                 </a>
                               @endif
                                 
