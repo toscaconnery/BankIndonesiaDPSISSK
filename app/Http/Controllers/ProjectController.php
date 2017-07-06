@@ -20,109 +20,119 @@ class ProjectController extends Controller
         $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p ORDER BY p.created_at DESC');
         $this->data['modalProyek'] = $this->data['proyek'];
         $kelengkapanProyek = DB::select('SELECT k.*, p.nama FROM kelengkapan_proyek k, proyek p WHERE p.id = k.id_proyek ORDER BY k.created_at DESC');
+        $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
+        //dd($pic);
         $this->data['kelengkapanProyek'] = array();
         foreach($kelengkapanProyek as $data){
-            $this->data['kelengkapanProyek'][$data->id]['nama'] = $data->nama;
-            $this->data['kelengkapanProyek'][$data->id]['id'] = $data->id;
-            $this->data['kelengkapanProyek'][$data->id]['pengajuan'] = 0;
-            $this->data['kelengkapanProyek'][$data->id]['disain'] = 0;
-            $this->data['kelengkapanProyek'][$data->id]['pengembangan'] = 0;
-            $this->data['kelengkapanProyek'][$data->id]['pengujian'] = 0;
-            $this->data['kelengkapanProyek'][$data->id]['siapImplementasi'] = 0;
-            $this->data['kelengkapanProyek'][$data->id]['implementasi'] = 0;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['nama'] = $data->nama;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['id'] = $data->id;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan'] = 0;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['disain'] = 0;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan'] = 0;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian'] = 0;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi'] = 0;
+            $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi'] = 0;
+
+            //Inisiasi PIC
+            $this->data['kelengkapanProyek'][$data->id_proyek]['picPengajuan'] = "-";
+            $this->data['kelengkapanProyek'][$data->id_proyek]['picDisain'] = "-";
+            $this->data['kelengkapanProyek'][$data->id_proyek]['picPengembangan'] = "-";
+            $this->data['kelengkapanProyek'][$data->id_proyek]['picPengujian'] = "-";
+            $this->data['kelengkapanProyek'][$data->id_proyek]['picSiapImplementasi'] = "-";
+            $this->data['kelengkapanProyek'][$data->id_proyek]['picImplementasi'] = "-";
 
             //Menghitung tahap pengajuan
             if($data->spesifikasi_kebutuhan == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+                $this->data['kelengkapanProyek'][$data->iid_proyekd]['pengajuan']++;
             }
             if($data->use_case_effort_estimation == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
             }
             if($data->solusi_si == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
             }
             if($data->proposal == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
             }
             if($data->jadwal == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengajuan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
             }
 
             //Menghitung tahap disain
             if($data->fnds == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['disain']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
             }
             if($data->disain_rinci == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['disain']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
             }
             if($data->traceability_matrix == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['disain']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
             }
 
             //Menghitung tahap pengembangan
             if($data->dokumentasi_program == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengembangan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
             }
             if($data->paket_unit_test == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengembangan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
             }
             if($data->laporan_unit_test == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengembangan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
             }
             
 
             //Menghitung tahap pengujian
             if($data->rencana_sit == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
             }
             if($data->paket_sit == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
             }
             if($data->laporan_sit == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
             }
             if($data->paket_test_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
             }
             if($data->rencana_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
             }
             if($data->ba_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
             }
             if($data->laporan_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['pengujian']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
             }
             
             //Menghitung tahap siap implementasi
             if($data->juknis_instalasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
             }
             if($data->juknis_operasional == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
             }
             if($data->rencana_deployment == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
             }
             if($data->ba_migrasi_data == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
             }
             if($data->ba_serah_terima_operasional == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
             }
             if($data->ba_serah_terima_psi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['siapImplementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
             }
 
             //Menghitung tahap implementasi
             if($data->rencana_implementasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['implementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
             }
             if($data->juknis_aplikasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['implementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
             }
             if($data->ba_implementasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id]['implementasi']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
             }
             
             $this->data['kelengkapanProyek'][$data->id]['persenPengajuan'] = ($this->data['kelengkapanProyek'][$data->id]['pengajuan']/5) * 100;
@@ -132,7 +142,29 @@ class ProjectController extends Controller
             $this->data['kelengkapanProyek'][$data->id]['persenSiapImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['siapImplementasi']/6) * 100;
             $this->data['kelengkapanProyek'][$data->id]['persenImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['implementasi']/3) * 100;
         }
-        //dd($this->data['kelengkapanProyek']);
+
+        foreach($pic as $pic){
+            //$this->data['kelengkapanProyek'][$data->id]['picDisain'] = "-";
+            if($pic->nama == 'Pengajuan'){
+                $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengajuan'] = $pic->pic;
+            }
+            elseif($pic->nama == 'Disain'){
+                $this->data['kelengkapanProyek'][$pic->id_proyek]['picDisain'] = $pic->pic;
+            }
+            elseif($pic->nama == 'Pengembangan'){
+                $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengembangan'] = $pic->pic;
+            }
+            elseif($pic->nama == 'Pengujian'){
+                $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengujian'] = $pic->pic;
+            }
+            elseif($pic->nama == 'Siap Implementasi'){
+                $this->data['kelengkapanProyek'][$pic->id_proyek]['picSiapImplementasi'] = $pic->pic;
+            }
+            elseif($pic->nama == 'Implementasi'){
+                $this->data['kelengkapanProyek'][$pic->id_proyek]['picImplementasi'] = $pic->pic;
+            }
+
+        }
     	return view('proyek.list-proyek', $this->data);
     }
 

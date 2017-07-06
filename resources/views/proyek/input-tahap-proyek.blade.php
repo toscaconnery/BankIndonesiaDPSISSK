@@ -66,7 +66,7 @@
                     @if($jenis_proyek == 'Outsource')
                       <option value="Pengadaan">Pengadaan</option>
                     @endif
-                    <option value="Pemrograman">Pengembangan</option>
+                    <option value="Pengembangan">Pengembangan</option>
                     <option value="Pengujian">Pengujian</option>
                     <option value="Siap Implementasi">Siap Implementasi</option>
                     <option value="Implementasi">Implementasi</option>

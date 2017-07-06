@@ -122,6 +122,7 @@
     @include('layouts.footer')
   </div>
 
+
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -135,6 +136,95 @@
             <!--Name-->
             <div class="form-group">
               <label for="namaproyek" class="col-sm-3 control-label">Nama Proyek</label>
+                  @foreach($kelengkapanProyek as $data)
+                  <div class="modal" id="modalKelengkapan{{$data['id']}}" tabindex="-1" role="dialog" aria-labelledby="kelengkapanLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <center><h3 class="modal-title" id="kelengkapanLabel" style="font-weight: bold;">Progress {{$data['nama']}}</h3></center>
+                        </div>
+                        <div class="modal-body">
+                          <table class="table table-bordered">
+                            <tr>
+                              <th style="width: 10px">No</th>
+                              <th>Tahapan</th>
+                              <th>Progres</th>
+                              <th style="width: 40px">Presentase</th>
+                              <th>PIC</th>
+                            </tr>
+                            <tr>
+                              <td>1.</td>
+                              <td>Pengajuan</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengajuan']}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengajuan'],0); ?>%</span></td>
+                              <td>{{$data['picPengajuan']}}</td>
+                            </tr>
+                            <tr>
+                              <td>2.</td>
+                              <td>Disain</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenDisain']}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenDisain'],0); ?>%</span></td>
+                              <td>{{$data['picDisain']}}</td>
+                            </tr>
+                            <tr>
+                              <td>3.</td>
+                              <td>Pengembangan</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengembangan']}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengembangan'],0); ?>%</span></td>
+                              <td>{{$data['picPengembangan']}}</td>
+                            </tr>
+                            <tr>
+                              <td>4.</td>
+                              <td>Pengujian</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengujian']}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengujian'],0); ?>%</span></td>
+                              <td>{{$data['picPengujian']}}</td>
+                            </tr>
+                            <tr>
+                              <td>5.</td>
+                              <td>Siap Implementasi</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenSiapImplementasi']}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenSiapImplementasi'],0); ?>%</span></td>
+                              <td>{{$data['picSiapImplementasi']}}</td>
+                            </tr>
+                            <tr>
+                              <td>6.</td>
+                              <td>Implementasi</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenImplementasi']}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenImplementasi'],0); ?>%</span></td>
+                              <td>{{$data['picImplementasi']}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
 
               <div class="col-sm-9">
                 <input name="nama" type="text" class="form-control" id="namaproyek">
