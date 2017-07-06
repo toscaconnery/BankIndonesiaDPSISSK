@@ -15,11 +15,11 @@ class CreateTableFile extends Migration
     {
         Schema::create('tabel_file', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_sub_tahapan');
             $table->string('nama');
             $table->string('pic');
             $table->integer('tahun');
             $table->string('path');
-            $table->integer('id_sub_tahapan');
             $table->timestamps();
         });
     }
