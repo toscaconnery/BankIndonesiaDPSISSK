@@ -19,7 +19,7 @@ class ProjectController extends Controller
     {
         $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p ORDER BY p.created_at DESC');
         $this->data['modalProyek'] = $this->data['proyek'];
-        $kelengkapanProyek = DB::select('SELECT k.*, p.nama FROM kelengkapan_proyek k, proyek p WHERE p.id = k.id_proyek ORDER BY k.created_at DESC');
+        $kelengkapanProyek = DB::select('SELECT k.*, p.nama, p.jenis FROM kelengkapan_proyek k, proyek p WHERE p.id = k.id_proyek ORDER BY k.created_at DESC');
         $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
         //dd($pic);
         $this->data['kelengkapanProyek'] = array();
@@ -136,7 +136,12 @@ class ProjectController extends Controller
             }
             
             $this->data['kelengkapanProyek'][$data->id]['persenPengajuan'] = ($this->data['kelengkapanProyek'][$data->id]['pengajuan']/5) * 100;
-            $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/3) * 100;
+            if($data->jenis == 'Outsource'){
+                $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/3) * 100;
+            }
+            elseif($data->jenis == 'Inhouse'){
+                $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/2) * 100;
+            }
             $this->data['kelengkapanProyek'][$data->id]['persenPengembangan'] = ($this->data['kelengkapanProyek'][$data->id]['pengembangan']/3) * 100;
             $this->data['kelengkapanProyek'][$data->id]['persenPengujian'] = ($this->data['kelengkapanProyek'][$data->id]['pengujian']/7) * 100;
             $this->data['kelengkapanProyek'][$data->id]['persenSiapImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['siapImplementasi']/6) * 100;
@@ -144,7 +149,6 @@ class ProjectController extends Controller
         }
 
         foreach($pic as $pic){
-            //$this->data['kelengkapanProyek'][$data->id]['picDisain'] = "-";
             if($pic->nama == 'Pengajuan'){
                 $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengajuan'] = $pic->pic;
             }
@@ -269,7 +273,7 @@ class ProjectController extends Controller
                                                             AND t.id_proyek = '.$id.'
                                                         )
                                                         AND l.jenis = "Inhouse" ');
-                                                                }
+        }
         $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id.' ORDER BY t.created_at ASC');
         $proyek = Proyek::find($id);
         $this->data['namaProyek'] = $proyek->nama;
