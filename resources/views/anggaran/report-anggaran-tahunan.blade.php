@@ -35,29 +35,39 @@
 
       <section class="content">
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
                 <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Tambah Anggaran</button>
-                <br>
-                <br>
                 <table id="example1" class="table table-bordered table-striped">
+                  <br>
+                  <br>
                   <thead>
                     <tr>
-                      <th rowspan="2">Tahun</th>
+                      <th rowspan="3">Tahun</th>
                       <th colspan="3">Dianggarkan</th>
-                      <th colspan="8">Realisasi</th>
-                      <th rowspan="2">Detail</th>
+                      <th colspan="6">Realisasi</th>
+                      <th colspan="2">Sisa</th>
+                      <th rowspan="3">Detail</th>
                     </tr>
                     <tr>
-                      <th>RI</th>
-                      <th>OP</th>
-                      <th>Total</th>
+                      <th rowspan="2">RI</th>
+                      <th rowspan="2">OP</th>
+                      <th rowspan="2">Total</th>
                       <th colspan="2">RI</th>
                       <th colspan="2">OP</th>
                       <th colspan="2">Total</th>
-                      <th colspan="2">Sisa</th>
+                      <th rowspan="2">Angka</th>
+                      <th rowspan="2">Persen(%)</th>
+                    </tr>
+                    <tr>
+                      <th>Angka</th>
+                      <th>%</th>
+                      <th>Angka</th>
+                      <th>%</th>
+                      <th>Angka</th>
+                      <th>%</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -104,8 +114,6 @@
           </div>
           <!-- /.row -->
         </section>
-
-
         <br>
       </div>
       @include('layouts.footer')
