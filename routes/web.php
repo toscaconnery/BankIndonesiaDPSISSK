@@ -24,6 +24,7 @@ Route::get('mulai-sub-tahapan-proyek/{id}', 'ProjectController@mulai_sub_tahapan
 Route::get('selesaikan-semua-sub-tahapan/{id}', 'ProjectController@selesaikan_tahapan_proyek');
 Route::get('selesaikan-sub-tahapan/{id}', 'ProjectController@selesaikan_sub_tahapan_proyek');
 
+
 //Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
 
 // Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
@@ -40,6 +41,7 @@ Route::post('list-arsip', 'ArsipController@save_input_folder');
 Route::get('input-arsip', 'ArsipController@input_arsip');
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
 Route::get('download-file/{id}', 'ArsipController@download_file');
+// Route::get('mlbi/{id}/{deeppath?}', 'ArsipController@mlbi');
 //Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
 
 // ANGGARAN

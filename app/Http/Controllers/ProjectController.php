@@ -506,7 +506,6 @@ class ProjectController extends Controller
             $this->data['namaProyek'] = $proyek->nama;
             $folder = TabelFolder::find($deeppath);
             $this->data['path'] = $folder->path.$folder->nama.'/';
-            // dd($this->data['path']);
             $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
             return view('proyek.list-file-sub-tahapan', $this->data);

@@ -62,52 +62,14 @@ class ArsipController extends Controller
         return Response::download($file);
     }
 
-    // public function tambah_file_sub_tahapan_proyek(Request $request)
+    // public function mlbi($id, $deeppath = null)   //ini ID proyek
     // {
-    //     dd("masuk");
-    //     $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
-    //     $proyek = Proyek::find($tahapan->id_proyek);
-
-    //     $file = $request->file('berkas');
-    //     $fileExtension = $file->getClientOriginalExtension();
-    //     $fileSize = $file->getSize();
-    //     $fileMime = $file->getMimeType();
-    //     $fileName = $file->getClientOriginalName();
-    //     $path = 'file-proyek/'.$proyek->nama.'/'.$tahapan->nama.'/'.$subTahapan->nama.'/';
-
-    //     $berkas = new TabelFile;
-    //     $berkas->nama = $fileName;
-    //     if(Auth::check()){
-    //         $berkas->pic = Auth::user()->name;
-    //     }
-    //     else {
-    //         $berkas->pic = 'Unregistered User';
-    //     }
-    //     $berkas->tahun = date("Y");
-    //     $berkas->path = $path;
-    //     $berkas->id_sub_tahapan = $id;
-    //     $berkas->save();
-
-    //     $file->move($path, $fileName);
-
-    //     return redirect('list-file-sub-tahapan/'.$id);///////
-
-    //     $file = $request->file('berkas');
-    //     $fileName = $file->getClientOriginalName();
-    //     $fileExtension = $file->getClientOriginalExtension();
-    //     $fileSize = $file->getSize();
-    //     $fileMime = $file->getMimeType();
-
-    //     $berkas = new TabelFile;
-    //     $berkas->nama = $fileName;
-    //     if(Auth::check()){
-    //         $berkas->pic = Auth::user()->name;
+    //     if($deeppath){
+    //         dd("this is deeppath");
+    //         $this->data['']
     //     }
     //     else{
-    //         $berkas->pic = "Unknown User";
+    //         dd("this is not deeppath");
     //     }
-    //     $berkas->tahun = date("Y");
-    //     $berkas->path = $berkas->tahun.'/';
-
     // }
 }
