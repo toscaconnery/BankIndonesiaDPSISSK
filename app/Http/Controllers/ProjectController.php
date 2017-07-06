@@ -243,10 +243,33 @@ class ProjectController extends Controller
         return redirect('list-proyek');
     }
 
-    public function input_tahap_proyek($id)
+    public function input_tahap_proyek($id)     //ini ID proyek
     {
         $this->data['id_proyek'] = $id;
-        $this->data['jenis_proyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id)[0]->jenis;
+        $this->data['jenisProyek'] = DB::select('SELECT jenis FROM proyek p WHERE id = '.$id)[0]->jenis;
+        if($this->data['jenisProyek'] == 'Outsource'){
+            $this->data['optionTahapan'] = DB::select('SELECT l.* 
+                                                        FROM list_tahapan l 
+                                                        WHERE NOT EXISTS
+                                                        (
+                                                            SELECT NULL
+                                                            FROM tahapan_proyek t
+                                                            WHERE t.nama = l.nama
+                                                            AND t.id_proyek = '.$id.'
+                                                        )');
+        }
+        elseif($this->data['jenisProyek'] == 'Inhouse'){
+            $this->data['optionTahapan'] = DB::select('SELECT l.* 
+                                                        FROM list_tahapan l 
+                                                        WHERE NOT EXISTS
+                                                        (
+                                                            SELECT NULL
+                                                            FROM tahapan_proyek t
+                                                            WHERE t.nama = l.nama
+                                                            AND t.id_proyek = '.$id.'
+                                                        )
+                                                        AND l.jenis = "Inhouse" ');
+                                                                }
         $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id.' ORDER BY t.created_at ASC');
         $proyek = Proyek::find($id);
         $this->data['namaProyek'] = $proyek->nama;
