@@ -22,33 +22,227 @@ class AnggaranController extends Controller
     {
         $this->data['tahun_anggaran'] = $tahun;
         $this->data['jlh_pengeluaran_bulanan'] = DB::select('SELECT (SELECT SUM(nominal) from pencairan where MONTH(tanggal_pencairan)=tab1.idbulan and kategori="RI" and YEAR(tanggal_pencairan)='.$tahun.') as sumri, (SELECT SUM(nominal) from pencairan where MONTH(tanggal_pencairan)=tab1.idbulan and kategori="OP" and YEAR(tanggal_pencairan)='.$tahun.') as sumop, (SELECT SUM(nominal) from pencairan where MONTH(tanggal_pencairan)=tab1.idbulan and YEAR(tanggal_pencairan)='.$tahun.') as sumtot, tab1.idbulan, tab1.Bulan, tab1.Jumlah from (SELECT MONTH(tanggal_pencairan) as idbulan, MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = '.$tahun.' GROUP BY MONTH(tanggal_pencairan)) tab1');
-        //dd($this->data);
-        $anggaran = DB::select('SELECT * from anggaran where tahun='.$tahun.'');
-        $januariRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $januariOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $februariRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $februariOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $maretRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 3 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $maretOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 3 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $aprilRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 4 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $aprilOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 4 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $meiRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) =  5 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $meiOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) =  5 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $juniRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 6 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $juniOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 6 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $juliRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 7 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $juliOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 7 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $agustusRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 8 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $agustusOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 8 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $septemberRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 9 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $septemberOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 9 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $oktoberRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 10 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $oktoberOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 10 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $novemberRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 11 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $novemberOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 11 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        $desemberRI = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="RI"');
-        $desemberOP = DB::select('SELECT SUM(p.nominal) FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = '.$tahun.' WHERE kategori="OP"');
-        // dd($anggaran);
+        
+        $this->data['anggaran'] = DB::select('SELECT * from anggaran where tahun='.$tahun.'')[0];
+        $this->data['nominal']=DB::select('SELECT MONTH(tanggal_pencairan) as idbulan, MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = '.$tahun.' GROUP BY MONTH(tanggal_pencairan)');
+        
+        $this->data['totaljanuari'] = 0;
+        $this->data['januariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['januariOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        
+        if ($this->data['januariRI'])
+        {
+            $this->data['totaljanuari'] = $this->data['totaljanuari'] + $this->data['januariRI']->sumri;
+            $this->data['persenjanuariRI'] = ($this->data['januariRI']->sumri/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['januariOP'])
+        {
+            $this->data['totaljanuari'] = $this->data['totaljanuari'] + $this->data['januariOP']->sumop;
+            $this->data['persenjanuariOP'] = ($this->data['januariOP']->sumop/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totaljanuari']!=0)
+        {
+            $this->data['persenttljanuari'] = ($this->data['totaljanuari']/$this->data['anggaran']->nominal)*100;
+        }
+
+        $this->data['totalfebruari'] = 0;
+        $this->data['februariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['februariOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['februariRI'])
+        {
+            $this->data['totalfebruari'] = $this->data['totalfebruari'] + $this->data['februariRI']->sumri;
+            $this->data['persenfebruariRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['februariOP'])
+        {
+            $this->data['totalfebruari'] = $this->data['totalfebruari'] + $this->data['februariOP']->sumop;
+            $this->data['persenfebruariOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totalfebruari']!=0)
+        {
+            $this->data['persenttlfebruari'] = (($this->data['totaljanuari']+$this->data['totalfebruari'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totalmaret'] = 0;
+        $this->data['maretRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 3 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['maretOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 3 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['maretRI'])
+        {
+            $this->data['totalmaret'] = $this->data['totalmaret'] + $this->data['maretRI']->sumri;
+            $this->data['persenmaretRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['maretOP'])
+        {
+            $this->data['totalmaret'] = $this->data['totalmaret'] + $this->data['maretOP']->sumop;
+            $this->data['persenmaretOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totalmaret']!=0)
+        {
+            $this->data['persenttlmaret'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totalapril'] = 0;
+        $this->data['aprilRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 4 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['aprilOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 4 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['aprilRI'])
+        {
+            $this->data['totalapril'] = $this->data['totalapril'] + $this->data['aprilRI']->sumri;
+            $this->data['persenaprilRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['aprilOP'])
+        {
+            $this->data['totalapril'] = $this->data['totalapril'] + $this->data['aprilOP']->sumop;
+            $this->data['persenaprilOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totalapril']!=0)
+        {
+            $this->data['persenttlapril'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totalmei'] = 0;
+        $this->data['meiRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) =  5 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['meiOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) =  5 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['meiRI'])
+        {
+            $this->data['totalmei'] = $this->data['totalmei'] + $this->data['meiRI']->sumri;
+            $this->data['persenmeiRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['meiOP'])
+        {
+            $this->data['totalmei'] = $this->data['totalmei'] + $this->data['meiOP']->sumop;
+            $this->data['persenmeiOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totalmei']!=0)
+        {
+            $this->data['persenttlmei'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totaljuni'] = 0;
+        $this->data['juniRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 6 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['juniOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 6 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['juniRI'])
+        {
+            $this->data['totaljuni'] = $this->data['totaljuni'] + $this->data['juniRI']->sumri;
+            $this->data['persenjuniRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri+$this->data['juniRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['juniOP'])
+        {
+            $this->data['totaljuni'] = $this->data['totaljuni'] + $this->data['juniOP']->sumop;
+            $this->data['persenjuniOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totaljuni']!=0)
+        {
+            $this->data['persenttljuni'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totaljuli'] = 0;
+        $this->data['juliRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 7 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['juliOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 7 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['juliRI'])
+        {
+            $this->data['totaljuli'] = $this->data['totaljuli'] + $this->data['juliRI']->sumri;
+            $this->data['persenjuliRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri+$this->data['juniRI']->sumri+$this->data['juliRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['juliOP'])
+        {
+            $this->data['totaljuli'] = $this->data['totaljuli'] + $this->data['juliOP']->sumop;
+            $this->data['persenjuliOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totaljuli']!=0)
+        {
+            $this->data['persenttljuli'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totalagustus'] = 0;
+        $this->data['agustusRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 8 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['agustusOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 8 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['agustusRI'])
+        {
+            $this->data['totalagustus'] = $this->data['totalagustus'] + $this->data['agustusRI']->sumri;
+            $this->data['persenagustusRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri+$this->data['juniRI']->sumri+$this->data['juliRI']->sumri+$this->data['agustusRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['agustusOP'])
+        {
+            $this->data['totalagustus'] = $this->data['totalagustus'] + $this->data['agustusOP']->sumop;
+            $this->data['persenagustusOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totalagustus']!=0)
+        {
+            $this->data['persenttlagustus'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totalseptember'] = 0;
+        $this->data['septemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 9 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['septemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 9 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['septemberRI'])
+        {
+            $this->data['totalseptember'] = $this->data['totalseptember'] + $this->data['septemberRI']->sumri;
+            $this->data['persenseptemberRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri+$this->data['juniRI']->sumri+$this->data['juliRI']->sumri+$this->data['agustusRI']->sumri+$this->data['septemberRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['septemberOP'])
+        {
+            $this->data['totalseptember'] = $this->data['totalseptember'] + $this->data['septemberOP']->sumop;
+            $this->data['persenseptemberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totalseptember']!=0)
+        {
+            $this->data['persenttlseptember'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totaloktober'] = 0;
+        $this->data['oktoberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 10 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['oktoberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 10 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['oktoberRI'])
+        {
+            $this->data['totaloktober'] = $this->data['totaloktober'] + $this->data['oktoberRI']->sumri;
+            $this->data['persenoktoberRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri+$this->data['juniRI']->sumri+$this->data['juliRI']->sumri+$this->data['agustusRI']->sumri+$this->data['septemberRI']->sumri+$this->data['oktoberRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['oktoberOP'])
+        {
+            $this->data['totaloktober'] = $this->data['totaloktober'] + $this->data['oktoberOP']->sumop;
+            $this->data['persenoktoberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop+$this->data['oktoberOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totaloktober']!=0)
+        {
+            $this->data['persenttloktober'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totalnovember'] = 0;
+        $this->data['novemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 11 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['novemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 11 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['novemberRI'])
+        {
+            $this->data['totalnovember'] = $this->data['totalnovember'] + $this->data['novemberRI']->sumri;
+            $this->data['persenoktoberRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri+$this->data['juniRI']->sumri+$this->data['juliRI']->sumri+$this->data['agustusRI']->sumri+$this->data['septemberRI']->sumri+$this->data['oktoberRI']->sumri+$this->data['novemberRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['novemberOP'])
+        {
+            $this->data['totalnovember'] = $this->data['totalnovember'] + $this->data['novemberOP']->sumop;
+            $this->data['persenoktoberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop+$this->data['oktoberOP']->sumop+$this->data['novemberOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totalnovember']!=0)
+        {
+            $this->data['persenttlnovember'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober']+$this->data['totalnovember'])/$this->data['anggaran']->nominal)*100;
+        }
+        
+        $this->data['totaldesember'] = 0;
+        $this->data['desemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
+        $this->data['desemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="OP"')[0];
+        if ($this->data['desemberRI'])
+        {
+            $this->data['totaldesember'] = $this->data['totaldesember'] + $this->data['desemberRI']->sumri;
+            $this->data['persenoktoberRI'] = (($this->data['januariRI']->sumri+$this->data['februariRI']->sumri+$this->data['maretRI']->sumri+$this->data['aprilRI']->sumri+$this->data['meiRI']->sumri+$this->data['juniRI']->sumri+$this->data['juliRI']->sumri+$this->data['agustusRI']->sumri+$this->data['septemberRI']->sumri+$this->data['oktoberRI']->sumri+$this->data['novemberRI']->sumri+$this->data['novemberRI']->sumri)/$this->data['anggaran']->ri)*100;
+        }
+        if ($this->data['desemberOP'])
+        {
+            $this->data['totaldesember'] = $this->data['totaldesember'] + $this->data['desemberOP']->sumop;
+            $this->data['persenoktoberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop+$this->data['oktoberOP']->sumop+$this->data['novemberOP']->sumop+$this->data['novemberOP']->sumop)/$this->data['anggaran']->op)*100;
+        }
+        if ($this->data['totaldesember']!=0)
+        {
+            $this->data['persenttldesember'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober']+$this->data['totalnovember']+$this->data['totaldesember'])/$this->data['anggaran']->nominal)*100;
+        }
+
         return view('anggaran.report-anggaran-bulanan', $this->data);
         // SELECT ROUND((new2.sumri) * 100.0 / ri, 2) as persenri, ROUND((new2.sumop) * 100.0 / op, 2) as persenop, new2.sumri, new2.sumop, new2.Bln, new2.thn, new2.jlh from (SELECT (SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)=new1.tahun and MONTH(tanggal_pencairan)=new1.bulan and kategori='RI') as sumri, (SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)=new1.tahun and MONTH(tanggal_pencairan)=new1.bulan and kategori='OP') as sumop, new1.bulan as Bln, new1.tahun as thn, new1.jumlah as jlh from (SELECT MONTH(tanggal_pencairan) as bulan, YEAR(tanggal_pencairan) as tahun, COUNT(NOMINAL) as jumlah from pencairan where MONTH(tanggal_pencairan) = 7 and YEAR(tanggal_pencairan) = 2017) new1) new2, anggaran where anggaran.tahun=2017
         // return view('anggaran.report-anggaran-bulanan');
@@ -73,6 +267,55 @@ class AnggaranController extends Controller
     {
         $this->data['tahun_anggar'] = $tahun_anggaran;
         $this->data['numbulan'] = $idbulan;
+        if($this->data['numbulan']==1)
+        {
+            $this->data['namabulan']='Januari';
+        }
+        else if($this->data['numbulan']==2)
+        {
+            $this->data['namabulan']='Februari';
+        }
+        else if($this->data['numbulan']==3)
+        {
+            $this->data['namabulan']='Maret';
+        }
+        else if($this->data['numbulan']==4)
+        {
+            $this->data['namabulan']='April';
+        }
+        else if($this->data['numbulan']==5)
+        {
+            $this->data['namabulan']='Mei';
+        }
+        else if($this->data['numbulan']==6)
+        {
+            $this->data['namabulan']='Juni';
+        }
+        else if($this->data['numbulan']==7)
+        {
+            $this->data['namabulan']='Juli';
+        }  
+        else if($this->data['numbulan']==8)
+        {
+            $this->data['namabulan']='Agustus';
+        }
+        else if($this->data['numbulan']==9)
+        {
+            $this->data['namabulan']='September';
+        }
+        else if($this->data['numbulan']==10)
+        {
+            $this->data['namabulan']='Oktober';
+        }
+        else if($this->data['numbulan']==11)
+        {
+            $this->data['namabulan']='November';
+        } 
+        else if($this->data['numbulan']==12)
+        {
+            $this->data['namabulan']='Desember';
+        }        
+
         $this->data['pengeluaran_rinci'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.' ORDER BY tanggal_pencairan');
         return view('anggaran.report-anggaran-rinci', $this->data);
     }
