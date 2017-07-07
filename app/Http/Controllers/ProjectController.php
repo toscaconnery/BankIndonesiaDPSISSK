@@ -660,7 +660,40 @@ class ProjectController extends Controller
             return redirect('list-file-sub-tahapan/'.$id);
         }
     }
+
+    public function upload_file_mlbi(Request $request, $id, $deeppath = null)
+    {
+        //dd("MLBI");
+        if($deeppath){
+            dd("DEEPPATH MLBI UPLOAD FILE");
+        }
+        else{
+            //dd("MLBI NORMAL UPLOAD FILE");
+            //$subTahapan = SubTahapanProyek::find($id);
+            $tahapan = TahapanProyek::find($id);
+            $proyek = Proyek::find($tahapan->id_proyek);
+            $file = $request->file('berkas');
+            $fileName = $file->getClientOriginalName();
+            $berkas = new TabelFile;
+            $berkas->nama = $fileName;
+            $berkas->id_sub_tahapan = $id;
+            if(Auth::check()){
+                $berkas->pic = Auth::user()->name;
+            }
+            else{
+                $berkas->pic = "Unregistered User";
+            }
+            $berkas->tahun = date("Y");
+            $path = $berkas->tahun.'/'.$proyek->nama.'/'.'MLBI/'.$tahapan->nama.'/';
+            $berkas->path = $path;
+            if($berkas->save()){
+                $file->move($path, $fileName);
+            }
+            return redirect('list-file-sub-tahapan/'.$id);
+        }
+    }
     
+
 }
 
 

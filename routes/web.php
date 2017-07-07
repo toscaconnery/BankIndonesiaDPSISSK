@@ -23,7 +23,7 @@ Route::get('mulai-tahap-proyek/{id}', 'ProjectController@mulai_tahap_proyek');
 Route::get('mulai-sub-tahapan-proyek/{id}', 'ProjectController@mulai_sub_tahapan_proyek');
 Route::get('selesaikan-semua-sub-tahapan/{id}', 'ProjectController@selesaikan_tahapan_proyek');
 Route::get('selesaikan-sub-tahapan/{id}', 'ProjectController@selesaikan_sub_tahapan_proyek');
-
+Route::post('upload-file-mlbi/{id}/{deeppath?}', 'ProjectController@upload_file_mlbi');
 
 //Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
 
