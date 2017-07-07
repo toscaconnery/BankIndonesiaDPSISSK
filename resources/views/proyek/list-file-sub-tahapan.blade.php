@@ -60,7 +60,24 @@
                     {{ csrf_field() }}
                     <!-- <input type="file" name="berkas">
                     <button type="submit" class="btn btn-primary">Submit</button> -->
-                    <h4>Upload Dokumen</h4>
+                    <h4>Upload Dokumen P3A</h4>
+                    <div class="col-md-4">
+                    <div class="input-group">
+                      <input type="file" name="berkas" class="form-control">
+                      <div class="input-group-btn">
+                      <button type="submit" class="btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                    </div>
+                  </form>
+                  <br>
+                  <br>
+
+                  <form action="{{url('')}}/upload-file-mlbi/{{$id_sub_tahapan}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <!-- <input type="file" name="berkas">
+                    <button type="submit" class="btn btn-primary">Submit</button> -->
+                    <h4>Upload Dokumen MLBI</h4>
                     <div class="col-md-4">
                     <div class="input-group">
                       <input type="file" name="berkas" class="form-control">
@@ -73,6 +90,7 @@
                   <br>
                   <br>
                 </div>
+
                 <br>
                 <big>Lokasi : {{ $path }}</big>
                 <table class="table table-bordered table-striped">

@@ -18,7 +18,8 @@ class CreateTableFolder extends Migration
             $table->string('nama');
             $table->string('pic');
             $table->string('kategori');
-            $table->integer('id_proyek');
+            $table->integer('id_proyek')->nullable();
+            $table->integer('id_sub_tahapan');
             $table->integer('tahun');
             $table->string('path');
             $table->timestamps();
