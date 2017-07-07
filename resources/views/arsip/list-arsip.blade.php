@@ -71,8 +71,6 @@
           </div>
           <!-- /.row -->
         </section>
-
-
         <br>
       </div>
       @include('layouts.footer')
@@ -86,62 +84,53 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal" method="POST" action="">
-                {{ csrf_field() }}
-                <div class="form-group">
-                  <label for="namafolder" class="col-md-5 control-label">Nama Folder</label>
-                  <div class="col-md-7">
-                    <input type="text" class="form-control" id="namafolder" name="namafolder">
-                  </div>
+              {{ csrf_field() }}
+              <div class="form-group">
+                <label for="namafolder" class="col-md-5 control-label">Nama Folder</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="namafolder" name="namafolder">
                 </div>
-
-                <!--Category-->
-                <div class="form-group">
-                  <label for="kategori" class="col-md-5 control-label">Kategori</label>
-                  <div class="col-md-7">
-                    <input type="text" class="form-control" id="kategori" name="kategori">
-                  </div>
-                </div> 
-
-                <div class="form-group">
-                  <div class="modal-footer">
-                    <button type="reset" class="btn btn-danger">Reset</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label for="kategori" class="col-md-5 control-label">Kategori</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="kategori" name="kategori">
                 </div>
-              </form>
-            </div>
+              </div> 
+
+              <div class="form-group">
+                <div class="modal-footer">
+                  <button type="reset" class="btn btn-danger">Reset</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-      <!-- Bootstrap 3.3.6 -->
-      <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-      <!-- DataTables -->
-      <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-      <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-      <!-- SlimScroll -->
-      <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-      <!-- FastClick -->
-      <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-      <!-- AdminLTE App -->
-      <script src="{{url('')}}/dist/js/app.min.js"></script>
-      <!-- AdminLTE for demo purposes -->
-      <script src="{{url('')}}/dist/js/demo.js"></script>
-      <!-- page script -->
-      <script>
-        $(function () {
-          $('#example1').DataTable({
-            "order": [[ 0, "desc" ]]
-          });
-          $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-          });
+    </div>
+    <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{url('')}}/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{url('')}}/dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+      $(function () {
+        $('#example1').DataTable({
+          "order": [[ 0, "desc" ]],
+          "autoWidth": true
         });
-      </script>
-    </body>
-    </html>
+      });
+    </script>
+  </body>
+  </html>

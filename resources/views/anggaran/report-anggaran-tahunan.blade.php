@@ -105,7 +105,7 @@
                     </tr> -->
                   </tbody>
                 </table>
-                <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Tambah Pengeluaran</button></center>
+                <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button></center>
                 <!-- /.box-body -->
               </div>
               <!-- /.box -->
@@ -218,8 +218,6 @@
                   <textarea name="keterangan" type="text" class="form-control" id="inputEmail3"></textarea>
                 </div>
               </div>
-
-
               <!-- /.box-body -->
               <div class="form-group">
                 <div class="modal-footer">

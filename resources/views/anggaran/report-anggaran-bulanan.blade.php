@@ -20,62 +20,59 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-  @include('layouts.header')
-  @include('layouts.navbar')
-  <div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        Pencairan Anggaran {{$tahun_anggaran}}
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
-      </ol>
-    </section>
-    <section class="content">
-    <div class="row">
-    <div class="col-sm-7">
-      <!-- Horizontal Form -->
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h2 class="box-title">Pencairan</h2>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form class="form-horizontal">
-          <div class="box-body">
-
-            <table id="example2" class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th style="vertical-align:middle;text-align:center" rowspan="2" width="10">No</th>
-                  <th style="vertical-align:middle;text-align:center" rowspan="2">Bulan</th>
-                  <th style="text-align:center;" colspan="6">Nominal Dikeluarkan</th>
-                  <th style="vertical-align:middle;text-align:center" rowspan="2">Rincian</th>
-                </tr>
-                <tr>
-                  <th style="text-align:center;" colspan="2">RI</th>
-                  <th style="text-align:center;" colspan="2">OP</th>
-                  <th style="text-align:center;" colspan="2">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-              @php
-              $i=1;
-              @endphp
-              @foreach($jlh_pengeluaran_bulanan as $jlh_pengeluaran_bulanan)
-                <tr>
-                  <td>{{$i++}}</td>
-                  <td>{{$jlh_pengeluaran_bulanan->Bulan}}</td>
-                  <td>23423</td>
-                  <td>100%</td>
-                  <td>23222</td>
-                  <td>90%</td>
-                  <td>46845</td>
-                  <td>95%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/{{$jlh_pengeluaran_bulanan->idbulan}}">{{$jlh_pengeluaran_bulanan->Jumlah}}</a></td>
-                </tr>
-              @endforeach
+  <div class="wrapper">
+    @include('layouts.header')
+    @include('layouts.navbar')
+    <div class="content-wrapper">
+      <section class="content-header">
+        <h1>
+          Pencairan Anggaran {{$tahun_anggaran}}
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
+        </ol>
+      </section>
+      <section class="content">
+        <div class="row">
+          <div class="col-md-7">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h2 class="box-title">Pencairan</h2>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example2" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th rowspan="2">No</th>
+                      <th rowspan="2">Bulan</th>
+                      <th colspan="6">Nominal Dikeluarkan</th>
+                      <th rowspan="2">Rincian</th>
+                    </tr>
+                    <tr>
+                      <th colspan="2">RI</th>
+                      <th colspan="2">OP</th>
+                      <th colspan="2">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @php
+                    $i=1;
+                    @endphp
+                    @foreach($jlh_pengeluaran_bulanan as $jlh_pengeluaran_bulanan)
+                    <tr>
+                      <td>{{$i++}}</td>
+                      <td>{{$jlh_pengeluaran_bulanan->Bulan}}</td>
+                      <td>Rp {{number_format ($jlh_pengeluaran_bulanan->sumri)}}</td>
+                      <td>100%</td>
+                      <td>Rp {{number_format ($jlh_pengeluaran_bulanan->sumop)}}</td>
+                      <td>90%</td>
+                      <td>Rp {{number_format ($jlh_pengeluaran_bulanan->sumtot)}}</td>
+                      <td>95%</td>
+                      <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/{{$jlh_pengeluaran_bulanan->idbulan}}">{{$jlh_pengeluaran_bulanan->Jumlah}}</a></td>
+                    </tr>
+                    @endforeach
                 <!-- <tr>
                   <td>2</td>
                   <td>Februari</td>
@@ -86,83 +83,6 @@
                   <td>46845</td>
                   <td>5%</td>
                   <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Maret</td>
-                  <td>23423</td>
-                  <td>20%</td>
-                  <td>23222</td>
-                  <td>15%</td>
-                  <td>46845</td>
-                  <td>22%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">5</a></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>April</td>
-                  <td>23423</td>
-                  <td>24%</td>
-                  <td>23222</td>
-                  <td>21%</td>
-                  <td>46845</td>
-                  <td>29%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">4</a></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Mei</td>
-                  <td>23423</td>
-                  <td>29%</td>
-                  <td>23222</td>
-                  <td>32%</td>
-                  <td>46845</td>
-                  <td>36%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Juni</td>
-                  <td>23423</td>
-                  <td>35%</td>
-                  <td>23222</td>
-                  <td>44%</td>
-                  <td>46845</td>
-                  <td>48%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">6</a></td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Juli</td>
-                  <td>23423</td>
-                  <td>45%</td>
-                  <td>23222</td>
-                  <td>49%</td>
-                  <td>46845</td>
-                  <td>52%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">2</a></td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Agustus</td>
-                  <td>23423</td>
-                  <td>45%</td>
-                  <td>23222</td>
-                  <td>58%</td>
-                  <td>46845</td>
-                  <td>58%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>September</td>
-                  <td>23423</td>
-                  <td>45%</td>
-                  <td>23222</td>
-                  <td>58%</td>
-                  <td>46845</td>
-                  <td>58%</td>
-                  <td><a href="{{url('')}}/report-anggaran-rinci">3</a></td>
                 </tr>
                 <tr>
                   <td>10</td>
@@ -201,14 +121,13 @@
             </table>
           </div>
           <!-- /.box-body -->
-        </form>
+        </div>
+        <!-- /.box -->
       </div>
-      <!-- /.box -->
     </div>
-    </div>
-    </section>
-  </div>
-  @include('layouts.footer')
+  </section>
+</div>
+@include('layouts.footer')
 </div>
 
 <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -237,12 +156,12 @@
 <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script>
   $(function () {
-    $("#example1").DataTable();
+    
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
-      "searching": false,
-      "ordering": true,
+      "searching": true,
+      "order": [[ 0, "desc" ]],
       "info": true,
       "autoWidth": false
     });
