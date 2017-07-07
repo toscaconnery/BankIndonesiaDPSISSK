@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableFile extends Migration
+class CreateTableListTahapan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTableFile extends Migration
      */
     public function up()
     {
-        Schema::create('tabel_file', function(Blueprint $table) {
+        Schema::create('list_tahapan', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('id_sub_tahapan');
             $table->string('nama');
-            $table->string('pic');
-            $table->integer('tahun');
-            $table->string('path');
+            $table->string('nilai');
+            $table->string('jenis');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateTableFile extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tabel_file');
+        Schema::dropIfExists('list_tahapan');
     }
 }
