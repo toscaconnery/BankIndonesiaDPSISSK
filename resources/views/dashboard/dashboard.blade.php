@@ -61,8 +61,8 @@
               <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3>Budget</h3>
-                  <p>RI : Rp {{ number_format($anggaran[0]->ri, 0, ',', '.') }}</p>
-                  <p>OP : Rp {{ number_format($anggaran[0]->op, 0, ',', '.') }}</p>
+                  <p>RI : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->ri, 0, ',', '.') : 0}}</p>
+                  <p>OP : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->op, 0, ',', '.') : 0}}</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -72,8 +72,8 @@
                 <div class="inner">
                   <h3>Rest</h3>
 
-                  <p>RI : Rp {{ number_format($anggaran[0]->used_ri, 0, ',', '.') }}</p>
-                  <p>OP : Rp {{ number_format($anggaran[0]->used_op, 0, ',', '.') }}</p>
+                  <p>RI : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->used_ri, 0, ',', '.') : 0}}</p>
+                  <p>OP : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->used_op, 0, ',', '.') : 0}}</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
