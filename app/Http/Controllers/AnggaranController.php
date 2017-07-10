@@ -21,7 +21,6 @@ class AnggaranController extends Controller
     public function report_anggaran_bulanan($tahun)
     {
         $this->data['tahun_anggaran'] = $tahun;
-        $this->data['jlh_pengeluaran_bulanan'] = DB::select('SELECT (SELECT SUM(nominal) from pencairan where MONTH(tanggal_pencairan)=tab1.idbulan and kategori="RI" and YEAR(tanggal_pencairan)='.$tahun.') as sumri, (SELECT SUM(nominal) from pencairan where MONTH(tanggal_pencairan)=tab1.idbulan and kategori="OP" and YEAR(tanggal_pencairan)='.$tahun.') as sumop, (SELECT SUM(nominal) from pencairan where MONTH(tanggal_pencairan)=tab1.idbulan and YEAR(tanggal_pencairan)='.$tahun.') as sumtot, tab1.idbulan, tab1.Bulan, tab1.Jumlah from (SELECT MONTH(tanggal_pencairan) as idbulan, MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = '.$tahun.' GROUP BY MONTH(tanggal_pencairan)) tab1');
         
         $this->data['anggaran'] = DB::select('SELECT * from anggaran where tahun='.$tahun.'')[0];
         $this->data['nominal']=DB::select('SELECT MONTH(tanggal_pencairan) as idbulan, MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = '.$tahun.' GROUP BY MONTH(tanggal_pencairan)');
@@ -40,10 +39,20 @@ class AnggaranController extends Controller
             $this->data['totaljanuari'] = $this->data['totaljanuari'] + $this->data['januariOP']->sumop;
             $this->data['persenjanuariOP'] = ($this->data['januariOP']->sumop/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totaljanuari']!=0)
+        $this->data['persenttljanuari'] = ROUND(($this->data['totaljanuari']/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranjanuari']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttljanuari'] = ($this->data['totaljanuari']/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==1)
+                {
+                    $this->data['jlhpengeluaranjanuari']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
+        // dd($this->data['persenttljanuari']);
+        // dd($this->data['jlhpengeluaranjanuari']);
 
         $this->data['totalfebruari'] = 0;
         $this->data['februariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
@@ -58,9 +67,17 @@ class AnggaranController extends Controller
             $this->data['totalfebruari'] = $this->data['totalfebruari'] + $this->data['februariOP']->sumop;
             $this->data['persenfebruariOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totalfebruari']!=0)
+        $this->data['persenttlfebruari'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranfebruari']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttlfebruari'] = (($this->data['totaljanuari']+$this->data['totalfebruari'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==2)
+                {
+                    $this->data['jlhpengeluaranfebruari']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totalmaret'] = 0;
@@ -76,9 +93,17 @@ class AnggaranController extends Controller
             $this->data['totalmaret'] = $this->data['totalmaret'] + $this->data['maretOP']->sumop;
             $this->data['persenmaretOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totalmaret']!=0)
+        $this->data['persenttlmaret'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranmaret']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttlmaret'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==3)
+                {
+                    $this->data['jlhpengeluaranmaret']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totalapril'] = 0;
@@ -94,9 +119,17 @@ class AnggaranController extends Controller
             $this->data['totalapril'] = $this->data['totalapril'] + $this->data['aprilOP']->sumop;
             $this->data['persenaprilOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totalapril']!=0)
+        $this->data['persenttlapril'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranapril']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttlapril'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==4)
+                {
+                    $this->data['jlhpengeluaranapril']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totalmei'] = 0;
@@ -112,9 +145,17 @@ class AnggaranController extends Controller
             $this->data['totalmei'] = $this->data['totalmei'] + $this->data['meiOP']->sumop;
             $this->data['persenmeiOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totalmei']!=0)
+        $this->data['persenttlmei'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranmei']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttlmei'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==5)
+                {
+                    $this->data['jlhpengeluaranmei']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totaljuni'] = 0;
@@ -130,9 +171,17 @@ class AnggaranController extends Controller
             $this->data['totaljuni'] = $this->data['totaljuni'] + $this->data['juniOP']->sumop;
             $this->data['persenjuniOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totaljuni']!=0)
+        $this->data['persenttljuni'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranjuni']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttljuni'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==6)
+                {
+                    $this->data['jlhpengeluaranjuni']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totaljuli'] = 0;
@@ -148,9 +197,17 @@ class AnggaranController extends Controller
             $this->data['totaljuli'] = $this->data['totaljuli'] + $this->data['juliOP']->sumop;
             $this->data['persenjuliOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totaljuli']!=0)
+        $this->data['persenttljuli'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranjuli']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttljuli'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==7)
+                {
+                    $this->data['jlhpengeluaranjuli']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totalagustus'] = 0;
@@ -166,9 +223,17 @@ class AnggaranController extends Controller
             $this->data['totalagustus'] = $this->data['totalagustus'] + $this->data['agustusOP']->sumop;
             $this->data['persenagustusOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totalagustus']!=0)
+        $this->data['persenttlagustus'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranagustus']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttlagustus'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==8)
+                {
+                    $this->data['jlhpengeluaranagustus']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totalseptember'] = 0;
@@ -184,9 +249,17 @@ class AnggaranController extends Controller
             $this->data['totalseptember'] = $this->data['totalseptember'] + $this->data['septemberOP']->sumop;
             $this->data['persenseptemberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totalseptember']!=0)
+        $this->data['persenttlseptember'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranseptember']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttlseptember'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==9)
+                {
+                    $this->data['jlhpengeluaranseptember']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totaloktober'] = 0;
@@ -202,9 +275,17 @@ class AnggaranController extends Controller
             $this->data['totaloktober'] = $this->data['totaloktober'] + $this->data['oktoberOP']->sumop;
             $this->data['persenoktoberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop+$this->data['oktoberOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totaloktober']!=0)
+        $this->data['persenttloktober'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluaranoktober']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttloktober'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==10)
+                {
+                    $this->data['jlhpengeluaranoktober']=$this->data['nominal'][$i]->Jumlah;
+                }
+            }
         }
         
         $this->data['totalnovember'] = 0;
@@ -220,9 +301,21 @@ class AnggaranController extends Controller
             $this->data['totalnovember'] = $this->data['totalnovember'] + $this->data['novemberOP']->sumop;
             $this->data['persenoktoberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop+$this->data['oktoberOP']->sumop+$this->data['novemberOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totalnovember']!=0)
+        $this->data['persenttlnovember'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober']+$this->data['totalnovember'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluarannovember']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttlnovember'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober']+$this->data['totalnovember'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==11)
+                {
+                    $this->data['jlhpengeluarannovember']=$this->data['nominal'][$i]->Jumlah;
+                }
+                else
+                {
+                    $this->data['jlhpengeluarannovember']=0;
+                }
+            }
         }
         
         $this->data['totaldesember'] = 0;
@@ -238,13 +331,25 @@ class AnggaranController extends Controller
             $this->data['totaldesember'] = $this->data['totaldesember'] + $this->data['desemberOP']->sumop;
             $this->data['persenoktoberOP'] = (($this->data['januariOP']->sumop+$this->data['februariOP']->sumop+$this->data['maretOP']->sumop+$this->data['aprilOP']->sumop+$this->data['meiOP']->sumop+$this->data['juniOP']->sumop+$this->data['juliOP']->sumop+$this->data['agustusOP']->sumop+$this->data['septemberOP']->sumop+$this->data['oktoberOP']->sumop+$this->data['novemberOP']->sumop+$this->data['novemberOP']->sumop)/$this->data['anggaran']->op)*100;
         }
-        if ($this->data['totaldesember']!=0)
+        $this->data['persenttldesember'] = ROUND((($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober']+$this->data['totalnovember']+$this->data['totaldesember'])/$this->data['anggaran']->nominal)*100,2);
+        $this->data['jlhpengeluarandesember']=0;
+        for ($i=0; $i<12; $i++)
         {
-            $this->data['persenttldesember'] = (($this->data['totaljanuari']+$this->data['totalfebruari']+$this->data['totalmaret']+$this->data['totalapril']+$this->data['totalmei']+$this->data['totaljuni']+$this->data['totaljuli']+$this->data['totalagustus']+$this->data['totalseptember']+$this->data['totaloktober']+$this->data['totalnovember']+$this->data['totaldesember'])/$this->data['anggaran']->nominal)*100;
+            if (isset($this->data['nominal'][$i]))
+            {
+                if($this->data['nominal'][$i]->idbulan==12)
+                {
+                    $this->data['jlhpengeluarandesember']=$this->data['nominal'][$i]->Jumlah;
+                }
+                else
+                {
+                    $this->data['jlhpengeluarandesember']=0;
+                }
+            }
         }
 
         return view('anggaran.report-anggaran-bulanan', $this->data);
-        // SELECT ROUND((new2.sumri) * 100.0 / ri, 2) as persenri, ROUND((new2.sumop) * 100.0 / op, 2) as persenop, new2.sumri, new2.sumop, new2.Bln, new2.thn, new2.jlh from (SELECT (SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)=new1.tahun and MONTH(tanggal_pencairan)=new1.bulan and kategori='RI') as sumri, (SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)=new1.tahun and MONTH(tanggal_pencairan)=new1.bulan and kategori='OP') as sumop, new1.bulan as Bln, new1.tahun as thn, new1.jumlah as jlh from (SELECT MONTH(tanggal_pencairan) as bulan, YEAR(tanggal_pencairan) as tahun, COUNT(NOMINAL) as jumlah from pencairan where MONTH(tanggal_pencairan) = 7 and YEAR(tanggal_pencairan) = 2017) new1) new2, anggaran where anggaran.tahun=2017
+        
         // return view('anggaran.report-anggaran-bulanan');
     }
 
@@ -326,10 +431,10 @@ class AnggaranController extends Controller
     	$nominal = Input::get('nominal');
         $ri = Input::get('ri');
         $op = Input::get('op');
-    	
-    	$anggaran = new Anggaran;
-    	$anggaran->tahun = $tahun;
-    	$anggaran->nominal = $nominal;
+
+        $anggaran = new Anggaran;
+        $anggaran->tahun = $tahun;
+        $anggaran->nominal = $nominal;
         $anggaran->ri = $ri;
         $anggaran->op = $op;
         $anggaran->pic = 0;
@@ -341,8 +446,8 @@ class AnggaranController extends Controller
     	// else {
     	// 	$anggaran->pic = 0;
     	// }
-    	$anggaran->save();
-    	return redirect('report-anggaran-tahunan');
+        $anggaran->save();
+        return redirect('report-anggaran-tahunan');
     }
 
     public function save_input_pengeluaran()

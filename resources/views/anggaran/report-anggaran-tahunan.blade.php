@@ -74,16 +74,16 @@
                   @foreach($anggaran as $anggaran)
                     <tr>
                       <td>{{$anggaran->tahun}}</td>
-                      <td>Rp. {{ number_format($anggaran->ri) }}</td>  {{-- ri dianggarkan --}}
-                      <td>Rp. {{ number_format($anggaran->op) }}</td>  {{-- op dianggarkan --}}
-                      <td>Rp. {{ number_format($anggaran->nominal) }}</td>  {{-- total dianggarkan --}}
-                      <td>Rp. {{ number_format($anggaran->used_ri) }}</td>  {{-- ri realisasi --}}
+                      <td>Rp. {{ number_format($anggaran->ri, 0, ',', '.') }}</td>  {{-- ri dianggarkan --}}
+                      <td>Rp. {{ number_format($anggaran->op, 0, ',', '.') }}</td>  {{-- op dianggarkan --}}
+                      <td>Rp. {{ number_format($anggaran->nominal, 0, ',', '.') }}</td>  {{-- total dianggarkan --}}
+                      <td>Rp. {{ number_format($anggaran->used_ri, 0, ',', '.') }}</td>  {{-- ri realisasi --}}
                       <td width="10px">{{$anggaran->persen_ri}}%</td>  {{-- persen ri realisasi --}}
-                      <td>Rp. {{ number_format($anggaran->used_op) }}</td>  {{-- op realisasi --}}
+                      <td>Rp. {{ number_format($anggaran->used_op, 0, ',', '.') }}</td>  {{-- op realisasi --}}
                       <td width="10px">{{$anggaran->persen_op}}%</td> {{-- persen op realisasi --}}
-                      <td>Rp. {{ number_format($anggaran->used_total) }}</td>  {{-- total realisasi --}}
+                      <td>Rp. {{ number_format($anggaran->used_total, 0, ',', '.') }}</td>  {{-- total realisasi --}}
                       <td width="10px">{{$anggaran->persen_realisasi}}%</td> {{-- persen total realisasi --}}
-                      <td>Rp. {{ number_format($anggaran->sisa) }}</td> {{-- sisa anggaran --}}
+                      <td>Rp. {{ number_format($anggaran->sisa, 0, ',', '.') }}</td> {{-- sisa anggaran --}}
                       <td width="5px">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
                       <td><a href="{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}">Detail</a></td>
                     </tr>

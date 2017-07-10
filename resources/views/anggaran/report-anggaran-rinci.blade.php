@@ -53,7 +53,7 @@
                     <tr>
                       <td>{{$pengeluaran_rinci->tanggal_pencairan}}</td>
                       <td>{{$pengeluaran_rinci->kategori}}</td>
-                      <td>{{$pengeluaran_rinci->nominal}}</td>
+                      <td>Rp. {{number_format($pengeluaran_rinci->nominal, 0, ',', '.')}}</td>
                       <td>{{$pengeluaran_rinci->keterangan}}</td>
                     </tr>
                   @endforeach
