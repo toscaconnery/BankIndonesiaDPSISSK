@@ -61,8 +61,9 @@
               <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3>Budget</h3>
-                  <p>RI : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->ri, 0, ',', '.') : 0}}</p>
-                  <p>OP : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->op, 0, ',', '.') : 0}}</p>
+                  <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->ri, 0, ',', '.') : 0}}</p>
+                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->op, 0, ',', '.') : 0}}</p>
+
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -72,8 +73,8 @@
                 <div class="inner">
                   <h3>Rest</h3>
 
-                  <p>RI : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->used_ri, 0, ',', '.') : 0}}</p>
-                  <p>OP : Rp {{isset($anggaran[0]->ri) ? number_format($anggaran[0]->used_op, 0, ',', '.') : 0}}</p>
+                  <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->used_ri, 0, ',', '.') : 0}}</p>
+                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->used_op, 0, ',', '.') : 0}}</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -390,7 +391,7 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'Grafik Anggaran {{$anggaran[0]->tahun}}'
+        text: 'Grafik Anggaran {{$anggaranada!=0 ? $anggaran[0]->tahun : '-'}}'
     },
     xAxis: {
         categories: [

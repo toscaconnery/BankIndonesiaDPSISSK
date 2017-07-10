@@ -17,8 +17,16 @@ class DashboardController extends Controller
                                             WHERE i.status = "On Progress" 
                                             OR i.status = "Pending" 
                                             ORDER BY i.created_at DESC');
-        $data['anggaran'] = DB::select('SELECT * from anggaran where tahun=YEAR(now())');
-    	
+        $this->data['anggaran'] = DB::select('SELECT tahun,ri,op,used_ri,used_op from anggaran where tahun=YEAR(now()) limit 1');
+    	// dd($this->data['anggaran']);
+        $this->data['anggaranada']=1;
+        if(empty($this->data['anggaran']))
+        {
+            $this->data['anggaranada']=0;
+        }
+        
+        // $this->data['anggaran2'] = 
+        // dd($this->data['anggaran']);
         $this->data['januariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
         $this->data['januariOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
         
@@ -55,7 +63,7 @@ class DashboardController extends Controller
         $this->data['desemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
         $this->data['desemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
         
-        return view('dashboard.dashboard', $this->data, $data);
+        return view('dashboard.dashboard', $this->data);
     	// }
     	// else
     	// {
