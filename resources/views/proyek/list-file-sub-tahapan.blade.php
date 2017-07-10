@@ -73,7 +73,7 @@
                   <br>
                   <br>
 
-                  <form action="{{url('')}}/upload-file-mlbi/{{$id_sub_tahapan}}" method="post" enctype="multipart/form-data">
+                  <form action="{{url('')}}/upload-file-mlbi/{{$id_sub_tahapan}}{{isset($deeppath) ? '/'.$deeppath : ''}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <!-- <input type="file" name="berkas">
                     <button type="submit" class="btn btn-primary">Submit</button> -->
@@ -128,11 +128,27 @@
                         </center>
                       </tr>
                     @endforeach
+
                     @foreach($fileSubTahapan as $data)
                       <tr>
                         <td>{{ $x++ }}</td>
                         <td>{{ $data->nama }}</td>
-                        <td>File</td>
+                        <td>File P3A</td>
+                        <td>{{ $data->pic }}</td>
+                        <td>{{ $data->created_at }}</td>
+                        <center>
+                          <td width="2em">
+                            <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
+                          </td>
+                        </center>
+                      </tr>
+                    @endforeach 
+
+                    @foreach($fileSubTahapanMLBI as $data)
+                      <tr>
+                        <td>{{ $x++ }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>File MLBI</td>
                         <td>{{ $data->pic }}</td>
                         <td>{{ $data->created_at }}</td>
                         <center>
