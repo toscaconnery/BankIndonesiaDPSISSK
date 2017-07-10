@@ -22,6 +22,7 @@ class CreateTableFolder extends Migration
             $table->integer('id_sub_tahapan');
             $table->integer('tahun');
             $table->string('path');
+            $table->string('path_mlbi')->nullable();
             $table->timestamps();
         });
     }

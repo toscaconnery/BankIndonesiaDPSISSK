@@ -525,9 +525,11 @@ class ProjectController extends Controller
             $this->data['namaProyek'] = $proyek->nama;
             $folder = TabelFolder::find($deeppath);
             $this->data['path'] = $folder->path.$folder->nama.'/';
+            $this->data['pathMLBI'] = $tahun.'/'.$proyek->nama.'/'.'MLBI/'; ////////SAMBUNG DISINI
             //dd($this->data['path']);
             $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
+            //$this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.)
             return view('proyek.list-file-sub-tahapan', $this->data);
         }
         else{
@@ -632,6 +634,10 @@ class ProjectController extends Controller
             $folder->tahun = date("Y");
             $folder->path = $request->path;
             $folder->kategori = "Proyek";
+            if($proyek->jenis == "Outsource"){
+                $pathMLBI =  TabelFolder::find($deeppath);
+                $folder->path_mlbi = $pathMLBI->path_mlbi.$pathMLBI->nama.'/';
+            }
             if($folder->save()){
                 mkdir($folder->path.'/'.$folder->nama);
             }
@@ -641,6 +647,7 @@ class ProjectController extends Controller
             //dd("KEMUNGKINAN 6 : NORMAL / TAMBAH FOLDER");
             $subTahapan = SubTahapanProyek::find($id);
             $tahapan  = TahapanProyek::find($subTahapan->id_tahapan);
+            $proyek = Proyek::find($tahapan->id_proyek);
             $folder = new TabelFolder;
             $folder->nama = $request->namaFolder;
             if(Auth::check()){
@@ -649,11 +656,15 @@ class ProjectController extends Controller
             else{
                 $folder->pic = "Unregistered User";
             }
-            $folder->id_proyek = $tahapan->id_proyek;
+            $folder->id_proyek = $proyek->id;
             $folder->id_sub_tahapan = $id;
             $folder->tahun = date("Y");
             $folder->path = $request->path;
             $folder->kategori = "Proyek";
+            if($proyek->jenis == "Outsource"){
+                $tahun = date("Y");
+                $folder->path_mlbi = $tahun.'/'.$proyek->nama.'/'.'MLBI/'.$tahapan->nama.'/';
+            }
             if($folder->save()){
                 mkdir($folder->path.$folder->nama);
             }
