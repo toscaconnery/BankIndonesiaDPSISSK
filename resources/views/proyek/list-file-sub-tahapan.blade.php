@@ -73,7 +73,7 @@
                   <br>
                   <br>
 
-                  <form action="{{url('')}}/upload-file-mlbi/{{$id_sub_tahapan}}" method="post" enctype="multipart/form-data">
+                  <form action="{{url('')}}/upload-file-mlbi/{{$id_sub_tahapan}}{{isset($deeppath) ? '/'.$deeppath : ''}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <!-- <input type="file" name="berkas">
                     <button type="submit" class="btn btn-primary">Submit</button> -->

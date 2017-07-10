@@ -525,11 +525,11 @@ class ProjectController extends Controller
             $this->data['namaProyek'] = $proyek->nama;
             $folder = TabelFolder::find($deeppath);
             $this->data['path'] = $folder->path.$folder->nama.'/';
-            $this->data['pathMLBI'] = $tahun.'/'.$proyek->nama.'/'.'MLBI/'; ////////SAMBUNG DISINI
+            $this->data['pathMLBI'] = $folder->path_mlbi.$folder->nama.'/';
             //dd($this->data['path']);
             $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
-            //$this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.)
+            $this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['pathMLBI'].'"');
             return view('proyek.list-file-sub-tahapan', $this->data);
         }
         else{
@@ -555,7 +555,7 @@ class ProjectController extends Controller
     public function save_list_file_sub_tahapan (Request $request, $id, $deeppath = null )    //ini ID sub tahapan
     {
         if($deeppath){
-            dd("KEMUNGKINAN 3 : DEEP PATH / UPLOAD FILE DEEP");
+            //dd("KEMUNGKINAN 3 : DEEP PATH / UPLOAD FILE DEEP");
             $subTahapan = SubTahapanProyek::find($id);
             $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
             $proyek = Proyek::find($tahapan->id_proyek);
@@ -708,29 +708,35 @@ class ProjectController extends Controller
         }
     }
 
-    public function upload_file_mlbi(Request $request, $id, $deeppath = null)
+    public function upload_file_mlbi(Request $request, $id, $deeppath = null)   //ini ID sub tahapan
     {
         //dd("MLBI");
-        if($deeppath){
-            dd("DEEPPATH MLBI UPLOAD FILE");
+        $tahapan = TahapanProyek::find($id);
+        $proyek = Proyek::find($tahapan->id_proyek);
+        $file = $request->file('berkas');
+        $fileName = $file->getClientOriginalName();
+        $berkas = new TabelFile;
+        $berkas->nama = $fileName;
+        $berkas->id_sub_tahapan = $id;
+        if(Auth::check()){
+            $berkas->pic = Auth::user()->name;
         }
         else{
-            //dd("MLBI NORMAL UPLOAD FILE");
-            //$subTahapan = SubTahapanProyek::find($id);
-            $tahapan = TahapanProyek::find($id);
-            $proyek = Proyek::find($tahapan->id_proyek);
-            $file = $request->file('berkas');
-            $fileName = $file->getClientOriginalName();
-            $berkas = new TabelFile;
-            $berkas->nama = $fileName;
-            $berkas->id_sub_tahapan = $id;
-            if(Auth::check()){
-                $berkas->pic = Auth::user()->name;
+            $berkas->pic = "Unregistered User";
+        }
+        $berkas->tahun = date("Y");
+        if($deeppath){
+            //dd("DEEPPATH MLBI UPLOAD FILE");
+            $direktori = TabelFolder::find($deeppath);
+            $pathMLBI = $direktori->path_mlbi.$direktori->nama.'/';
+            $berkas->path = $pathMLBI;
+            if($berkas->save()){
+                $file->move($pathMLBI, $fileName);
             }
-            else{
-                $berkas->pic = "Unregistered User";
-            }
-            $berkas->tahun = date("Y");
+            return redirect('list-file-sub-tahapan/'.$id.'/'.$deeppath);
+        }
+        else{
+            //dd("NORMAL MLBI UPLOAD FILE");
             $path = $berkas->tahun.'/'.$proyek->nama.'/'.'MLBI/'.$tahapan->nama.'/';
             $berkas->path = $path;
             if($berkas->save()){
