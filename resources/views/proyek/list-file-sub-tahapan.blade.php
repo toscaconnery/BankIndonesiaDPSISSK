@@ -52,8 +52,8 @@
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
               <ul class="nav nav-pills nav-justified">
-              <li class="active"><a href="#P3A" data-toggle="tab">Dokumen P3A</a></li>
-                <li><a href="#MLBI" data-toggle="tab">Dokumen MLBI</a></li>
+                <li class="active"><a href="#P3A" data-toggle="tab"><h4>Dokumen P3A</h4></a></li>
+                <li><a href="#MLBI" data-toggle="tab"><h4>Dokumen MLBI</h4></a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="P3A">
