@@ -365,6 +365,9 @@ class ProjectController extends Controller
         $this->data['id_tahapan'] = $id;
         $tahapan = TahapanProyek::find($id);
         $proyek = Proyek::find($tahapan->id_proyek);
+        //dd($tahapan);
+        $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND t.id = '.$id);
+        //dd($optionSubTahapan);
         $this->data['namaProyek'] = $proyek->nama;
         return view('proyek.input-sub-tahapan', $this->data);
     }
@@ -373,7 +376,7 @@ class ProjectController extends Controller
     {
         $sub = new SubTahapanProyek;
         $sub->id_tahapan = Input::get('id_tahapan');
-        $sub->nama = Input::get('nama');
+        $sub->nama = Input::get('namaSubTahapan');
         $sub->pic = Input::get('pic');
         $tanggal = Input::get('tanggal');
 

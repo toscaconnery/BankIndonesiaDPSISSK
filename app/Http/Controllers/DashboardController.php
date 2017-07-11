@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Anggaran;
+use App\Pencairan;
 // use Auth;
 
 class DashboardController extends Controller
@@ -62,12 +64,24 @@ class DashboardController extends Controller
         
         $this->data['desemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
         $this->data['desemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+
+        $this->data['forecast'] = $this->getEndYearForecast();
         
         return view('dashboard.dashboard', $this->data);
-    	// }
-    	// else
-    	// {
-    	// 	return redirect('autentikasi');
-    	// }
+
+    }
+
+    public function getEndYearForecast()
+    {
+        $anggaranTahunIni = Anggaran::where('tahun', date("Y"))->select('nominal')->first();
+        $penggunaanNormalBulanan = $anggaranTahunIni->nominal / 12;
+        $terpakaiTahunIni = DB::select('SELECT SUM(p.nominal) AS jumlah FROM pencairan p WHERE YEAR(p.tanggal_pencairan) = '.date("Y"))[0]->jumlah;
+        
+        if(is_null($terpakaiTahunIni)){
+            $terpakaiTahunIni = 0;
+        }
+        $bulanSekarang = date('m');
+        $forecast = ((($penggunaanNormalBulanan * $bulanSekarang) - $terpakaiTahunIni) * 12) / $bulanSekarang;
+        return $forecast;
     }
 }
