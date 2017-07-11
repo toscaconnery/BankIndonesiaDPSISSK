@@ -181,7 +181,6 @@ class ProjectController extends Controller
         $proyek->status = Input::get('status');
         $proyek->jenis = Input::get('jenis');
         $tanggal = Input::get('tanggal');
-        
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
@@ -361,13 +360,13 @@ class ProjectController extends Controller
     public function input_sub_tahapan($id)  //ini ID tahapan
     {
         $this->data['sub'] = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
-        $this->data['id_tahapan'] = $id;
         $tahapan = TahapanProyek::find($id);
         $proyek = Proyek::find($tahapan->id_proyek);
-        //dd($tahapan);
         $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND t.id = '.$id);
-        //dd($optionSubTahapan);
         $this->data['namaProyek'] = $proyek->nama;
+        $this->data['namaTahapan'] = $tahapan->nama;
+        $this->data['id_tahapan'] = $id;
+        $this->data['id_proyek'] = $proyek->id;
         return view('proyek.input-sub-tahapan', $this->data);
     }
 
@@ -512,23 +511,24 @@ class ProjectController extends Controller
 
     //Untuk mengakses isi folder dan menampilkannya
     public function list_file_sub_tahapan( $id, $deeppath = null )  //ini ID sub tahapan, deep path adalah id folder
-    { 
+    {
+        $subTahapan = SubTahapanProyek::find($id);
+        $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+        $proyek = Proyek::find($tahapan->id_proyek);
+        $tahun = date("Y");
+        $this->data['id_sub_tahapan'] = $id;
+        $this->data['id_tahapan'] = $tahapan->id;
+        $this->data['id_proyek'] = $proyek->id;
+        $this->data['namaSubTahapan'] = $subTahapan->nama;
+        $this->data['namaTahapan'] = $tahapan->nama;
+        $this->data['namaProyek'] = $proyek->nama;
+
         if($deeppath){
-            //dd($deeppath);
             //dd("KEMUNGKINAN 1 : DEEP PATH / AKSES FOLDER DEEP");
-            $subTahapan = SubTahapanProyek::find($id);
-            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
-            $proyek = Proyek::find($tahapan->id_proyek);
-            $tahun = date("Y");
-            $this->data['id_sub_tahapan'] = $id;
             $this->data['deeppath'] = $deeppath;
-            $this->data['namaSubTahapan'] = $subTahapan->nama;
-            $this->data['namaTahapan'] = $tahapan->nama;
-            $this->data['namaProyek'] = $proyek->nama;
             $folder = TabelFolder::find($deeppath);
             $this->data['path'] = $folder->path.$folder->nama.'/';
             $this->data['pathMLBI'] = $folder->path_mlbi.$folder->nama.'/';
-            //dd($this->data['path']);
             $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['pathMLBI'].'"');
@@ -536,14 +536,6 @@ class ProjectController extends Controller
         }
         else{
             //dd("KEMUNGKINAN 2 : NORMAL / AKSES FOLDER NORMAL");
-            $subTahapan = SubTahapanProyek::find($id);
-            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
-            $proyek = Proyek::find($tahapan->id_proyek);
-            $tahun = date("Y");
-            $this->data['id_sub_tahapan'] = $id;
-            $this->data['namaSubTahapan'] = $subTahapan->nama;
-            $this->data['namaTahapan'] = $tahapan->nama;
-            $this->data['namaProyek'] = $proyek->nama;
             $this->data['path'] = $tahun.'/'.$proyek->nama.'/'.'P3A/'.$tahapan->nama.'/';
             $this->data['pathMLBI'] = $tahun.'/'.$proyek->nama.'/'.'MLBI/'.$tahapan->nama.'/';
             $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'" AND t.id_sub_tahapan = '.$id);
