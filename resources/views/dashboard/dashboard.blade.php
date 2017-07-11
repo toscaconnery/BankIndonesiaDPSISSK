@@ -14,12 +14,12 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+  folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+  <div class="wrapper">
     @include('layouts.header')
     @include('layouts.navbar')
     <div class="content-wrapper">
@@ -34,17 +34,16 @@
 
       <!--Anggaran-->
       <section class="content">
-      <div class="row">
-      <div class="col-md-12">
-        <!-- Horizontal Form -->
-        <div class="box box-info">
-          <div class="box-header with-border">
-          <a href="{{url('')}}/report-anggaran-tahunan"><h2 class="box-title">Anggaran</h2></a>
-            <div class="box-tools pull-right">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <a href="{{url('')}}/report-anggaran-tahunan"><h2 class="box-title">Anggaran</h2></a>
+            <!-- <div class="box-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
               </button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
+            </div> -->
           </div>
           <div class="box-body">
             <div class="col-sm-3">
@@ -55,7 +54,7 @@
                   <p>Surplus Rp 53.000.000</p>
                 </div>
                 <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                  <i class="ion ion-stats-bars"></i>
                 </div>
               </div>
               <div class="small-box bg-aqua">
@@ -66,7 +65,7 @@
 
                 </div>
                 <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                  <i class="ion ion-stats-bars"></i>
                 </div>
               </div>
               <div class="small-box bg-aqua">
@@ -77,12 +76,12 @@
                   <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->used_op, 0, ',', '.') : 0}}</p>
                 </div>
                 <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                  <i class="ion ion-stats-bars"></i>
                 </div>
               </div>
             </div>
             <div class="col-sm-9">
-            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+              <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             </div>
           </div>
         </div>
@@ -99,72 +98,72 @@
           <!-- /.box-header -->
           <!-- content start -->
           <div class="box-body">
-            
-          <!--Content Project Progress-->
-          <div style="overflow-y: scroll; height: 30em">
-            <div class="info-box bg-aqua">
-              <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-number">Project APIK</span>
-                <span class="info-box-number">Progress : 40%</span>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 40%"></div>
-                </div>
-                    <span class="progress-description">
-                      Current step : Perancangan (15%)
-                      <div class="pull-right">16 Juli 2017</div>
-                    </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
 
-            <div class="info-box bg-aqua">
-              <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-number">Project SIMKU</span>
-                <span class="info-box-number">Progress : 56%</span>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 56%"></div>
+            <!--Content Project Progress-->
+            <div style="overflow-y: scroll; height: 30em">
+              <div class="info-box bg-aqua">
+                <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Project APIK</span>
+                  <span class="info-box-number">Progress : 40%</span>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 40%"></div>
+                  </div>
+                  <span class="progress-description">
+                    Current step : Perancangan (15%)
+                    <div class="pull-right">16 Juli 2017</div>
+                  </span>
                 </div>
-                    <span class="progress-description">
-                      Current step : Pembuatan program (36%)
-                      <div class="pull-right">25 Nopember 2017</div>
-                    </span>
+                <!-- /.info-box-content -->
               </div>
-              <!-- /.info-box-content -->
-            </div>
 
-            <div class="info-box bg-aqua">
-              <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-number">Project GWN Averaging</span>
-                <span class="info-box-number">Progress : 90%</span>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 90%"></div>
+              <div class="info-box bg-aqua">
+                <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Project SIMKU</span>
+                  <span class="info-box-number">Progress : 56%</span>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 56%"></div>
+                  </div>
+                  <span class="progress-description">
+                    Current step : Pembuatan program (36%)
+                    <div class="pull-right">25 Nopember 2017</div>
+                  </span>
                 </div>
-                    <span class="progress-description">
-                      Current step : Implementasi (24%)
-                      <div class="pull-right">14 Desember 2017</div>
-                    </span>
+                <!-- /.info-box-content -->
               </div>
-              <!-- /.info-box-content -->
-            </div>
 
-            <div class="info-box bg-aqua">
-              <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-number">Project APIK</span>
-                <span class="info-box-number">Progress : 100%</span>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 100%"></div>
+              <div class="info-box bg-aqua">
+                <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Project GWN Averaging</span>
+                  <span class="info-box-number">Progress : 90%</span>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 90%"></div>
+                  </div>
+                  <span class="progress-description">
+                    Current step : Implementasi (24%)
+                    <div class="pull-right">14 Desember 2017</div>
+                  </span>
                 </div>
-                    <span class="progress-description">
-                      Current step : Finished
-                      <div class="pull-right">11 Agustus 2017</div>
-                    </span>
+                <!-- /.info-box-content -->
               </div>
-              <!-- /.info-box-content -->
-            </div>
+
+              <div class="info-box bg-aqua">
+                <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-number">Project APIK</span>
+                  <span class="info-box-number">Progress : 100%</span>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 100%"></div>
+                  </div>
+                  <span class="progress-description">
+                    Current step : Finished
+                    <div class="pull-right">11 Agustus 2017</div>
+                  </span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
             </div>
           </div>
         </div>
@@ -183,15 +182,16 @@
           <div class="box-body">
             <div class="row">
               <div class="col-md-12">
-              <div style="overflow-y: scroll; height: 30em">
-                <ul class="timeline">
-                  <li class="time-label">
-                    <span class="bg-blue">
-                      Issue yang perlu diperhatikan
-                    </span>
-                  </li>
-                  <!--list issue-->
-                  @foreach($issue as $issue)
+                <div style="overflow-y: scroll; height: 30em">
+                  <ul class="timeline">
+                    <li class="time-label">
+                      <span class="bg-blue">
+                        Issue yang perlu diperhatikan
+                      </span>
+                    </li>
+                    <!--list issue-->
+                    @if($issue)
+                    @foreach($issue as $issue)
                     <li>
                       <i class="fa fa-info bg-blue"></i>
                       <!--issue content goes here-->
@@ -209,13 +209,13 @@
                         </div>
 
                         @if($issue->tindak_lanjut)
-                          <div class="timeline-body">
-                            <big>
-                              <b>Tindak Lanjut:</b>
-                            </big>
-                            <br>
-                            {{$issue->tindak_lanjut}}
-                          </div>
+                        <div class="timeline-body">
+                          <big>
+                            <b>Tindak Lanjut:</b>
+                          </big>
+                          <br>
+                          {{$issue->tindak_lanjut}}
+                        </div>
                         @endif
 
                         <div class="timeline-body">
@@ -229,13 +229,13 @@
                           <a href="{{url('')}}/edit-issue/{{$issue->id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                           <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
                           @if($issue->status == 'Finish')
-                            <a class="btn btn-success btn-xs">Finish</a>
+                          <a class="btn btn-success btn-xs">Finish</a>
                           @elseif($issue->status == 'On Progress')
-                            <a class="btn btn-info btn-xs">On Progress</a>
+                          <a class="btn btn-info btn-xs">On Progress</a>
                           @elseif($issue->status == 'Pending')
-                            <a class="btn btn-warning btn-xs">Pending</a>
+                          <a class="btn btn-warning btn-xs">Pending</a>
                           @else
-                            <a class="btn btn-primary">{{$issue->status}}</a>
+                          <a class="btn btn-primary">{{$issue->status}}</a>
                           @endif
                           <span class="time pull-right"><i class="fa fa-clock-o"></i> 
                             {{ $issue->created_at }}
@@ -243,10 +243,21 @@
                         </div>
                       </div>
                     </li>
-                  @endforeach
-                  
+                    @endforeach
+                    @else
+                    <li>
+                      <i class="fa fa-info bg-blue"></i>
+                      <div class="timeline-item">
+                        <h3 class="timeline-header">
+                          <big>
+                            Tidak ada issue.
+                          </big>
+                        </h3>
+                      </div>
+                    </li>
+                    @endif
 
-{{--                   <li>
+                    {{--                   <li>
                     <i class="fa fa-info bg-blue"></i>
                     <!--issue content goes here-->
                     <div class="timeline-item">
@@ -356,19 +367,19 @@
 
                 </ul>
                 <div class="timeline-item">
-                  <a href="{{url('')}}/input-issue" class="btn btn-primary">Tampilkan Semua</a>
-                </div>
+                  <a href="{{url('')}}/list-all-issue" class="btn btn-primary">Tampilkan Semua</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- /.box -->
       </div>
-      </div>
-      </section>
+      <!-- /.box -->
     </div>
-  @include('layouts.footer')
+  </div>
+</section>
+</div>
+@include('layouts.footer')
 </div>
 
 <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -386,86 +397,86 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script>
-Highcharts.chart('container', {
+  Highcharts.chart('container', {
     chart: {
-        type: 'column'
+      type: 'column'
     },
     title: {
-        text: 'Grafik Anggaran {{$anggaranada!=0 ? $anggaran[0]->tahun : '-'}}'
+      text: 'Grafik Anggaran {{$anggaranada!=0 ? $anggaran[0]->tahun : '-'}}'
     },
     xAxis: {
-        categories: [
-            'Januari',
-            'Februari',
-            'Maret',
-            'April',
-            'Mei',
-            'Juni',
-            'Juli',
-            'Agustus',
-            'September',
-            'Oktober',
-            'November',
-            'Desember'
-        ],
-        crosshair: true
+      categories: [
+      'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember'
+      ],
+      crosshair: true
     },
     yAxis: {
-        min: 0,
-        title: {
-            text: 'Anggaran (Rp)'
-        }
+      min: 0,
+      title: {
+        text: 'Anggaran (Rp)'
+      }
     },
     tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>Rp {point.y:.1f}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      '<td style="padding:0"><b>Rp {point.y:.1f}</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
     },
     plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
     },
     series: [{
-        name: 'RI',
-        data: 
-        [
-        {{isset($januariRI->sumri) ? number_format($januariRI->sumri, 0, ',', '.') : 0 }}, 
-        {{isset($februariRI->sumri) ? number_format($februariRI->sumri, 0, ',', '.') : 0 }}, 
-        {{isset($maretRI->sumri) ? number_format($maretRI->sumri, 0, ',', '.') : 0 }}, 
-        {{isset($aprilRI->sumri) ? number_format($aprilRI->sumri, 0, ',', '.') : 0 }}, 
-        {{isset($meiRI->sumri) ? number_format($meiRI->sumri, 0, ',', '.') : 0 }},  
-        {{isset($juniRI->sumri) ? number_format($juniRI->sumri, 0, ',', '.') : 0 }}, 
-        {{isset($juliRI->sumri) ? number_format($juliRI->sumri, 0, ',', '.') : 0 }}, 
-        {{isset($agustusRI->sumri) ? number_format($agustusRI->sumri, 0, ',', '.') : 0 }},
-        {{isset($septemberRI->sumri) ? number_format($septemberRI->sumri, 0, ',', '.') : 0 }},
-        {{isset($oktoberRI->sumri) ? number_format($oktoberRI->sumri, 0, ',', '.') : 0 }},
-        {{isset($novemberRI->sumri) ? number_format($novemberRI->sumri, 0, ',', '.') : 0 }},
-        {{isset($desemberRI->sumri) ? number_format($desemberRI->sumri, 0, ',', '.') : 0 }} 
-        ]
+      name: 'RI',
+      data: 
+      [
+      {{isset($januariRI->sumri) ? number_format($januariRI->sumri, 0, ',', '.') : 0 }}, 
+      {{isset($februariRI->sumri) ? number_format($februariRI->sumri, 0, ',', '.') : 0 }}, 
+      {{isset($maretRI->sumri) ? number_format($maretRI->sumri, 0, ',', '.') : 0 }}, 
+      {{isset($aprilRI->sumri) ? number_format($aprilRI->sumri, 0, ',', '.') : 0 }}, 
+      {{isset($meiRI->sumri) ? number_format($meiRI->sumri, 0, ',', '.') : 0 }},  
+      {{isset($juniRI->sumri) ? number_format($juniRI->sumri, 0, ',', '.') : 0 }}, 
+      {{isset($juliRI->sumri) ? number_format($juliRI->sumri, 0, ',', '.') : 0 }}, 
+      {{isset($agustusRI->sumri) ? number_format($agustusRI->sumri, 0, ',', '.') : 0 }},
+      {{isset($septemberRI->sumri) ? number_format($septemberRI->sumri, 0, ',', '.') : 0 }},
+      {{isset($oktoberRI->sumri) ? number_format($oktoberRI->sumri, 0, ',', '.') : 0 }},
+      {{isset($novemberRI->sumri) ? number_format($novemberRI->sumri, 0, ',', '.') : 0 }},
+      {{isset($desemberRI->sumri) ? number_format($desemberRI->sumri, 0, ',', '.') : 0 }} 
+      ]
     }, {
-        name: 'OP',
-        data:
-        [
-        {{isset($januariOP->sumop) ? number_format($januariOP->sumop, 0, ',', '.') : 0 }}, 
-        {{isset($februariOP->sumop) ? number_format($februariOP->sumop, 0, ',', '.') : 0 }}, 
-        {{isset($maretOP->sumop) ? number_format($maretOP->sumop, 0, ',', '.') : 0 }}, 
-        {{isset($aprilOP->sumop) ? number_format($aprilOP->sumop, 0, ',', '.') : 0 }}, 
-        {{isset($meiOP->sumop) ? number_format($meiOP->sumop, 0, ',', '.') : 0 }},  
-        {{isset($juniOP->sumop) ? number_format($juniOP->sumop, 0, ',', '.') : 0 }}, 
-        {{isset($juliOP->sumop) ? number_format($juliOP->sumop, 0, ',', '.') : 0 }}, 
-        {{isset($agustusOP->sumop) ? number_format($agustusOP->sumop, 0, ',', '.') : 0 }},
-        {{isset($septemberOP->sumop) ? number_format($septemberOP->sumop, 0, ',', '.') : 0 }},
-        {{isset($oktoberOP->sumop) ? number_format($oktoberOP->sumop, 0, ',', '.') : 0 }},
-        {{isset($novemberOP->sumop) ? number_format($novemberOP->sumop, 0, ',', '.') : 0 }},
-        {{isset($desemberOP->sumop) ? number_format($desemberOP->sumop, 0, ',', '.') : 0 }} 
-        ]
+      name: 'OP',
+      data:
+      [
+      {{isset($januariOP->sumop) ? number_format($januariOP->sumop, 0, ',', '.') : 0 }}, 
+      {{isset($februariOP->sumop) ? number_format($februariOP->sumop, 0, ',', '.') : 0 }}, 
+      {{isset($maretOP->sumop) ? number_format($maretOP->sumop, 0, ',', '.') : 0 }}, 
+      {{isset($aprilOP->sumop) ? number_format($aprilOP->sumop, 0, ',', '.') : 0 }}, 
+      {{isset($meiOP->sumop) ? number_format($meiOP->sumop, 0, ',', '.') : 0 }},  
+      {{isset($juniOP->sumop) ? number_format($juniOP->sumop, 0, ',', '.') : 0 }}, 
+      {{isset($juliOP->sumop) ? number_format($juliOP->sumop, 0, ',', '.') : 0 }}, 
+      {{isset($agustusOP->sumop) ? number_format($agustusOP->sumop, 0, ',', '.') : 0 }},
+      {{isset($septemberOP->sumop) ? number_format($septemberOP->sumop, 0, ',', '.') : 0 }},
+      {{isset($oktoberOP->sumop) ? number_format($oktoberOP->sumop, 0, ',', '.') : 0 }},
+      {{isset($novemberOP->sumop) ? number_format($novemberOP->sumop, 0, ',', '.') : 0 }},
+      {{isset($desemberOP->sumop) ? number_format($desemberOP->sumop, 0, ',', '.') : 0 }} 
+      ]
     }]
-});
+  });
 </script>
 </body>
 </html>

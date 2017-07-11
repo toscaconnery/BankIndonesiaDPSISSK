@@ -53,69 +53,67 @@
                         </li>
                         <!--list issue-->
                         @if($issue)
-                          @foreach($issue as $issue)
-                          <li>
-                            <i class="fa fa-info bg-blue"></i>
-                            <!--issue content goes here-->
-                            <div class="timeline-item">
-                              <h3 class="timeline-header">
-                                <a href="#">
-                                  <big>
-                                    {{$issue->judul}}
-                                  </big>
-                                </a>
-                              </h3>
+                        @foreach($issue as $issue)
+                        <li>
+                          <i class="fa fa-info bg-blue"></i>
+                          <!--issue content goes here-->
+                          <div class="timeline-item">
+                            <h3 class="timeline-header">
+                              <a href="#">
+                                <big>
+                                  {{$issue->judul}}
+                                </big>
+                              </a>
+                            </h3>
 
-                              <div class="timeline-body">
-                                {{$issue->isi}}
-                              </div>
-
-                              @if($issue->tindak_lanjut)
-                                <div class="timeline-body">
-                                  <big>
-                                    <b>Tindak Lanjut:</b>
-                                  </big>
-                                  <br>
-                                  {{$issue->tindak_lanjut}}
-                                </div>
-                              @endif
-
-                              <div class="timeline-body">
-                                <small>
-                                  <cite>
-                                    {{ $issue->pic }}
-                                  </cite>
-                                </small>
-                              </div>
-                              <div class="timeline-footer">
-                                <a href="{{url('')}}/edit-issue/{{$issue->id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
-                                @if($issue->status == 'Finish')
-                                <a class="btn btn-success btn-xs">Finish</a>
-                                @elseif($issue->status == 'On Progress')
-                                <a class="btn btn-info btn-xs">On Progress</a>
-                                @elseif($issue->status == 'Pending')
-                                <a class="btn btn-warning btn-xs">Pending</a>
-                                @else
-                                <a class="btn btn-primary">{{$issue->status}}</a>
-                                @endif
-                                <span class="time pull-right"><i class="fa fa-clock-o"></i> 
-                                  {{ $issue->created_at }}
-                                </span>
-                              </div>
+                            <div class="timeline-body">
+                              {{$issue->isi}}
                             </div>
-                          </li>
-                          @endforeach
+
+                            @if($issue->tindak_lanjut)
+                            <div class="timeline-body">
+                              <big>
+                                <b>Tindak Lanjut:</b>
+                              </big>
+                              <br>
+                              {{$issue->tindak_lanjut}}
+                            </div>
+                            @endif
+
+                            <div class="timeline-body">
+                              <small>
+                                <cite>
+                                  {{ $issue->pic }}
+                                </cite>
+                              </small>
+                            </div>
+                            <div class="timeline-footer">
+                              <a href="{{url('')}}/edit-issue/{{$issue->id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                              <!-- <a class="btn btn-primary btn-xs">Informasi</a> -->
+                              @if($issue->status == 'Finish')
+                              <a class="btn btn-success btn-xs">Finish</a>
+                              @elseif($issue->status == 'On Progress')
+                              <a class="btn btn-info btn-xs">On Progress</a>
+                              @elseif($issue->status == 'Pending')
+                              <a class="btn btn-warning btn-xs">Pending</a>
+                              @else
+                              <a class="btn btn-primary">{{$issue->status}}</a>
+                              @endif
+                              <span class="time pull-right"><i class="fa fa-clock-o"></i> 
+                                {{ $issue->created_at }}
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                        @endforeach
                         @else
                         <li>
                           <i class="fa fa-info bg-blue"></i>
                           <div class="timeline-item">
                             <h3 class="timeline-header">
-                              <a href="#">
-                                <big>
-                                  Tidak ada issue.
-                                </big>
-                              </a>
+                              <big>
+                                Tidak ada issue.
+                              </big>
                             </h3>
                           </div>
                         </li>

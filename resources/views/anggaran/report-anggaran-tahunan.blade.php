@@ -71,7 +71,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($anggaran as $anggaran)
+                    @foreach($anggaran as $anggaran)
                     <tr>
                       <td>{{$anggaran->tahun}}</td>
                       <td>Rp. {{ number_format($anggaran->ri, 0, ',', '.') }}</td>  {{-- ri dianggarkan --}}
@@ -87,7 +87,7 @@
                       <td width="5px">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
                       <td><a href="{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}">Detail</a></td>
                     </tr>
-                  @endforeach
+                    @endforeach
                     <!-- <tr>
                       <td>2015</td>
                       <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
@@ -133,7 +133,7 @@
 
               <!--Tahun Anggaran-->
               <div class="form-group">
-              <label for="inputEmail3" class="col-md-3 control-label">Tahun Anggaran</label>
+                <label for="inputEmail3" class="col-md-3 control-label">Tahun Anggaran</label>
                 <div class="col-md-9">
                   <select id="selectElementId" class="form-control select2" style="width: 100%;" name="tahun">
                   </select>
@@ -250,7 +250,7 @@
   <script>
     $(function () {
       $('#example1').DataTable({
-        "order": [[ 0, "desc" ]]
+        "order": [[ 0, "desc" ]],
       });
     });
   </script>
@@ -273,5 +273,5 @@
       function sum() {
         $("#nominal").val(Number($("#ri").val()) + Number($("#op").val()));
       </script>
-</body>
-</html>
+    </body>
+    </html>

@@ -58,7 +58,7 @@
                       <td>{{$tabel_folder->nama}}</td>
                       <td>{{$tabel_folder->kategori}}</td>
                       <td>{{$tabel_folder->pic}}</td>
-                      <td>{{Carbon\Carbon::parse($tabel_folder->created_at)->format('d-m-Y')}}</td>
+                      <td>{{Carbon\Carbon::parse($tabel_folder->created_at)->format('d-F-Y')}}</td>
                     </tr>
                     @endforeach
                   </table>
