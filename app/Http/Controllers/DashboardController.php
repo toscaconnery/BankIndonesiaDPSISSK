@@ -74,7 +74,15 @@ class DashboardController extends Controller
     public function getEndYearForecast()
     {
         $anggaranTahunIni = Anggaran::where('tahun', date("Y"))->select('nominal')->first();
-        $penggunaanNormalBulanan = $anggaranTahunIni->nominal / 12;
+        if(is_null($anggaranTahunIni))
+        {
+            $penggunaanNormalBulanan = 0;
+        }
+        else
+        {
+            $penggunaanNormalBulanan = $anggaranTahunIni->nominal / 12;;
+        }
+        
         $terpakaiTahunIni = DB::select('SELECT SUM(p.nominal) AS jumlah FROM pencairan p WHERE YEAR(p.tanggal_pencairan) = '.date("Y"))[0]->jumlah;
         
         if(is_null($terpakaiTahunIni)){

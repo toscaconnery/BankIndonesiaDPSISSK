@@ -40,6 +40,9 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
               <!-- /.box-header -->
+              <div class="box-header with-border">
+              <h1>Test</h1>
+              </div>
               <!-- content start -->
               <div class="box-body">
                 <div class="row">

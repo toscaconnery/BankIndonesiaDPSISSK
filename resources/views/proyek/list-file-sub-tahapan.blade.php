@@ -48,6 +48,51 @@
 
       <section class="content">
         <div class="row">
+          <div class="col-md-6">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+              <ul class="nav nav-pills nav-justified">
+              <li class="active"><a href="#P3A" data-toggle="tab">Dokumen P3A</a></li>
+                <li><a href="#MLBI" data-toggle="tab">Dokumen MLBI</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="P3A">
+                  <form action="" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <!-- <input type="file" name="berkas">
+                    <button type="submit" class="btn btn-primary">Submit</button> -->
+                    <h4>Upload Dokumen P3A</h4>
+                    <div class="input-group">
+                      <input type="file" name="berkas" class="form-control">
+                      <div class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="MLBI">
+                  <form action="{{url('')}}/upload-file-mlbi/{{$id_sub_tahapan}}{{isset($deeppath) ? '/'.$deeppath : ''}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <!-- <input type="file" name="berkas">
+                    <button type="submit" class="btn btn-primary">Submit</button> -->
+                    <h4>Upload Dokumen MLBI</h4>
+                    <div class="input-group">
+                      <input type="file" name="berkas" class="form-control">
+                      <div class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.tab-pane -->
+              </div>
+              <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-12">
             <div class="box">
               <!-- /.box-header -->
@@ -56,42 +101,7 @@
                   <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalTambahFolder">Tambah Folder</button>
                   <br>
                   <br>
-                  <form action="" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <!-- <input type="file" name="berkas">
-                    <button type="submit" class="btn btn-primary">Submit</button> -->
-                    <h4>Upload Dokumen P3A</h4>
-                    <div class="col-md-4">
-                    <div class="input-group">
-                      <input type="file" name="berkas" class="form-control">
-                      <div class="input-group-btn">
-                      <button type="submit" class="btn btn-primary">Upload</button>
-                      </div>
-                    </div>
-                    </div>
-                  </form>
-                  <br>
-                  <br>
-
-                  <form action="{{url('')}}/upload-file-mlbi/{{$id_sub_tahapan}}{{isset($deeppath) ? '/'.$deeppath : ''}}" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <!-- <input type="file" name="berkas">
-                    <button type="submit" class="btn btn-primary">Submit</button> -->
-                    <h4>Upload Dokumen MLBI</h4>
-                    <div class="col-md-4">
-                    <div class="input-group">
-                      <input type="file" name="berkas" class="form-control">
-                      <div class="input-group-btn">
-                      <button type="submit" class="btn btn-primary">Upload</button>
-                      </div>
-                    </div>
-                    </div>
-                  </form>
-                  <br>
-                  <br>
                 </div>
-
-                <br>
                 <big>Lokasi : {{ $path }}</big>
                 <table class="table table-bordered table-striped">
                   <br>
@@ -112,51 +122,51 @@
                   </thead>
                   <tbody>
                     @php
-                      $x = 1;
+                    $x = 1;
                     @endphp
                     @foreach($folderSubTahapan as $data)
-                      <tr>
-                        <td>{{ $x++ }}</td>
-                        <td>{{ $data->nama }}</td>
-                        <td>Folder</td>
-                        <td>{{ $data->pic }}</td>
-                        <td>{{ $data->created_at }}</td>
-                        <center>
-                          <td width="2em">
-                            <a href="{{url('')}}/list-file-sub-tahapan/{{ $id_sub_tahapan }}/{{ $data->id }}"><button class="btn btn-primary">Buka</button></a>
-                          </td>
-                        </center>
-                      </tr>
+                    <tr>
+                      <td>{{ $x++ }}</td>
+                      <td>{{ $data->nama }}</td>
+                      <td>Folder</td>
+                      <td>{{ $data->pic }}</td>
+                      <td>{{ $data->created_at }}</td>
+                      <center>
+                        <td width="2em">
+                          <a href="{{url('')}}/list-file-sub-tahapan/{{ $id_sub_tahapan }}/{{ $data->id }}"><button class="btn btn-primary">Buka</button></a>
+                        </td>
+                      </center>
+                    </tr>
                     @endforeach
 
                     @foreach($fileSubTahapan as $data)
-                      <tr>
-                        <td>{{ $x++ }}</td>
-                        <td>{{ $data->nama }}</td>
-                        <td>File P3A</td>
-                        <td>{{ $data->pic }}</td>
-                        <td>{{ $data->created_at }}</td>
-                        <center>
-                          <td width="2em">
-                            <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
-                          </td>
-                        </center>
-                      </tr>
+                    <tr>
+                      <td>{{ $x++ }}</td>
+                      <td>{{ $data->nama }}</td>
+                      <td>File P3A</td>
+                      <td>{{ $data->pic }}</td>
+                      <td>{{ $data->created_at }}</td>
+                      <center>
+                        <td width="2em">
+                          <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
+                        </td>
+                      </center>
+                    </tr>
                     @endforeach 
 
                     @foreach($fileSubTahapanMLBI as $data)
-                      <tr>
-                        <td>{{ $x++ }}</td>
-                        <td>{{ $data->nama }}</td>
-                        <td>File MLBI</td>
-                        <td>{{ $data->pic }}</td>
-                        <td>{{ $data->created_at }}</td>
-                        <center>
-                          <td width="2em">
-                            <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
-                          </td>
-                        </center>
-                      </tr>
+                    <tr>
+                      <td>{{ $x++ }}</td>
+                      <td>{{ $data->nama }}</td>
+                      <td>File MLBI</td>
+                      <td>{{ $data->pic }}</td>
+                      <td>{{ $data->created_at }}</td>
+                      <center>
+                        <td width="2em">
+                          <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
+                        </td>
+                      </center>
+                    </tr>
                     @endforeach
                   </table>
                 </div>
