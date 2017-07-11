@@ -50,8 +50,14 @@
               <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3>Forecast</h3>
-
-                  <p>Surplus Rp 53.000.000</p>
+                  @if($forecast >= 0)
+                    <p>Bersisa Rp {{number_format($forecast, 0, ",", ".")}}</p>
+                  @elseif($forecast < 0)
+                    @php
+                      $forecast = $forecast * (-1);
+                    @endphp
+                    <p>Kekurangan Rp {{number_format($forecast, 0, ",", ".")}}</p>
+                  @endif
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
