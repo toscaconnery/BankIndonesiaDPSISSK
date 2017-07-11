@@ -116,7 +116,12 @@
                   <tbody>
                     @foreach($tahapan as $tahapan)
                       <tr>
-                        <td>{{$tahapan->nama}}</td>
+                        <td>
+                          {{$tahapan->nama}}
+                          @if($tahapan->status == "Finish")
+                            <img src="{{url('')}}/icon/check.png" class="pull-right">
+                          @endif
+                        </td>
                         <td>{{$tahapan->tgl_mulai}}</td>
                         <td>{{$tahapan->tgl_selesai}}</td>
                         <td>{{$tahapan->tgl_real_mulai ? $tahapan->tgl_real_mulai : '-'}}</td>

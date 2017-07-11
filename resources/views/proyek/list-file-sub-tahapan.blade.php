@@ -104,7 +104,7 @@
                   <br>
                   <br>
                 </div>
-                <big>Lokasi : {{ $path }}</big>
+                <big>Lokasi P3A : {{ $path }}</big>
                 <table class="table table-bordered table-striped">
                   <br>
                   <br>
@@ -141,7 +141,7 @@
                     </tr>
                     @endforeach
 
-                    @foreach($fileSubTahapan as $data)
+                    @foreach($fileSubTahapanP3A as $data)
                     <tr>
                       <td>{{ $x++ }}</td>
                       <td>{{ $data->nama }}</td>

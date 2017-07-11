@@ -109,7 +109,12 @@
                   <tbody>
                     @foreach($sub as $sub)
                     <tr>
-                      <td>{{$sub->nama}}</td>
+                      <td>
+                        {{$sub->nama}}
+                        @if($sub->status == "Finish")
+                          <img src="{{url('')}}/icon/check.png" class="pull-right">
+                        @endif
+                      </td>
                       <td>{{$sub->tgl_mulai}} - {{$sub->tgl_selesai}}</td>
                       <td>
                         @if($sub->tgl_real_selesai)

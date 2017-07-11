@@ -529,21 +529,19 @@ class ProjectController extends Controller
             $folder = TabelFolder::find($deeppath);
             $this->data['path'] = $folder->path.$folder->nama.'/';
             $this->data['pathMLBI'] = $folder->path_mlbi.$folder->nama.'/';
-            $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
+            $this->data['fileSubTahapanP3A'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['pathMLBI'].'"');
-            return view('proyek.list-file-sub-tahapan', $this->data);
         }
         else{
             //dd("KEMUNGKINAN 2 : NORMAL / AKSES FOLDER NORMAL");
             $this->data['path'] = $tahun.'/'.$proyek->nama.'/'.'P3A/'.$tahapan->nama.'/';
             $this->data['pathMLBI'] = $tahun.'/'.$proyek->nama.'/'.'MLBI/'.$tahapan->nama.'/';
-            $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'" AND t.id_sub_tahapan = '.$id);
+            $this->data['fileSubTahapanP3A'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'" AND t.id_sub_tahapan = '.$id);
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'" AND t.id_sub_tahapan = '.$id);
             $this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROm tabel_file t WHERE t.path  = "'.$this->data['pathMLBI'].'" AND t.id_sub_tahapan = '.$id);
-            
-            return view('proyek.list-file-sub-tahapan', $this->data);
         }
+        return view('proyek.list-file-sub-tahapan', $this->data);
     }
 
     public function save_list_file_sub_tahapan (Request $request, $id, $deeppath = null )    //ini ID sub tahapan
@@ -742,8 +740,3 @@ class ProjectController extends Controller
     }
 
 }
-
-
-
-
-
