@@ -57,7 +57,15 @@
                 <form action="" method="post">
                   <div class="form-group">
                     <label>Sub Tahapan</label>
-                    <input name="nama" type="text" class="form-control" id="namatahapan" placeholder="Nama Sub Tahapan">
+                    {{-- <input name="nama" type="text" class="form-control" id="namatahapan" placeholder="Nama Sub Tahapan"> --}}
+                    <div class="col-sm-9">
+                      <input name="namaSubTahapan" type="text" list="kategori" class="form-control"/>
+                      <datalist id="kategori">
+                        @foreach($optionSubTahapan as $data)
+                          <option value="{{$data->nama}}">{{$data->nama}}</option>
+                        @endforeach
+                      </datalist>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label>PIC</label>
