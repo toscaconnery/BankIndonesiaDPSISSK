@@ -39,7 +39,9 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          {{ $namaProyek }} > {{ $namaTahapan }} > {{ $namaSubTahapan }}
+          <a href="{{url('')}}/input-tahap-proyek/{{$id_proyek}}">{{$namaProyek}}</a> >
+          <a href="{{url('')}}/input-sub-tahapan/{{$id_tahapan}}">{{$namaTahapan}}</a> >
+          <a href="{{url('')}}/list-file-sub-tahapan/{{$id_sub_tahapan}}">{{$namaSubTahapan}}</a>
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/list-proyek"><i class="fa fa-cubes"></i> Proyek</a></li>

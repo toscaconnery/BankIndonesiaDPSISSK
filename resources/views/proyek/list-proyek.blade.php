@@ -78,9 +78,12 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @php
+                      $x = 1;
+                    @endphp
                     @foreach($proyek as $proyek)
                     <tr>
-                      <td align="center">{{$proyek->id}}</td>
+                      <td align="center">{{$x++}}</td>
                       <td>{{$proyek->nama}}</td>
                       <td align="center">{{$proyek->kategori}}</td>
                       <td>{{$proyek->pic}}</td>
