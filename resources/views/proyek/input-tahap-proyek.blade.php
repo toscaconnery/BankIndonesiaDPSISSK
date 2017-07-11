@@ -125,7 +125,7 @@
                         <td>{{$tahapan->pic}}</td>
                         <td>{{$tahapan->status}}</td>
                           <center>
-                            <td>
+                            <td align="center">
                               @if($tahapan->status == "Pending")
                                 <a href='{{url('')}}/mulai-tahap-proyek/{{$tahapan->id}}'>
                                   <button class="btn btn-primary">Mulai</button>
@@ -192,7 +192,9 @@
 <!-- page script -->
 <script>
   $(function () {
-    $("#example1").DataTable();
+    $("#example1").DataTable({
+      "ordering": false
+    });
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

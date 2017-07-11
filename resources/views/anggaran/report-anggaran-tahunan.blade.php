@@ -73,7 +73,7 @@
                   <tbody>
                     @foreach($anggaran as $anggaran)
                     <tr>
-                      <td>{{$anggaran->tahun}}</td>
+                      <td align="center">{{$anggaran->tahun}}</td>
                       <td>Rp. {{ number_format($anggaran->ri, 0, ',', '.') }}</td>  {{-- ri dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->op, 0, ',', '.') }}</td>  {{-- op dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->nominal, 0, ',', '.') }}</td>  {{-- total dianggarkan --}}
@@ -84,8 +84,14 @@
                       <td>Rp. {{ number_format($anggaran->used_total, 0, ',', '.') }}</td>  {{-- total realisasi --}}
                       <td width="10px">{{$anggaran->persen_realisasi}}%</td> {{-- persen total realisasi --}}
                       <td>Rp. {{ number_format($anggaran->sisa, 0, ',', '.') }}</td> {{-- sisa anggaran --}}
-                      <td width="5px">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
-                      <td><a href="{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}">Detail</a></td>
+                      <td width="5px" align="center">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
+                      <td>
+                      <center>
+                      <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
+                        <button class="btn btn-primary">Detail</button>
+                      </a>
+                      </center>
+                      </td>
                     </tr>
                     @endforeach
                     <!-- <tr>
@@ -135,7 +141,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Tahun Anggaran</label>
                 <div class="col-md-9">
-                  <select id="selectElementId" class="form-control select2" style="width: 100%;" name="tahun">
+                  <select id="pilihtahun" class="form-control select2" style="width: 100%;" name="tahun">
                   </select>
                 </div>
               </div>
@@ -144,7 +150,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
                 <div class="col-md-9">
-                  <input name="nominal" type="number" class="form-control" id="nominal">
+                  <input name="nominal" type="number" class="form-control" id="total">
                 </div>
               </div>
 
@@ -207,7 +213,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
                 <div class="col-md-9">
-                  <input name="nominal" type="number" class="form-control" id="inputEmail3">
+                  <input name="nominal" type="text" class="form-control" id="nominal">
                 </div>
               </div>
 
@@ -215,7 +221,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
                 <div class="col-md-9">
-                  <textarea name="keterangan" type="text" class="form-control" id="inputEmail3"></textarea>
+                  <textarea name="keterangan" type="text" class="form-control" id="keterangan"></textarea>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -258,7 +264,7 @@
     var mulai = 2017
     var min = new Date().getFullYear(),
     max = min + 9,
-    select = document.getElementById('selectElementId');
+    select = document.getElementById('pilihtahun');
 
     for (var i = mulai; i<=max; i++){
       var opt = document.createElement('option');
@@ -267,11 +273,5 @@
       select.appendChild(opt);
     }
   </script>
-  <script>
-    $(function() {
-      $("#ri, #op").on("keydown keyup", sum);
-      function sum() {
-        $("#nominal").val(Number($("#ri").val()) + Number($("#op").val()));
-      </script>
-    </body>
-    </html>
+</body>
+</html>

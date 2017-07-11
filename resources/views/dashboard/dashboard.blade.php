@@ -72,8 +72,8 @@
                 <div class="inner">
                   <h3>Rest</h3>
 
-                  <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->used_ri, 0, ',', '.') : 0}}</p>
-                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->used_op, 0, ',', '.') : 0}}</p>
+                  <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_ri, 0, ',', '.') : 0}}</p>
+                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_op, 0, ',', '.') : 0}}</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>

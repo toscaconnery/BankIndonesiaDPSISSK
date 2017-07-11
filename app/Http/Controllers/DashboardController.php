@@ -17,7 +17,7 @@ class DashboardController extends Controller
                                             WHERE i.status = "On Progress" 
                                             OR i.status = "Pending" 
                                             ORDER BY i.created_at DESC');
-        $this->data['anggaran'] = DB::select('SELECT tahun,ri,op,used_ri,used_op from anggaran where tahun=YEAR(now()) limit 1');
+        $this->data['anggaran'] = DB::select('SELECT tahun,ri,op,(ri-used_ri) as sisa_ri,(op-used_op) as sisa_op from anggaran where tahun=YEAR(now()) limit 1');
     	// dd($this->data['anggaran']);
         $this->data['anggaranada']=1;
         if(empty($this->data['anggaran']))

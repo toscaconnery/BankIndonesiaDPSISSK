@@ -64,132 +64,132 @@
                     <tr>
                       <td>1</td>
                       <td>Januari</td>
-                      <td>Rp {{isset($januariRI->sumri) ? number_format($januariRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($januariRI->sumri) ? number_format($januariRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($januariRI->sumri) ? round($persenjanuariRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($januariOP->sumop) ? number_format($januariOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($januariOP->sumop) ? number_format($januariOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($januariOP->sumop) ? round($persenjanuariOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totaljanuari)}}</td>
+                      <td>Rp {{number_format($totaljanuari, 0, ',', '.')}}</td>
                       <td>{{$totaljanuari==0 ? '-' : round($persenttljanuari,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/1">{{$jlhpengeluaranjanuari}}</a></td>
                     </tr>
                     <tr>
                       <td>2</td>
                       <td>Februari</td>
-                      <td>Rp {{isset($februariRI->sumri) ? number_format($februariRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($februariRI->sumri) ? number_format($februariRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($februariRI->sumri) ? round($persenfebruariRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($februariOP->sumop) ? number_format($februariOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($februariOP->sumop) ? number_format($februariOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($februariOP->sumop) ? round($persenfebruariOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totalfebruari)}}</td>
+                      <td>Rp {{number_format($totalfebruari, 0, ',', '.')}}</td>
                       <td>{{$totalfebruari==0 ? '-' : round($persenttlfebruari,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/2">{{$jlhpengeluaranfebruari}}</a></td>
                     </tr>
                     <tr>
                       <td>3</td>
                       <td>Maret</td>
-                      <td>Rp {{isset($maretRI->sumri) ? number_format($maretRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($maretRI->sumri) ? number_format($maretRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($maretRI->sumri) ? round($persenmaretRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($maretOP->sumop) ? number_format($maretOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($maretOP->sumop) ? number_format($maretOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($maretOP->sumop) ? round($persenmaretOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totalmaret)}}</td>
+                      <td>Rp {{number_format($totalmaret, 0, ',', '.')}}</td>
                       <td>{{$totalmaret==0 ? '-' : round($persenttlmaret,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/3">{{$jlhpengeluaranmaret}}</a></td>
                     </tr>
                     <tr>
                       <td>4</td>
                       <td>April</td>
-                      <td>Rp {{isset($aprilRI->sumri) ? number_format($aprilRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($aprilRI->sumri) ? number_format($aprilRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($aprilRI->sumri) ? round($persenaprilRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($aprilOP->sumop) ? number_format($aprilOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($aprilOP->sumop) ? number_format($aprilOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($aprilOP->sumop) ? round($persenaprilOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totalapril)}}</td>
+                      <td>Rp {{number_format($totalapril, 0, ',', '.')}}</td>
                       <td>{{$totalapril==0 ? '-' : round($persenttlapril,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/4">{{$jlhpengeluaranapril}}</a></td>
                     </tr>
                     <tr>
                       <td>5</td>
                       <td>Mei</td>
-                      <td>Rp {{isset($meiRI->sumri) ? number_format($meiRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($meiRI->sumri) ? number_format($meiRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($meiRI->sumri) ? round($persenmeiRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($meiOP->sumop) ? number_format($meiOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($meiOP->sumop) ? number_format($meiOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($meiOP->sumop) ? round($persenmeiOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totalmei)}}</td>
+                      <td>Rp {{number_format($totalmei, 0, ',', '.')}}</td>
                       <td>{{$totalmei==0 ? '-' : round($persenttlmei,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/5">{{$jlhpengeluaranmei}}</a></td>
                     </tr>
                     <tr>
                       <td>6</td>
                       <td>Juni</td>
-                      <td>Rp {{isset($juniRI->sumri) ? number_format($juniRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($juniRI->sumri) ? number_format($juniRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($juniRI->sumri) ? round($persenjuniRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($juniOP->sumop) ? number_format($juniOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($juniOP->sumop) ? number_format($juniOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($juniOP->sumop) ? round($persenjuniOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totaljuni)}}</td>
+                      <td>Rp {{number_format($totaljuni, 0, ',', '.')}}</td>
                       <td>{{$totaljuni==0 ? '-' : round($persenttljuni,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/6">{{$jlhpengeluaranjuni}}</a></td>
                     </tr>
                     <tr>
                       <td>7</td>
                       <td>Juli</td>
-                      <td>Rp {{isset($juliRI->sumri) ? number_format($juliRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($juliRI->sumri) ? number_format($juliRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($juliRI->sumri) ? round($persenjuliRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($juliOP->sumop) ? number_format($juliOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($juliOP->sumop) ? number_format($juliOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($juliOP->sumop) ? round($persenjuliOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totaljuli)}}</td>
+                      <td>Rp {{number_format($totaljuli, 0, ',', '.')}}</td>
                       <td>{{$totaljuli==0 ? '-' : round($persenttljuli,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/7">{{$jlhpengeluaranjuli}}</a></td>
                     </tr>
                     <tr>
                       <td>8</td>
                       <td>Agustus</td>
-                      <td>Rp {{isset($agustusRI->sumri) ? number_format($agustusRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($agustusRI->sumri) ? number_format($agustusRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($agustusRI->sumri) ? round($persenagustusRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($agustusOP->sumop) ? number_format($agustusOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($agustusOP->sumop) ? number_format($agustusOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($agustusOP->sumop) ? round($persenagustusOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totalagustus)}}</td>
+                      <td>Rp {{number_format($totalagustus, 0, ',', '.')}}</td>
                       <td>{{$totalagustus==0 ? '-' : round($persenttlagustus,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/8">{{$jlhpengeluaranagustus}}</a></td>
                     </tr>
                     <tr>
                       <td>9</td>
                       <td>September</td>
-                      <td>Rp {{isset($septemberRI->sumri) ? number_format($septemberRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($septemberRI->sumri) ? number_format($septemberRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($septemberRI->sumri) ? round($persenseptemberRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($septemberOP->sumop) ? number_format($septemberOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($septemberOP->sumop) ? number_format($septemberOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($septemberOP->sumop) ? round($persenseptemberOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totalseptember)}}</td>
+                      <td>Rp {{number_format($totalseptember, 0, ',', '.')}}</td>
                       <td>{{$totalseptember==0 ? '-' : round($persenttlseptember,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/9">{{$jlhpengeluaranseptember}}</a></td>
                     </tr>
                     <tr>
                       <td>10</td>
                       <td>Oktober</td>
-                      <td>Rp {{isset($oktoberRI->sumri) ? number_format($oktoberRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($oktoberRI->sumri) ? number_format($oktoberRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($oktoberRI->sumri) ? round($persenoktoberRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($oktoberOP->sumop) ? number_format($oktoberOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($oktoberOP->sumop) ? number_format($oktoberOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($oktoberOP->sumop) ? round($persenoktoberOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totaloktober)}}</td>
+                      <td>Rp {{number_format($totaloktober, 0, ',', '.')}}</td>
                       <td>{{$totaloktober==0 ? '-' : round($persenttloktober,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/10">{{$jlhpengeluaranoktober}}</a></td>
                     </tr>
                     <tr>
                       <td>11</td>
                       <td>November</td>
-                      <td>Rp {{isset($novemberRI->sumri) ? number_format($novemberRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($novemberRI->sumri) ? number_format($novemberRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($novemberRI->sumri) ? round($persennovemberRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($novemberOP->sumop) ? number_format($novemberOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($novemberOP->sumop) ? number_format($novemberOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($novemberOP->sumop) ? round($persennovemberOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totalnovember)}}</td>
+                      <td>Rp {{number_format($totalnovember, 0, ',', '.')}}</td>
                       <td>{{$totalnovember==0 ? '-' : round($persenttlnovember,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/11">{{$jlhpengeluarannovember}}</a></td>
                     </tr>
                     <tr>
                       <td>12</td>
                       <td>Desember</td>
-                      <td>Rp {{isset($desemberRI->sumri) ? number_format($desemberRI->sumri) : 0 }}</td>
+                      <td>Rp {{isset($desemberRI->sumri) ? number_format($desemberRI->sumri, 0, ',', '.') : 0 }}</td>
                       <td>{{isset($desemberRI->sumri) ? round($persendesemberRI,2).' %' : '-' }}</td>
-                      <td>Rp {{isset($desemberOP->sumop) ? number_format($desemberOP->sumop) : 0}}</td>
+                      <td>Rp {{isset($desemberOP->sumop) ? number_format($desemberOP->sumop, 0, ',', '.') : 0}}</td>
                       <td>{{isset($desemberOP->sumop) ? round($persendesemberOP,2).' %' : '-' }}</td>
-                      <td>Rp {{number_format($totaldesember)}}</td>
+                      <td>Rp {{number_format($totaldesember, 0, ',', '.')}}</td>
                       <td>{{$totaldesember==0 ? '-' : round($persenttldesember,2).' %'}}</td>
                       <td><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/12">{{$jlhpengeluarandesember}}</a></td>
                     </tr>

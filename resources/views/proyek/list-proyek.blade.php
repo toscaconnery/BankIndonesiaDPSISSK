@@ -80,16 +80,16 @@
                   <tbody>
                     @foreach($proyek as $proyek)
                     <tr>
-                      <td>{{$proyek->id}}</td>
+                      <td align="center">{{$proyek->id}}</td>
                       <td>{{$proyek->nama}}</td>
-                      <td>{{$proyek->kategori}}</td>
+                      <td align="center">{{$proyek->kategori}}</td>
                       <td>{{$proyek->pic}}</td>
                       <td>{{$proyek->tgl_mulai}}</td>
                       <td>{{$proyek->tgl_selesai}}</td>
                       <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : '-'}}</td>
                       <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
-                      <td>{{$proyek->jenis}}</td>
-                      <td>{{$proyek->status}}</td>
+                      <td align="center">{{$proyek->jenis}}</td>
+                      <td align="center">{{$proyek->status}}</td>
                       <center>
                         <td>
                           @if($proyek->status == "Pending")
@@ -395,7 +395,8 @@
 <script>
   $(function () {
     $('#example1').DataTable({
-      "order": [[ 0, "desc" ]]
+      "order": [[ 0, "desc" ]],
+      "ordering" : false
     });
   });
 </script>

@@ -116,25 +116,23 @@
                       </td>
                       <td>{{$sub->pic}}</td>
                       <td>{{$sub->status}}</td>
-                      <td>
-                        <center>
-                          @if($sub->status == "Pending")
-                            <a href="{{url('')}}/mulai-sub-tahapan-proyek/{{ $sub->id }}">
-                              <button type="button" style="width: 9em" class="btn btn-primary">Mulai</button>
-                            </a>
-                          @elseif($sub->status == "On Progress")
-                            <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
-                              <button type="button" style="width: 4em" class="btn btn-primary">Detail</button>
-                            </a>
-                            <a href="{{url('')}}/selesaikan-sub-tahapan/{{ $sub->id }}">
-                              <button type="button" style="width: 5em" class="btn btn-primary">Selesai</button>
-                            </a>
-                          @elseif($sub->status == "Finish")
-                            <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
-                              <button type="button" style="width: 9em" class="btn btn-primary">Detail</button>
-                            </a>
-                          @endif
-                        </center>
+                      <td align="center">
+                        @if($sub->status == "Pending")
+                        <a href="{{url('')}}/mulai-sub-tahapan-proyek/{{ $sub->id }}">
+                          <button type="button" style="width: 9em" class="btn btn-primary">Mulai</button>
+                        </a>
+                        @elseif($sub->status == "On Progress")
+                        <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
+                          <button type="button" style="width: 4em" class="btn btn-primary">Detail</button>
+                        </a>
+                        <a href="{{url('')}}/selesaikan-sub-tahapan/{{ $sub->id }}">
+                          <button type="button" style="width: 5em" class="btn btn-primary">Selesai</button>
+                        </a>
+                        @elseif($sub->status == "Finish")
+                        <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
+                          <button type="button" style="width: 9em" class="btn btn-primary">Detail</button>
+                        </a>
+                        @endif
                       </td>
                     </tr>
                     @endforeach
@@ -189,7 +187,9 @@
     <!-- page script -->
     <script>
       $(function () {
-        $("#example1").DataTable();
+        $("#example1").DataTable({
+          "ordering": false
+        });
         $('#example2').DataTable({
           "paging": true,
           "lengthChange": false,
