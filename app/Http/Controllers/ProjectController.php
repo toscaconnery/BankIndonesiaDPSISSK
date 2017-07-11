@@ -705,7 +705,8 @@ class ProjectController extends Controller
     public function upload_file_mlbi(Request $request, $id, $deeppath = null)   //ini ID sub tahapan
     {
         //dd("MLBI");
-        $tahapan = TahapanProyek::find($id);
+        $subTahapan = SubTahapanProyek::find($id);
+        $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
         $proyek = Proyek::find($tahapan->id_proyek);
         $file = $request->file('berkas');
         $fileName = $file->getClientOriginalName();
