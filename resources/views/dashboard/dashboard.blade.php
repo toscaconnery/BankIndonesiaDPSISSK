@@ -104,72 +104,25 @@
           <!-- /.box-header -->
           <!-- content start -->
           <div class="box-body">
-
             <!--Content Project Progress-->
             <div style="overflow-y: scroll; height: 30em">
+            @foreach($kelengkapanProyek as $data)
               <div class="info-box bg-aqua">
                 <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-number">Project APIK</span>
-                  <span class="info-box-number">Progress : 40%</span>
+                  <span class="info-box-number">{{$data['nama']}}</span>
+                  <span class="info-box-number">Progress : {{number_format($data['persenTotal'], 2, ",", ".")}}%</span>
                   <div class="progress">
-                    <div class="progress-bar" style="width: 40%"></div>
+                    <div class="progress-bar" style="width: {{$data['persenTotal']}}%"></div>
                   </div>
                   <span class="progress-description">
-                    Current step : Perancangan (15%)
-                    <div class="pull-right">16 Juli 2017</div>
+                    Current step : {{$data['lastProgress']}} ({{$data['persenLastProgress']}}%)
+                    <div class="pull-right">{{$data['deadlineProgress']}}</div>
                   </span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
-
-              <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-number">Project SIMKU</span>
-                  <span class="info-box-number">Progress : 56%</span>
-                  <div class="progress">
-                    <div class="progress-bar" style="width: 56%"></div>
-                  </div>
-                  <span class="progress-description">
-                    Current step : Pembuatan program (36%)
-                    <div class="pull-right">25 Nopember 2017</div>
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-
-              <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-number">Project GWN Averaging</span>
-                  <span class="info-box-number">Progress : 90%</span>
-                  <div class="progress">
-                    <div class="progress-bar" style="width: 90%"></div>
-                  </div>
-                  <span class="progress-description">
-                    Current step : Implementasi (24%)
-                    <div class="pull-right">14 Desember 2017</div>
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-
-              <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-number">Project APIK</span>
-                  <span class="info-box-number">Progress : 100%</span>
-                  <div class="progress">
-                    <div class="progress-bar" style="width: 100%"></div>
-                  </div>
-                  <span class="progress-description">
-                    Current step : Finished
-                    <div class="pull-right">11 Agustus 2017</div>
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
+            @endforeach
             </div>
           </div>
         </div>
