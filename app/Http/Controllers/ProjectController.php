@@ -167,7 +167,6 @@ class ProjectController extends Controller
             elseif($pic->nama == 'Implementasi'){
                 $this->data['kelengkapanProyek'][$pic->id_proyek]['picImplementasi'] = $pic->pic;
             }
-
         }
     	return view('proyek.list-proyek', $this->data);
     }
@@ -748,7 +747,6 @@ class ProjectController extends Controller
             return redirect('list-file-sub-tahapan/'.$id);
         }
     }
-    
 
 }
 
