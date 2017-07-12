@@ -11,7 +11,9 @@ use App\SubTahapanProyek;
 use App\TabelFile;
 use App\TabelFolder;
 use App\KelengkapanProyek;
+use App\Tahun;
 use Auth;
+use File;
 
 class ProjectController extends Controller
 {
@@ -184,9 +186,10 @@ class ProjectController extends Controller
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
+        $tahun = $proyek->tgl_mulai->format("Y");
         $proyek->status = "Pending";
 
         if($proyek->save()){
@@ -197,10 +200,19 @@ class ProjectController extends Controller
             $folder->pic = $proyek->pic;
             $folder->kategori = "Proyek";
             $folder->id_proyek = $proyek->id;
-            $folder->tahun = date("Y");
+            $folder->tahun = $tahun;
             $folder->path = $folder->tahun.'/';
             if(!is_dir($folder->tahun)){
                 mkdir($folder->tahun);
+                $tahunFile = new Tahun;
+                $tahunFile->tahun = $folder->tahun;
+                $tahunFile->proyek = 1;
+                $tahunFile->save();
+            }
+            else{
+                $tahunFile = Tahun::where('tahun', date("Y"))->first();
+                $tahunFile->proyek = $tahunFile->proyek + 1;
+                $tahunFile->save();
             }
             mkdir($folder->tahun.'/'.$proyek->nama);
             $folder->save();
@@ -290,7 +302,7 @@ class ProjectController extends Controller
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
         $tahap->tgl_mulai = $tgl_mulai;
         $tahap->tgl_selesai = $tgl_selesai;
         $tahap->status = 'Pending';
@@ -381,7 +393,7 @@ class ProjectController extends Controller
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
         $sub->tgl_mulai = $tgl_mulai;
         $sub->tgl_selesai = $tgl_selesai;
         $sub->status = 'Pending';
@@ -529,21 +541,19 @@ class ProjectController extends Controller
             $folder = TabelFolder::find($deeppath);
             $this->data['path'] = $folder->path.$folder->nama.'/';
             $this->data['pathMLBI'] = $folder->path_mlbi.$folder->nama.'/';
-            $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
+            $this->data['fileSubTahapanP3A'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'"');
             $this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['pathMLBI'].'"');
-            return view('proyek.list-file-sub-tahapan', $this->data);
         }
         else{
             //dd("KEMUNGKINAN 2 : NORMAL / AKSES FOLDER NORMAL");
             $this->data['path'] = $tahun.'/'.$proyek->nama.'/'.'P3A/'.$tahapan->nama.'/';
             $this->data['pathMLBI'] = $tahun.'/'.$proyek->nama.'/'.'MLBI/'.$tahapan->nama.'/';
-            $this->data['fileSubTahapan'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'" AND t.id_sub_tahapan = '.$id);
+            $this->data['fileSubTahapanP3A'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['path'].'" AND t.id_sub_tahapan = '.$id);
             $this->data['folderSubTahapan'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['path'].'" AND t.id_sub_tahapan = '.$id);
             $this->data['fileSubTahapanMLBI'] = DB::select('SELECT t.* FROm tabel_file t WHERE t.path  = "'.$this->data['pathMLBI'].'" AND t.id_sub_tahapan = '.$id);
-            
-            return view('proyek.list-file-sub-tahapan', $this->data);
         }
+        return view('proyek.list-file-sub-tahapan', $this->data);
     }
 
     public function save_list_file_sub_tahapan (Request $request, $id, $deeppath = null )    //ini ID sub tahapan
@@ -741,9 +751,12 @@ class ProjectController extends Controller
         }
     }
 
+    public function delete_file_sub_tahapan($id_file)
+    {
+        $file = TabelFile::find($id_file);
+        File::delete($file->path.$file->nama);
+        $file->delete();
+        return back();
+    }
+
 }
-
-
-
-
-
