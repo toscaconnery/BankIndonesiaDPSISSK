@@ -51,12 +51,12 @@
                 <div class="inner">
                   <h3>Forecast</h3>
                   @if($forecast >= 0)
-                    <p>Bersisa Rp {{number_format($forecast, 0, ",", ".")}}</p>
+                  <p>Bersisa Rp {{number_format($forecast, 0, ",", ".")}}</p>
                   @elseif($forecast < 0)
-                    @php
-                      $forecast = $forecast * (-1);
-                    @endphp
-                    <p>Kekurangan Rp {{number_format($forecast, 0, ",", ".")}}</p>
+                  @php
+                  $forecast = $forecast * (-1);
+                  @endphp
+                  <p>Kekurangan Rp {{number_format($forecast, 0, ",", ".")}}</p>
                   @endif
                 </div>
                 <div class="icon">
@@ -106,7 +106,7 @@
           <div class="box-body">
             <!--Content Project Progress-->
             <div style="overflow-y: scroll; height: 30em">
-            @foreach($kelengkapanProyek as $data)
+              @foreach($kelengkapanProyek as $data)
               <div class="info-box bg-aqua">
                 <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
                 <div class="info-box-content">
@@ -122,7 +122,7 @@
                 </div>
                 <!-- /.info-box-content -->
               </div>
-            @endforeach
+              @endforeach
             </div>
           </div>
         </div>
@@ -215,128 +215,17 @@
                       </div>
                     </li>
                     @endif
-
-                    {{--                   <li>
-                    <i class="fa fa-info bg-blue"></i>
-                    <!--issue content goes here-->
-                    <div class="timeline-item">
-                      <h3 class="timeline-header">
-                        <a href="#">
-                          <big>
-                            Issue Sistem Keuangan
-                          </big>
-
-                        </a>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </h3>
-
-                      <div class="timeline-body">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                        quora plaxo ideeli hulu weebly balihoo...
-                      </div>
-                      <div class="timeline-body">
-                        <small>
-                          <cite>
-                            Sherlock Holmes
-                          </cite>
-                        </small>
-                      </div>
-                      <div class="timeline-footer">
-                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-success btn-xs">Finish</a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 28 Juli 12:05</span>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <i class="fa fa-info bg-blue"></i>
-                    <!--issue content goes here-->
-                    <div class="timeline-item">
-                      <h3 class="timeline-header">
-                        <a href="#">
-                          <big>
-                            Issue Pembaruan Sistem
-                          </big>
-                        </a>
-                        <button type="button" class="close">
-                          <small><span aria-hidden="true"><i class="fa fa-remove"></i></span></small>
-                        </button>
-                        
-                      </h3>
-                      <div class="timeline-body">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                        quora plaxo ideeli hulu weebly balihoo...
-                      </div>
-                      <div class="timeline-body">
-                        <small>
-                          <cite>
-                            Sherlock Holmes
-                          </cite>
-                        </small>
-                      </div>
-                      <div class="timeline-footer">
-                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-info btn-xs">On Progress</a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 25 Juli 12:05</span>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <i class="fa fa-info bg-blue"></i>
-                    <!--issue content goes here-->
-                    <div class="timeline-item">
-                      <h3 class="timeline-header">
-                        <a href="#">
-                          <big>
-                            Issue Pengembangan Sistem
-                          </big>
-                        </a>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </h3>
-                      <div class="timeline-body">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                        quora plaxo ideeli hulu weebly balihoo...
-                      </div>
-                      <div class="timeline-body">
-                        <small>
-                          <cite>
-                            Sherlock Holmes
-                          </cite>
-                        </small>
-                      </div>
-                      <div class="timeline-footer">
-                        <a href="{{url('')}}/edit-issue" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-warning btn-xs">Pending</a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> 12 Juli 12:05</span>
-                      </div>
-                    </div>
-                  </li> --}}
-
-                </ul>
-                <div class="timeline-item">
-                  <a href="{{url('')}}/list-all-issue" class="btn btn-primary">Tampilkan Semua</a>
+                  </ul>
                 </div>
+                <a href="{{url('')}}/list-all-issue" class="btn btn-primary">Tampilkan Semua</a>
               </div>
             </div>
           </div>
         </div>
+        <!-- /.box -->
       </div>
-      <!-- /.box -->
     </div>
-  </div>
-</section>
+  </section>
 </div>
 @include('layouts.footer')
 </div>

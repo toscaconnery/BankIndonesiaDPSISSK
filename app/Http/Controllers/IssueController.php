@@ -38,6 +38,38 @@ class IssueController extends Controller
     	return view('issue.edit-issue', $this->data);
     }
 
+    public function cari_issue()
+    {   
+        $tahun = Input::get('tahuncari');
+        $judul = Input::get('judulcari');
+        $this->data['adadata'] = 1;
+        if($tahun!=NULL && $judul!=NULL)
+        {
+            $this->data['issue'] = DB::table('issue')
+            ->where(DB::raw('YEAR(created_at)'), $tahun)
+            ->where('judul', 'LIKE', '%' . $judul . '%')
+            ->get();
+        }
+        else if($tahun!=NULL && $judul==NULL)
+        {
+            $this->data['issue'] = DB::table('issue')
+            ->where(DB::raw('YEAR(created_at)'), $tahun)
+            ->get();
+        }
+        else if($tahun==NULL && $judul!=NULL)
+        {
+            $this->data['issue'] = DB::table('issue')
+            ->where('judul', 'LIKE', '%' . $judul . '%')
+            ->get();
+        }
+        else if($tahun==NULL && $judul==NULL)
+        {
+            $this->data['adadata'] = 0;
+        }
+        
+        return view('issue.list-all-issue-search', $this->data);
+    }
+
     public function save_input_issue()
     {   
     	$issue = new Issue;

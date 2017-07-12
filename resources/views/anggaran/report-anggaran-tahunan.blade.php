@@ -86,29 +86,14 @@
                       <td>Rp. {{ number_format($anggaran->sisa, 0, ',', '.') }}</td> {{-- sisa anggaran --}}
                       <td width="5px" align="center">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
                       <td>
-                      <center>
-                      <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
-                        <button class="btn btn-primary">Detail</button>
-                      </a>
-                      </center>
+                        <center>
+                          <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
+                            <button class="btn btn-primary">Detail</button>
+                          </a>
+                        </center>
                       </td>
                     </tr>
                     @endforeach
-                    <!-- <tr>
-                      <td>2015</td>
-                      <td>Rp. 234.234.242</td>  {{-- ri dianggarkan --}}
-                      <td>Rp. 234.234.242</td>  {{-- op dianggarkan --}}
-                      <td>Rp. 468.468.484</td>  {{-- total dianggarkan --}}
-                      <td>Rp. 234.234.242</td>  {{-- ri realisasi --}}
-                      <td width="10px">100%</td>  {{-- persen ri realisasi --}}
-                      <td>Rp. 200.234.242</td>  {{-- op realisasi --}}
-                      <td width="10px">90%</td> {{-- persen op realisasi --}}
-                      <td>Rp. 468.468.484</td>  {{-- total realisasi --}}
-                      <td width="10px">80%</td> {{-- persen total realisasi --}}
-                      <td>Rp. 34.000.000</td> {{-- sisa anggaran --}}
-                      <td width="5px">5%</td>   {{-- persen sisa anggaran --}}
-                      <td><a href="{{url('')}}/report-anggaran-bulanan">Detail</a></td>
-                    </tr> -->
                   </tbody>
                 </table>
                 <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button></center>
@@ -133,7 +118,7 @@
             <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Anggaran Tahunan</h3></center>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="POST">
+            <form name="anggarantahunan" class="form-horizontal" method="POST">
 
               {{ csrf_field() }}
 
@@ -146,25 +131,34 @@
                 </div>
               </div>
 
-              <!--Nominal-->
-              <div class="form-group">
-                <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
-                <div class="col-md-9">
-                  <input name="nominal" type="number" class="form-control" id="total">
-                </div>
-              </div>
-
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran RI</label>
                 <div class="col-md-9">
-                  <input type="number" class="form-control" id="ri" name="ri">
+                <div class="input-group">
+                  <span class="input-group-addon">Rp</span>
+                  <input type="number" class="form-control" id="ri" name="ri" onkeyup="calc()">
+                </div>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran OP</label>
                 <div class="col-md-9">
-                  <input type="number" class="form-control" id="op" name="op">
+                <div class="input-group">
+                  <span class="input-group-addon">Rp</span>
+                  <input type="number" class="form-control" id="op" name="op" onkeyup="calc()">
+                </div>
+                </div>
+              </div>
+
+              <!--Nominal-->
+              <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Total</label>
+                <div class="col-md-9">
+                <div class="input-group">
+                  <span class="input-group-addon">Rp</span>
+                  <input name="nominal" type="number" class="form-control" id="total">
+                </div>
                 </div>
               </div>
 
@@ -213,7 +207,10 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
                 <div class="col-md-9">
+                <div class="input-group">
+                  <span class="input-group-addon">Rp</span>
                   <input name="nominal" type="text" class="form-control" id="nominal">
+                </div>
                 </div>
               </div>
 
@@ -253,6 +250,13 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{url('')}}/dist/js/demo.js"></script>
   <!-- page script -->
+  <script>
+  function calc()
+    {
+      var elm = document.forms["anggarantahunan"];
+      elm["nominal"].value = parseInt(elm["ri"].value) + parseInt(elm["op"].value);
+    }
+  </script>
   <script>
     $(function () {
       $('#example1').DataTable({

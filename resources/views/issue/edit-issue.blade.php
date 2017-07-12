@@ -49,30 +49,43 @@
                 {{ csrf_field() }}
                 <!--Judul-->
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3 control-label">Judul</label>
+                  <label for="judul" class="col-sm-3 control-label">Judul</label>
                   <div class="col-sm-9">
-                    <input name="judul" type="text" class="form-control" id="inputEmail3" value="{{$issue->judul ? $issue->judul : ''}}">
+                    <input name="judul" type="text" class="form-control" id="judul" value="{{$issue->judul ? $issue->judul : ''}}">
                   </div>
                 </div>
 
                 <!--Issue-->
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3 control-label">Issue</label>
+                  <label for="issue" class="col-sm-3 control-label">Issue</label>
                   <div class="col-sm-9">
-                    <textarea name="isi" class="form-control" rows="8">{{$issue->isi ? $issue->isi : ''}}</textarea>
+                    <textarea name="isi" class="form-control" id="judul" rows="8">{{$issue->isi ? $issue->isi : ''}}</textarea>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3 control-label">Tindak Lanjut</label>
+                  <label for="pic" class="col-sm-3 control-label">PIC</label>
                   <div class="col-sm-9">
-                    <textarea name="tindak_lanjut" class="form-control" rows="4">{{$issue->tindak_lanjut ? $issue->tindak_lanjut : ''}}</textarea>
+                    <input name="pic" type="text" class="form-control" id="pic" value="{{$issue->pic ? $issue->pic : ''}}" disabled>
                   </div>
                 </div>
 
                 <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Status</label>
+                  <label for="tindaklanjut" class="col-sm-3 control-label">Tindak Lanjut</label>
+                  <div class="col-sm-9">
+                    <textarea name="tindak_lanjut" class="form-control" id="tindaklanjut" rows="4">{{$issue->tindak_lanjut ? $issue->tindak_lanjut : ''}}</textarea>
+                  </div>
+                </div>
 
+                <div class="form-group">
+                  <label for="pictindaklanjut" class="col-sm-3 control-label">PIC Tindak Lanjut</label>
+                  <div class="col-sm-9">
+                    <input name="pictindaklanjut" type="text" class="form-control" id="pictindaklanjut" value="{{$issue->pic_tindak_lanjut ? $issue->pic_tindak_lanjut : '-'}}" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                <label for="status" class="col-sm-3 control-label">Status</label>
                 <div class="col-sm-9">
                   <select name="status" class="form-control select2" style="width: 100%;">
                   <option {{$issue->status == 'Pending' ? 'selected' : ''}} value="Pending">Pending</option>
@@ -85,7 +98,10 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
+              <div class="btn-toolbar">
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                <button type="reset" class="btn btn-danger pull-right">Reset</button>
+              </div>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -123,18 +139,5 @@
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
 </body>
 </html>
