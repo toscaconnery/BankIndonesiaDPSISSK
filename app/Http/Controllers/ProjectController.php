@@ -378,7 +378,7 @@ class ProjectController extends Controller
             $folder2->pic = $tahap->pic;
             $folder2->kategori = "Proyek";
             $folder2->id_proyek = $tahap->id_proyek;
-            $folder2->tahun = date("Y");
+            $folder2->tahun = $folderTahapan->tahun;
             $folder2->path = $folderTahapan->tahun.'/'.$namaProyek.'/'.'MLBI/';
             mkdir($folder2->tahun.'/'.$namaProyek.'/'.'MLBI/'.$folder2->nama.'/');
             $folder2->save();
