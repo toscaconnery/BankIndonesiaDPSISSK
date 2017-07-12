@@ -186,9 +186,10 @@ class ProjectController extends Controller
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
+        $tahun = $proyek->tgl_mulai->format("Y");
         $proyek->status = "Pending";
 
         if($proyek->save()){
@@ -199,7 +200,7 @@ class ProjectController extends Controller
             $folder->pic = $proyek->pic;
             $folder->kategori = "Proyek";
             $folder->id_proyek = $proyek->id;
-            $folder->tahun = date("Y");
+            $folder->tahun = $tahun;
             $folder->path = $folder->tahun.'/';
             if(!is_dir($folder->tahun)){
                 mkdir($folder->tahun);
@@ -301,7 +302,7 @@ class ProjectController extends Controller
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
         $tahap->tgl_mulai = $tgl_mulai;
         $tahap->tgl_selesai = $tgl_selesai;
         $tahap->status = 'Pending';
@@ -392,7 +393,7 @@ class ProjectController extends Controller
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
         $sub->tgl_mulai = $tgl_mulai;
         $sub->tgl_selesai = $tgl_selesai;
         $sub->status = 'Pending';
