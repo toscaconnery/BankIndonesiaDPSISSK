@@ -12,6 +12,7 @@ use App\TabelFile;
 use App\TabelFolder;
 use App\KelengkapanProyek;
 use Auth;
+use File;
 
 class ProjectController extends Controller
 {
@@ -737,6 +738,14 @@ class ProjectController extends Controller
             }
             return redirect('list-file-sub-tahapan/'.$id);
         }
+    }
+
+    public function delete_file_sub_tahapan($id_file)
+    {
+        $file = TabelFile::find($id_file);
+        File::delete($file->path.$file->nama);
+        $file->delete();
+        return back();
     }
 
 }

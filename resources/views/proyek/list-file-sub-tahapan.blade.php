@@ -151,6 +151,7 @@
                       <center>
                         <td width="2em">
                           <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
+                          <a href="{{url('')}}/delete-file-sub-tahapan/{{ $data->id }}"><button class="btn btn-primary">Delete</button></a>
                         </td>
                       </center>
                     </tr>
