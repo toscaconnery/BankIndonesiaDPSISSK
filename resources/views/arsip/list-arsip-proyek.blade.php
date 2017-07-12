@@ -27,7 +27,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Tahun
+          {{$tahun}}
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-file"></i> Arsip</a></li>
@@ -46,19 +46,22 @@
                   <br>
                   <thead>
                     <tr href='{{url('')}}/list-file-arsip'>
-                      <th>Tahun</th>
-                      <th>Jumlah Proyek</th>
-                      <th>Jumlah Non Proyek</th>
+                      <th>No</th>
+                      <th>Nama</th>
+                      <th>PIC</th>
                       <th>Tanggal Dibuat</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($tahun as $data)
+                    @php
+                      $x = 1;
+                    @endphp
+                    @foreach($proyek as $data)
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
-                      <td>{{$data->tahun}}</td>
-                      <td>{{$data->proyek}}</td>
-                      <td>{{$data->non_proyek}}</td>
+                      <td>{{$x++}}</td>
+                      <td>{{$data->nama}}</td>
+                      <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
                       <td><a href="{{url('')}}/list-arsip-proyek/{{$data->id}}"><button>Detail</button></a></td>
                     </tr>

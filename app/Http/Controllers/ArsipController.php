@@ -29,6 +29,7 @@ class ArsipController extends Controller
     public function list_arsip_proyek($id_tahun)
     {
         $tahun = Tahun::find($id_tahun)->first()->tahun;
+        $this->data['tahun'] = $tahun;
         $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p, tabel_folder t WHERE t.nama = p.nama AND t.tahun = '.$tahun);
         return view('arsip.list-arsip-proyek', $this->data);
     }    
