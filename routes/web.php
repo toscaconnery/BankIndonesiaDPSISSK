@@ -26,16 +26,6 @@ Route::get('selesaikan-sub-tahapan/{id}', 'ProjectController@selesaikan_sub_taha
 Route::post('upload-file-mlbi/{id}/{deeppath?}', 'ProjectController@upload_file_mlbi');
 Route::get('delete-file-sub-tahapan/{id_file}', 'ProjectController@delete_file_sub_tahapan');
 
-//Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
-
-// Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
-// Route::post('list-file-sub-tahapan/{id}', 'ProjectController@save_list_file_sub_tahapan');
-//Route::get('input-proyek', 'ProjectController@input_proyek');
-// Route::get('input-detail-tahapan', 'ProjectController@input_detail_tahapan');
-
-// Route::get('list-file-sub-tahapan', 'ProjectController@list_file_sub_tahapan');
-// Route::get('list-file-sub-tahapan/{id}', 'ProjectController@list_file_sub_tahapan');
-
 // ARSIP
 Route::get('list-arsip', 'ArsipController@list_arsip');
 Route::post('list-arsip', 'ArsipController@save_input_folder');
@@ -44,6 +34,8 @@ Route::get('list-file-arsip', 'ArsipController@list_file_arsip');
 Route::get('download-file/{id}', 'ArsipController@download_file');
 Route::get('list-arsip-tahun', 'ArsipController@list_arsip_tahun');
 Route::get('list-arsip-proyek/{id_tahun}', 'ArsipController@list_arsip_proyek');
+Route::get('list-arsip-tahapan-proyek/{id_folder_proyek}', 'ArsipController@list_arsip_tahapan_proyek');
+//Route::get('list-arsip-folder', 'ArsipController@list_arsip_folder');
 // Route::get('mlbi/{id}/{deeppath?}', 'ArsipController@mlbi');
 //Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
 
