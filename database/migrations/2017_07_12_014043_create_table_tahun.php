@@ -16,6 +16,8 @@ class CreateTableTahun extends Migration
         Schema::create('tahun', function(Blueprint $table){
             $table->increments('id');
             $table->string('tahun');
+            $table->integer('proyek')->default(0);
+            $table->integer('non_proyek')->default(0);
             $table->timestamps();
         });    }
 
@@ -26,6 +28,5 @@ class CreateTableTahun extends Migration
      */
     public function down()
     {
-        //
-    }
+        Schema::dropIfExists('tahun');    }
 }

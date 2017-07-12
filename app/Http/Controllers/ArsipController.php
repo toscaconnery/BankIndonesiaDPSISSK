@@ -9,6 +9,7 @@ use App\TabelFolder;
 use Auth;
 use DateTime;
 use App\TabelFile;
+use App\Tahun;
 use Response;
 
 class ArsipController extends Controller
@@ -19,6 +20,18 @@ class ArsipController extends Controller
         return view('arsip.list-arsip', $this->data);
     	// return view('arsip.list-arsip');
     }
+
+    public function list_arsip_tahun()
+    {
+        $this->data['tahun'] = DB::select('SELECT t.* FROM tahun t');
+        return view('arsip.list-arsip-tahun', $this->data);
+    }
+    public function list_arsip_proyek($id_tahun)
+    {
+        $tahun = Tahun::find($id_tahun)->first()->tahun;
+        $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p, tabel_folder t WHERE t.nama = p.nama AND t.tahun = '.$tahun);
+        return view('arsip.list-arsip-proyek', $this->data);
+    }    
 
     public function save_input_folder()
     {

@@ -44,7 +44,7 @@
         </a>
       </li>
       <li>
-        <a href="{{url('')}}/list-arsip">
+        <a href="{{url('')}}/list-arsip-tahun">
           <i class="fa fa-file"></i> <span>Arsip</span>
         </a>
       </li>

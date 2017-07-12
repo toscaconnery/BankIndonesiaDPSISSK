@@ -11,6 +11,7 @@ use App\SubTahapanProyek;
 use App\TabelFile;
 use App\TabelFolder;
 use App\KelengkapanProyek;
+use App\Tahun;
 use Auth;
 use File;
 
@@ -202,6 +203,15 @@ class ProjectController extends Controller
             $folder->path = $folder->tahun.'/';
             if(!is_dir($folder->tahun)){
                 mkdir($folder->tahun);
+                $tahunFile = new Tahun;
+                $tahunFile->tahun = $folder->tahun;
+                $tahunFile->proyek = 1;
+                $tahunFile->save();
+            }
+            else{
+                $tahunFile = Tahun::where('tahun', date("Y"))->first();
+                $tahunFile->proyek = $tahunFile->proyek + 1;
+                $tahunFile->save();
             }
             mkdir($folder->tahun.'/'.$proyek->nama);
             $folder->save();
