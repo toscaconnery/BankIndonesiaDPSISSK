@@ -9,6 +9,6 @@ class Tahun extends Model
 	protected $table = 'tahun';
 	
     protected $fillable = [
-    	'tahun',
+    	'tahun', 'proyek', 'non_proyek',
     ];
 }
