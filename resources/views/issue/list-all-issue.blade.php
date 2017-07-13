@@ -82,16 +82,18 @@
                               </big>
                               <br>
                               {{$issue->isi}}
-                            </div>
-
-                            <div class="timeline-body">
-                              <small>
-                                <cite>
+                              <br>
+                              <cite>
+                                <b>
                                   {{ $issue->pic }}
-                                </cite>
-                              </small>
+                                </b>
+                              </cite>
                             </div>
 
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> 2af9b168f0acea14e4e18246d17aa70314f66267
                             @if($issue->tindak_lanjut)
                             <div class="timeline-body">
                               <big>
@@ -99,13 +101,12 @@
                               </big>
                               <br>
                               {{$issue->tindak_lanjut}}
-                            </div>
-                            <div class="timeline-body">
-                              <small>
-                                <cite>
+                              <br>
+                              <cite>
+                                <b>
                                   {{ $issue->pic_tindak_lanjut }}
-                                </cite>
-                              </small>
+                                </b>
+                              </cite>
                             </div>
                             @endif
 
