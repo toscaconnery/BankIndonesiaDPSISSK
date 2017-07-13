@@ -964,6 +964,24 @@ class ProjectController extends Controller
         return back();
     }
 
+    public function delete_sub_tahapan($id_sub_tahapan)
+    {
+        $subTahapan = SubTahapanProyek::find($id_sub_tahapan);
+
+        //mengecek isi folder
+        $isiFolder = DB::select('SELECT t.* FROM tabel_folder t WHERE t.id_sub_tahapan = '.$id_sub_tahapan);
+
+
+        //mengecek isi file
+        $isiFile = DB::select('SELECT t.* FROM tabel_file t WHERE t.id_sub_tahapan = '.$id_sub_tahapan);
+        foreach($isiFile as $data){
+            $this->delete_file_sub_tahapan($data->id);
+        }
+
+        return back();
+        // dd($isiFolder, $isiFile);
+    }
+
     public function edit_tahapan_proyek(Request $request, $id_tahapan)
     {
         $tahapan = TahapanProyek::find($id_tahapan)->first();
