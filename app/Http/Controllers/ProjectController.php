@@ -738,6 +738,7 @@ class ProjectController extends Controller
         $this->data['namaSubTahapan'] = $subTahapan->nama;
         $this->data['namaTahapan'] = $tahapan->nama;
         $this->data['namaProyek'] = $proyek->nama;
+        $this->data['jenisProyek'] = $proyek->jenis;
 
         if($deeppath){
             //dd("KEMUNGKINAN 1 : DEEP PATH / AKSES FOLDER DEEP");
