@@ -83,15 +83,14 @@
                               </big>
                               <br>
                               {{$issue->isi}}
+                              <br>
+                              <cite>
+                                <b>
+                                  {{ $issue->pic }}
+                                </b>
+                              </cite>
                             </div>
 
-                            <div class="timeline-body">
-                              <small>
-                                <cite>
-                                  {{ $issue->pic }}
-                                </cite>
-                              </small>
-                            </div>
                             
                             @if($issue->tindak_lanjut)
                             <div class="timeline-body">
@@ -100,13 +99,12 @@
                               </big>
                               <br>
                               {{$issue->tindak_lanjut}}
-                            </div>
-                            <div class="timeline-body">
-                              <small>
-                                <cite>
+                              <br>
+                              <cite>
+                                <b>
                                   {{ $issue->pic_tindak_lanjut }}
-                                </cite>
-                              </small>
+                                </b>
+                              </cite>
                             </div>
                             @endif
                             
