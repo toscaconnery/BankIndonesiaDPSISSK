@@ -185,8 +185,8 @@ class ProjectController extends Controller
         $tanggal = Input::get('tanggal');
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
-        $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
+        $tgl_mulai = date_create_from_format("m/d/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("m/d/Y", $text_tgl_selesai);
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
         $tahun = $proyek->tgl_mulai->format("Y");
@@ -301,10 +301,11 @@ class ProjectController extends Controller
         $tahap->pic = Input::get('pic');
         $tahap->id_proyek = $proyek->id;
         $tanggal = Input::get('tanggal');
+
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
-        $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
+        $tgl_mulai = date_create_from_format("m/d/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("m/d/Y", $text_tgl_selesai);
         $tahap->tgl_mulai = $tgl_mulai;
         $tahap->tgl_selesai = $tgl_selesai;
         $tahap->status = 'Pending';
@@ -441,8 +442,8 @@ class ProjectController extends Controller
 
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
-        $tgl_mulai = date_create_from_format("d/m/Y", $text_tgl_mulai);
-        $tgl_selesai = date_create_from_format("d/m/Y", $text_tgl_selesai);
+        $tgl_mulai = date_create_from_format("m/d/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("m/d/Y", $text_tgl_selesai);
         $sub->tgl_mulai = $tgl_mulai;
         $sub->tgl_selesai = $tgl_selesai;
         $sub->status = 'Pending';
