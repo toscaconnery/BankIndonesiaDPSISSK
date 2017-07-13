@@ -287,6 +287,7 @@ class ProjectController extends Controller
                                                         AND l.jenis = "Inhouse" ');
         }
         $this->data['tahapan'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$id.' ORDER BY t.created_at ASC');
+        $this->data['modalTahapan'] = $this->data['tahapan'];
         $proyek = Proyek::find($id);
         $this->data['namaProyek'] = $proyek->nama;
     	return view('proyek.input-tahap-proyek', $this->data);
@@ -806,6 +807,21 @@ class ProjectController extends Controller
         $file = TabelFile::find($id_file);
         File::delete($file->path.$file->nama);
         $file->delete();
+        return back();
+    }
+
+    public function edit_tahapan_proyek(Request $request, $id_tahapan)
+    {
+        $tahapan = TahapanProyek::find($id_tahapan)->first();
+        $tanggal = Input::get('tanggal');
+        $text_tgl_mulai = substr($tanggal, 0 ,10);
+        $text_tgl_selesai = substr($tanggal, 13, 23);
+        $tgl_mulai = date_create_from_format("m/d/Y", $text_tgl_mulai);
+        $tgl_selesai = date_create_from_format("m/d/Y", $text_tgl_selesai);
+        $tahapan->tgl_real_mulai = $tgl_mulai;
+        $tahapan->tgl_real_selesai = $tgl_selesai;
+        $tahapan->save();
+        //dd($tahapan->tgl_mulai);
         return back();
     }
 

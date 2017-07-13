@@ -104,7 +104,7 @@
                       <th colspan="2">Jadwal Realisasi</th>
                       <th rowspan="2">PIC</th>
                       <th rowspan="2">Status</th>
-                      <th rowspan="2">Detail</th>
+                      <th rowspan="2">Action</th>
                     </tr>
                     <tr>
                       <th>Mulai</th>
@@ -138,8 +138,8 @@
                                 <a href='{{url('')}}/input-sub-tahapan/{{$tahapan->id}}'>
                                   <button class="btn btn-primary">Detail</button>
                                 </a>
-                              @endif
-                                
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#modalEditTahapan">Edit Tanggal</button>
+                              @endif 
                             </td>
                           </center>
                       </tr>
@@ -160,6 +160,44 @@
     </div>
     @include('layouts.footer')
   </div>
+
+
+
+  {{-- MODAL --}}
+  @foreach($modalTahapan as $data)
+    <div class="modal fade" id="modalEditTahapan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Edit Tahapan</h3></center>
+        </div>
+        <div class="modal-body">
+
+          <form class="form-horizontal" action="{{url('')}}/edit-tahapan-proyek/{{$data->id}}" method="post">
+            {{ csrf_field() }}
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Realisasi Tahapan :</label>
+              <div class="col-sm-9">
+                <input name="tanggal" type="text" class="form-control pull-right" id="rencanajadwal2">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="modal-footer">
+                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+  {{-- END MODAL --}}
 
 <!-- jQuery 2.2.3 -->
 <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
