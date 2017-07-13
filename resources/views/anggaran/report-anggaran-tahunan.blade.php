@@ -96,8 +96,6 @@
                     @endforeach
                   </tbody>
                 </table>
-                <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button></center>
-                <!-- /.box-body -->
               </div>
               <!-- /.box -->
             </div>
@@ -134,31 +132,31 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran RI</label>
                 <div class="col-md-9">
-                <div class="input-group">
-                  <span class="input-group-addon">Rp</span>
-                  <input type="number" class="form-control" id="ri" name="ri" onkeyup="calc()">
-                </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp</span>
+                    <input type="number" class="form-control" id="ri" name="ri" onkeyup="calc()">
+                  </div>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Anggaran OP</label>
                 <div class="col-md-9">
-                <div class="input-group">
-                  <span class="input-group-addon">Rp</span>
-                  <input type="number" class="form-control" id="op" name="op" onkeyup="calc()">
-                </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp</span>
+                    <input type="number" class="form-control" id="op" name="op" onkeyup="calc()">
+                  </div>
                 </div>
               </div>
 
               <!--Nominal-->
               <div class="form-group">
-              <label for="inputEmail3" class="col-md-3 control-label">Total</label>
+                <label for="inputEmail3" class="col-md-3 control-label">Total</label>
                 <div class="col-md-9">
-                <div class="input-group">
-                  <span class="input-group-addon">Rp</span>
-                  <input name="nominal" type="number" class="form-control" id="total">
-                </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp</span>
+                    <input name="nominal" type="number" class="form-control" id="total">
+                  </div>
                 </div>
               </div>
 
@@ -175,107 +173,47 @@
       </div>
     </div>
 
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pengeluaran</h3></center>
-          </div>
-          <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="{{url('')}}/input-pencairan-anggaran">
-              {{ csrf_field() }}
-              <div class="form-group">
-                <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
-                <div class="col-md-9">
-                  <input type="date" class="form-control pull-right" id="datepicker" name="tanggal">
-                </div>
-              </div>
-
-              <!--Kategori-->
-              <div class="form-group">
-                <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
-                <div class="col-md-9">
-                  <select class="form-control" name="kategori">
-                    <option value="RI">RI</option>
-                    <option value="OP">OP</option>                 
-                  </select>
-                </div>
-              </div>
-
-              <!--Nominal-->
-              <div class="form-group">
-                <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
-                <div class="col-md-9">
-                <div class="input-group">
-                  <span class="input-group-addon">Rp</span>
-                  <input name="nominal" type="text" class="form-control" id="nominal">
-                </div>
-                </div>
-              </div>
-
-              <!--Keterangan-->
-              <div class="form-group">
-                <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
-                <div class="col-md-9">
-                  <textarea name="keterangan" type="text" class="form-control" id="keterangan"></textarea>
-                </div>
-              </div>
-              <!-- /.box-body -->
-              <div class="form-group">
-                <div class="modal-footer">
-                  <button type="reset" class="btn btn-danger">Reset</button>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <!-- Bootstrap 3.3.6 -->
-  <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-  <!-- DataTables -->
-  <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-  <!-- SlimScroll -->
-  <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <!-- FastClick -->
-  <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="{{url('')}}/dist/js/app.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="{{url('')}}/dist/js/demo.js"></script>
-  <!-- page script -->
-  <script>
-  function calc()
-    {
-      var elm = document.forms["anggarantahunan"];
-      elm["nominal"].value = parseInt(elm["ri"].value) + parseInt(elm["op"].value);
-    }
-  </script>
-  <script>
-    $(function () {
-      $('#example1').DataTable({
-        "order": [[ 0, "desc" ]],
+    <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{url('')}}/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{url('')}}/dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+      function calc()
+      {
+        var elm = document.forms["anggarantahunan"];
+        elm["nominal"].value = parseInt(elm["ri"].value) + parseInt(elm["op"].value);
+      }
+    </script>
+    <script>
+      $(function () {
+        $('#example1').DataTable({
+          "order": [[ 0, "desc" ]],
+        });
       });
-    });
-  </script>
-  <script>
-    var mulai = 2017
-    var min = new Date().getFullYear(),
-    max = min + 9,
-    select = document.getElementById('pilihtahun');
+    </script>
+    <script>
+      var mulai = 2017
+      var min = new Date().getFullYear(),
+      max = min + 9,
+      select = document.getElementById('pilihtahun');
 
-    for (var i = mulai; i<=max; i++){
-      var opt = document.createElement('option');
-      opt.value = i;
-      opt.innerHTML = i;
-      select.appendChild(opt);
-    }
-  </script>
-</body>
-</html>
+      for (var i = mulai; i<=max; i++){
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        select.appendChild(opt);
+      }
+    </script>
+  </body>
+  </html>

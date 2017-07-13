@@ -51,21 +51,15 @@
                   <tbody>
                   @foreach($pengeluaran_rinci as $pengeluaran_rinci)
                     <tr>
-                      <td>{{$pengeluaran_rinci->tanggal_pencairan}}</td>
+                      <td>{{date('d F Y',strtotime($pengeluaran_rinci->tanggal_pencairan))}}</td>
                       <td>{{$pengeluaran_rinci->kategori}}</td>
                       <td>Rp. {{number_format($pengeluaran_rinci->nominal, 0, ',', '.')}}</td>
                       <td>{{$pengeluaran_rinci->keterangan}}</td>
                     </tr>
                   @endforeach
-                    <!-- <tr>
-                      <td>4 Juli 2017</td>
-                      <td>RI</td>
-                      <td>Rp. 230.234.242</td>
-                      <td>Dianggarkan untuk desain proyek APIK</td>
-                    </tr> -->
                   </tbody>
                 </table>
-                <center><button class="btn btn-default" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Tambah Pengeluaran</button></center>
+                <center><button class="btn btn-primary" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button></center>
               </div>
               <!-- /.box-body -->
             </div>
@@ -75,8 +69,6 @@
         </div>
         <!-- /.row -->
       </section>
-
-
       <br>
     </div>
     @include('layouts.footer')
@@ -87,7 +79,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pengeluaran</h3></center>
+          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pencairan</h3></center>
         </div>
         <div class="modal-body">
           <form class="form-horizontal" method="POST" action="{{url('')}}/input-pencairan-anggaran">
@@ -114,7 +106,10 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
               <div class="col-md-9">
+              <div class="input-group">
+                <span class="input-group-addon">Rp</span>
                 <input name="nominal" type="number" class="form-control" id="inputEmail3">
+              </div>
               </div>
             </div>
 

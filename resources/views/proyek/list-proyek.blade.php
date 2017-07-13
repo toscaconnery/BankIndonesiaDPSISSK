@@ -179,6 +179,13 @@
             </div>
 
             <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">Rencana Realisasi</label> 
+              <div class="col-sm-9">
+                <input name="tanggalrealisasi" type="text" class="form-control" id="rencanajadwal2" disabled>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-3 control-label">
                 Status
               </label>
@@ -189,6 +196,16 @@
                 <label style='margin-left:30px;'>Outsource
                   <input  name="jenis" type="radio" name="status" value="Outsource" class="minimal">
                 </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <div class="checkbox pull-right">
+                  <label>
+                    <input type="checkbox" id="ceklis">Proyek Sudah Berjalan
+                  </label>
+                </div>
               </div>
             </div>
 
@@ -329,6 +346,11 @@
   <script src="{{url('')}}/dist/js/demo.js"></script>
   <!-- page script -->
   <script>
+      document.getElementById('ceklis').onchange = function() {
+      document.getElementById('rencanajadwal2').disabled = !this.checked;
+  };
+  </script>
+  <script>
     $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
@@ -342,6 +364,7 @@
 
     //Date range picker
     $('#rencanajadwal').daterangepicker();
+    $('#rencanajadwal2').daterangepicker();
     //Date range picker with time picker
     $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
     //Date range as a button

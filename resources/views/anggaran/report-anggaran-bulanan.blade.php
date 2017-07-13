@@ -26,7 +26,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Pencairan Anggaran {{$tahun_anggaran}}
+          Pencairan Anggaran Tahun {{$tahun_anggaran}}
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
@@ -42,6 +42,12 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
+                <div class="row">
+                  <div class="col-md-7">
+                    <button class="btn btn-primary" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button>
+                  </div>
+                </div>
+                <br>
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -203,6 +209,65 @@
       </section>
     </div>
     @include('layouts.footer')
+  </div>
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Pencairan</h3></center>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" method="POST" action="{{url('')}}/input-pencairan-anggaran">
+            {{ csrf_field() }}
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
+              <div class="col-md-9">
+                <input type="date" class="form-control pull-right" id="datepicker" name="tanggal">
+              </div>
+            </div>
+
+            <!--Kategori-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
+              <div class="col-md-9">
+                <select class="form-control" name="kategori">
+                  <option value="RI">RI</option>
+                  <option value="OP">OP</option>                 
+                </select>
+              </div>
+            </div>
+
+            <!--Nominal-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <span class="input-group-addon">Rp</span>
+                  <input name="nominal" type="text" class="form-control" id="nominal">
+                </div>
+              </div>
+            </div>
+
+            <!--Keterangan-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
+              <div class="col-md-9">
+                <textarea name="keterangan" type="text" class="form-control" id="keterangan"></textarea>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="form-group">
+              <div class="modal-footer">
+                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>

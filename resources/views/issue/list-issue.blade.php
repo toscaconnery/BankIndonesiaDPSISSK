@@ -155,8 +155,8 @@
                     <br>
                     <center>
                       <div class="timeline-item">
-                        <button class="btn btn-standard" data-toggle="modal" data-target="#myModal">Tambahkan issue</button>
-                        <a href="{{url('')}}/list-all-issue"><button class="btn btn-primary">Tampilkan Semua</button></a>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambahkan issue</button>
+                        <a href="{{url('')}}/list-all-issue"><button class="btn btn-standard">Tampilkan Semua</button></a>
                       </div>
                       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">

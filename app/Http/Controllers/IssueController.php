@@ -42,6 +42,7 @@ class IssueController extends Controller
     {   
         $tahun = Input::get('tahuncari');
         $judul = Input::get('judulcari');
+        $this->data['adacari'] = 1;
         $this->data['adadata'] = 1;
         if($tahun!=NULL && $judul!=NULL)
         {
@@ -49,22 +50,35 @@ class IssueController extends Controller
             ->where(DB::raw('YEAR(created_at)'), $tahun)
             ->where('judul', 'LIKE', '%' . $judul . '%')
             ->get();
+            if(!isset($this->data['issue']))
+            {
+                 $this->data['adadata'] = 0;
+            }
         }
         else if($tahun!=NULL && $judul==NULL)
         {
             $this->data['issue'] = DB::table('issue')
             ->where(DB::raw('YEAR(created_at)'), $tahun)
             ->get();
+            if(!isset($this->data['issue']))
+            {
+                 $this->data['adadata'] = 0;
+            }
         }
         else if($tahun==NULL && $judul!=NULL)
         {
             $this->data['issue'] = DB::table('issue')
             ->where('judul', 'LIKE', '%' . $judul . '%')
             ->get();
+            if(!isset($this->data['issue']))
+            {
+                 $this->data['adadata'] = 0;
+            }
         }
         else if($tahun==NULL && $judul==NULL)
         {
             $this->data['adadata'] = 0;
+            $this->data['adacari'] = 0;
         }
         
         return view('issue.list-all-issue-search', $this->data);
