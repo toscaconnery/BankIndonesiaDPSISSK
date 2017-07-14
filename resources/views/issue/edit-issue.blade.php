@@ -100,7 +100,7 @@
               <div class="box-footer">
               <div class="btn-toolbar">
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                <button type="reset" class="btn btn-danger pull-right">Reset</button>
+                <button type="reset" class="btn btn-danger pull-right">Cancel</button>
               </div>
               </div>
               <!-- /.box-footer -->
