@@ -39,7 +39,12 @@
           <!-- Horizontal Form -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/icon/account.png" alt="User profile picture">
+              
+              @if(Auth::check())
+                <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/{{Auth::user()->image_path}}" alt="User profile picture">
+              @else
+                <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/icon/account.png" alt="User profile picture">
+              @endif
 
               <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
 
