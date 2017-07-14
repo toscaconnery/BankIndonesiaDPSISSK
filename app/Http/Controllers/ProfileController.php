@@ -32,8 +32,12 @@ class ProfileController extends Controller
     			$user = User::find(Auth::user()->id);
 	    		$user->nip = Input::get('nip');
 	    		$user->email = Input::get('email');
-	    		if(!is_null($request->file('gambar')))
-	    		{
+	    		if(!is_null($request->password)){
+	    			$user->password = bcrypt($request->password);
+	    		}
+
+
+	    		if(!is_null($request->file('gambar'))){
 	    			$file = $request->file('gambar');
 	    			$fileExtension = $file->getClientOriginalExtension();
 	    			$path = "user/";
