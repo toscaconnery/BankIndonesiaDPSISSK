@@ -20,6 +20,7 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<<<<<<< HEAD
   <div class="wrapper">
     @include('layouts.header')
     @include('layouts.navbar')
@@ -42,9 +43,39 @@
                 <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/icon/account.png" alt="User profile picture">
 
                 <h3 class="profile-username text-center">Nina Mcintire</h3>
+=======
+<div class="wrapper">
+  @include('layouts.header')
+  @include('layouts.navbar')
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Profile Diri
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{url('')}}/dashboard"><i class="fa fa-newspaper-o"></i> Dashboard</a></li>
+      </ol>
+    </section>
+    
+    <section class="content">
+      <div class="row row-centered">
+        <div class="col-md-5 col-md-offset-3">
+          <!-- Horizontal Form -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              
+              @if(Auth::check())
+                <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/{{Auth::user()->image_path}}" alt="User profile picture">
+              @else
+                <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/icon/account.png" alt="User profile picture">
+              @endif
+
+              <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
+>>>>>>> 8a27bd937b1200bdaef1292372c52f704551d41a
 
                 <!-- <p class="text-muted text-center">Software Engineer</p> -->
 
+<<<<<<< HEAD
                 <form class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group">
@@ -95,11 +126,47 @@
                         </div>
                       </div>
                     </div>
+=======
+              <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">NIP</label>
+                  <div class="col-sm-10">
+                  {{ csrf_field() }}
+                    <input type="text" name="nip" class="form-control" id="inputPassword3" placeholder="NIP" value="{{$nip}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="email" class="form-control" id="inputPassword3" placeholder="Email" value="{{$email}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Picture</label>
+                  <div class="col-sm-10">
+                    <input type="file" name="gambar" class="form-control" id="inputPassword3">
+>>>>>>> 8a27bd937b1200bdaef1292372c52f704551d41a
                   </div>
                   <!-- /.box-footer -->
                 </form>
               </div>
               <!-- /.box-body -->
+<<<<<<< HEAD
+=======
+              <div class="box-footer">
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+>>>>>>> 8a27bd937b1200bdaef1292372c52f704551d41a
             </div>
             <!-- /.box -->
           </div>

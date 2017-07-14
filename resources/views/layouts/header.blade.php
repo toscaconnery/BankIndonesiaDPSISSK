@@ -27,7 +27,11 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                @if(is_null(Auth::user()->image_path))
+                <img src="{{url('')}}/icon/account.png" class="img-circle" alt="User Image">
+                @else
+                  <img src="{{url('')}}/{{Auth::user()->image_path}}" alt="User Image">
+                @endif
                 <p>
                   {{Auth::user()->name}}
                   <small>{{Auth::user()->nip}}</small>
