@@ -17,29 +17,52 @@
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="hidden-xs">
-              <!-- @if(Auth::check())
+              @if(Auth::check())
                 {{Auth::user()->name}}
-              @endif -->Ical</span>
+              @else
+                <img src="{{url('')}}/icon/lock.png" height="10px" width="10px">
+              @endif</span>
             </a>
+            @if(Auth::check())
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  {{Auth::user()->name}}
+                  <small>{{Auth::user()->nip}}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{url('')}}/edit-profile" class="btn btn-default btn-flat">Edit Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{url('')}}/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
+            @else
+              <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <p>
+                  Anda harus login terlebih dahulu.
+                  <small>Hehe</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{{url('')}}/autentikasi" class="btn btn-default btn-flat">Login</a>
+                </div>
+                {{-- <div class="pull-right">
+                  <a href="{{url('')}}/logout" class="btn btn-default btn-flat">Sign out</a>
+                </div> --}}
+              </li>
+            </ul>
+            @endif
           </li>
         </ul>
       </div>
