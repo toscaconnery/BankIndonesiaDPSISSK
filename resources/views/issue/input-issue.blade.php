@@ -26,51 +26,55 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Tambah Issue
+        Profile Diri
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-newspaper-o"></i> Issue</a></li>
+        <li><a href="{{url('')}}/dashboard"><i class="fa fa-newspaper-o"></i> Dashboard</a></li>
       </ol>
     </section>
     
     <section class="content">
-      <div class="row">
-        <div class="col-sm-6">
+      <div class="row row-centered">
+        <div class="col-md-5 col-md-offset-3">
           <!-- Horizontal Form -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h2 class="box-title">Form Tambah Issue</h2>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal" action="" method="post">
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/dist/img/user4-128x128.jpg" alt="User profile picture">
+
+              <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+              <!-- <p class="text-muted text-center">Software Engineer</p> -->
+
+              <form class="form-horizontal">
               <div class="box-body">
-                
-                {{ csrf_field() }}
-                <!--Judul-->
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">NIP</label>
                   <div class="col-sm-10">
-                    <input name="judul" type="text" class="form-control" id="inputEmail3">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="NIP">
                   </div>
                 </div>
-
-                <!--Issue-->
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <textarea name="isi" class="form-control" rows="8"></textarea>
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Email">
                   </div>
                 </div>
-
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  </div>
+                </div>
               </div>
               <!-- /.box-body -->
-              <!-- /.box-footer -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                <button type="submit" class="btn btn-danger">Cancel</button>
+                <button type="submit" class="btn btn-primary pull-right">Sign in</button>
               </div>
+              <!-- /.box-footer -->
             </form>
-            
+            </div>
+            <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
