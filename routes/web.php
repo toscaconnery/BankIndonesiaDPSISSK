@@ -26,6 +26,7 @@ Route::get('selesaikan-sub-tahapan/{id}', 'ProjectController@selesaikan_sub_taha
 Route::post('upload-file-mlbi/{id}/{deeppath?}', 'ProjectController@upload_file_mlbi');
 Route::get('delete-file-sub-tahapan/{id_file}', 'ProjectController@delete_file_sub_tahapan');
 Route::get('delete-sub-tahapan/{id_sub_tahapan}', 'ProjectController@delete_sub_tahapan');
+Route::get('delete-folder-sub-tahapan/{id_folder}', 'ProjectController@delete_folder_sub_tahapan');
 Route::post('edit-tahapan-proyek/{id_tahapan}', 'ProjectController@edit_tahapan_proyek');
 
 // ARSIP
