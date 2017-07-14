@@ -192,70 +192,81 @@ class ProjectController extends Controller
         $tahun = $proyek->tgl_mulai->format("Y");
         $proyek->status = "Pending";
 
-        if($proyek->save()){
+        $proyek->save();
+
+        // if($proyek->save()){
 
             //Membuat folder proyek
-            $folder = new TabelFolder;
-            $folder->nama = $proyek->nama;
-            $folder->pic = $proyek->pic;
-            $folder->kategori = "Proyek";
-            $folder->id_proyek = $proyek->id;
-            $folder->tahun = $tahun;
-            $folder->path = $folder->tahun.'/';
-            if(!is_dir($folder->tahun)){
-                mkdir($folder->tahun);
-                $tahunFile = new Tahun;
-                $tahunFile->tahun = $folder->tahun;
-                $tahunFile->proyek = 1;
-                $tahunFile->save();
-            }
-            else{
-                $tahunFile = Tahun::where('tahun', date("Y"))->first();
-                $tahunFile->proyek = $tahunFile->proyek + 1;
-                $tahunFile->save();
-            }
-            mkdir($folder->tahun.'/'.$proyek->nama);
-            $folder->save();
+            // $folder = new TabelFolder;
+            // $folder->nama = $proyek->nama;
+            // $folder->pic = $proyek->pic;
+            // $folder->kategori = "Proyek";
+            // $folder->id_proyek = $proyek->id;
+            // $folder->tahun = $tahun;
+            // $folder->path = $folder->tahun.'/';
+            // if(!is_dir($folder->tahun)){
+            //     mkdir($folder->tahun);
+            //     $tahunFile = new Tahun;
+            //     $tahunFile->tahun = $folder->tahun;
+            //     $tahunFile->proyek = 1;
+            //     $tahunFile->save();
+            // }
+            // else{
+            //     $tahunFile = Tahun::where('tahun', date("Y"))->first();
+            //     $tahunFile->proyek = $tahunFile->proyek + 1;
+            //     $tahunFile->save();
+            // }
+            // mkdir($folder->tahun.'/'.$proyek->nama);
+            // $folder->save();
 
-            //Membuat folder P3A
-            $folderP = new TabelFolder;
-            $folderP->nama = "P3A";
-            $folderP->pic = $folder->pic;
-            $folderP->kategori = "Proyek";
-            $folderP->id_proyek = $folder->id_proyek;
-            $folderP->tahun = $folder->tahun;
-            $folderP->path = $folderP->tahun.'/'.$proyek->nama.'/';
-            mkdir($folderP->tahun.'/'.$proyek->nama.'/'.'P3A');
-            $folderP->save();
+            // //Membuat folder P3A
+            // $folderP = new TabelFolder;
+            // $folderP->nama = "P3A";
+            // $folderP->pic = $folder->pic;
+            // $folderP->kategori = "Proyek";
+            // $folderP->id_proyek = $folder->id_proyek;
+            // $folderP->tahun = $folder->tahun;
+            // $folderP->path = $folderP->tahun.'/'.$proyek->nama.'/';
+            // mkdir($folderP->tahun.'/'.$proyek->nama.'/'.'P3A');
+            // $folderP->save();
 
             //Membuat folder MLBI. Hanya terbentuk jika di proyek outsource
-            if($proyek->jenis == 'Outsource'){
-                $folderM = new TabelFolder;
-                $folderM->nama = "MLBI";
-                $folderM->pic = $folder->pic;
-                $folderM->kategori = "Proyek";
-                $folderM->id_proyek = $folder->id_proyek;
-                $folderM->tahun = $folder->tahun;
-                $folderM->path = $folderP->tahun.'/'.$proyek->nama.'/';
-                mkdir($folderM->tahun.'/'.$proyek->nama.'/'.'MLBI');
-                $folderM->save();
-            }
+            // if($proyek->jenis == 'Outsource'){
+            //     $folderM = new TabelFolder;
+            //     $folderM->nama = "MLBI";
+            //     $folderM->pic = $folder->pic;
+            //     $folderM->kategori = "Proyek";
+            //     $folderM->id_proyek = $folder->id_proyek;
+            //     $folderM->tahun = $folder->tahun;
+            //     $folderM->path = $folderP->tahun.'/'.$proyek->nama.'/';
+            //     mkdir($folderM->tahun.'/'.$proyek->nama.'/'.'MLBI');
+            //     $folderM->save();
+            // }
 
-            //Mempersiapkan kelengkapan file proyek
-            $kelengkapan = new KelengkapanProyek;
-            $kelengkapan->id_proyek = $proyek->id;
-            $kelengkapan->save();
+            // //Mempersiapkan kelengkapan file proyek
+            // $kelengkapan = new KelengkapanProyek;
+            // $kelengkapan->id_proyek = $proyek->id;
+            // $kelengkapan->save();
             
-        }
+        // }
+
+        //Mempersiapkan kelengkapan file proyek
+        $kelengkapan = new KelengkapanProyek;
+        $kelengkapan->id_proyek = $proyek->id;
+        $kelengkapan->save();
+
         return redirect('list-proyek');
     }
 
-    public function mulai_proyek($id)
+    public function mulai_proyek($id_proyek)
     {
-        $proyek = Proyek::find($id);
+        $proyek = Proyek::find($id_proyek);
         $proyek->status = "On Progress";
         $proyek->tgl_real_mulai = date("Y-m-d");
         $proyek->save();
+
+        $this->buat_folder_proyek($id_proyek);
+        
         return redirect('list-proyek');
     }
 
@@ -302,7 +313,6 @@ class ProjectController extends Controller
         $tahap->pic = Input::get('pic');
         $tahap->id_proyek = $proyek->id;
         $tanggal = Input::get('tanggal');
-
         $text_tgl_mulai = substr($tanggal, 0 ,10);
         $text_tgl_selesai = substr($tanggal, 13, 23);
         $tgl_mulai = date_create_from_format("m/d/Y", $text_tgl_mulai);
@@ -311,90 +321,233 @@ class ProjectController extends Controller
         $tahap->tgl_selesai = $tgl_selesai;
         $tahap->status = 'Pending';
         $tahap->save();
+        
+        //$this->buat_folder_tahap_proyek($tahap->id);
 
         //folder tahapan
+        // $folderTahapan = new TabelFolder;
+        // $folderTahapan->nama = $tahap->nama;
+        // $folderTahapan->pic = $tahap->pic;
+        // $folderTahapan->kategori = "Proyek";
+        // $folderTahapan->id_proyek = $tahap->id_proyek;
+        // $namaProyek = Proyek::find($folderTahapan->id_proyek)->nama;
+        // $folderTahapan->tahun = $tgl_mulai->format("Y");
+        // $folderTahapan->path = $folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/';
+        // $folderTahapan->save();
+
+        //Mengecek ketersediaan folder tahun
+        // if(!File::exists($folderTahapan->tahun)){
+        //     mkdir($folderTahapan->tahun.'/');
+        //     $tahunBaru = new Tahun;
+        //     $tahunBaru->tahun = $folderTahapan->tahun;
+        //     $tahunBaru->proyek = 1;
+        //     $tahunBaru->non_proyek = 0;
+        //     $tahunBaru->save();
+        // }
+
+        //Mengecek ketersedian folder proyek, p3a, mlbi
+        // if(!File::exists($folderTahapan->tahun.'/'.$namaProyek.'/')){
+            
+        //     //proyek
+        //     mkdir($folderTahapan->tahun.'/'.$namaProyek.'/');          
+        //     $folderProyek = new TabelFolder;
+        //     $folderProyek->nama = $namaProyek;
+        //     $folderProyek->pic = $folderTahapan->pic;
+        //     $folderProyek->kategori = "Proyek";
+        //     $folderProyek->id_proyek = $proyek->id;
+        //     $folderProyek->tahun = $folderTahapan->tahun;
+        //     $folderProyek->path = $folderTahapan->tahun.'/';
+        //     $folderProyek->save();
+
+        //     //p3a
+        //     mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/');
+        //     $folderP3A = new TabelFolder;
+        //     $folderP3A->nama = "P3A";
+        //     $folderP3A->pic = $folderTahapan->pic;
+        //     $folderP3A->kategori = "Proyek";
+        //     $folderP3A->id_proyek = $proyek->id;
+        //     $folderP3A->tahun = $folderTahapan->tahun;
+        //     $folderP3A->path = $folderTahapan->tahun.'/'.$namaProyek.'/';
+        //     $folderP3A->save(); 
+            
+        //     //mlbi
+        //     if($proyek->jenis == "Outsource"){
+        //         mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'MLBI/');
+        //         $folderMLBI = new TabelFolder;
+        //         $folderMLBI->nama = "MLBI";
+        //         $folderMLBI->pic = $folderTahapan->pic;
+        //         $folderMLBI->kategori = "Proyek";
+        //         $folderMLBI->id_proyek = $proyek->id;
+        //         $folderMLBI->tahun = $folderTahapan->tahun;
+        //         $folderMLBI->path = $folderTahapan->tahun.'/'.$namaProyek.'/';
+        //         $folderMLBI->save();
+        //     }
+        // }
+
+        // mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/'.$folderTahapan->nama.'/');
+        
+        // if($proyek->jenis == 'Outsource'){
+        //     $folder2 = new TabelFolder;
+        //     $folder2->nama = $tahap->nama;
+        //     $folder2->pic = $tahap->pic;
+        //     $folder2->kategori = "Proyek";
+        //     $folder2->id_proyek = $tahap->id_proyek;
+        //     $folder2->tahun = $folderTahapan->tahun;
+        //     $folder2->path = $folderTahapan->tahun.'/'.$namaProyek.'/'.'MLBI/';
+        //     mkdir($folder2->tahun.'/'.$namaProyek.'/'.'MLBI/'.$folder2->nama.'/');
+        //     $folder2->save();
+        // }
+        return redirect('input-tahap-proyek/'.$id);
+    }
+
+    public function mulai_tahap_proyek($id_tahapan)
+    {
+        $tahapan = TahapanProyek::find($id_tahapan);
+        $tahapan->status = "On Progress";
+        $tahapan->tgl_real_mulai = date("Y-m-d");
+        $tahapan->save();
+        $this->buat_folder_tahap_proyek($id_tahapan);
+        return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
+    }
+
+    public function buat_folder_proyek($id_proyek)
+    {
+        $proyek = Proyek::find($id_proyek);
+        $time = strtotime($proyek->tgl_mulai);
+        $tahun = date("Y", $time);
+
+        //mengisi tabel folder
+        $folderProyek = new TabelFolder;
+        $folderProyek->nama = $proyek->nama;
+        $folderProyek->pic = $proyek->pic;
+        $folderProyek->kategori = "Proyek";
+        $folderProyek->id_proyek = $proyek->id;
+        $folderProyek->tahun = $tahun;
+        $folderProyek->path = $folderProyek->tahun.'/';
+
+        //mengecek ketersedian folder tahun
+        if(!is_dir($folderProyek->tahun)){
+            mkdir($folderProyek->tahun);
+            $tahunProyek = new Tahun;
+            $tahunProyek->tahun = $folderProyek->tahun;
+            $tahunProyek->proyek = 1;
+            $tahunProyek->save();
+        }
+        else{
+            $tahunFile = Tahun::where('tahun', $tahun)->first();
+            $tahunFile->proyek = $tahunFile->proyek + 1;
+            $tahunFile->save();
+        }
+        mkdir($folderProyek->tahun.'/'.$proyek->nama);
+        $folderProyek->save();
+
+        //Membuat folder P3A
+        $folderP3A = new TabelFolder;
+        $folderP3A->nama = "P3A";
+        $folderP3A->pic = $folderProyek->pic;
+        $folderP3A->kategori = "Proyek";
+        $folderP3A->id_proyek = $folderProyek->id_proyek;
+        $folderP3A->tahun = $folderProyek->tahun;
+        $folderP3A->path = $folderP3A->tahun.'/'.$proyek->nama.'/';
+        mkdir($folderP3A->tahun.'/'.$proyek->nama.'/'.'P3A');
+        $folderP3A->save();
+
+        //Membuat folder MLBI. Hanya terbentuk jika di proyek outsource
+        if($proyek->jenis == 'Outsource'){
+            $folderMLBI = new TabelFolder;
+            $folderMLBI->nama = "MLBI";
+            $folderMLBI->pic = $folderProyek->pic;
+            $folderMLBI->kategori = "Proyek";
+            $folderMLBI->id_proyek = $folderProyek->id_proyek;
+            $folderMLBI->tahun = $folderProyek->tahun;
+            $folderMLBI->path = $folderProyek->tahun.'/'.$proyek->nama.'/';
+            mkdir($folderMLBI->tahun.'/'.$proyek->nama.'/'.'MLBI');
+            $folderMLBI->save();
+        }
+    }
+
+    public function buat_folder_tahap_proyek($id_tahapan)
+    {
+        $tahap = TahapanProyek::find($id_tahapan);
+        $proyek = Proyek::find($tahap->id_proyek);
+        $namaProyek = $proyek->nama;
+
+        //Mengecek ketersediaan folder tahun
+        $time = strtotime($tahap->tgl_mulai);
+        $tahun = date("Y", $time);
+        if(!File::exists($tahun)){
+            $tahunBaru = new Tahun;
+            $tahunBaru->tahun = $tahun;
+            $tahunBaru->proyek = 1;
+            $tahunBaru->non_proyek = 0;
+            $tahunBaru->save();
+            mkdir($tahunBaru->tahun.'/');
+        }
+
+        //Mengecek ketersedian folder proyek, folder p3A, dan folder mlbi
+        if(!File::exists($tahun.'/'.$namaProyek.'/')){
+            
+            //proyek
+            mkdir($tahun.'/'.$namaProyek.'/');          
+            $folderProyek = new TabelFolder;
+            $folderProyek->nama = $namaProyek;
+            $folderProyek->pic = $tahap->pic;
+            $folderProyek->kategori = "Proyek";
+            $folderProyek->id_proyek = $proyek->id;
+            $folderProyek->tahun = $tahun;
+            $folderProyek->path = $tahun.'/';
+            $folderProyek->save();
+
+            //p3a
+            mkdir($tahun.'/'.$namaProyek.'/'.'P3A/');
+            $folderP3A = new TabelFolder;
+            $folderP3A->nama = "P3A";
+            $folderP3A->pic = $tahap->pic;
+            $folderP3A->kategori = "Proyek";
+            $folderP3A->id_proyek = $proyek->id;
+            $folderP3A->tahun = $tahun;
+            $folderP3A->path = $tahun.'/'.$namaProyek.'/';
+            $folderP3A->save(); 
+            
+            //mlbi
+            if($proyek->jenis == "Outsource"){
+                mkdir($tahun.'/'.$namaProyek.'/'.'MLBI/');
+                $folderMLBI = new TabelFolder;
+                $folderMLBI->nama = "MLBI";
+                $folderMLBI->pic = $tahap->pic;
+                $folderMLBI->kategori = "Proyek";
+                $folderMLBI->id_proyek = $proyek->id;
+                $folderMLBI->tahun = $tahun;
+                $folderMLBI->path = $tahun.'/'.$namaProyek.'/';
+                $folderMLBI->save();
+            }
+        }
+
+        //Membuat folder tahapan proyek di P3A
         $folderTahapan = new TabelFolder;
         $folderTahapan->nama = $tahap->nama;
         $folderTahapan->pic = $tahap->pic;
         $folderTahapan->kategori = "Proyek";
         $folderTahapan->id_proyek = $tahap->id_proyek;
-        $namaProyek = Proyek::find($folderTahapan->id_proyek)->nama;
-        $folderTahapan->tahun = $tgl_mulai->format("Y");
-        $folderTahapan->path = $folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/';
+        $folderTahapan->tahun = $tahun;
+        $folderTahapan->path = $tahun.'/'.$namaProyek.'/'.'P3A/';
         $folderTahapan->save();
-
-        //Mengecek ketersediaan folder tahun
-        if(!File::exists($folderTahapan->tahun)){
-            mkdir($folderTahapan->tahun.'/');
-            $tahunBaru = new Tahun;
-            $tahunBaru->tahun = $folderTahapan->tahun;
-            $tahunBaru->proyek = 1;
-            $tahunBaru->non_proyek = 0;
-            $tahunBaru->save();
-        }
-
-        //Mengecek ketersedian folder proyek, p3a, mlbi
-        if(!File::exists($folderTahapan->tahun.'/'.$namaProyek.'/')){
-            
-            //proyek
-            mkdir($folderTahapan->tahun.'/'.$namaProyek.'/');          
-            $folderProyek = new TabelFolder;
-            $folderProyek->nama = $namaProyek;
-            $folderProyek->pic = $folderTahapan->pic;
-            $folderProyek->kategori = "Proyek";
-            $folderProyek->id_proyek = $proyek->id;
-            $folderProyek->tahun = $folderTahapan->tahun;
-            $folderProyek->path = $folderTahapan->tahun.'/';
-            $folderProyek->save();
-
-            //p3a
-            mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/');
-            $folderP3A = new TabelFolder;
-            $folderP3A->nama = "P3A";
-            $folderP3A->pic = $folderTahapan->pic;
-            $folderP3A->kategori = "Proyek";
-            $folderP3A->id_proyek = $proyek->id;
-            $folderP3A->tahun = $folderTahapan->tahun;
-            $folderP3A->path = $folderTahapan->tahun.'/'.$namaProyek.'/';
-            $folderP3A->save(); 
-            
-            //mlbi
-            if($proyek->jenis == "Outsource"){
-                mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'MLBI/');
-                $folderMLBI = new TabelFolder;
-                $folderMLBI->nama = "MLBI";
-                $folderMLBI->pic = $folderTahapan->pic;
-                $folderMLBI->kategori = "Proyek";
-                $folderMLBI->id_proyek = $proyek->id;
-                $folderMLBI->tahun = $folderTahapan->tahun;
-                $folderMLBI->path = $folderTahapan->tahun.'/'.$namaProyek.'/';
-                $folderMLBI->save();
-            }
-        }
-
+        // $ha = $folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/'.$folderTahapan->nama.'/';
+        // dd($ha);
         mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/'.$folderTahapan->nama.'/');
-        
-        if($proyek->jenis == 'Outsource'){
-            $folder2 = new TabelFolder;
-            $folder2->nama = $tahap->nama;
-            $folder2->pic = $tahap->pic;
-            $folder2->kategori = "Proyek";
-            $folder2->id_proyek = $tahap->id_proyek;
-            $folder2->tahun = $folderTahapan->tahun;
-            $folder2->path = $folderTahapan->tahun.'/'.$namaProyek.'/'.'MLBI/';
-            mkdir($folder2->tahun.'/'.$namaProyek.'/'.'MLBI/'.$folder2->nama.'/');
-            $folder2->save();
-        }
-        return redirect('input-tahap-proyek/'.$id);
-    }
 
-    public function mulai_tahap_proyek($id)
-    {
-        $tahapan = TahapanProyek::find($id);
-        $tahapan->status = "On Progress";
-        $tahapan->tgl_real_mulai = date("Y-m-d");
-        $tahapan->save();
-        return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
+        //Membuat folder tahapan proyek di MLBI
+        if($proyek->jenis == "Outsource"){
+            $folderTahapanMLBI = new TabelFolder;
+            $folderTahapanMLBI->nama = $tahap->nama;
+            $folderTahapanMLBI->pic = $tahap->pic;
+            $folderTahapanMLBI->kategori = "Proyek";
+            $folderTahapanMLBI->id_proyek = $tahap->id_proyek;
+            $folderTahapanMLBI->tahun = $tahun;
+            $folderTahapanMLBI->path = $folderTahapanMLBI->tahun.'/'.$namaProyek.'/'.'MLBI/';
+            $folderTahapanMLBI->save();
+            mkdir($folderTahapanMLBI->tahun.'/'.$namaProyek.'/'.'MLBI/'.$folderTahapanMLBI->nama.'/');
+        }
     }
 
     public function selesaikan_tahapan_proyek($id)  //ini ID tahapan
@@ -585,6 +738,7 @@ class ProjectController extends Controller
         $this->data['namaSubTahapan'] = $subTahapan->nama;
         $this->data['namaTahapan'] = $tahapan->nama;
         $this->data['namaProyek'] = $proyek->nama;
+        $this->data['jenisProyek'] = $proyek->jenis;
 
         if($deeppath){
             //dd("KEMUNGKINAN 1 : DEEP PATH / AKSES FOLDER DEEP");
@@ -808,6 +962,24 @@ class ProjectController extends Controller
         File::delete($file->path.$file->nama);
         $file->delete();
         return back();
+    }
+
+    public function delete_sub_tahapan($id_sub_tahapan)
+    {
+        $subTahapan = SubTahapanProyek::find($id_sub_tahapan);
+
+        //mengecek isi folder
+        $isiFolder = DB::select('SELECT t.* FROM tabel_folder t WHERE t.id_sub_tahapan = '.$id_sub_tahapan);
+
+
+        //mengecek isi file
+        $isiFile = DB::select('SELECT t.* FROM tabel_file t WHERE t.id_sub_tahapan = '.$id_sub_tahapan);
+        foreach($isiFile as $data){
+            $this->delete_file_sub_tahapan($data->id);
+        }
+
+        return back();
+        // dd($isiFolder, $isiFile);
     }
 
     public function edit_tahapan_proyek(Request $request, $id_tahapan)

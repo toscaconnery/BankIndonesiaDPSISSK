@@ -128,10 +128,12 @@
                       <td>{{$sub->pic}}</td>
                       <td>{{$sub->status}}</td>
                       <td align="center">
+                        {{-- jika belum dimulai --}}
                         @if($sub->status == "Pending")
                         <a href="{{url('')}}/mulai-sub-tahapan-proyek/{{ $sub->id }}">
                           <button type="button" style="width: 9em" class="btn btn-primary">Mulai</button>
                         </a>
+                        {{-- jika sedang berlangsung --}}
                         @elseif($sub->status == "On Progress")
                         <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
                           <button type="button" style="width: 4em" class="btn btn-primary">Detail</button>
@@ -139,6 +141,10 @@
                         <a href="{{url('')}}/selesaikan-sub-tahapan/{{ $sub->id }}">
                           <button type="button" style="width: 5em" class="btn btn-primary">Selesai</button>
                         </a>
+                        <a href="{{url('')}}/delete-sub-tahapan/{{ $sub->id }}">
+                          <button type="button" style="width: 5em" class="btn btn-primary">Hapus</button>
+                        </a>
+                        {{-- jika telah selesai --}}
                         @elseif($sub->status == "Finish")
                         <a href="{{url('')}}/list-file-sub-tahapan/{{ $sub->id }}">
                           <button type="button" style="width: 9em" class="btn btn-primary">Detail</button>
