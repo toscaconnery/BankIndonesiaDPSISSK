@@ -41,35 +41,42 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/icon/account.png" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+              <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
 
               <!-- <p class="text-muted text-center">Software Engineer</p> -->
 
-              <form class="form-horizontal">
+              <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">NIP</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="NIP">
+                  {{ csrf_field() }}
+                    <input type="text" name="nip" class="form-control" id="inputPassword3" placeholder="NIP" value="{{$nip}}">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Email">
+                    <input type="text" name="email" class="form-control" id="inputPassword3" placeholder="Email" value="{{$email}}">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Picture</label>
+                  <div class="col-sm-10">
+                    <input type="file" name="gambar" class="form-control" id="inputPassword3">
                   </div>
                 </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-danger">Cancel</button>
-                <button type="submit" class="btn btn-primary pull-right">Sign in</button>
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
               </div>
               <!-- /.box-footer -->
             </form>
