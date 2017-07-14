@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class list_tahapan extends Seeder
+class list_tahapan_seeder extends Seeder
 {
     /**
      * Run the database seeds.

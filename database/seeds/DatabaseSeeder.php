@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(user_seeder::class);
         $this->call(master_file_seeder::class);
-        $this->call(list_tahapan::class);
+        $this->call(list_tahapan_seeder::class);
+        $this->call(whitelist_type_seeder::class);
         //$this->call(proyek_seeder::class);
     }
 }
