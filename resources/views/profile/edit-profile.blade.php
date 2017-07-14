@@ -20,7 +20,6 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<<<<<<< HEAD
   <div class="wrapper">
     @include('layouts.header')
     @include('layouts.navbar')
@@ -52,6 +51,7 @@
                     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">NIP</label>
                       <div class="col-sm-10">
+                        {{ csrf_field() }}
                         <input name="nip" type="text" class="form-control" id="inputPassword3" value="{{$nip}}">
                       </div>
                     </div>
@@ -96,7 +96,7 @@
 
                           <div class="form-group">
                             <div class="modal-footer">
-                              <button type="reset" class="btn btn-danger">Cancel</button>
+                              <button type="cancel" class="btn btn-danger">Cancel</button>
                               <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                           </div>

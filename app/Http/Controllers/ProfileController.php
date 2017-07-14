@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Input;
 use Auth;
 use App\User;
+use Hash;
 
 class ProfileController extends Controller
 {
@@ -24,20 +25,24 @@ class ProfileController extends Controller
     public function save_edit_profile(Request $request)
     {
     	if(Auth::check()){
-    		$user = User::find(Auth::user()->id);
-    		$user->nip = Input::get('nip');
-    		$user->email = Input::get('email');
-    		if(!is_null($request->file('gambar')))
-    		{
-    			$file = $request->file('gambar');
-    			$fileExtension = $file->getClientOriginalExtension();
-    			$path = "user/";
-    			$fileName = date("Y-m-d-H-i-s").'-'.Auth::user()->id.'.'.$fileExtension;
-    			$file->move($path, $fileName);
+    		$myself = User::find(Auth::user()->id);
+    		$confirmation = $request->confirmpassword;
 
-    			$user->image_path = $path.$fileName;
+    		if(Hash::check($confirmation, $myself->password)){
+    			$user = User::find(Auth::user()->id);
+	    		$user->nip = Input::get('nip');
+	    		$user->email = Input::get('email');
+	    		if(!is_null($request->file('gambar')))
+	    		{
+	    			$file = $request->file('gambar');
+	    			$fileExtension = $file->getClientOriginalExtension();
+	    			$path = "user/";
+	    			$fileName = date("Y-m-d-H-i-s").'-'.Auth::user()->id.'.'.$fileExtension;
+	    			$file->move($path, $fileName);
+	    			$user->image_path = $path.$fileName;
+	    		}
+	    		$user->save();
     		}
-    		$user->save();
     		return redirect('dashboard');
     	}
     	else{
