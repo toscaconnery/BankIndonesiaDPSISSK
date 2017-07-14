@@ -277,8 +277,6 @@
     },
     tooltip: {
       headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-      '<td style="padding:0"><b>Rp {point.y:.1f}</b></td></tr>',
       footerFormat: '</table>',
       shared: true,
       useHTML: true
@@ -298,8 +296,8 @@
       {{isset($maretRI->sumri) ? number_format($maretRI->sumri, 0, ',', '.') : 0 }}, 
       {{isset($aprilRI->sumri) ? number_format($aprilRI->sumri, 0, ',', '.') : 0 }}, 
       {{isset($meiRI->sumri) ? number_format($meiRI->sumri, 0, ',', '.') : 0 }},  
-      {{isset($juniRI->sumri) ? number_format($juniRI->sumri, 0, ',', '.') : 0 }}, 
-      {{isset($juliRI->sumri) ? number_format($juliRI->sumri, 0, ',', '.') : 0 }}, 
+      {{isset($juniRI->sumri) ? $juniRI->sumri : 0 }}, 
+      {{isset($juliRI->sumri) ? $juliRI->sumri : 0 }}, 
       {{isset($agustusRI->sumri) ? number_format($agustusRI->sumri, 0, ',', '.') : 0 }},
       {{isset($septemberRI->sumri) ? number_format($septemberRI->sumri, 0, ',', '.') : 0 }},
       {{isset($oktoberRI->sumri) ? number_format($oktoberRI->sumri, 0, ',', '.') : 0 }},
@@ -315,8 +313,8 @@
       {{isset($maretOP->sumop) ? number_format($maretOP->sumop, 0, ',', '.') : 0 }}, 
       {{isset($aprilOP->sumop) ? number_format($aprilOP->sumop, 0, ',', '.') : 0 }}, 
       {{isset($meiOP->sumop) ? number_format($meiOP->sumop, 0, ',', '.') : 0 }},  
-      {{isset($juniOP->sumop) ? number_format($juniOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($juliOP->sumop) ? number_format($juliOP->sumop, 0, ',', '.') : 0 }}, 
+      {{isset($juniOP->sumop) ? $juniOP->sumop : 0 }}, 
+      {{isset($juliOP->sumop) ? $juliOP->sumop : 0 }}, 
       {{isset($agustusOP->sumop) ? number_format($agustusOP->sumop, 0, ',', '.') : 0 }},
       {{isset($septemberOP->sumop) ? number_format($septemberOP->sumop, 0, ',', '.') : 0 }},
       {{isset($oktoberOP->sumop) ? number_format($oktoberOP->sumop, 0, ',', '.') : 0 }},
