@@ -40,27 +40,37 @@
             <!-- Horizontal Form -->
             <div class="box box-primary">
               <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/icon/account.png" alt="User profile picture">
+                @if(!is_null(Auth::user()->image_path))
+                  <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/{{Auth::user()->image_path}}" alt="User profile picture">
+                @else
+                  <img class="profile-user-img img-responsive img-circle" src="{{url('')}}/icon/account.png" alt="User profile picture">
+                @endif
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
-                <form class="form-horizontal">
+                <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">NIP</label>
                       <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="NIP">
+                        <input name="nip" type="text" class="form-control" id="inputPassword3" value="{{$nip}}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
                       <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Email">
+                        <input name="email" type="text" class="form-control" id="inputPassword3" value="{{$email}}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                       <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <input name="password" type="password" class="form-control" id="inputPassword3">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Picture</label>
+                      <div class="col-sm-10">
+                        <input name="gambar" type="file" class="form-control" id="inputPassword3" placeholder="Password">
                       </div>
                     </div>
                   </div>
@@ -86,7 +96,7 @@
 
                           <div class="form-group">
                             <div class="modal-footer">
-                              <button type="reset" class="btn btn-danger">Reset</button>
+                              <button type="reset" class="btn btn-danger">Cancel</button>
                               <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                           </div>
