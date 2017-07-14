@@ -140,6 +140,7 @@
                       <center>
                         <td width="2em">
                           <a href="{{url('')}}/list-file-sub-tahapan/{{ $id_sub_tahapan }}/{{ $data->id }}"><button class="btn btn-primary">Buka</button></a>
+                          <a href="{{url('')}}/delete-folder-sub-tahapan/{{ $data->id }}"><button class="btn btn-primary">Hapus</button></a>
                         </td>
                       </center>
                     </tr>

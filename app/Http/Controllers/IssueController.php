@@ -27,11 +27,6 @@ class IssueController extends Controller
         return view('issue.list-all-issue', $this->data);
     }
 
-    public function input_issue()
-    {
-    	return view('issue.input-issue');
-    }
-
     public function edit_issue($id)
     {
         $this->data['issue'] = DB::select('SELECT i.* FROM issue i WHERE i.id = '.$id)[0];

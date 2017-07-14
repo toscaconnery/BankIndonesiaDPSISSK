@@ -14,6 +14,7 @@ use App\KelengkapanProyek;
 use App\Tahun;
 use Auth;
 use File;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -961,6 +962,40 @@ class ProjectController extends Controller
         $file = TabelFile::find($id_file);
         File::delete($file->path.$file->nama);
         $file->delete();
+        return back();
+    }
+
+    public function delete_folder_sub_tahapan($id_folder)
+    {
+        $adaFolder = 0;
+        $adaFile = 0;
+
+        $folder = TabelFolder::find($id_folder);
+        
+        // //File
+        $isiFile = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$folder->path.$folder->nama.'/'.'"');
+        foreach($isiFile as $data){
+            $adaFile = $adaFile + 1;
+        }
+        if($adaFile > 0){
+            $this->delete_file_sub_tahapan($data->id);
+        }
+        
+        // //Folder
+        $isiFolder = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$folder->path.$folder->nama.'/'.'"');
+        foreach($isiFolder as $data){
+            $adaFolder = $adaFolder + 1;
+        }
+        if($adaFolder > 0){
+            foreach($isiFolder as $data){
+                $this->delete_folder_sub_tahapan($data->id);
+            }
+        }
+        else{
+            rmdir($folder->path.$folder->nama.'/');
+            $folder->delete();
+        }
+
         return back();
     }
 

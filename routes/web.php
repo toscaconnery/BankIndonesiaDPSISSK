@@ -26,6 +26,7 @@ Route::get('selesaikan-sub-tahapan/{id}', 'ProjectController@selesaikan_sub_taha
 Route::post('upload-file-mlbi/{id}/{deeppath?}', 'ProjectController@upload_file_mlbi');
 Route::get('delete-file-sub-tahapan/{id_file}', 'ProjectController@delete_file_sub_tahapan');
 Route::get('delete-sub-tahapan/{id_sub_tahapan}', 'ProjectController@delete_sub_tahapan');
+Route::get('delete-folder-sub-tahapan/{id_folder}', 'ProjectController@delete_folder_sub_tahapan');
 Route::post('edit-tahapan-proyek/{id_tahapan}', 'ProjectController@edit_tahapan_proyek');
 
 // ARSIP
@@ -53,11 +54,13 @@ Route::get('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranControll
 Route::get('list-issue', 'IssueController@list_issue');
 Route::get('list-all-issue', 'IssueController@list_all_issue');
 Route::post('input-issue', 'IssueController@save_input_issue');
-Route::get('input-issue2', 'IssueController@input_issue');
 Route::post('pencarian-issue', 'IssueController@cari_issue');
 Route::get('edit-issue/{id}', 'IssueController@edit_issue');
 Route::post('edit-issue/{id}', 'IssueController@save_edit_issue');
 
+// PROFILE
+Route::get('edit-profile', 'ProfileController@edit_profile');
+Route::post('edit-profile', 'ProfileController@save_edit_profile');
 Auth::routes();
 
 Route::get('/home', 'DashboardController@index')->name('home');
