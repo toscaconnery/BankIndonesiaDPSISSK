@@ -659,7 +659,7 @@ class ProjectController extends Controller
             $file = $request->file('berkas');
             $fileExtension = $file->getClientOriginalExtension();
             $diizinkan = $this->cek_tipe_file($fileExtension);
-            if($diizinkan > 1){
+            if($diizinkan >= 1){
                 $subTahapan = SubTahapanProyek::find($id);
                 $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
                 $proyek = Proyek::find($tahapan->id_proyek);
@@ -668,7 +668,6 @@ class ProjectController extends Controller
                 $fileSize = $file->getSize();
                 $fileName = $file->getClientOriginalName();
                 $path = $tahun.'/'.$proyek->nama.'/'.'P3A/'.$tahapan->nama.'/';
-
                 $berkas = new TabelFile;
                 $berkas->nama = $fileName;
                 if(Auth::check()){
