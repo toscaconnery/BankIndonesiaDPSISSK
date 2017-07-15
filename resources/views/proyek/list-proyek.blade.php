@@ -67,7 +67,7 @@
                       <th colspan="2">Tanggal Realisasi</th>
                       <th rowspan="2">Jenis</th>
                       <th rowspan="2">Status</th>
-                      <th rowspan="2">Detail</th>
+                      <th rowspan="2">Action</th>
                       <th rowspan="2">Progress</th>
                     </tr>
                     <tr>

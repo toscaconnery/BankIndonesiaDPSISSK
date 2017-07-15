@@ -195,62 +195,6 @@ class ProjectController extends Controller
 
         $proyek->save();
 
-        // if($proyek->save()){
-
-            //Membuat folder proyek
-            // $folder = new TabelFolder;
-            // $folder->nama = $proyek->nama;
-            // $folder->pic = $proyek->pic;
-            // $folder->kategori = "Proyek";
-            // $folder->id_proyek = $proyek->id;
-            // $folder->tahun = $tahun;
-            // $folder->path = $folder->tahun.'/';
-            // if(!is_dir($folder->tahun)){
-            //     mkdir($folder->tahun);
-            //     $tahunFile = new Tahun;
-            //     $tahunFile->tahun = $folder->tahun;
-            //     $tahunFile->proyek = 1;
-            //     $tahunFile->save();
-            // }
-            // else{
-            //     $tahunFile = Tahun::where('tahun', date("Y"))->first();
-            //     $tahunFile->proyek = $tahunFile->proyek + 1;
-            //     $tahunFile->save();
-            // }
-            // mkdir($folder->tahun.'/'.$proyek->nama);
-            // $folder->save();
-
-            // //Membuat folder P3A
-            // $folderP = new TabelFolder;
-            // $folderP->nama = "P3A";
-            // $folderP->pic = $folder->pic;
-            // $folderP->kategori = "Proyek";
-            // $folderP->id_proyek = $folder->id_proyek;
-            // $folderP->tahun = $folder->tahun;
-            // $folderP->path = $folderP->tahun.'/'.$proyek->nama.'/';
-            // mkdir($folderP->tahun.'/'.$proyek->nama.'/'.'P3A');
-            // $folderP->save();
-
-            //Membuat folder MLBI. Hanya terbentuk jika di proyek outsource
-            // if($proyek->jenis == 'Outsource'){
-            //     $folderM = new TabelFolder;
-            //     $folderM->nama = "MLBI";
-            //     $folderM->pic = $folder->pic;
-            //     $folderM->kategori = "Proyek";
-            //     $folderM->id_proyek = $folder->id_proyek;
-            //     $folderM->tahun = $folder->tahun;
-            //     $folderM->path = $folderP->tahun.'/'.$proyek->nama.'/';
-            //     mkdir($folderM->tahun.'/'.$proyek->nama.'/'.'MLBI');
-            //     $folderM->save();
-            // }
-
-            // //Mempersiapkan kelengkapan file proyek
-            // $kelengkapan = new KelengkapanProyek;
-            // $kelengkapan->id_proyek = $proyek->id;
-            // $kelengkapan->save();
-            
-        // }
-
         //Mempersiapkan kelengkapan file proyek
         $kelengkapan = new KelengkapanProyek;
         $kelengkapan->id_proyek = $proyek->id;
@@ -323,81 +267,6 @@ class ProjectController extends Controller
         $tahap->status = 'Pending';
         $tahap->save();
         
-        //$this->buat_folder_tahap_proyek($tahap->id);
-
-        //folder tahapan
-        // $folderTahapan = new TabelFolder;
-        // $folderTahapan->nama = $tahap->nama;
-        // $folderTahapan->pic = $tahap->pic;
-        // $folderTahapan->kategori = "Proyek";
-        // $folderTahapan->id_proyek = $tahap->id_proyek;
-        // $namaProyek = Proyek::find($folderTahapan->id_proyek)->nama;
-        // $folderTahapan->tahun = $tgl_mulai->format("Y");
-        // $folderTahapan->path = $folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/';
-        // $folderTahapan->save();
-
-        //Mengecek ketersediaan folder tahun
-        // if(!File::exists($folderTahapan->tahun)){
-        //     mkdir($folderTahapan->tahun.'/');
-        //     $tahunBaru = new Tahun;
-        //     $tahunBaru->tahun = $folderTahapan->tahun;
-        //     $tahunBaru->proyek = 1;
-        //     $tahunBaru->non_proyek = 0;
-        //     $tahunBaru->save();
-        // }
-
-        //Mengecek ketersedian folder proyek, p3a, mlbi
-        // if(!File::exists($folderTahapan->tahun.'/'.$namaProyek.'/')){
-            
-        //     //proyek
-        //     mkdir($folderTahapan->tahun.'/'.$namaProyek.'/');          
-        //     $folderProyek = new TabelFolder;
-        //     $folderProyek->nama = $namaProyek;
-        //     $folderProyek->pic = $folderTahapan->pic;
-        //     $folderProyek->kategori = "Proyek";
-        //     $folderProyek->id_proyek = $proyek->id;
-        //     $folderProyek->tahun = $folderTahapan->tahun;
-        //     $folderProyek->path = $folderTahapan->tahun.'/';
-        //     $folderProyek->save();
-
-        //     //p3a
-        //     mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/');
-        //     $folderP3A = new TabelFolder;
-        //     $folderP3A->nama = "P3A";
-        //     $folderP3A->pic = $folderTahapan->pic;
-        //     $folderP3A->kategori = "Proyek";
-        //     $folderP3A->id_proyek = $proyek->id;
-        //     $folderP3A->tahun = $folderTahapan->tahun;
-        //     $folderP3A->path = $folderTahapan->tahun.'/'.$namaProyek.'/';
-        //     $folderP3A->save(); 
-            
-        //     //mlbi
-        //     if($proyek->jenis == "Outsource"){
-        //         mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'MLBI/');
-        //         $folderMLBI = new TabelFolder;
-        //         $folderMLBI->nama = "MLBI";
-        //         $folderMLBI->pic = $folderTahapan->pic;
-        //         $folderMLBI->kategori = "Proyek";
-        //         $folderMLBI->id_proyek = $proyek->id;
-        //         $folderMLBI->tahun = $folderTahapan->tahun;
-        //         $folderMLBI->path = $folderTahapan->tahun.'/'.$namaProyek.'/';
-        //         $folderMLBI->save();
-        //     }
-        // }
-
-        // mkdir($folderTahapan->tahun.'/'.$namaProyek.'/'.'P3A/'.$folderTahapan->nama.'/');
-        
-        // if($proyek->jenis == 'Outsource'){
-        //     $folder2 = new TabelFolder;
-        //     $folder2->nama = $tahap->nama;
-        //     $folder2->pic = $tahap->pic;
-        //     $folder2->kategori = "Proyek";
-        //     $folder2->id_proyek = $tahap->id_proyek;
-        //     $folder2->tahun = $folderTahapan->tahun;
-        //     $folder2->path = $folderTahapan->tahun.'/'.$namaProyek.'/'.'MLBI/';
-        //     mkdir($folder2->tahun.'/'.$namaProyek.'/'.'MLBI/'.$folder2->nama.'/');
-        //     $folder2->save();
-        // }
         return redirect('input-tahap-proyek/'.$id);
     }
 
@@ -604,22 +473,6 @@ class ProjectController extends Controller
         $sub->status = 'Pending';
         $sub->save();
 
-        // $tahapan = TahapanProyek::find($id);
-        // $proyek = Proyek::find($tahapan->id_proyek);
-
-        // if($sub->save()){
-        //     $folder = new TabelFolder;
-        //     $folder->nama = $sub->nama;
-        //     $folder->pic = $sub->pic;
-        //     $folder->kategori = "Proyek";
-        //     $folder->id_proyek = $proyek->id;
-        //     $namaProyek = $proyek->nama;
-        //     $namaTahapan = $tahapan->nama;
-        //     $folder->tahun = date("Y");
-        //     $folder->path = $folder->tahun.'/'.$namaProyek.'/'.'P3A/'.$namaTahapan.'/';
-        //     mkdir($folder->tahun.'/'.$namaProyek.'/'.'P3A/'.$namaTahapan.'/'.$folder->nama.'/');
-        //     $folder->save();
-        // }
         return redirect('input-sub-tahapan/'.$id);
     }
 
@@ -766,63 +619,74 @@ class ProjectController extends Controller
     {
         if($deeppath){
             //dd("KEMUNGKINAN 3 : DEEP PATH / UPLOAD FILE DEEP");
-            $subTahapan = SubTahapanProyek::find($id);
-            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
-            $proyek = Proyek::find($tahapan->id_proyek);
-            $tanggal = date_create($subTahapan->tgl_mulai);
-            $tahun = date_format($tanggal, 'Y');
             $file = $request->file('berkas');
             $fileExtension = $file->getClientOriginalExtension();
-            $fileSize = $file->getSize();
-            $fileName = $file->getClientOriginalName();
-            $folder = TabelFolder::find($deeppath);
-            $path = $folder->path.$folder->nama.'/';
+            $diizinkan = $this->cek_tipe_file($fileExtension);
+            if($diizinkan > 0 ){
+                $subTahapan = SubTahapanProyek::find($id);
+                $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+                $proyek = Proyek::find($tahapan->id_proyek);
+                $tanggal = date_create($subTahapan->tgl_mulai);
+                $tahun = date_format($tanggal, 'Y');
+                $fileSize = $file->getSize();
+                $fileName = $file->getClientOriginalName();
+                $folder = TabelFolder::find($deeppath);
+                $path = $folder->path.$folder->nama.'/';
 
-            $berkas = new TabelFile;
-            $berkas->nama = $fileName;
-            if(Auth::user()){
-                $berkas->pic = Auth::user()->name;
+                $berkas = new TabelFile;
+                $berkas->nama = $fileName;
+                if(Auth::user()){
+                    $berkas->pic = Auth::user()->name;
+                }
+                else{
+                    $berkas->pic = "Unregistered User";
+                }
+                $berkas->tahun = $tahun;
+                $berkas->path = $path;
+                $berkas->id_sub_tahapan = $id;
+                if($berkas->save()){
+                    $file->move($path, $fileName);
+                }
+                return redirect('list-file-sub-tahapan/'.$id.'/'.$deeppath);
             }
             else{
-                $berkas->pic = "Unregistered User";
+                return back();
             }
-            $berkas->tahun = $tahun;
-            $berkas->path = $path;
-            $berkas->id_sub_tahapan = $id;
-            if($berkas->save()){
-                $file->move($path, $fileName);
-            }
-            return redirect('list-file-sub-tahapan/'.$id.'/'.$deeppath);
+            
         }
         else{
             //dd("KEMUNGKINAN 4 : NORMAL / UPLOAD FILE NORMAL");
-            $subTahapan = SubTahapanProyek::find($id);
-            $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
-            $proyek = Proyek::find($tahapan->id_proyek);
-            $tanggal = date_create($subTahapan->tgl_mulai);
-            $tahun = date_format($tanggal, 'Y');
             $file = $request->file('berkas');
             $fileExtension = $file->getClientOriginalExtension();
-            $fileSize = $file->getSize();
-            $fileName = $file->getClientOriginalName();
-            $path = $tahun.'/'.$proyek->nama.'/'.'P3A/'.$tahapan->nama.'/';
-
-            $berkas = new TabelFile;
-            $berkas->nama = $fileName;
-            if(Auth::check()){
-                $berkas->pic = Auth::user()->name;
+            $diizinkan = $this->cek_tipe_file($fileExtension);
+            if($diizinkan >= 1){
+                $subTahapan = SubTahapanProyek::find($id);
+                $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
+                $proyek = Proyek::find($tahapan->id_proyek);
+                $tanggal = date_create($subTahapan->tgl_mulai);
+                $tahun = date_format($tanggal, 'Y');
+                $fileSize = $file->getSize();
+                $fileName = $file->getClientOriginalName();
+                $path = $tahun.'/'.$proyek->nama.'/'.'P3A/'.$tahapan->nama.'/';
+                $berkas = new TabelFile;
+                $berkas->nama = $fileName;
+                if(Auth::check()){
+                    $berkas->pic = Auth::user()->name;
+                }
+                else{
+                    $berkas->pic = "Unregistered User";
+                }
+                $berkas->tahun = $tahun;
+                $berkas->path = $path;
+                $berkas->id_sub_tahapan = $id;
+                if($berkas->save()){
+                    $file->move($path, $fileName);
+                }
+                return redirect('list-file-sub-tahapan/'.$id);
             }
             else{
-                $berkas->pic = "Unregistered User";
+                return back();
             }
-            $berkas->tahun = $tahun;
-            $berkas->path = $path;
-            $berkas->id_sub_tahapan = $id;
-            if($berkas->save()){
-                $file->move($path, $fileName);
-            }
-            return redirect('list-file-sub-tahapan/'.$id);
-
         }
     }
 
@@ -921,11 +785,13 @@ class ProjectController extends Controller
     public function upload_file_mlbi(Request $request, $id, $deeppath = null)   //ini ID sub tahapan
     {
         //dd("MLBI");
+        $file = $request->file('berkas');
+        $fileExtension = $file->getClientOriginalExtension();
+        $this->cek_tipe_file($fileExtension);
+        $fileName = $file->getClientOriginalName();
         $subTahapan = SubTahapanProyek::find($id);
         $tahapan = TahapanProyek::find($subTahapan->id_tahapan);
         $proyek = Proyek::find($tahapan->id_proyek);
-        $file = $request->file('berkas');
-        $fileName = $file->getClientOriginalName();
         $berkas = new TabelFile;
         $berkas->nama = $fileName;
         $berkas->id_sub_tahapan = $id;
@@ -1030,6 +896,16 @@ class ProjectController extends Controller
         $tahapan->save();
         //dd($tahapan->tgl_mulai);
         return back();
+    }
+
+    public function cek_tipe_file($tipe)
+    {
+        $diizinkan = 0;
+        $cek = DB::select('SELECT w.nama FROM whitelist_type w WHERE w.nama = "'.$tipe.'"');
+        foreach($cek as $data){
+            $diizinkan = $diizinkan + 1;
+        }
+        return $diizinkan; 
     }
 
 }
