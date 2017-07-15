@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -227,6 +228,8 @@
     <!-- SlimScroll -->
     <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <script src="/plugins/chartjs/Chart.min.js"></script>
+    <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
     <script>
       var mulai = 2017
       var min = new Date().getFullYear(),

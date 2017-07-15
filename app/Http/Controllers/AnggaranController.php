@@ -9,6 +9,7 @@ use App\Pencairan;
 use Auth;
 use DB;
 use Redirect;
+use Alert;
 
 class AnggaranController extends Controller
 {
@@ -446,7 +447,14 @@ class AnggaranController extends Controller
     	// else {
     	// 	$anggaran->pic = 0;
     	// }
-        $anggaran->save();
+        if($anggaran->save())
+        {
+            Alert::success("Anggaran $tahun Berhasil Ditambahkan!");
+        }
+        else
+        {
+            Alert::error("Anggaran Gagal Ditambahkan!");
+        }
         return redirect('report-anggaran-tahunan');
     }
 
@@ -471,7 +479,14 @@ class AnggaranController extends Controller
         // else {
         //  $anggaran->pic = 0;
         // }
-        $pengeluaran->save();
+        if($pengeluaran->save())
+        {
+            Alert::success("Pengeluaran Berhasil Ditambahkan!");
+        }
+        else
+        {
+            Alert::error("Pengeluaran Gagal Ditambahkan!");
+        }
         if($kategori=='OP')
         {
             DB::select('UPDATE anggaran SET used_op=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="OP") where tahun='.$year.'');
@@ -480,6 +495,7 @@ class AnggaranController extends Controller
         {
             DB::select('UPDATE anggaran SET used_ri=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="RI") where tahun='.$year.'');
         }
+        
         return Redirect::back();
     }
 }

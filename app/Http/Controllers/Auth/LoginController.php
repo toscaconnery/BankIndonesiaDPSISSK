@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Alert;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,9 +29,24 @@ class LoginController extends Controller
      */
 
     protected $username = 'nip';
-    
-    protected $redirectTo = '/';
 
+    protected function redirectTo()
+    {
+        // if user have role
+        if (auth()->check()) {
+            Alert::success("Anda Berhasil Login!");
+            return $this->redirectTo = '/';
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+        Alert::success("Anda Berhasil Log Out!");
+        return redirect('autentikasi');
+    }
     /**
      * Create a new controller instance.
      *

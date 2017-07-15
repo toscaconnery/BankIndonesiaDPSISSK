@@ -43,7 +43,7 @@
                   <a href="{{url('')}}/edit-profile" class="btn btn-default btn-flat">Edit Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{url('')}}/logout" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

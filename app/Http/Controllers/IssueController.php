@@ -7,6 +7,7 @@ use Input;
 use Auth;
 use App\Issue;
 use DB;
+use Alert;
 
 class IssueController extends Controller
 {
@@ -79,7 +80,14 @@ class IssueController extends Controller
             $issue->pic = 'Unknown';
         }
         $issue->status = 'Pending';
-        $issue->save();
+        if($issue->save())
+        {
+            Alert::success("Issue Berhasil Ditambahkan!");
+        }
+        else
+        {
+            Alert::error("Issue Gagal Ditambahkan!");
+        }
         return redirect('list-issue');
     }
 
@@ -96,7 +104,14 @@ class IssueController extends Controller
         else{
             $issue->pic_tindak_lanjut = "Unknown";
         }
-        $issue->save();
+        if($issue->save())
+        {
+            Alert::success("Issue Berhasil Diubah");
+        }
+        else
+        {
+            Alert::error("Issue Gagal Diubah!");
+        }
         return redirect('list-issue');
     }
 }

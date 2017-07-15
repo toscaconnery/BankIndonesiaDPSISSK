@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{url('')}}/plugins/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="{{url('')}}/plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -294,6 +295,8 @@
   <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
   <!-- SlimScroll -->
   <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
   <script>
     $(function () {
 

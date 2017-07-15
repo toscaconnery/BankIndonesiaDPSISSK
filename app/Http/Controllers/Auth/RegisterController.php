@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Alert;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected function redirectTo()
+    {
+        // if user have role
+        if (auth()->check()) {
+            Alert::success("Akun Berhasil Dibuat!");
+            return $this->redirectTo = '/';
+        }
+    }
 
     /**
      * Create a new controller instance.

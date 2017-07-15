@@ -65,13 +65,12 @@ Auth::routes();
 
 Route::get('/home', 'DashboardController@index')->name('home');
 
+Route::get('logout', 'Auth\LoginController@logout');
+
 Route::get('autentikasi', function() {
 	return view('auth.login-register');
 });
 
-Route::get('logout', function() {
-	Auth::logout();
-	return redirect('autentikasi');
-});
+
 
 

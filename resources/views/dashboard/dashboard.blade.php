@@ -16,6 +16,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="{{url('')}}/sweetalert/dist/sweetalert.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -244,6 +245,8 @@
 <!-- page script -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+@include('sweet::alert')
 <script>
   Highcharts.chart('container', {
     chart: {
