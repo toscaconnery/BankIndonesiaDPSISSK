@@ -131,7 +131,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Tahun Anggaran</label>
                 <div class="col-md-9">
-                  <select id="pilihtahun" class="form-control select2" style="width: 100%;" name="tahun">
+                  <select id="pilihtahun" class="form-control select2" style="width: 100%;" name="tahun" autofocus required>
                   </select>
                 </div>
               </div>
@@ -141,7 +141,7 @@
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon">Rp</span>
-                    <input type="number" class="form-control" id="ri" name="ri" onkeyup="calc()">
+                    <input type="number" class="form-control" id="ri" name="ri" onkeyup="calc()" autofocus required>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon">Rp</span>
-                    <input type="number" class="form-control" id="op" name="op" onkeyup="calc()">
+                    <input type="number" class="form-control" id="op" name="op" onkeyup="calc()" autofocus required>
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon">Rp</span>
-                    <input name="nominal" type="number" class="form-control" id="total">
+                    <input name="nominal" type="number" class="form-control" id="total" autofocus required>
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@
               <div class="form-group">
                 <div class="modal-footer">
                   <button type="reset" class="btn btn-danger">Reset</button>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="validasiform" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </form>
@@ -197,6 +197,36 @@
     <!-- page script -->
     <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
+    <script>
+      $(function() {
+        $("#validasiform").click(function (event) {
+            if (document.getElementById('ri').value === '') {
+              swal({
+                title: "Anggaran RI Harus Diisi!",
+                type: "warning",
+                allowOutsideClick: true, 
+              });
+              return false;
+            }
+            else if (document.getElementById('op').value === '') {
+              swal({
+                title: "Anggaran OP Harus Diisi!",
+                type: "warning", 
+                allowOutsideClick: true,
+              });
+              return false;
+            }
+            else if (document.getElementById('total').value === '') {
+              swal({
+                title: "Total Anggaran Harus Diisi!",
+                type: "warning",
+                allowOutsideClick: true, 
+              });
+              return false;
+            }
+        });
+      });
+    </script>
     <script>
       function calc()
       {

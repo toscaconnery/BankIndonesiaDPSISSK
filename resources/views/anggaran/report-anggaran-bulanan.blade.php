@@ -225,7 +225,7 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
               <div class="col-md-9">
-                <input type="date" class="form-control pull-right" id="datepicker" name="tanggal">
+                <input type="date" class="form-control pull-right" id="tanggal" name="tanggal" autofocus required>
               </div>
             </div>
 
@@ -233,7 +233,7 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
               <div class="col-md-9">
-                <select class="form-control" name="kategori">
+                <select class="form-control" name="kategori" id="kategori" autofocus required>
                   <option value="RI">RI</option>
                   <option value="OP">OP</option>                 
                 </select>
@@ -246,7 +246,7 @@
               <div class="col-md-9">
                 <div class="input-group">
                   <span class="input-group-addon">Rp</span>
-                  <input name="nominal" type="text" class="form-control" id="nominal">
+                  <input name="nominal" type="text" class="form-control" id="nominal" autofocus required>
                 </div>
               </div>
             </div>
@@ -255,14 +255,14 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
               <div class="col-md-9">
-                <textarea name="keterangan" type="text" class="form-control" id="keterangan"></textarea>
+                <textarea name="keterangan" type="text" class="form-control" id="keterangan" autofocus required></textarea>
               </div>
             </div>
             <!-- /.box-body -->
             <div class="form-group">
               <div class="modal-footer">
                 <button type="reset" class="btn btn-danger">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" id="validasipencairan" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </form>
@@ -272,41 +272,68 @@
   </div>
 
   <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <script>$.widget.bridge('uibutton', $.ui.button);</script>
-  <!-- Bootstrap 3.3.6 -->
+    <!-- Bootstrap 3.3.6 -->
   <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="{{url('')}}/plugins/morris/morris.min.js"></script>
-  <script src="{{url('')}}/plugins/sparkline/jquery.sparkline.min.js"></script>
-  <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-  <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-  <script src="{{url('')}}/plugins/knob/jquery.knob.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-  <script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
-  <script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
-  <script src="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- SlimScroll -->
   <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
   <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+  <!-- AdminLTE App -->
   <script src="{{url('')}}/dist/js/app.min.js"></script>
-  <script src="{{url('')}}/dist/js/pages/dashboard.js"></script>
+  <!-- AdminLTE for demo purposes -->
   <script src="{{url('')}}/dist/js/demo.js"></script>
   <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-  <!-- SlimScroll -->
-  <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
-    @include('sweet::alert')
+  @include('sweet::alert')
+  <script>
+    $(function() {
+      $("#validasipencairan").click(function (event) {
+          if (document.getElementById('tanggal').value === '') {
+            swal({
+              title: "Tanggal Pencairan Harus Diisi!",
+              type: "warning",
+              allowOutsideClick: true, 
+            });
+            return false;
+          }
+          else if (document.getElementById('kategori').value === '') {
+            swal({
+              title: "Kategori Pencairan Harus Diisi!",
+              type: "warning", 
+              allowOutsideClick: true,
+            });
+            return false;
+          }
+          else if (document.getElementById('nominal').value === '') {
+            swal({
+              title: "Nominal Pencairan Harus Diisi!",
+              type: "warning",
+              allowOutsideClick: true, 
+            });
+            return false;
+          }
+          else if (document.getElementById('keterangan').value === '') {
+            swal({
+              title: "Keterangan Pencairan Harus Diisi!",
+              type: "warning",
+              allowOutsideClick: true, 
+            });
+            return false;
+          }
+      });
+    });
+  </script>
   <script>
     $(function () {
-
       $('#example2').DataTable({
-        "paging": true,
+        "paging": false,
         "lengthChange": false,
-        "searching": true,
-        "order": [[ 0, "desc" ]],
+        "searching": false,
+        "order": [[ 0, "asc" ]],
+        "ordering": false,
         "info": true,
-        "autoWidth": false
+        "autoWidth": true
       });
     });
   </script>
