@@ -87,11 +87,17 @@
                       <td>Rp. {{ number_format($anggaran->sisa, 0, ',', '.') }}</td> {{-- sisa anggaran --}}
                       <td width="5px" align="center">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
                       <td>
+                      <div class="btn-toolbar">
                         <center>
+                        
                           <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
                             <button class="btn btn-primary">Detail</button>
                           </a>
+                          <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
+                            <button class="btn btn-default">Edit</button>
+                          </a>
                         </center>
+                      </div>
                       </td>
                     </tr>
                     @endforeach

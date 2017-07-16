@@ -17,7 +17,7 @@ class CreateTableAnggaran extends Migration
             $table->increments('id');
             $table->integer('tahun');
             $table->bigInteger('nominal');
-            $table->integer('pic');
+            $table->string('pic');
             $table->bigInteger('ri');
             $table->bigInteger('op');
             $table->bigInteger('used_ri');

@@ -52,8 +52,6 @@ class AnggaranController extends Controller
                 }
             }
         }
-        // dd($this->data['persenttljanuari']);
-        // dd($this->data['jlhpengeluaranjanuari']);
 
         $this->data['totalfebruari'] = 0;
         $this->data['februariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
@@ -350,14 +348,7 @@ class AnggaranController extends Controller
         }
 
         return view('anggaran.report-anggaran-bulanan', $this->data);
-        
-        // return view('anggaran.report-anggaran-bulanan');
     }
-
-    // public function report_anggaran_bulanan()
-    // {
-    //     return view('anggaran.report-anggaran-bulanan');
-    // }
 
     public function input_anggaran_tahunan()
     {
@@ -438,15 +429,16 @@ class AnggaranController extends Controller
         $anggaran->nominal = $nominal;
         $anggaran->ri = $ri;
         $anggaran->op = $op;
-        $anggaran->pic = 0;
         $anggaran->used_ri = 0;
         $anggaran->used_op = 0;
-    	// if( Auth::check() ) {
-    	// 	$anggaran->pic = Auth::user()->get('id');
-    	// }
-    	// else {
-    	// 	$anggaran->pic = 0;
-    	// }
+    	if( Auth::check() )
+        {
+            $anggaran->pic = Auth::user()->name;
+        }
+        else{
+            $anggaran->pic = 'Unknown';
+        }
+
         if($anggaran->save())
         {
             Alert::success("Anggaran $tahun Berhasil Ditambahkan!");
@@ -472,13 +464,14 @@ class AnggaranController extends Controller
         $pengeluaran->nominal = $nominal;
         $pengeluaran->kategori = $kategori;
         $pengeluaran->keterangan = $keterangan;
-        $pengeluaran->pic = 0;
-        // if( Auth::check() ) {
-        //  $anggaran->pic = Auth::user()->get('id');
-        // }
-        // else {
-        //  $anggaran->pic = 0;
-        // }
+        if( Auth::check() )
+        {
+            $pengeluaran->pic = Auth::user()->name;
+        }
+        else{
+            $pengeluaran->pic = 'Unknown';
+        }
+
         if($pengeluaran->save())
         {
             Alert::success("Pengeluaran Berhasil Ditambahkan!");
@@ -487,6 +480,7 @@ class AnggaranController extends Controller
         {
             Alert::error("Pengeluaran Gagal Ditambahkan!");
         }
+
         if($kategori=='OP')
         {
             DB::select('UPDATE anggaran SET used_op=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="OP") where tahun='.$year.'');
