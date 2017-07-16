@@ -118,9 +118,7 @@
     <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="{{url('')}}/dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="{{url('')}}/dist/js/demo.js"></script>
-    <!-- page script -->
     <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
     <script>

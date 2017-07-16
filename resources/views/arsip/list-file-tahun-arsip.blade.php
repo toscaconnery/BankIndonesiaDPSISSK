@@ -18,6 +18,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -40,7 +41,7 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
-                <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Tambah Folder</button>
+                <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalTambahFolder">Tambah Folder</button>
                 <table id="example1" class="table table-bordered table-striped">
                   <br>
                   <br>
@@ -80,33 +81,26 @@
       </div>
       @include('layouts.footer')
     </div>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modalTambahFolder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Tambah Folder</h3></center>
+            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Tambah Folder</h3></center>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="">
+            <form class="form-horizontal" method="POST" >
               {{ csrf_field() }}
               <div class="form-group">
                 <label for="namafolder" class="col-md-5 control-label">Nama Folder</label>
                 <div class="col-md-7">
-                  <input type="text" class="form-control" id="namafolder" name="namafolder">
+                  <input type="text" class="form-control" id="namaFolder" name="namaFolder">
                 </div>
               </div>
               <div class="form-group">
-                <label for="kategori" class="col-md-5 control-label">Kategori</label>
-                <div class="col-md-7">
-                  <input type="text" class="form-control" id="kategori" name="kategori">
-                </div>
-              </div> 
-
-              <div class="form-group">
                 <div class="modal-footer">
                   <button type="reset" class="btn btn-danger">Reset</button>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button id="buttonSubmitTambahFolder" type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </form>
@@ -126,9 +120,28 @@
     <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="{{url('')}}/dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="{{url('')}}/dist/js/demo.js"></script>
-    <!-- page script -->
+    <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
+    <script>
+      $function(){
+        $('#buttonSubmitTambahFolder').click(function(event){
+          swal({
+            title: "Nah",
+            type: "warning",
+            allowOutsideClick: true,
+          });
+          if(document.getElementById('namaFolder').value === ''){
+            swal({
+              title: "Nama folder tidak boleh kosong.",
+              type: "warning",
+              allowOutsideClick: true,
+            });
+            return false;
+          }
+        });
+      }
+    </script>
     <script>
       $(function () {
         $('#example1').DataTable({

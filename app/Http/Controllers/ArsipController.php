@@ -126,8 +126,13 @@ class ArsipController extends Controller
     }
 
     public function list_file_tahun_arsip($tahun){
-        $this->data['listFolderProyek'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$tahun.'/"');
-        
+        $this->data['listFolderProyek'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$tahun.'/" AND t.id_proyek IS NOT NULL');
+        $this->data['listFolderNonPoyek'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$tahun.'/" AND t.id_proyek IS NULL');
         return view('arsip.list-file-tahun-arsip', $this->data);
+    }
+
+    public function list_file_tahun_arsip2()
+    {
+        //
     }
 }
