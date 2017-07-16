@@ -56,7 +56,7 @@
                   </thead>
                   <tbody>
                     @foreach($tahun as $data)
-                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
+                    <tr onclick="window.document.location='{{url('')}}/list-file-tahun-arsip/{{$data->tahun}}';">
                       <td>{{$data->tahun}}</td>
                       <td>{{$data->proyek}}</td>
                       <td>{{$data->non_proyek}}</td>

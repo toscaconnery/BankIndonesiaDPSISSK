@@ -16,26 +16,12 @@ use Alert;
 
 class ArsipController extends Controller
 {
-    // public function list_arsip()
-    // {
-    //     $this->data['tabel_folder'] = DB::select('SELECT tf.* FROM tabel_folder tf ORDER BY tf.created_at DESC');
-    //     return view('arsip.list-arsip', $this->data);
-    // 	// return view('arsip.list-arsip');
-    // }
+    
 
     public function list_tahun_arsip()  //See all available year
     {
         $this->data['tahun'] = DB::select('SELECT t.* FROM tahun t');
         return view('arsip.list-tahun-arsip', $this->data);
-    }
-
-    public function list_arsip_proyek($id_tahun)    //See all project on certain year
-    {
-        //$tahun = Tahun::find($id_tahun)->first();
-        $tahun = Tahun::where('id', $id_tahun)->first()->tahun;
-        $this->data['tahun'] = $tahun;
-        $this->data['proyek'] = DB::select('SELECT t.*, p.nama, p.pic, p.id AS id_proyek FROM proyek p, tabel_folder t WHERE t.nama = p.nama AND t.tahun = '.$tahun);
-        return view('arsip.list-arsip-proyek', $this->data);
     }
 
     public function list_arsip_tahapan_proyek($id_folder_proyek)    //See tahapan project on certain project
@@ -52,42 +38,7 @@ class ArsipController extends Controller
 
     public function list_arsip_file_tahapan_proyek($id_tahapan)
     {
-        //
-    }
-
-    public function save_input_folder()
-    {
-        $namafolder = Input::get('namafolder');
-        $kategori = Input::get('kategori');
-         
-        $folder = new TabelFolder;
-        $folder->nama = $namafolder;
-        $folder->kategori = $kategori;
-        if( Auth::check() ){
-            $folder->pic = Auth::user()->name;
-        }
-        else{
-            $folder->pic = "Unknown";
-        }
-        $folder->id_proyek = 0;
-        $folder->tahun = (new DateTime)->format("Y");
-        $folder->path = 'tesfolder/'.$namafolder;
-        
-        if($folder->save()){
-            mkdir('tesfolder/'.$namafolder);
-        }
-        
-        return redirect('list-arsip');
-    }
-
-    public function input_arsip()
-    {
-    	return view('arsip.input-arsip');
-    }
-
-    public function list_file_arsip()
-    {
-    	return view('arsip.list-file-arsip');
+        //menampilkan semua file dan folder normal dalam proyek
     }
 
     public function download_file($id)
@@ -126,13 +77,80 @@ class ArsipController extends Controller
     }
 
     public function list_file_tahun_arsip($tahun){
+        $this->data['tahun'] = $tahun;
         $this->data['listFolderProyek'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$tahun.'/" AND t.id_proyek IS NOT NULL');
-        $this->data['listFolderNonPoyek'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$tahun.'/" AND t.id_proyek IS NULL');
+        $this->data['listFolderNonProyek'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$tahun.'/" AND t.id_proyek IS NULL');
         return view('arsip.list-file-tahun-arsip', $this->data);
     }
 
-    public function list_file_tahun_arsip2()
+    public function tambah_folder_dalam_tahun(Request $request, $tahun)
     {
-        //
+        $folder = new TabelFolder;
+        $folder->nama = $request->namaFolder;
+        if(Auth::check()){
+            $folder->pic = Auth::user()->name;
+        }
+        else{
+            $folder->pic = "Unregistered User";
+        }
+        $folder->kategori = "Non Proyek";
+        $folder->tahun = $tahun;
+        $folder->path = $tahun."/";
+        if($folder->save()){
+            mkdir($folder->path.$folder->nama);
+            Alert::success("Folder telah ditambahkan.");
+            return back();
+        }
     }
+
+    // public function list_arsip()
+    // {
+    //     $this->data['tabel_folder'] = DB::select('SELECT tf.* FROM tabel_folder tf ORDER BY tf.created_at DESC');
+    //     return view('arsip.list-arsip', $this->data);
+    //  // return view('arsip.list-arsip');
+    // }
+
+    // public function list_arsip_proyek($id_tahun)    //See all project on certain year
+    // {
+    //     //$tahun = Tahun::find($id_tahun)->first();
+    //     $tahun = Tahun::where('id', $id_tahun)->first()->tahun;
+    //     $this->data['tahun'] = $tahun;
+    //     $this->data['proyek'] = DB::select('SELECT t.*, p.nama, p.pic, p.id AS id_proyek FROM proyek p, tabel_folder t WHERE t.nama = p.nama AND t.tahun = '.$tahun);
+    //     return view('arsip.list-arsip-proyek', $this->data);
+    // }
+
+    // public function save_input_folder()
+    // {
+    //     $namafolder = Input::get('namafolder');
+    //     $kategori = Input::get('kategori');
+         
+    //     $folder = new TabelFolder;
+    //     $folder->nama = $namafolder;
+    //     $folder->kategori = $kategori;
+    //     if( Auth::check() ){
+    //         $folder->pic = Auth::user()->name;
+    //     }
+    //     else{
+    //         $folder->pic = "Unknown";
+    //     }
+    //     $folder->id_proyek = 0;
+    //     $folder->tahun = (new DateTime)->format("Y");
+    //     $folder->path = 'tesfolder/'.$namafolder;
+        
+    //     if($folder->save()){
+    //         mkdir('tesfolder/'.$namafolder);
+    //     }
+        
+    //     return redirect('list-arsip');
+    // }
+
+    // public function input_arsip()
+    // {
+    //  return view('arsip.input-arsip');
+    // }
+
+    // public function list_file_arsip()
+    // {
+    //  return view('arsip.list-file-arsip');
+    // }
 }
