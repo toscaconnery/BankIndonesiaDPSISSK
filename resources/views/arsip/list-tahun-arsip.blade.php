@@ -98,7 +98,7 @@
               <div class="form-group">
                 <div class="modal-footer">
                   <button type="reset" class="btn btn-danger">Reset</button>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="validasiform" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </form>
@@ -106,6 +106,7 @@
         </div>
       </div>
     </div>
+
     <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
@@ -118,9 +119,25 @@
     <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="{{url('')}}/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
     <script src="{{url('')}}/dist/js/demo.js"></script>
+    <!-- page script -->
     <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
+    <script>
+      $(function() {
+        $("#validasiform").click(function (event) {
+            if (document.getElementById('tahun').value === '') {
+              swal({
+                title: "Tahun Arsip Harus Diisi!",
+                type: "warning",
+                allowOutsideClick: true, 
+              });
+              return false;
+            }
+        });
+      });
+    </script>
     <script>
       $(function () {
         $('#example1').DataTable({
