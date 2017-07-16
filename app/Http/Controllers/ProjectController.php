@@ -833,35 +833,54 @@ class ProjectController extends Controller
 
     public function delete_folder_sub_tahapan($id_folder)
     {
-        $adaFolder = 0;
-        $adaFile = 0;
+        $adaFolderP3A = 0;
+        $adaFolderMLBI = 0;
 
         $folder = TabelFolder::find($id_folder);
         
-        // //File
-        $isiFile = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$folder->path.$folder->nama.'/'.'"');
-        foreach($isiFile as $data){
-            $adaFile = $adaFile + 1;
-        }
-        if($adaFile > 0){
+        //File P3A
+        $isiFileP3A = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$folder->path.$folder->nama.'/'.'"');
+        foreach($isiFileP3A as $data){
             $this->delete_file_sub_tahapan($data->id);
         }
-        
-        // //Folder
-        $isiFolder = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$folder->path.$folder->nama.'/'.'"');
-        foreach($isiFolder as $data){
-            $adaFolder = $adaFolder + 1;
+
+        //File MLBI
+        if(!is_null($folder->path_mlbi)){
+            $isiFileMLBI = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$folder->path_mlbi.$folder->nama.'/'.'"');
+            foreach($isiFileMLBI  as $data){
+                $this->delete_file_sub_tahapan($data->id);
+            }
         }
-        if($adaFolder > 0){
-            foreach($isiFolder as $data){
+        
+        //Folder
+        //Checking if the folder have another P3A folder in it.
+        $isiFolderP3A = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$folder->path.$folder->nama.'/'.'"');
+        foreach($isiFolderP3A as $data){
+            $adaFolderP3A = $adaFolderP3A + 1;
+        }
+
+        //Checking if the folder have another MLBI folder in it.
+        $isiFolderMLBI = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$folder->path_mlbi.$folder->nama.'/'.'"');
+        foreach($isiFolderMLBI as $data){
+            $adaFolderMLBI = $adaFolderMLBI + 1;
+        }
+
+        if($adaFolderMLBI > 0){
+            foreach($isiFolderMLBI as $data){
                 $this->delete_folder_sub_tahapan($data->id);
             }
         }
-        else{
-            rmdir($folder->path.$folder->nama.'/');
-            $folder->delete();
-        }
 
+        if($adaFolderP3A > 0){
+            foreach($isiFolderP3A as $data){
+                $this->delete_folder_sub_tahapan($data->id);
+            }
+        }
+        
+        //Deleting the folder
+        rmdir($folder->path.$folder->nama.'/');
+        $folder->delete();
+    
         return back();
     }
 
