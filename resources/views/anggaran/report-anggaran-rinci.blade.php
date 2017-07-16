@@ -88,44 +88,41 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
               <div class="col-md-9">
-                <input type="date" class="form-control pull-right" id="datepicker" name="tanggal">
+                <input type="date" class="form-control pull-right" id="tanggal" name="tanggal">
               </div>
             </div>
-
             <!--Kategori-->
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
               <div class="col-md-9">
-                <select class="form-control" name="kategori">
+                <select class="form-control" name="kategori" id="kategori">
                   <option value="RI">RI</option>
                   <option value="OP">OP</option>                 
                 </select>
               </div>
             </div>
-
             <!--Nominal-->
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
               <div class="col-md-9">
               <div class="input-group">
                 <span class="input-group-addon">Rp</span>
-                <input name="nominal" type="number" class="form-control" id="inputEmail3">
+                <input name="nominal" type="number" class="form-control" id="nominal">
               </div>
               </div>
             </div>
-
             <!--Keterangan-->
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
               <div class="col-md-9">
-                <textarea name="keterangan" type="text" class="form-control" id="inputEmail3"></textarea>
+                <textarea name="keterangan" type="text" class="form-control" id="keterangan"></textarea>
               </div>
             </div>
             <!-- /.box-body -->
             <div class="form-group">
               <div class="modal-footer">
                 <button type="reset" class="btn btn-danger">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" id="validasipencairan" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </form>
@@ -153,17 +150,48 @@
 <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
 @include('sweet::alert')
 <script>
+  $(function() {
+    $("#validasipencairan").click(function (event) {
+        if (document.getElementById('tanggal').value === '') {
+          swal({
+            title: "Tanggal Pencairan Harus Diisi!",
+            type: "warning",
+            allowOutsideClick: true, 
+          });
+          return false;
+        }
+        else if (document.getElementById('kategori').value === '') {
+          swal({
+            title: "Kategori Pencairan Harus Diisi!",
+            type: "warning", 
+            allowOutsideClick: true,
+          });
+          return false;
+        }
+        else if (document.getElementById('nominal').value === '') {
+          swal({
+            title: "Nominal Pencairan Harus Diisi!",
+            type: "warning",
+            allowOutsideClick: true, 
+          });
+          return false;
+        }
+        else if (document.getElementById('keterangan').value === '') {
+          swal({
+            title: "Keterangan Pencairan Harus Diisi!",
+            type: "warning",
+            allowOutsideClick: true, 
+          });
+          return false;
+        }
+    });
+  });
+</script>
+<script>
   $(function () {
     $('#example1').DataTable({
-      "order": [[ 0, "desc" ]]
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
+      "order": [[ 0, "desc" ]],
+      "autoWidth": true
     });
   });
 </script>
