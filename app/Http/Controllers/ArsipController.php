@@ -12,6 +12,7 @@ use App\TabelFile;
 use App\Tahun;
 use App\Proyek;
 use Response;
+use Alert;
 
 class ArsipController extends Controller
 {
@@ -22,10 +23,10 @@ class ArsipController extends Controller
     // 	// return view('arsip.list-arsip');
     // }
 
-    public function list_arsip_tahun()  //See all available year
+    public function list_tahun_arsip()  //See all available year
     {
         $this->data['tahun'] = DB::select('SELECT t.* FROM tahun t');
-        return view('arsip.list-arsip-tahun', $this->data);
+        return view('arsip.list-tahun-arsip', $this->data);
     }
 
     public function list_arsip_proyek($id_tahun)    //See all project on certain year
@@ -96,14 +97,32 @@ class ArsipController extends Controller
         return Response::download($file);
     }
 
-    // public function mlbi($id, $deeppath = null)   //ini ID proyek
-    // {
-    //     if($deeppath){
-    //         dd("this is deeppath");
-    //         $this->data['']
-    //     }
-    //     else{
-    //         dd("this is not deeppath");
-    //     }
-    // }
+    public function tambah_tahun_arsip(Request $request)
+    {
+        $tahunBaru = $request->tahun;
+        
+        //Checking if the year is exist
+        $adaTahun = 0;
+        $cekTahun = DB::select('SELECT t.tahun FROM tahun t WHERE t.tahun = "'.$tahunBaru.'"');
+        foreach($cekTahun as $data){
+            $adaTahun = $adaTahun + 1;
+        }
+        if($adaTahun > 0 ){
+            Alert::error("Tahun ".$tahunBaru." telah ada.");
+            return back();
+        }
+        else{
+            $tahun = new Tahun;
+            $tahun->tahun = $tahunBaru;
+            $tahun->proyek = 0;
+            $tahun->non_proyek = 0;
+
+            if($tahun->save()){
+                mkdir($tahunBaru);
+                Alert::success("Tahun ".$tahunBaru." berhasil ditambahkan.");
+                return back();
+            }
+        }
+        
+    }
 }
