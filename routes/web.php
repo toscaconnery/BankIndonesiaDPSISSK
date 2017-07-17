@@ -50,9 +50,11 @@ Route::post('list-file-tahun-arsip/{tahun}', 'ArsipController@list_file_tahun_ar
 Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
 Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
 Route::post('report-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
+Route::post('edit-anggaran-tahunan', 'AnggaranController@save_edit_anggaran_tahunan');
 Route::post('input-pencairan-anggaran', 'AnggaranController@save_input_pengeluaran');
 Route::get('report-anggaran-bulanan/{tahun}', 'AnggaranController@report_anggaran_bulanan');
 Route::get('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@report_anggaran_rinci');
+Route::post('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@save_edit_pengeluaran');
 
 // ISSUE
 Route::get('list-issue', 'IssueController@list_issue');

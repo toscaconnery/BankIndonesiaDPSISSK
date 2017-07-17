@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{url('')}}/plugins/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="{{url('')}}/plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -59,7 +60,7 @@
                 <div class="form-group">
                   <label for="issue" class="col-sm-3 control-label">Issue</label>
                   <div class="col-sm-9">
-                    <textarea name="isi" class="form-control" id="judul" rows="8">{{$issue->isi ? $issue->isi : ''}}</textarea>
+                    <textarea name="isi" class="form-control" id="isi" rows="8">{{$issue->isi ? $issue->isi : ''}}</textarea>
                   </div>
                 </div>
 
@@ -99,7 +100,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
               <div class="btn-toolbar">
-                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                <button type="submit" id="validasieditissue" class="btn btn-primary pull-right">Submit</button>
                 <button type="reset" class="btn btn-danger pull-right">Cancel</button>
               </div>
               </div>
@@ -115,29 +116,42 @@
   @include('layouts.footer')
 </div>
 
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script>$.widget.bridge('uibutton', $.ui.button);</script>
+<script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="plugins/morris/morris.min.js"></script>
-<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="plugins/knob/jquery.knob.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="plugins/fastclick/fastclick.js"></script>
-<script src="dist/js/app.min.js"></script>
-<script src="dist/js/pages/dashboard.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+  <!-- SlimScroll -->
+<script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="{{url('')}}/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{url('')}}/dist/js/demo.js"></script>
+<script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+@include('sweet::alert')
+<script>
+  $(function() {
+    $("#validasieditissue").click(function (event) {
+        if (document.getElementById('judul').value === '') {
+          swal({
+            title: "Judul Issue Harus Diisi!",
+            type: "warning",
+            allowOutsideClick: true, 
+          });
+          return false;
+        }
+        else if (document.getElementById('isi').value === '') {
+          swal({
+            title: "Issue Harus Diisi!",
+            type: "warning", 
+            allowOutsideClick: true,
+          });
+          return false;
+        }
+    });
+  });
+</script>
 </body>
 </html>

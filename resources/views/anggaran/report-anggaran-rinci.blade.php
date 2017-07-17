@@ -27,7 +27,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Anggaran Rinci Bulan {{$namabulan}} {{$tahun_anggar}}
+          <a href="{{url('')}}/report-anggaran-tahunan">Pertahun</a> \ <a href="{{url('')}}/report-anggaran-bulanan/{{$tahun_anggar}}">Perbulan {{$tahun_anggar}}</a> \ Anggaran Rinci Bulan {{$namabulan}} {{$tahun_anggar}}
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>
@@ -47,6 +47,7 @@
                       <th>Kategori</th>
                       <th>Nominal</th>
                       <th>Keterangan</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -56,6 +57,9 @@
                       <td>{{$pengeluaran_rinci->kategori}}</td>
                       <td>Rp. {{number_format($pengeluaran_rinci->nominal, 0, ',', '.')}}</td>
                       <td>{{$pengeluaran_rinci->keterangan}}</td>
+                      <td align="center" 'white-space: nowrap'>
+                        <button class="btn btn-default" data-toggle="modal" data-target="#editpengeluaran{{$pengeluaran_rinci->id}}">Edit</button>
+                      </td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -74,6 +78,65 @@
     </div>
     @include('layouts.footer')
   </div>
+
+  @foreach($pengeluaran_rinci_edit as $pengeluaran_rinci_edit)
+    <div class="modal fade" id="editpengeluaran{{$pengeluaran_rinci_edit->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Edit Pencairan</h3></center>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" method="POST" action="">
+              {{ csrf_field() }}
+              <div class="form-group">
+                <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
+                <div class="col-md-9">
+                  <input type="date" class="form-control pull-right" id="tanggaledit" name="tanggaledit" value="{{$pengeluaran_rinci_edit->tanggal_pencairan}}">
+                </div>
+              </div>
+              <!--Kategori-->
+              <div class="form-group">
+                <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
+                <div class="col-md-9">
+                  <select class="form-control" name="kategoriedit" id="kategoriedit" value="{{$pengeluaran_rinci_edit->kategori}}">
+                    <option value="RI">RI</option>
+                    <option value="OP">OP</option>                 
+                  </select>
+                </div>
+              </div>
+              <!--Nominal-->
+              <div class="form-group">
+                <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>
+                <div class="col-md-9">
+                <div class="input-group">
+                  <span class="input-group-addon">Rp</span>
+                  <input name="nominaledit" type="number" class="form-control" id="nominaledit" value="{{$pengeluaran_rinci_edit->nominal}}">
+                </div>
+                </div>
+              </div>
+              <!--Keterangan-->
+              <div class="form-group">
+                <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
+                <div class="col-md-9">
+                  <textarea name="keteranganedit" type="text" class="form-control" id="keteranganedit">{{$pengeluaran_rinci_edit->keterangan}}</textarea>
+                </div>
+              </div>
+              <input name="idpencairan" type="hidden" class="form-control" id="idpencairan" value="{{$pengeluaran_rinci_edit->id}}">
+              <!-- /.box-body -->
+              <div class="form-group">
+                <div class="modal-footer">
+                  <button type="reset" class="btn btn-danger">Cancel</button>
+                  <button type="submit" id="validasieditpencairan" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
 
   <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

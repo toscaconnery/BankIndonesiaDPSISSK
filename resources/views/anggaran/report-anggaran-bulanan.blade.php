@@ -27,7 +27,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Pencairan Anggaran Tahun {{$tahun_anggaran}}
+          <a href="{{url('')}}/report-anggaran-tahunan">Pertahun</a> \ Pencairan Anggaran Tahun {{$tahun_anggaran}}
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/report-anggaran-tahunan"><i class="fa fa-money"></i> Anggaran</a></li>

@@ -16,6 +16,7 @@ class AnggaranController extends Controller
     public function report_anggaran_tahunan()
     {
         $this->data['anggaran'] = DB::select('SELECT a.*,used_ri+used_op as used_total, ROUND(used_ri * 100.0 / ri, 2) as persen_ri, ROUND(used_op * 100.0 / op, 2) as persen_op, nominal-used_ri-used_op as sisa, ROUND((used_ri+used_op) * 100.0 / nominal, 2) as persen_realisasi, ROUND(100-(used_ri+used_op) * 100.0 / nominal, 2) as persen_used FROM anggaran a ORDER BY a.created_at DESC');
+        $this->data['anggaranedit'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
         return view('anggaran.report-anggaran-tahunan', $this->data);
     }
 
@@ -414,6 +415,7 @@ class AnggaranController extends Controller
         }        
 
         $this->data['pengeluaran_rinci'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.' ORDER BY tanggal_pencairan');
+        $this->data['pengeluaran_rinci_edit'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.' ORDER BY tanggal_pencairan');
         return view('anggaran.report-anggaran-rinci', $this->data);
     }
 
@@ -446,6 +448,33 @@ class AnggaranController extends Controller
         else
         {
             Alert::error("Anggaran Gagal Ditambahkan!");
+        }
+        return redirect('report-anggaran-tahunan');
+    }
+
+    public function save_edit_anggaran_tahunan()
+    {
+        $tahun = Input::get('tahunEdit');
+        $nominal = Input::get('nominalEdit');
+        $ri = Input::get('riEdit');
+        $op = Input::get('opEdit');
+
+        if( Auth::check() )
+        {
+            $pic = Auth::user()->name;
+        }
+        else{
+            $pic = 'Unknown';
+        }
+
+        if(!is_null($tahun))
+        {
+            DB::select('UPDATE anggaran SET ri='.$ri.', op='.$op.', nominal='.$nominal.', pic="'.$pic.'" where tahun='.$tahun.'');
+            Alert::success("Anggaran $tahun Berhasil Diubah!");
+        }
+        else
+        {
+            Alert::error("Anggaran $tahun Gagal Diubah");
         }
         return redirect('report-anggaran-tahunan');
     }
@@ -490,6 +519,40 @@ class AnggaranController extends Controller
             DB::select('UPDATE anggaran SET used_ri=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="RI") where tahun='.$year.'');
         }
         
+        return Redirect::back();
+    }
+
+    public function save_edit_pengeluaran()
+    {
+        $tanggaledit = Input::get('tanggaledit');
+        $kategoriedit = Input::get('kategoriedit');
+        $nominaledit = Input::get('nominaledit');
+        $keteranganedit = Input::get('keteranganedit');
+        $idpencairan = Input::get('idpencairan');
+        $year = intval($tanggaledit);
+        // dd($year);
+        $tgl_real = date("Y-m-d", strtotime($tanggaledit));
+        // dd($tgl_real);
+        if( Auth::check() )
+        {
+            $picedit = Auth::user()->name;
+        }
+        else{
+            $picedit = 'Unknown';
+        }
+
+        if(!is_null($idpencairan))
+        {
+            DB::select('UPDATE pencairan SET tanggal_pencairan="'.$tgl_real.'", kategori="'.$kategoriedit.'", nominal='.$nominaledit.', pic="'.$picedit.'", keterangan="'.$keteranganedit.'" where id='.$idpencairan.'');
+            DB::select('UPDATE anggaran SET used_op=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="OP") where tahun='.$year.'');
+            DB::select('UPDATE anggaran SET used_ri=(SELECT SUM(nominal) from pencairan where YEAR(tanggal_pencairan)='.$year.' and kategori="RI") where tahun='.$year.'');
+            Alert::success("Pencairan Berhasil Diubah!");
+        }
+        else
+        {
+            Alert::error("Pencairan Gagal Diubah");
+        }
+    
         return Redirect::back();
     }
 }

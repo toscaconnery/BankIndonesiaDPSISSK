@@ -50,7 +50,7 @@
                       <th colspan="3">Dianggarkan</th>
                       <th colspan="6">Realisasi</th>
                       <th colspan="2">Sisa</th>
-                      <th rowspan="3">Detail</th>
+                      <th colspan="2">Action</th>
                     </tr>
                     <tr>
                       <th rowspan="2">RI</th>
@@ -60,7 +60,9 @@
                       <th colspan="2">OP</th>
                       <th colspan="2">Total</th>
                       <th rowspan="2">Angka</th>
-                      <th rowspan="2">Persen(%)</th>
+                      <th rowspan="2">%</th>
+                      <th rowspan="2">Detail</th>
+                      <th rowspan="2">Update</th>
                     </tr>
                     <tr>
                       <th>Angka</th>
@@ -79,25 +81,20 @@
                       <td>Rp. {{ number_format($anggaran->op, 0, ',', '.') }}</td>  {{-- op dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->nominal, 0, ',', '.') }}</td>  {{-- total dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->used_ri, 0, ',', '.') }}</td>  {{-- ri realisasi --}}
-                      <td width="10px">{{$anggaran->persen_ri}}%</td>  {{-- persen ri realisasi --}}
+                      <td>{{$anggaran->persen_ri}}%</td>  {{-- persen ri realisasi --}}
                       <td>Rp. {{ number_format($anggaran->used_op, 0, ',', '.') }}</td>  {{-- op realisasi --}}
-                      <td width="10px">{{$anggaran->persen_op}}%</td> {{-- persen op realisasi --}}
+                      <td>{{$anggaran->persen_op}}%</td> {{-- persen op realisasi --}}
                       <td>Rp. {{ number_format($anggaran->used_total, 0, ',', '.') }}</td>  {{-- total realisasi --}}
-                      <td width="10px">{{$anggaran->persen_realisasi}}%</td> {{-- persen total realisasi --}}
+                      <td>{{$anggaran->persen_realisasi}}%</td> {{-- persen total realisasi --}}
                       <td>Rp. {{ number_format($anggaran->sisa, 0, ',', '.') }}</td> {{-- sisa anggaran --}}
-                      <td width="5px" align="center">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
-                      <td>
-                      <div class="btn-toolbar">
-                        <center>
-                        
-                          <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
-                            <button class="btn btn-primary">Detail</button>
-                          </a>
-                          <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
-                            <button class="btn btn-default">Edit</button>
-                          </a>
-                        </center>
-                      </div>
+                      <td align="center">{{$anggaran->persen_used}}%</td>   {{-- persen sisa anggaran --}}
+                      <td align="center" 'white-space: nowrap'>
+                        <a href='{{url('')}}/report-anggaran-bulanan/{{$anggaran->tahun}}'>
+                          <button class="btn btn-primary">Detail</button>
+                        </a>
+                      </td>
+                      <td align="center" 'white-space: nowrap'>
+                        <button class="btn btn-default" data-toggle="modal" data-target="#edit{{$anggaran->tahun}}">Edit</button>
                       </td>
                     </tr>
                     @endforeach
@@ -114,6 +111,75 @@
       </div>
       @include('layouts.footer')
     </div>
+    
+    @php
+    $i=0;
+    @endphp
+    @foreach($anggaranedit as $anggaranedit)
+      <div class="modal fade" id="edit{{$anggaranedit->tahun}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Edit Anggaran Tahun {{$anggaranedit->tahun}}</h3></center>
+            </div>
+            <div class="modal-body">
+              <form name="anggarantahunanedit" class="form-horizontal" method="POST" action="{{url('')}}/edit-anggaran-tahunan">
+
+                {{ csrf_field() }}
+
+                <!--Tahun Anggaran-->
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-md-3 control-label">Tahun Anggaran</label>
+                  <div class="col-md-9">
+                    <input type="number" class="form-control" id="tahunEdit" name="tahunEdit" value="{{$anggaranedit->tahun}}" readonly="readonly">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-md-3 control-label">Anggaran RI</label>
+                  <div class="col-md-9">
+                    <div class="input-group">
+                      <span class="input-group-addon">Rp</span>
+                      <input type="number" class="form-control" id="riEdit" name="riEdit" onkeyup="calc()" value="{{$anggaranedit->ri}}">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-md-3 control-label">Anggaran OP</label>
+                  <div class="col-md-9">
+                    <div class="input-group">
+                      <span class="input-group-addon">Rp</span>
+                      <input type="number" class="form-control" id="opEdit" name="opEdit" onkeyup="calc()" value="{{$anggaranedit->op}}">
+                    </div>
+                  </div>
+                </div>
+
+                <!--Nominal-->
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-md-3 control-label">Total</label>
+                  <div class="col-md-9">
+                    <div class="input-group">
+                      <span class="input-group-addon">Rp</span>
+                      <input name="nominalEdit" type="number" class="form-control" id="nominalEdit" value="{{$anggaranedit->nominal}}">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- /.box-body -->
+                <div class="form-group">
+                  <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endforeach
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -162,7 +228,7 @@
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon">Rp</span>
-                    <input name="nominal" type="number" class="form-control" id="total" autofocus required>
+                    <input name="nominal" type="number" class="form-control" id="nominal" autofocus required>
                   </div>
                 </div>
               </div>
@@ -198,6 +264,13 @@
     <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
     <script>
+      $(function () {
+        $('#example1').DataTable({
+          "order": [[ 0, "desc" ]],
+        });
+      });
+    </script>
+    <script>
       $(function() {
         $("#validasiform").click(function (event) {
             if (document.getElementById('ri').value === '') {
@@ -216,7 +289,7 @@
               });
               return false;
             }
-            else if (document.getElementById('total').value === '') {
+            else if (document.getElementById('nominal').value === '') {
               swal({
                 title: "Total Anggaran Harus Diisi!",
                 type: "warning",
@@ -235,13 +308,6 @@
       }
     </script>
     <script>
-      $(function () {
-        $('#example1').DataTable({
-          "order": [[ 0, "desc" ]],
-        });
-      });
-    </script>
-    <script>
       var mulai = 2017
       var min = new Date().getFullYear(),
       max = min + 9,
@@ -254,5 +320,6 @@
         select.appendChild(opt);
       }
     </script>
+    
   </body>
   </html>

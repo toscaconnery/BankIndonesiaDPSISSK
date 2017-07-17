@@ -154,14 +154,10 @@
         </div>
         <!-- /.row -->
       </section>
-
-
       <br>
     </div>
     @include('layouts.footer')
   </div>
-
-
 
   {{-- MODAL --}}
   @foreach($modalTahapan as $data)

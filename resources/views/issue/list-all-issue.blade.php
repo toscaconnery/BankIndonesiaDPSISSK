@@ -76,7 +76,6 @@
                                 </big>
                               </a>
                             </h3>
-
                             <div class="timeline-body">
                               <big>
                                 <b>Issue :</b>
@@ -84,17 +83,13 @@
                               <br>
                               {{$issue->isi}}
                               <br>
+                              <br>
                               <cite>
                                 <b>
                                   {{ $issue->pic }}
                                 </b>
                               </cite>
                             </div>
-
-<<<<<<< HEAD
-=======
-                            
->>>>>>> 2af9b168f0acea14e4e18246d17aa70314f66267
                             @if($issue->tindak_lanjut)
                             <div class="timeline-body">
                               <big>
@@ -102,6 +97,7 @@
                               </big>
                               <br>
                               {{$issue->tindak_lanjut}}
+                              <br>
                               <br>
                               <cite>
                                 <b>
@@ -167,7 +163,7 @@
                                   <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
                                     <div class="col-sm-10">
-                                      <input name="judul" type="text" class="form-control" id="inputEmail3">
+                                      <input name="judul" type="text" class="form-control" id="judul">
                                     </div>
                                   </div>
 
@@ -175,14 +171,14 @@
                                   <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Issue</label>
                                     <div class="col-sm-10">
-                                      <textarea name="isi" class="form-control" rows="8"></textarea>
+                                      <textarea name="isi" class="form-control" rows="8" id="isi"></textarea>
                                     </div>
                                   </div>
 
                                   <div class="form-group">
                                     <div class="modal-footer">
                                       <button type="reset" class="btn btn-danger">Reset</button>
-                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                      <button type="submit" id="validasiissue" class="btn btn-primary">Submit</button>
                                     </div>
                                   </div>
                                 </form>
@@ -203,33 +199,54 @@
       @include('layouts.footer')
     </div>
 
-    <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script>$.widget.bridge('uibutton', $.ui.button);</script>
     <!-- Bootstrap 3.3.6 -->
-    <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="{{url('')}}/plugins/morris/morris.min.js"></script>
     <script src="{{url('')}}/plugins/sparkline/jquery.sparkline.min.js"></script>
     <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="{{url('')}}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="{{url('')}}/plugins/knob/jquery.knob.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-    <script src="{{url('')}}/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="{{url('')}}/plugins/datepicker/bootstrap-datepicker.js"></script>
     <script src="{{url('')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
-    <script src="{{url('')}}/dist/js/app.min.js"></script>
     <script src="{{url('')}}/dist/js/pages/dashboard.js"></script>
+    <script src="{{url('')}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{{url('')}}/bootstrap/js/bootstrap.min.js"></script>
+      <!-- SlimScroll -->
+    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="{{url('')}}/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{url('')}}/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
     <script src="{{url('')}}/dist/js/demo.js"></script>
     <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="{{url('')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="{{url('')}}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="/plugins/chartjs/Chart.min.js"></script>
     <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
+    <script>
+      $(function() {
+        $("#validasiissue").click(function (event) {
+            if (document.getElementById('judul').value === '') {
+              swal({
+                title: "Judul Issue Harus Diisi!",
+                type: "warning",
+                allowOutsideClick: true, 
+              });
+              return false;
+            }
+            else if (document.getElementById('isi').value === '') {
+              swal({
+                title: "Issue Harus Diisi!",
+                type: "warning", 
+                allowOutsideClick: true,
+              });
+              return false;
+            }
+        });
+      });
+    </script>
     <script>
       var mulai = 2017
       var min = new Date().getFullYear(),
