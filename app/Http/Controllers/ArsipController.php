@@ -132,6 +132,30 @@ class ArsipController extends Controller
         }
     }
 
+    public function upload_file_arsip(Request $request, $id_folder)
+    {
+        $folderParent = TabelFolder::find($id_folder);
+        $file = $request->file('berkas');
+        $fileExtension = $file->getClientOriginalExtension();
+        //harusnya disini cek dulu jika diizinkan atau tidak
+        $berkas = new TabelFile;
+        $berkas->nama = $file->getClientOriginalName();
+        if(Auth::check()){
+            $berkas->pic = Auth::user()->name;
+        }
+        else{
+            $berkas->pic = "Unregistered User";
+        }
+        $berkas->tahun = $request->tahun;
+        $berkas->path = $folderParent->path.$folderParent->nama.'/';
+        if($berkas->save()){
+            $file->move($berkas->path, $berkas->nama);
+            Alert::success('File tersimpan.');
+            return back();
+        }
+        return back();
+    }
+
     // public function list_arsip()
     // {
     //     $this->data['tabel_folder'] = DB::select('SELECT tf.* FROM tabel_folder tf ORDER BY tf.created_at DESC');

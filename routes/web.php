@@ -45,6 +45,7 @@ Route::get('list-arsip-tahapan-proyek/{id_folder_proyek}', 'ArsipController@list
 Route::post('tambah-tahun-arsip', 'ArsipController@tambah_tahun_arsip');									//
 Route::post('tambah-folder-dalam-tahun/{tahun}', 'ArsipController@tambah_folder_dalam_tahun');				//
 Route::post('tambah-folder-arsip/{id_folder}', 'ArsipController@tambah_folder_arsip');
+Route::post('upload-file-arsip/{id_folder}', 'ArsipController@upload_file_arsip');
 
 //Route::get('list-arsip-folder', 'ArsipController@list_arsip_folder');
 // Route::get('mlbi/{id}/{deeppath?}', 'ArsipController@mlbi');

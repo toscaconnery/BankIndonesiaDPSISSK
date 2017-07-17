@@ -65,8 +65,7 @@
                 <div class="tab-pane active" id="P3A">
                   <form action="" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <!-- <input type="file" name="berkas">
-                    <button type="submit" class="btn btn-primary">Submit</button> -->
+
                     <h4>Upload Dokumen P3A</h4>
                     <div class="input-group">
                       <input type="file" name="berkas" class="form-control">

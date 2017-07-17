@@ -41,6 +41,23 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
+
+                <div class="tab-content">
+                  <div class="tab-pane active" id="P3A">
+                    <form action="{{url('')}}/upload-file-arsip/{{$parentFolder->id}}" method="post" enctype="multipart/form-data">
+                      {{ csrf_field() }}
+                      <h4>Upload Dokumen</h4>
+                      <div class="input-group">
+                        <input type="file" name="berkas" class="form-control">
+                        <input type="hidden" name="tahun" value="{{$tahun}}">
+                        <div class="input-group-btn">
+                          <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
                 <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalTambahFolder">Tambah Folder</button>
                 <table id="example1" class="table table-bordered table-striped">
                   <br>
