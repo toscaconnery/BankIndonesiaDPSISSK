@@ -28,7 +28,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Tahun
+          <a href="{{url('')}}/list-tahun-arsip">List Tahun</a>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-file"></i> Arsip</a></li>
@@ -56,7 +56,7 @@
                   </thead>
                   <tbody>
                     @foreach($tahun as $data)
-                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
+                    <tr onclick="window.document.location='{{url('')}}/list-file-tahun-arsip/{{$data->tahun}}';">
                       <td>{{$data->tahun}}</td>
                       <td>{{$data->proyek}}</td>
                       <td>{{$data->non_proyek}}</td>

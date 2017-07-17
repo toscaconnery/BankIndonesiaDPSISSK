@@ -28,7 +28,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          {{"Ini harusnya nama pathnya"}}
+          <a href="{{url('')}}/list-file-tahun-arsip/{{$tahun}}">{{$tahun}}</a>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-file"></i> Arsip</a></li>
@@ -59,12 +59,21 @@
                       $x = 1;
                     @endphp
                     @foreach($listFolderProyek as $data)
-                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
+                    <tr onclick="window.document.location='{{url('')}}/list-arsip-tahapan-proyek/{{$data->id}}';">
                       <td>{{$x++}}</td>
                       <td>{{$data->nama}}</td>
                       <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
                       <td><a href="{{url('')}}/list-arsip-tahapan-proyek/{{$data->id}}"><button>Detail</button></a></td>
+                    </tr>
+                    @endforeach
+                    @foreach($listFolderNonProyek as $data)
+                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip/{{$data->id}}';">
+                      <td>{{$x++}}</td>
+                      <td>{{$data->nama}}</td>
+                      <td>{{$data->pic}}</td>
+                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
+                      <td><a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button>Detail</button></a></td>
                     </tr>
                     @endforeach
                   </table>
@@ -89,7 +98,7 @@
             <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Tambah Folder</h3></center>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="POST" >
+            <form class="form-horizontal" method="POST" action="{{url('')}}/tambah-folder-dalam-tahun/{{$tahun}}">
               {{ csrf_field() }}
               <div class="form-group">
                 <label for="namafolder" class="col-md-5 control-label">Nama Folder</label>
@@ -124,13 +133,8 @@
     <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweet::alert')
     <script>
-      $function(){
+      $(function(){
         $('#buttonSubmitTambahFolder').click(function(event){
-          swal({
-            title: "Nah",
-            type: "warning",
-            allowOutsideClick: true,
-          });
           if(document.getElementById('namaFolder').value === ''){
             swal({
               title: "Nama folder tidak boleh kosong.",
@@ -140,7 +144,7 @@
             return false;
           }
         });
-      }
+      });
     </script>
     <script>
       $(function () {
