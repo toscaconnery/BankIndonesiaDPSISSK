@@ -210,8 +210,15 @@ class ProjectController extends Controller
         $proyek->tgl_real_mulai = date("Y-m-d");
         $proyek->save();
 
+        //Membuat folder
         $this->buat_folder_proyek($id_proyek);
         
+        //Mengupdate jumlah proyek dalam tahun tertentu
+        $tahunProyek = date_create_from_format("Y-m-d", $proyek->tgl_mulai);
+        $tahun = Tahun::where('tahun', $tahunProyek->format("Y"))->first();
+        $tahun->proyek = $tahun->proyek + 1;
+        $tahun->save();
+
         return redirect('list-proyek');
     }
 
@@ -300,7 +307,6 @@ class ProjectController extends Controller
             mkdir($folderProyek->tahun);
             $tahunProyek = new Tahun;
             $tahunProyek->tahun = $folderProyek->tahun;
-            $tahunProyek->proyek = 1;
             $tahunProyek->save();
         }
         else{
