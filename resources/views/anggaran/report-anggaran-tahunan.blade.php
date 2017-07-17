@@ -112,9 +112,6 @@
       @include('layouts.footer')
     </div>
     
-    @php
-    $i=0;
-    @endphp
     @foreach($anggaranedit as $anggaranedit)
       <div class="modal fade" id="edit{{$anggaranedit->tahun}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -124,7 +121,7 @@
               <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Edit Anggaran Tahun {{$anggaranedit->tahun}}</h3></center>
             </div>
             <div class="modal-body">
-              <form name="anggarantahunanedit" class="form-horizontal" method="POST" action="{{url('')}}/edit-anggaran-tahunan">
+              <form name="anggarantahunanedit{{$anggaranedit->id}}" id="anggarantahunanedit{{$anggaranedit->id}}" class="form-horizontal" method="POST" action="{{url('')}}/edit-anggaran-tahunan">
 
                 {{ csrf_field() }}
 
@@ -132,7 +129,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-md-3 control-label">Tahun Anggaran</label>
                   <div class="col-md-9">
-                    <input type="number" class="form-control" id="tahunEdit" name="tahunEdit" value="{{$anggaranedit->tahun}}" readonly="readonly">
+                    <input type="number" class="form-control" id="tahunEdit{{$anggaranedit->id}}" name="tahunEdit" value="{{$anggaranedit->tahun}}" readonly="readonly">
                   </div>
                 </div>
 
@@ -141,7 +138,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">Rp</span>
-                      <input type="number" class="form-control" id="riEdit" name="riEdit" onkeyup="calc()" value="{{$anggaranedit->ri}}">
+                      <input type="number" class="form-control" id="riEdit{{$anggaranedit->id}}" name="riEdit" onkeyup="calc()" value="{{$anggaranedit->ri}}">
                     </div>
                   </div>
                 </div>
@@ -151,7 +148,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">Rp</span>
-                      <input type="number" class="form-control" id="opEdit" name="opEdit" onkeyup="calc()" value="{{$anggaranedit->op}}">
+                      <input type="number" class="form-control" id="opEdit{{$anggaranedit->id}}" name="opEdit" onkeyup="calc()" value="{{$anggaranedit->op}}">
                     </div>
                   </div>
                 </div>
@@ -162,7 +159,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">Rp</span>
-                      <input name="nominalEdit" type="number" class="form-control" id="nominalEdit" value="{{$anggaranedit->nominal}}">
+                      <input name="nominalEdit" type="number" class="form-control" id="nominalEdit{{$anggaranedit->id}}" value="{{$anggaranedit->nominal}}">
                     </div>
                   </div>
                 </div>
@@ -171,7 +168,7 @@
                 <div class="form-group">
                   <div class="modal-footer">
                     <button type="reset" class="btn btn-danger">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="validasiformedit{{$anggaranedit->id}}" class="btn btn-primary">Submit</button>
                   </div>
                 </div>
               </form>
@@ -320,6 +317,46 @@
         select.appendChild(opt);
       }
     </script>
-    
+    @foreach($anggaranscript as $anggaranscript)
+    <script>
+      $(function() {
+        $("#validasiformedit{{$anggaranscript->id}}").click(function (event) {
+            if (document.getElementById('riEdit{{$anggaranscript->id}}').value === '') {
+              swal({
+                title: "Anggaran RI Harus Diisi!",
+                type: "warning",
+                allowOutsideClick: true, 
+              });
+              return false;
+            }
+            else if (document.getElementById('opEdit{{$anggaranscript->id}}').value === '') {
+              swal({
+                title: "Anggaran OP Harus Diisi!",
+                type: "warning", 
+                allowOutsideClick: true,
+              });
+              return false;
+            }
+            else if (document.getElementById('nominalEdit{{$anggaranscript->id}}').value === '') {
+              swal({
+                title: "Total Anggaran Harus Diisi!",
+                type: "warning",
+                allowOutsideClick: true, 
+              });
+              return false;
+            }
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function(){
+          $("#anggarantahunanedit{{$anggaranscript->id}}").keyup(function(){
+              var val1 = +$("#riEdit{{$anggaranscript->id}}").val();
+              var val2 = +$("#opEdit{{$anggaranscript->id}}").val();
+              $("#nominalEdit{{$anggaranscript->id}}").val(val1+val2);
+         });
+      });
+    </script>
+    @endforeach
   </body>
   </html>
