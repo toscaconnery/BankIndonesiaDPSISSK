@@ -42,10 +42,12 @@ Route::get('list-tahun-arsip', 'ArsipController@list_tahun_arsip');											//
 Route::get('list-file-tahun-arsip/{tahun}', 'ArsipController@list_file_tahun_arsip');						//
 Route::get('list-file-arsip/{id_folder}', 'ArsipController@list_file_arsip');
 Route::get('list-arsip-tahapan-proyek/{id_folder_proyek}', 'ArsipController@list_arsip_tahapan_proyek');	//
+Route::get('delete-file-arsip/{id_file}', 'ArsipController@delete_file_arsip');
 Route::post('tambah-tahun-arsip', 'ArsipController@tambah_tahun_arsip');									//
 Route::post('tambah-folder-dalam-tahun/{tahun}', 'ArsipController@tambah_folder_dalam_tahun');				//
 Route::post('tambah-folder-arsip/{id_folder}', 'ArsipController@tambah_folder_arsip');
 Route::post('upload-file-arsip/{id_folder}', 'ArsipController@upload_file_arsip');
+
 
 //Route::get('list-arsip-folder', 'ArsipController@list_arsip_folder');
 // Route::get('mlbi/{id}/{deeppath?}', 'ArsipController@mlbi');

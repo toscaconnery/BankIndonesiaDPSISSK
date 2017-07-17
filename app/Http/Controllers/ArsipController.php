@@ -13,6 +13,7 @@ use App\Tahun;
 use App\Proyek;
 use Response;
 use Alert;
+use File;
 
 class ArsipController extends Controller
 {
@@ -46,6 +47,14 @@ class ArsipController extends Controller
         $dataFile = TabelFile::find($id);
         $file = $dataFile->path.$dataFile->nama;
         return Response::download($file);
+    }
+
+    public function delete_file_arsip($id_file)
+    {
+        $file = TabelFile::find($id_file);
+        File::delete($file->path.$file->nama);
+        $file->delete();
+        return back();
     }
 
     public function tambah_tahun_arsip(Request $request)
@@ -108,6 +117,7 @@ class ArsipController extends Controller
         $this->data['parentFolder'] = TabelFolder::find($id_folder);
         $this->data['tahun'] = $this->data['parentFolder']->tahun;
         $this->data['childFolder'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['parentFolder']->path.$this->data['parentFolder']->nama.'/"');
+        $this->data['listFile'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['parentFolder']->path.$this->data['parentFolder']->nama.'/"');
         return view('arsip.list-file-arsip', $this->data);
     }
 

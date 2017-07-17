@@ -84,6 +84,18 @@
                       <td><a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button>Detail</button></a></td>
                     </tr>
                     @endforeach
+                    @foreach($listFile as $data)
+                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip/{{$data->id}}';">
+                      <td>{{$x++}}</td>
+                      <td>{{$data->nama}}</td>
+                      <td>{{$data->pic}}</td>
+                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
+                      <td>
+                        <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
+                        <a href="{{url('')}}/delete-file-arsip/{{ $data->id }}"><button class="btn btn-primary">Delete</button></a>
+                      </td>
+                    </tr>
+                    @endforeach
                   </table>
                 </div>
                 <!-- /.box-body -->
