@@ -57,6 +57,30 @@ class ArsipController extends Controller
         return back();
     }
 
+    public function delete_folder_arsip($id_folder)
+    {
+        $adaChildFolder = 0;
+        
+        $parentFolder = TabelFolder::find($id_folder);
+
+        //deleting file in parent folder
+        $isiFile = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$parentFolder->path.$parentFolder->nama.'/"');
+        foreach($isiFile as $data){
+            $this->delete_file_arsip($data->id);
+        }
+        
+        //deleting child folder
+        $isiFolder = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$parentFolder->path.$parentFolder->nama.'/"');
+        foreach($isiFolder as $data){
+            $this->delete_folder_arsip($data->id);
+        }
+
+        //deleting parent folder
+        rmdir($parentFolder->path.$parentFolder->nama.'/');
+        $parentFolder->delete();
+        return back();
+    }
+
     public function tambah_tahun_arsip(Request $request)
     {
         $tahunBaru = $request->tahun;

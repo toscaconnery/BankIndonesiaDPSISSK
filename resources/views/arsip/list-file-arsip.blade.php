@@ -113,7 +113,10 @@
                       <td>{{$data->nama}}</td>
                       <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
-                      <td><a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button class="btn btn-primary">Detail</button></a></td>
+                      <td>
+                        <a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button class="btn btn-primary">Detail</button></a>
+                        <a href="{{url('')}}/delete-folder-arsip/{{$data->id}}"><button class="btn btn-primary">Delete</button></a>
+                      </td>
                     </tr>
                     @endforeach
                     @foreach($listFile as $data)
