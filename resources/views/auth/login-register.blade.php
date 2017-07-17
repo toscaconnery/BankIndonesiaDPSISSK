@@ -17,7 +17,7 @@
 <body>
   <div class="form">
 
-    <center><img src="logo-BI.jpg" style="width:300px; height:130px;"></center>
+    <center><img src="logo-bank-indonesia-300x130.png" style="width:300px; height:130px;"></center>
     <br>
     <!-- <ul class="tab-group">
       <li class="tab active"><a href="#signup">PMO</a></li>
@@ -49,7 +49,12 @@
             <input id="password" name="password" type="password" required autocomplete="off"/>
           </div>
           
+<<<<<<< HEAD
           <p class="forgot" data-toggle="modal" data-target="#myModal2" style="cursor: pointer;"><a>Forgot Password?</a></p>
+=======
+          <p class="forgot"><a href="forgot-password">Forgot Password?</a></p>
+          
+>>>>>>> 2da0d06d378c8ae9ab87f740fcc34ea78bfbd88b
           <button type="submit" class="button button-block">Log In</button>
         </form>
         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

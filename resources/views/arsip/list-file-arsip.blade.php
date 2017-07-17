@@ -30,6 +30,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -94,17 +95,17 @@
                   <br>
                   <br>
                 </div>
-                <big>Lala lalal alal</big>
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example2" class="table table-bordered table-striped">
                   <br>
                   <br>
                   <thead>
                     <tr href='{{url('')}}/list-file-arsip'>
-                      <th>No</th>
+                      <th style="width: 2em"><center>No</center></th>
                       <th>Nama</th>
+                      <th>Tipe</th>
                       <th>PIC</th>
                       <th>Tanggal Dibuat</th>
-                      <th>Action</th>
+                      <th style="width: 10em">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -113,25 +114,31 @@
                     @endphp
                     @foreach($childFolder as $data)
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip/{{$data->id}}';">
-                      <td>{{$x++}}</td>
+                      <td><center>{{$x++}}</center></td>
                       <td>{{$data->nama}}</td>
+                      <td>Folder</td>
                       <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
                       <td>
-                        <a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button class="btn btn-primary">Detail</button></a>
-                        <a href="{{url('')}}/delete-folder-arsip/{{$data->id}}"><button class="btn btn-primary">Delete</button></a>
+                        <center>
+                          <a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button class="btn btn-primary">Detail</button></a>
+                          <a href="{{url('')}}/delete-folder-arsip/{{$data->id}}"><button class="btn btn-primary">Delete</button></a>
+                        </center>
                       </td>
                     </tr>
                     @endforeach
                     @foreach($listFile as $data)
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip/{{$data->id}}';">
-                      <td>{{$x++}}</td>
+                      <td><center>{{$x++}}</center></td>
                       <td>{{$data->nama}}</td>
+                      <td>File</td>
                       <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
                       <td>
-                        <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
-                        <a href="{{url('')}}/delete-file-arsip/{{ $data->id }}"><button class="btn btn-primary">Delete</button></a>
+                        <center>
+                          <a href="{{url('')}}/download-file/{{ $data->id }}"><button class="btn btn-primary">Download</button></a>
+                          <a href="{{url('')}}/delete-file-arsip/{{ $data->id }}"><button class="btn btn-primary">Delete</button></a>
+                        </center>
                       </td>
                     </tr>
                     @endforeach
@@ -213,6 +220,8 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{url('')}}/dist/js/demo.js"></script>
     <!-- page script -->
+    <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
     <script>
       $(function () {
     //Initialize Select2 Elements
@@ -287,7 +296,7 @@
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });
