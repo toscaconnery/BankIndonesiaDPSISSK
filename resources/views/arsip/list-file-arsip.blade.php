@@ -105,7 +105,7 @@
                       <th>Tipe</th>
                       <th>PIC</th>
                       <th>Tanggal Dibuat</th>
-                      <th style="width: 8em">Action</th>
+                      <th style="width: 10em">Action</th>
                     </tr>
                   </thead>
                   <tbody>

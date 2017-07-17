@@ -98,9 +98,17 @@ class ArsipController extends Controller
     public function delete_file_arsip($id_file)
     {
         $file = TabelFile::find($id_file);
-        File::delete($file->path.$file->nama);
-        $file->delete();
-        return back();
+        if(File::exists($file->path.$file->nama)){
+            File::delete($file->path.$file->nama);
+            $file->delete();
+            Alert::success("File telah terhapus.");
+            return back();
+        }
+        else{
+            Alert::error("File tidak tersedia!");
+            return back();
+        }
+            
     }
 
     public function delete_folder_arsip($id_folder)
