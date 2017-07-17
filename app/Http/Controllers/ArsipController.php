@@ -206,9 +206,24 @@ class ArsipController extends Controller
         $newFolder->kategori = "Non Proyek";
         $newFolder->tahun = $parentFolder->tahun;
         $newFolder->path = $parentFolder->path.$parentFolder->nama.'/';
-        if($newFolder->save()){
-            mkdir($newFolder->path.$newFolder->nama);
-            Alert::success("Folder telah ditambahkan.");
+        // if($newFolder->save()){
+        //     mkdir($newFolder->path.$newFolder->nama);
+        //     Alert::success("Folder telah ditambahkan.");
+        //     return back();
+        // }
+        if(!File::exists($newFolder->path.$newFolder->nama)){
+            if($newFolder->save()){
+                mkdir($newFolder->path.$newFolder->nama);
+                Alert::success("Folder berhasil ditambahkan.");
+                return back();
+            }
+            else{
+                Alert::error("Folder gagal disimpan!");
+                return back();
+            }
+        }
+        else{
+            Alert::error("Folder sudah ada!");
             return back();
         }
     }
@@ -218,23 +233,38 @@ class ArsipController extends Controller
         $folderParent = TabelFolder::find($id_folder);
         $file = $request->file('berkas');
         $fileExtension = $file->getClientOriginalExtension();
-        //harusnya disini cek dulu jika diizinkan atau tidak
-        $berkas = new TabelFile;
-        $berkas->nama = $file->getClientOriginalName();
-        if(Auth::check()){
-            $berkas->pic = Auth::user()->name;
+        $diizinkan = $this->cek_tipe_file($fileExtension);
+        if($diizinkan > 0){
+            $berkas = new TabelFile;
+            $berkas->nama = $file->getClientOriginalName();
+            if(Auth::check()){
+                $berkas->pic = Auth::user()->name;
+            }
+            else{
+                $berkas->pic = "Unregistered User";
+            }
+            $berkas->tahun = $request->tahun;
+            $berkas->path = $folderParent->path.$folderParent->nama.'/';
+            if($berkas->save()){
+                $file->move($berkas->path, $berkas->nama);
+                Alert::success('File tersimpan.');
+                return back();
+            }
         }
         else{
-            $berkas->pic = "Unregistered User";
-        }
-        $berkas->tahun = $request->tahun;
-        $berkas->path = $folderParent->path.$folderParent->nama.'/';
-        if($berkas->save()){
-            $file->move($berkas->path, $berkas->nama);
-            Alert::success('File tersimpan.');
+            Alert::error('File .'.$fileExtension.' tidak diizinkan!');
             return back();
         }
-        return back();
+    }
+
+    public function cek_tipe_file($tipe)
+    {
+        $diizinkan = 0;
+        $cek = DB::select('SELECT w.nama FROM whitelist_type w WHERE w.nama = "'.$tipe.'"');
+        foreach($cek as $data){
+            $diizinkan = $diizinkan + 1;
+        }
+        return $diizinkan;
     }
 
     // public function list_arsip()
