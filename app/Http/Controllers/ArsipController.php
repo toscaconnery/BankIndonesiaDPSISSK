@@ -103,6 +103,35 @@ class ArsipController extends Controller
         }
     }
 
+    public function list_file_arsip($id_folder)
+    {
+        $this->data['parentFolder'] = TabelFolder::find($id_folder);
+        $this->data['tahun'] = $this->data['parentFolder']->tahun;
+        $this->data['childFolder'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['parentFolder']->path.$this->data['parentFolder']->nama.'/"');
+        return view('arsip.list-file-arsip', $this->data);
+    }
+
+    public function tambah_folder_arsip(Request $request, $id_folder)
+    {
+        $parentFolder = TabelFolder::find($id_folder);
+        $newFolder = new TabelFolder;
+        $newFolder->nama = $request->namaFolder;
+        if(Auth::check()){
+            $newFolder->pic = Auth::user()->name;
+        }
+        else{
+            $newFolder->pic = "Unregistered User";
+        }
+        $newFolder->kategori = "Non Proyek";
+        $newFolder->tahun = $parentFolder->tahun;
+        $newFolder->path = $parentFolder->path.$parentFolder->nama.'/';
+        if($newFolder->save()){
+            mkdir($newFolder->path.$newFolder->nama);
+            Alert::success("Folder telah ditambahkan.");
+            return back();
+        }
+    }
+
     // public function list_arsip()
     // {
     //     $this->data['tabel_folder'] = DB::select('SELECT tf.* FROM tabel_folder tf ORDER BY tf.created_at DESC');
