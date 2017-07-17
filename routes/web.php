@@ -44,6 +44,8 @@ Route::get('list-file-arsip/{id_folder}', 'ArsipController@list_file_arsip');
 Route::get('list-arsip-tahapan-proyek/{id_folder_proyek}', 'ArsipController@list_arsip_tahapan_proyek');	//
 Route::get('delete-file-arsip/{id_file}', 'ArsipController@delete_file_arsip');
 Route::get('delete-folder-arsip/{id_folder}', 'ArsipController@delete_folder_arsip');
+Route::get('breadcrumb/{id_folder}', 'ArsipController@breadcrumb');
+Route::get('panggilbreadcrumb/{id_folder}', 'ArsipController@panggilbreadcrumb');
 Route::post('tambah-tahun-arsip', 'ArsipController@tambah_tahun_arsip');									//
 Route::post('tambah-folder-dalam-tahun/{tahun}', 'ArsipController@tambah_folder_dalam_tahun');				//
 Route::post('tambah-folder-arsip/{id_folder}', 'ArsipController@tambah_folder_arsip');

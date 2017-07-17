@@ -28,7 +28,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Tahun
+          <a href="{{url('')}}/list-tahun-arsip">List Tahun</a>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-file"></i> Arsip</a></li>

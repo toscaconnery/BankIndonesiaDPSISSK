@@ -39,7 +39,11 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-            this is breadcrumb
+          <a href="{{url('')}}/list-file-tahun-arsip/{{$tahun}}">{{$tahun}}</a> >
+          @foreach($breadcrumb as $data) 
+            <a href="{{url('')}}/list-file-arsip/{{$data['id']}}">{{$data['nama']}}</a> >
+          @endforeach
+          <a href="{{url('')}}/list-file-arsip/{{$parentFolder->id}}">{{$parentFolder->nama}}</a>
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{url('')}}/list-proyek"><i class="fa fa-cubes"></i> Proyek</a></li>

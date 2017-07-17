@@ -41,6 +41,52 @@ class ArsipController extends Controller
     {
         //menampilkan semua file dan folder normal dalam proyek
     }
+    public function panggilbreadcrumb($id_folder)
+    {
+        $aha = $this->breadcrumb($id_folder);
+        dd($aha);
+    }
+
+    public function breadcrumb($id_folder, $list = null)
+    {
+        if(is_null($list)){
+            $list = array();
+        }
+
+        $parentFolder = TabelFolder::find($id_folder);
+
+        $folderUp = DB::select('SELECT t.* FROM tabel_folder t WHERE CONCAT(t.path,t.nama,"/") = "'.$parentFolder->path.'" LIMIT 1');
+
+        if(empty($folderUp)){
+            return $list;
+        }
+        else{
+            $jumlahPath = count($list);
+            if($jumlahPath > 0){
+                $oldlist = $list;
+                $list[$jumlahPath]['nama'] = null;
+                $list[$jumlahPath]['path'] = null;
+                $list[$jumlahPath]['id'] = null;
+                
+                for($x = $jumlahPath; $x > 0; $x--){
+                    $list[$x]['nama'] = $list[$x-1]['nama'];
+                    $list[$x]['path'] = $list[$x-1]['path'];
+                    $list[$x]['id'] = $list[$x-1]['id'];
+                }
+                
+                $list[0]['nama'] = $folderUp[0]->nama;
+                $list[0]['path'] = $folderUp[0]->path;
+                $list[0]['id'] = $folderUp[0]->id;
+            } 
+            elseif($jumlahPath == 0){
+                $list[0]['nama'] = $folderUp[0]->nama;
+                $list[0]['path'] = $folderUp[0]->path;
+                $list[0]['id'] = $folderUp[0]->id;
+            }
+            $list = $this->breadcrumb($folderUp[0]->id, $list);
+        }
+        return $list;
+    }
 
     public function download_file($id)
     {
@@ -142,6 +188,7 @@ class ArsipController extends Controller
         $this->data['tahun'] = $this->data['parentFolder']->tahun;
         $this->data['childFolder'] = DB::select('SELECT t.* FROM tabel_folder t WHERE t.path = "'.$this->data['parentFolder']->path.$this->data['parentFolder']->nama.'/"');
         $this->data['listFile'] = DB::select('SELECT t.* FROM tabel_file t WHERE t.path = "'.$this->data['parentFolder']->path.$this->data['parentFolder']->nama.'/"');
+        $this->data['breadcrumb'] = $this->breadcrumb($id_folder);
         return view('arsip.list-file-arsip', $this->data);
     }
 
