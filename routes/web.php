@@ -86,6 +86,12 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('autentikasi', function() {
 	return view('auth.login-register');
 });
+Route::get('autentikasi2', function() {
+	return view('auth.login-register2');
+});
+Route::get('lupa-password', function() {
+	return view('auth.form-lupa-password');
+});
 
 
 

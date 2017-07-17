@@ -88,19 +88,19 @@
             <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Form Edit Pencairan</h3></center>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="POST" action="">
+            <form class="form-horizontal" name="pencairanedit{{$pengeluaran_rinci_edit->id}}" id="pencairanedit{{$pengeluaran_rinci_edit->id}}" method="POST" action="">
               {{ csrf_field() }}
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Tanggal</label>
                 <div class="col-md-9">
-                  <input type="date" class="form-control pull-right" id="tanggaledit" name="tanggaledit" value="{{$pengeluaran_rinci_edit->tanggal_pencairan}}">
+                  <input type="date" class="form-control pull-right" id="tanggaledit{{$pengeluaran_rinci_edit->id}}" name="tanggaledit" value="{{$pengeluaran_rinci_edit->tanggal_pencairan}}">
                 </div>
               </div>
               <!--Kategori-->
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Kategori</label>
                 <div class="col-md-9">
-                  <select class="form-control" name="kategoriedit" id="kategoriedit" value="{{$pengeluaran_rinci_edit->kategori}}">
+                  <select class="form-control" name="kategoriedit" id="kategoriedit{{$pengeluaran_rinci_edit->id}}" value="{{$pengeluaran_rinci_edit->kategori}}">
                     <option value="RI">RI</option>
                     <option value="OP">OP</option>                 
                   </select>
@@ -112,7 +112,7 @@
                 <div class="col-md-9">
                 <div class="input-group">
                   <span class="input-group-addon">Rp</span>
-                  <input name="nominaledit" type="number" class="form-control" id="nominaledit" value="{{$pengeluaran_rinci_edit->nominal}}">
+                  <input name="nominaledit" type="number" class="form-control" id="nominaledit{{$pengeluaran_rinci_edit->id}}" value="{{$pengeluaran_rinci_edit->nominal}}">
                 </div>
                 </div>
               </div>
@@ -120,15 +120,15 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-md-3 control-label">Keterangan</label>
                 <div class="col-md-9">
-                  <textarea name="keteranganedit" type="text" class="form-control" id="keteranganedit">{{$pengeluaran_rinci_edit->keterangan}}</textarea>
+                  <textarea name="keteranganedit" type="text" class="form-control" id="keteranganedit{{$pengeluaran_rinci_edit->id}}">{{$pengeluaran_rinci_edit->keterangan}}</textarea>
                 </div>
               </div>
-              <input name="idpencairan" type="hidden" class="form-control" id="idpencairan" value="{{$pengeluaran_rinci_edit->id}}">
+              <input name="idpencairan" type="hidden" class="form-control" id="idpencairan{{$pengeluaran_rinci_edit->id}}" value="{{$pengeluaran_rinci_edit->id}}">
               <!-- /.box-body -->
               <div class="form-group">
                 <div class="modal-footer">
                   <button type="reset" class="btn btn-danger">Cancel</button>
-                  <button type="submit" id="validasieditpencairan" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="validasieditpencairan{{$pengeluaran_rinci_edit->id}}" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </form>
@@ -258,5 +258,45 @@
     });
   });
 </script>
+@foreach($pengeluaran_rinci_modal as $pengeluaran_rinci_modal)
+<script>
+  $(function() {
+    $("#validasieditpencairan{{$pengeluaran_rinci_modal->id}}").click(function (event) {
+        if (document.getElementById('tanggaledit{{$pengeluaran_rinci_modal->id}}').value === '') {
+          swal({
+            title: "Tanggal Pencairan Harus Diisi!",
+            type: "warning",
+            allowOutsideClick: true, 
+          });
+          return false;
+        }
+        else if (document.getElementById('kategoriedit{{$pengeluaran_rinci_modal->id}}').value === '') {
+          swal({
+            title: "Kategori Pencairan Harus Diisi!",
+            type: "warning", 
+            allowOutsideClick: true,
+          });
+          return false;
+        }
+        else if (document.getElementById('nominaledit{{$pengeluaran_rinci_modal->id}}').value === '') {
+          swal({
+            title: "Nominal Pencairan Harus Diisi!",
+            type: "warning",
+            allowOutsideClick: true, 
+          });
+          return false;
+        }
+        else if (document.getElementById('keteranganedit{{$pengeluaran_rinci_modal->id}}').value === '') {
+          swal({
+            title: "Keterangan Pencairan Harus Diisi!",
+            type: "warning",
+            allowOutsideClick: true, 
+          });
+          return false;
+        }
+    });
+  });
+</script>
+@endforeach
 </body>
 </html>
