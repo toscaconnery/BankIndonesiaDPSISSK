@@ -12,7 +12,7 @@
 <body>
   <div class="form">
 
-    <center><img src="logo-BI.jpg" style="width:300px; height:130px;"></center>
+    <center><img src="logo-bank-indonesia-300x130.png" style="width:300px; height:130px;"></center>
     <br>
     <!-- <ul class="tab-group">
       <li class="tab active"><a href="#signup">PMO</a></li>
@@ -44,7 +44,7 @@
             <input id="password" name="password" type="password" required autocomplete="off"/>
           </div>
           
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          <p class="forgot"><a href="forgot-password">Forgot Password?</a></p>
           
           <button type="submit" class="button button-block">Log In</button>
 

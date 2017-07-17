@@ -77,6 +77,7 @@ Route::post('edit-issue/{id}', 'IssueController@save_edit_issue');
 // PROFILE
 Route::get('edit-profile', 'ProfileController@edit_profile');
 Route::post('edit-profile', 'ProfileController@save_edit_profile');
+Route::get('forgot-password', 'ProfileController@forgot_password');
 Auth::routes();
 
 Route::get('/home', 'DashboardController@index')->name('home');
