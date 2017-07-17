@@ -47,8 +47,9 @@
                   <br>
                   <thead>
                     <tr href='{{url('')}}/list-file-arsip'>
-                      <th>No</th>
+                      <th style="width: 1em">No</th>
                       <th>Nama</th>
+                      <th>Tipe</th>
                       <th>PIC</th>
                       <th>Tanggal Dibuat</th>
                       <th>Action</th>
@@ -62,6 +63,7 @@
                     <tr onclick="window.document.location='{{url('')}}/list-arsip-tahapan-proyek/{{$data->id}}';">
                       <td>{{$x++}}</td>
                       <td>{{$data->nama}}</td>
+                      <td>Folder Proyek</td>
                       <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
                       <td><a href="{{url('')}}/list-arsip-tahapan-proyek/{{$data->id}}"><button>Detail</button></a></td>
@@ -71,6 +73,7 @@
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip/{{$data->id}}';">
                       <td>{{$x++}}</td>
                       <td>{{$data->nama}}</td>
+                      <td>Folder</td>
                       <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
                       <td><a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button>Detail</button></a></td>
