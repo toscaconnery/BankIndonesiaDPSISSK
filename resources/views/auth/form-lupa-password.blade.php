@@ -16,7 +16,7 @@
 
 <body>
   <div class="form">
-    <center><img src="logo-BI.jpg" style="width:300px; height:130px;"></center>
+    <center><img src="logo-bank-indonesia-300x130.png" style="width:300px; height:130px;"></center>
     <br>  
     <form action="{{ route('login') }}" method="post">
       {{ csrf_field() }}

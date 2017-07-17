@@ -25,8 +25,8 @@
     </ul> -->
 
     <ul class="tab-group">
-        <li class="tab active"><a href="#login">Log In</a></li>
-        <li class="tab"><a href="#register">Register</a></li>
+      <li class="tab active"><a href="#login">Log In</a></li>
+      <li class="tab"><a href="#register">Register</a></li>
     </ul>
 
     <div class="tab-content">
@@ -38,7 +38,7 @@
             <label>
               NIP<span class="req">*</span>
             </label>
-            <input id="nip" name="nip" type="text" required autocomplete="off"/>
+            <input id="nip" name="nip" type="text" autocomplete="off"/>
           </div>
 
           <!--Password-->
@@ -46,15 +46,11 @@
             <label>
               Password<span class="req">*</span>
             </label>
-            <input id="password" name="password" type="password" required autocomplete="off"/>
+            <input id="password" name="password" type="password" autocomplete="off"/>
           </div>
           
-<<<<<<< HEAD
           <p class="forgot" data-toggle="modal" data-target="#myModal2" style="cursor: pointer;"><a>Forgot Password?</a></p>
-=======
-          <p class="forgot"><a href="forgot-password">Forgot Password?</a></p>
-          
->>>>>>> 2da0d06d378c8ae9ab87f740fcc34ea78bfbd88b
+
           <button type="submit" class="button button-block">Log In</button>
         </form>
         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -65,8 +61,8 @@
                 <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Masukkan NIP</h3></center>
               </div>
               <div class="modal-body">
-                  <!--Tahun Anggaran-->
-                  <form action="{{ route('login') }}" method="post">
+                <!--Tahun Anggaran-->
+                <form action="{{ route('login') }}" method="post">
                   <div class="field-wrap {{ $errors->has('name') ? ' has-error' : '' }}">
                     <label>
                       NIP<span class="req">*</span>
@@ -74,9 +70,9 @@
                     <input id="pertanyaan" name="pertanyaan" type="number" autocomplete="off"/>
                   </div>
                   @if ($errors->has('name'))
-                    <span class="help-block">
-                      <strong>{{ $errrors->first('name') }}</strong>
-                    </span>
+                  <span class="help-block">
+                    <strong>{{ $errrors->first('name') }}</strong>
+                  </span>
                   @endif
                   <!-- /.box-body -->
                   <div class="modal-footer-new">
@@ -85,7 +81,7 @@
                       <button type="submit" id="validasiform" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
-                  </form>
+                </form>
               </div>
             </div>
           </div>
@@ -103,9 +99,9 @@
             <input id="name" name="name" type="text" autocomplete="off"/>
           </div>
           @if ($errors->has('name'))
-            <span class="help-block">
-              <strong>{{ $errrors->first('name') }}</strong>
-            </span>
+          <span class="help-block">
+            <strong>{{ $errrors->first('name') }}</strong>
+          </span>
           @endif
 
           <!--NIP-->
@@ -116,9 +112,9 @@
             <input id="nip" name="nip" type="text" autocomplete="off"/>
           </div>
           @if ( $errors->has('nip'))
-            <span class="help-block">
-              <strong>{{ $errors->first('nip') }}</strong>
-            </span>
+          <span class="help-block">
+            <strong>{{ $errors->first('nip') }}</strong>
+          </span>
           @endif
 
           <!--Email-->
@@ -129,9 +125,9 @@
             <input id="email" name="email" type="email" autocomplete="off"/>
           </div>
           @if ( $errors->has('email'))
-            <span class="help-block">
-              <strong>{{ $errors->first('email') }}</strong>
-            </span>
+          <span class="help-block">
+            <strong>{{ $errors->first('email') }}</strong>
+          </span>
           @endif
 
           <!--Password-->
@@ -142,7 +138,7 @@
             <input id="password" name="password" type="password" autocomplete="off"/>
           </div>
           @if( $errors->first('password'))
-            <span class="help-block">{{ $errors->first('password') }}</span>
+          <span class="help-block">{{ $errors->first('password') }}</span>
           @endif
 
           <!--Confirmation Password-->
@@ -163,38 +159,38 @@
                 </div>
                 <div class="modal-body">
 
-                    <!--Tahun Anggaran-->
-                    <div class="field-wrap {{ $errors->has('name') ? ' has-error' : '' }}">
-                      <label>
-                        Pertanyaan<span class="req">*</span>
-                      </label>
-                      <input id="pertanyaan" name="pertanyaan" type="text" autocomplete="off"/>
-                    </div>
-                    @if ($errors->has('name'))
-                      <span class="help-block">
-                        <strong>{{ $errrors->first('name') }}</strong>
-                      </span>
-                    @endif
+                  <!--Tahun Anggaran-->
+                  <div class="field-wrap {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label>
+                      Pertanyaan<span class="req">*</span>
+                    </label>
+                    <input id="pertanyaan" name="pertanyaan" type="text" autocomplete="off"/>
+                  </div>
+                  @if ($errors->has('name'))
+                  <span class="help-block">
+                    <strong>{{ $errrors->first('name') }}</strong>
+                  </span>
+                  @endif
 
-                    <div class="field-wrap {{ $errors->has('name') ? ' has-error' : '' }}">
-                      <label>
-                        Jawaban<span class="req">*</span>
-                      </label>
-                      <input id="jawaban" name="jawaban" type="text" autocomplete="off"/>
+                  <div class="field-wrap {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label>
+                      Jawaban<span class="req">*</span>
+                    </label>
+                    <input id="jawaban" name="jawaban" type="text" autocomplete="off"/>
+                  </div>
+                  @if ($errors->has('name'))
+                  <span class="help-block">
+                    <strong>{{ $errrors->first('name') }}</strong>
+                  </span>
+                  @endif
+                  <!-- /.box-body -->
+                  <div class="modal-footer-new">
+                    <div class="field-wrap">
+                      <button type="reset" class="btn btn-danger">Reset</button>
+                      <button type="submit" id="validasiform" class="btn btn-primary">Submit</button>
                     </div>
-                    @if ($errors->has('name'))
-                      <span class="help-block">
-                        <strong>{{ $errrors->first('name') }}</strong>
-                      </span>
-                    @endif
-                    <!-- /.box-body -->
-                    <div class="modal-footer-new">
-                      <div class="field-wrap">
-                        <button type="reset" class="btn btn-danger">Reset</button>
-                        <button type="submit" id="validasiform" class="btn btn-primary">Submit</button>
-                      </div>
-                    </div>
-                 
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -206,7 +202,7 @@
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="js/index.js"></script>
-   <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
+  <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
   <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
   @include('sweet::alert')
 </body>
