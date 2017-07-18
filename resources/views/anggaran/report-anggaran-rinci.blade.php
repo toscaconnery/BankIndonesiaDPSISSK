@@ -40,6 +40,10 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
+                <div class="col-md-7">
+                  <button class="btn btn-primary" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button>
+                </div>
+
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -66,7 +70,7 @@
                   @endforeach
                   </tbody>
                 </table>
-                <center><button class="btn btn-primary" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button></center>
+                <center><a href="{{url('')}}/download-anggaran-rinci/{{$tahun_anggar}}/{{$bulan}}"><button class="btn btn-success" style="font-weight: bold;">Download Laporan</button></a></center>
               </div>
               <!-- /.box-body -->
             </div>

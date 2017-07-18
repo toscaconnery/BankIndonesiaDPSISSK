@@ -390,6 +390,7 @@ class AnggaranController extends Controller
 
     public function report_anggaran_rinci($tahun_anggaran,$idbulan)
     {
+        $this->data['bulan'] = $idbulan;
         $this->data['tahun_anggar'] = $tahun_anggaran;
         $this->data['numbulan'] = $idbulan;
         if($this->data['numbulan']==1)
