@@ -43,9 +43,9 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                      <th>Proyek</th>
                       <th>Tanggal</th>
                       <th>Kategori</th>
-                      <th>Proyek</th>
                       <th>Nominal</th>
                       <th>Keterangan</th>
                       <th>Action</th>
@@ -54,9 +54,9 @@
                   <tbody>
                   @foreach($pengeluaran_rinci as $pengeluaran_rinci)
                     <tr>
+                      <td>{{is_null($pengeluaran_rinci->proyek) ? "-" : $pengeluaran_rinci->proyek}}</td>
                       <td>{{date('d F Y',strtotime($pengeluaran_rinci->tanggal_pencairan))}}</td>
                       <td>{{$pengeluaran_rinci->kategori}}</td>
-                      <td>{{is_null($pengeluaran_rinci->proyek) ? "-" : $pengeluaran_rinci->proyek}}</td>
                       <td>Rp. {{number_format($pengeluaran_rinci->nominal, 0, ',', '.')}}</td>
                       <td>{{$pengeluaran_rinci->keterangan}}</td>
                       <td align="center" 'white-space: nowrap'>

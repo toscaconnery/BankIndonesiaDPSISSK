@@ -65,6 +65,7 @@ Route::post('input-pencairan-anggaran', 'AnggaranController@save_input_pengeluar
 Route::get('report-anggaran-bulanan/{tahun}', 'AnggaranController@report_anggaran_bulanan');
 Route::get('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@report_anggaran_rinci');
 Route::post('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@save_edit_pengeluaran');
+Route::get('download-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@download_anggaran_rinci');
 
 // ISSUE
 Route::get('list-issue', 'IssueController@list_issue');
@@ -100,6 +101,7 @@ Route::get('lupa-password', function() {
 	return view('auth.form-lupa-password');
 });
 
+Route::get('download_pencairan/{type}', 'AnggaranController@downloadPencairan');
 
 
 

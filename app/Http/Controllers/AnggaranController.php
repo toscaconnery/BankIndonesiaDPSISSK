@@ -10,6 +10,7 @@ use Auth;
 use DB;
 use Redirect;
 use Alert;
+use Excel;
 
 class AnggaranController extends Controller
 {
@@ -364,6 +365,29 @@ class AnggaranController extends Controller
         return view('anggaran.input-pencairan-anggaran');
     }
 
+    public function download_anggaran_rinci($tahun_anggaran,$idbulan)
+    {
+        $namaBulan = $this->angka_ke_bulan($idbulan);
+        $type = "xlsx";
+        $pengeluaranObject = DB::select('SELECT p.proyek AS "PROYEK", 
+                                        p.tanggal_pencairan AS "TANGGAL PENCAIRAN",
+                                        p.kategori AS "KATEGORI",
+                                        p.nominal AS "NOMINAL",
+                                        p.keterangan AS "KETERANGAN"
+                                        FROM pencairan p 
+                                        WHERE YEAR(p.tanggal_pencairan) = '.$tahun_anggaran.' AND 
+                                        MONTH(p.tanggal_pencairan) = '.$idbulan.' ORDER BY p.tanggal_pencairan');
+        foreach($pengeluaranObject as $data){
+            $pengeluaranArray[] = (array)$data;
+        }
+
+        return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranArray){
+            $excel->sheet('Pengeluaran', function($sheet) use ($pengeluaranArray) {
+                $sheet->fromArray($pengeluaranArray);
+            });
+        })->download($type);
+    }
+
     public function report_anggaran_rinci($tahun_anggaran,$idbulan)
     {
         $this->data['tahun_anggar'] = $tahun_anggaran;
@@ -563,5 +587,62 @@ class AnggaranController extends Controller
         }
     
         return Redirect::back();
+    }
+
+    public function angka_ke_bulan($angka)
+    {   $bulan = "";
+        if($angka == 1){
+            $bulan = "Januari";
+        }
+        elseif($angka == 2){
+            $bulan = "Februari";
+        }
+        elseif($angka == 3){
+            $bulan = "Maret";
+        }
+        elseif($angka == 4){
+            $bulan = "April";
+        }
+        elseif($angka == 5){
+            $bulan = "Mei";
+        }
+        elseif($angka == 6){
+            $bulan = "Juni";
+        }
+        elseif($angka == 7){
+            $bulan = "Juli";
+        }
+        elseif($angka == 8){
+            $bulan = "Agustus";
+        }
+        elseif($angka == 9){
+            $bulan = "September";
+        }
+        elseif($angka == 10){
+            $bulan = "Oktober";
+        }
+        elseif($angka == 11){
+            $bulan = "November";
+        }
+        elseif($angka == 12){
+            $bulan = "Desember";
+        }
+        return $bulan;
+    }
+
+    public function downloadPencairan($type)
+    {
+        $pencairanx = DB::select('SELECT p.nama, p.kodema AS kODe, p.pic FROM proyek p');
+        foreach($pencairanx as $data){
+            $pencairan[] = (array)$data;
+        }
+        
+        //$pencairan = Pencairan::get()->toArray();
+        //dd($pencairan);
+        return Excel::create('contohFileExcel', function($excel) use ($pencairan){
+            $excel->sheet('mySheet', function($sheet) use ($pencairan) {
+                $sheet->fromArray($pencairan);
+            });
+        })->download($type);
     }
 }
