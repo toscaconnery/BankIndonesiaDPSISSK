@@ -162,7 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        
+        'Maatwebsite\Excel\ExcelServiceProvider',
 
         /*
          * Package Service Providers...
@@ -229,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
     ],
 
