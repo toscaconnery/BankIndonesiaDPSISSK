@@ -240,6 +240,19 @@
               </div>
             </div>
 
+            <!--Proyek-->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Proyek</label>
+              <div class="col-md-9">
+                <select class="form-control" name="proyek" id="proyek" autofocus>
+                  <option value="">Bukan proyek</option>
+                  @foreach($proyek as $data)
+                    <option value="{{$data->nama}}">{{$data->nama}}</option>
+                  @endforeach             
+                </select>
+              </div>
+            </div>
+
             <!--Nominal-->
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>

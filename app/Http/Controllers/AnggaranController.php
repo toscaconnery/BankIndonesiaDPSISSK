@@ -27,6 +27,8 @@ class AnggaranController extends Controller
         
         $this->data['anggaran'] = DB::select('SELECT * from anggaran where tahun='.$tahun.'')[0];
         $this->data['nominal']=DB::select('SELECT MONTH(tanggal_pencairan) as idbulan, MONTHNAME(tanggal_pencairan) as Bulan,COUNT(nominal) as Jumlah FROM pencairan WHERE YEAR(tanggal_pencairan) = '.$tahun.' GROUP BY MONTH(tanggal_pencairan)');
+
+        $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p');
         
         $this->data['totaljanuari'] = 0;
         $this->data['januariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = '.$tahun.' AND p.kategori="RI"')[0];
@@ -495,6 +497,10 @@ class AnggaranController extends Controller
         $pengeluaran->nominal = $nominal;
         $pengeluaran->kategori = $kategori;
         $pengeluaran->keterangan = $keterangan;
+        if(!is_null(Input::get('proyek'))){
+            $pengeluaran->proyek = Input::get('proyek');
+        }
+        
         if( Auth::check() )
         {
             $pengeluaran->pic = Auth::user()->name;

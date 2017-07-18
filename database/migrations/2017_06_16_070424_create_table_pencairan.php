@@ -20,6 +20,7 @@ class CreateTablePencairan extends Migration
             $table->string('keterangan');
             $table->string('pic');
             $table->string('kategori');
+            $table->string('proyek')->nullable();
             $table->timestamps();
         });
     }
