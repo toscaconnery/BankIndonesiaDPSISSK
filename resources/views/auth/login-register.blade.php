@@ -62,12 +62,13 @@
               </div>
               <div class="modal-body">
                 <!--Tahun Anggaran-->
-                <form action="{{ route('login') }}" method="post">
+                <form action="{{ url('') }}/forgot-password" method="post">
                   <div class="field-wrap {{ $errors->has('name') ? ' has-error' : '' }}">
                     <label>
                       NIP<span class="req">*</span>
                     </label>
-                    <input id="pertanyaan" name="pertanyaan" type="number" autocomplete="off"/>
+                    <input id="nipForgotPassword" name="nipForgotPassword" type="number" autocomplete="off"/>
+                    {{ csrf_field() }}
                   </div>
                   @if ($errors->has('name'))
                   <span class="help-block">
@@ -155,16 +156,19 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Pertanyaan Security</h3></center>
+                  <center><h3 class="modal-title" id="myModalLabel" style="font-weight: bold;">Pertanyaan Keamanan</h3></center>
                 </div>
                 <div class="modal-body">
 
-                  <!--Tahun Anggaran-->
+                  <div class="field-wrap">
+                    <center>Pertanyaan keamanan akan digunakan ketika Anda lupa password.</center>
+                  </div>
+
                   <div class="field-wrap {{ $errors->has('name') ? ' has-error' : '' }}">
                     <label>
                       Pertanyaan<span class="req">*</span>
                     </label>
-                    <input id="pertanyaan" name="pertanyaan" type="text" autocomplete="off"/>
+                    <input id="security_question" name="security_question" type="text" autocomplete="off"/>
                   </div>
                   @if ($errors->has('name'))
                   <span class="help-block">
@@ -176,7 +180,7 @@
                     <label>
                       Jawaban<span class="req">*</span>
                     </label>
-                    <input id="jawaban" name="jawaban" type="text" autocomplete="off"/>
+                    <input id="security_answer" name="security_answer" type="text" autocomplete="off"/>
                   </div>
                   @if ($errors->has('name'))
                   <span class="help-block">

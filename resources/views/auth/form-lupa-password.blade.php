@@ -18,24 +18,29 @@
   <div class="form">
     <center><img src="logo-bank-indonesia-300x130.png" style="width:300px; height:130px;"></center>
     <br>  
-    <form action="{{ route('login') }}" method="post">
+    <form action="{{ url('') }}/reset-password" method="post">
       {{ csrf_field() }}
       <!--NIP-->
       <div class="field-wrap">
-        <h2>bla</h2>
+        <center>
+          <h2><font color="#999999">{{$user->name}}</font></h2>
+          <h2><font color="#999999">{{$user->nip}}</font></h2>
+        </center>
       </div>
 
       <!--Password-->
       <div class="field-wrap">
-        <h3>Siapa nama kambing pertama yang melahirkan punyamu?</h3>
+        <h3>{{$user->security_question}}</h3>
       </div>
 
       <div class="field-wrap">
         <label>
           Jawaban<span class="req">*</span>
         </label>
-        <input id="password" name="password" type="password" required autocomplete="off"/>
+        <input id="securityAnswer" name="securityAnswer" type="text" required autocomplete="off"/>
       </div>
+
+      <input type="hidden" name="nip" value="{{$user->nip}}">
 
       <div class="field-wrap">
         <label>
@@ -48,7 +53,7 @@
         <label>
           Ketik Ulang Password Baru<span class="req">*</span>
         </label>
-        <input id="password" name="password" type="password" required autocomplete="off"/>
+        <input id="passwordConfirmation" name="passwordConfirmation" type="password" required autocomplete="off"/>
       </div>
 
       <button type="submit" class="button button-block">Reset</button>

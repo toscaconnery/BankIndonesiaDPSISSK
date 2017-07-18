@@ -7,6 +7,7 @@ use Input;
 use Auth;
 use App\User;
 use Hash;
+use Alert;
 
 class ProfileController extends Controller
 {
@@ -52,5 +53,42 @@ class ProfileController extends Controller
     	else{
     		return redirect('dashboard');
     	}
+    }
+
+    public function halaman_autentikasi()
+    {
+        return view('auth.login-register');
+    }
+
+    public function forgot_password(Request $request)
+    {
+        $nip = $request->nipForgotPassword;
+        $this->data['user'] = User::where('nip', $nip)->first();
+        return view('auth.form-lupa-password', $this->data);
+    }
+
+    public function reset_password(Request $request)
+    {
+        $securityAnswer = $request->securityAnswer;
+        $nip = $request->nip;
+        $password = $request->password;
+        $passwordConfirmation = $request->passwordConfirmation;
+        $user = User::where('nip', $nip)->first();
+        if($user->security_answer == $securityAnswer){
+            if($password == $passwordConfirmation){
+                $user->password = bcrypt($password);
+                $user->save();
+                Alert::success('Password berhasil diubah.');
+                return redirect('autentikasi');
+            }
+            else{
+                Alert::error('Konfirmasi password salah!');
+                return back();
+            }
+        }
+        else{
+            Alert::error('Jawaban tidak benar!');
+            return back();
+        }
     }
 }

@@ -84,9 +84,15 @@ Route::get('/home', 'DashboardController@index')->name('home');
 
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('autentikasi', function() {
-	return view('auth.login-register');
-});
+Route::get('autentikasi', 'ProfileController@halaman_autentikasi');
+Route::post('forgot-password', 'ProfileController@forgot_password');
+Route::post('reset-password', 'ProfileController@reset_password');
+// Route::get('autentikasi', function() {
+// 	return view('auth.login-register');
+// });
+
+//Route::get('forgot-password', 'ProfileController@forgot_password');
+
 Route::get('autentikasi2', function() {
 	return view('auth.login-register2');
 });
