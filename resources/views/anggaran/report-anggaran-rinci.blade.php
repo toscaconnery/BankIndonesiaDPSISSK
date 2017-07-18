@@ -45,6 +45,7 @@
                     <tr>
                       <th>Tanggal</th>
                       <th>Kategori</th>
+                      <th>Proyek</th>
                       <th>Nominal</th>
                       <th>Keterangan</th>
                       <th>Action</th>
@@ -55,6 +56,7 @@
                     <tr>
                       <td>{{date('d F Y',strtotime($pengeluaran_rinci->tanggal_pencairan))}}</td>
                       <td>{{$pengeluaran_rinci->kategori}}</td>
+                      <td>{{is_null($pengeluaran_rinci->proyek) ? "-" : $pengeluaran_rinci->proyek}}</td>
                       <td>Rp. {{number_format($pengeluaran_rinci->nominal, 0, ',', '.')}}</td>
                       <td>{{$pengeluaran_rinci->keterangan}}</td>
                       <td align="center" 'white-space: nowrap'>
@@ -103,6 +105,18 @@
                   <select class="form-control" name="kategoriedit" id="kategoriedit{{$pengeluaran_rinci_edit->id}}" value="{{$pengeluaran_rinci_edit->kategori}}">
                     <option value="RI">RI</option>
                     <option value="OP">OP</option>                 
+                  </select>
+                </div>
+              </div>
+              <!--Proyek-->
+              <div class="form-group">
+                <label for="inputEmail3" class="col-md-3 control-label">Proyek</label>
+                <div class="col-md-9">
+                  <select class="form-control" name="proyek" id="proyek" autofocus>
+                    <option value="">Bukan proyek</option>
+                    @foreach($proyekEdit as $data)
+                      <option value="{{$data->nama}}" {{$data->nama == $pengeluaran_rinci_edit->proyek ? "selected" : ""}}>{{$data->nama}}</option>
+                    @endforeach             
                   </select>
                 </div>
               </div>
@@ -164,6 +178,17 @@
                 </select>
               </div>
             </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-md-3 control-label">Proyek</label>
+                <div class="col-md-9">
+                  <select class="form-control" name="proyek" id="proyek" autofocus>
+                    <option value="">Bukan proyek</option>
+                    @foreach($proyek as $data)
+                      <option value="{{$data->nama}}">{{$data->nama}}</option>
+                    @endforeach             
+                  </select>
+                </div>
+              </div>
             <!--Nominal-->
             <div class="form-group">
               <label for="inputEmail3" class="col-md-3 control-label">Nominal</label>

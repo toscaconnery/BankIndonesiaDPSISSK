@@ -416,7 +416,8 @@ class AnggaranController extends Controller
         {
             $this->data['namabulan']='Desember';
         }        
-
+        $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p');
+        $this->data['proyekEdit'] = DB::select('SELECT p.* FROM proyek p');
         $this->data['pengeluaran_rinci'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.' ORDER BY tanggal_pencairan');
         $this->data['pengeluaran_rinci_edit'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.' ORDER BY tanggal_pencairan');
         $this->data['pengeluaran_rinci_modal'] = DB::select('SELECT * from pencairan where YEAR(tanggal_pencairan) = '.$tahun_anggaran.' and MONTH(tanggal_pencairan) = '.$idbulan.' ORDER BY tanggal_pencairan');
