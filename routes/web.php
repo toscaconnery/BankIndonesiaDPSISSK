@@ -66,6 +66,7 @@ Route::get('report-anggaran-bulanan/{tahun}', 'AnggaranController@report_anggara
 Route::get('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@report_anggaran_rinci');
 Route::post('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@save_edit_pengeluaran');
 Route::get('download-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@download_anggaran_rinci');
+Route::get('download-anggaran-bulanan/{tahun_anggaran}', 'AnggaranController@download_anggaran_bulanan');
 
 // ISSUE
 Route::get('list-issue', 'IssueController@list_issue');

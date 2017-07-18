@@ -35,7 +35,7 @@
       </section>
       <section class="content">
         <div class="row">
-          <div class="col-md-7">
+          <div class="col-md-12">
             <!-- Horizontal Form -->
             <div class="box box-info">
               <div class="box-header with-border">
@@ -52,7 +52,7 @@
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th rowspan="2">No</th>
+                      <th rowspan="2" width="1em">No</th>
                       <th rowspan="2">Bulan</th>
                       <th colspan="6">Nominal Dikeluarkan</th>
                       <th rowspan="2">Rincian</th>
@@ -201,6 +201,7 @@
                     </tr>
                   </tbody>
                 </table>
+                <center><a href="{{url('')}}/download-anggaran-bulanan/{{$tahun_anggaran}}"><button class="btn btn-success" style="font-weight: bold;">Download Laporan</button></a></center>
               </div>
               <!-- /.box-body -->
             </div>

@@ -384,8 +384,98 @@ class AnggaranController extends Controller
         return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranArray){
             $excel->sheet('Pengeluaran', function($sheet) use ($pengeluaranArray) {
                 $sheet->fromArray($pengeluaranArray);
+                $sheet->cell('A1:J1', function($cell){
+                    $cell->setFontColor("#dd4b38");
+                });
             });
         })->download($type);
+    }
+
+    public function download_anggaran_bulanan($tahun_anggaran)
+    {
+        $bulan = array();
+        $anggaran = Anggaran::where('tahun', $tahun_anggaran)->first();
+        if(!is_null($anggaran)){
+            $totalAnggaranRI = $anggaran->ri;
+            $totalAnggaranOP = $anggaran->op;
+            $totalAnggaranNominal = $anggaran->nominal;
+            for($i = 1; $i <= 12; $i++){
+                $bulan[$i]['BULAN'] = $this->angka_ke_bulan($i);
+                $bulan[$i]['RI'] = 0;
+                $bulan[$i]['PENYERAPAN RI'] = 0;
+                $bulan[$i]['OP'] = 0;
+                $bulan[$i]['PENYERAPAN OP'] = 0;
+                $bulan[$i]['TOTAL'] = 0;
+                $bulan[$i]['PENYERAPAN TOTAL'] = 0;
+            }
+
+            $pencairanTahunan = DB::select('SELECT SUM(p.nominal) AS nominal, MONTH(p.tanggal_pencairan) AS bulan, p.kategori AS kategori  FROM pencairan p WHERE YEAR(p.tanggal_pencairan) = '.$tahun_anggaran.' GROUP BY MONTH(p.tanggal_pencairan), p.kategori');
+
+            foreach($pencairanTahunan as $data){
+                if($data->kategori == "RI"){
+                    $bulan[$data->bulan]['RI'] = $data->nominal;
+                }
+                elseif($data->kategori == "OP"){
+                    $bulan[$data->bulan]['OP'] = $data->nominal;
+                }   
+            }
+
+            $riRunDate = 0;
+            $opRunDate = 0;
+            $totalRunDate = 0;
+            for($i = 1; $i <= 12; $i++){
+                //$bulan[$i]['PENYERAPAN RI'] =  number_format($bulan[$i]['PENYERAPAN RI'], 2, '.', '');
+                $bulan[$i]['PENYERAPAN RI'] =  round($bulan[$i]['PENYERAPAN RI'], 2);
+                $bulan[$i]['TOTAL'] = $bulan[$i]['RI'] + $bulan[$i]['OP'];
+                $riRunDate = $riRunDate + $bulan[$i]['RI'];
+                $opRunDate = $opRunDate + $bulan[$i]['OP'];
+                $totalRunDate = $totalRunDate + $bulan[$i]['TOTAL'];
+                $bulan[$i]['PENYERAPAN RI'] = ($riRunDate / (float) $totalAnggaranRI) * 100;
+                $bulan[$i]['PENYERAPAN OP'] = ($opRunDate / (float) $totalAnggaranOP) * 100;
+                $bulan[$i]['PENYERAPAN TOTAL'] = ($totalRunDate / (float) $totalAnggaranNominal) * 100;
+            }
+            //dd($bulan);
+
+            for($i = 1; $i <= 12; $i++){
+                if($bulan[$i]['RI'] == 0){
+                    $bulan[$i]['RI'] = "0";
+                }
+                if($bulan[$i]['OP'] == 0){
+                    $bulan[$i]['OP'] = "0";
+                }
+                if($bulan[$i]['TOTAL'] == 0){
+                    $bulan[$i]['TOTAL'] = "0";
+                }
+                if($bulan[$i]['PENYERAPAN RI'] == 0){
+                    $bulan[$i]['PENYERAPAN RI'] = "0";
+                }
+                if($bulan[$i]['PENYERAPAN OP'] == 0){
+                    $bulan[$i]['PENYERAPAN OP'] = "0";
+                }
+                if($bulan[$i]['PENYERAPAN TOTAL'] == 0){
+                    $bulan[$i]['PENYERAPAN TOTAL'] = "0";
+                }
+
+                $bulan[$i]['PENYERAPAN RI'] = $bulan[$i]['PENYERAPAN RI']."%";
+                $bulan[$i]['PENYERAPAN OP'] = $bulan[$i]['PENYERAPAN OP']."%";
+                $bulan[$i]['PENYERAPAN TOTAL'] = $bulan[$i]['PENYERAPAN TOTAL']."%";
+            }
+
+            return Excel::create('Anggaran Bulanan Tahun '.$tahun_anggaran, function($excel) use ($bulan){
+                $excel->sheet('Pengeluaran ', function($sheet) use ($bulan) {
+                    $sheet->fromArray($bulan);
+                    $sheet->cell('A1:J1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
+                    $sheet->getStyle('B')->getNumberFormat();
+                });
+            })->download('xlsx');
+
+        }
+        else{
+            Alert::error("Tidak ada anggaran ditahun ".$tahun_anggaran."!");
+            return redirect('report-anggaran-tahunan');
+        }    
     }
 
     public function report_anggaran_rinci($tahun_anggaran,$idbulan)
