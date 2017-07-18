@@ -184,8 +184,15 @@ class ArsipController extends Controller
         $folder->tahun = $tahun;
         $folder->path = $tahun."/";
         if($folder->save()){
+            $tahun = Tahun::where('tahun', $folder->tahun)->first();
+            $tahun->non_proyek = $tahun->non_proyek + 1;
+            $tahun->save();
             mkdir($folder->path.$folder->nama);
             Alert::success("Folder telah ditambahkan.");
+            return back();
+        }
+        else{
+            Alert::error("Gagal!");
             return back();
         }
     }
