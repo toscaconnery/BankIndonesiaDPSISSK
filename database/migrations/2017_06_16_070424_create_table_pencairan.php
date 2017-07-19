@@ -16,7 +16,7 @@ class CreateTablePencairan extends Migration
         Schema::create('pencairan', function(Blueprint $table) {
             $table->increments('id');
             $table->date('tanggal_pencairan');
-            $table->integer('nominal');
+            $table->bigInteger('nominal');
             $table->string('keterangan');
             $table->string('pic');
             $table->string('kategori');
