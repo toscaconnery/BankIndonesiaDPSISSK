@@ -30,6 +30,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -140,7 +141,7 @@
               <label for="namaproyek" class="col-sm-3 control-label">Nama Proyek</label>
 
               <div class="col-sm-9">
-                <input name="nama" type="text" class="form-control" id="namaproyek">
+                <input name="nama" type="text" class="form-control" id="namaProyek">
               </div>
             </div>
 
@@ -148,7 +149,7 @@
               <label for="kodema" class="col-sm-3 control-label">Kode MA</label>
 
               <div class="col-sm-9">
-                <input name="kodema" type="text" class="form-control" id="kodema">
+                <input name="kodema" type="text" class="form-control" id="kodeMA">
               </div>
             </div>
             <!--Category-->
@@ -156,18 +157,19 @@
               <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
 
               <div class="col-sm-9">
-                <input name="kategori" type="text" list="kategori" class="form-control"/>
-                <datalist id="kategori">
+                <input name="kategori" type="text" list="listKategori" class="form-control" id="kategori" />
+                <datalist id="listKategori">
                   <option value="Program Strategis">Program Strategis</option>
                   <option value="Ad-Hoc">Ad-Hoc</option>
                   <option value="Small">Small</option>
+                  <option value="PKSI - Non Proyek">PKSI - Non Proyek</option>
                 </datalist>
               </div>
             </div>
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-3 control-label">PIC</label>
               <div class="col-sm-9">
-                <input name="pic" type="text" class="form-control" id="inputEmail3">
+                <input name="pic" type="text" class="form-control" id="pic">
               </div>
             </div>
 
@@ -212,7 +214,7 @@
             <div class="form-group">
               <div class="modal-footer">
                 <button type="reset" class="btn btn-danger">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="buttonSaveProyek">Submit</button>
               </div>
             </div>
             <!-- /.box-body -->
@@ -344,6 +346,8 @@
   <script src="{{url('')}}/dist/js/app.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{url('')}}/dist/js/demo.js"></script>
+  <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
   <!-- page script -->
   <script>
       document.getElementById('ceklis').onchange = function() {
@@ -415,6 +419,54 @@
     //Timepicker
     $(".timepicker").timepicker({
       showInputs: false
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(function(){
+    $("#buttonSaveProyek").click(function(event){
+      if(document.getElementById('namaProyek').value === ''){
+        swal({
+          title: "Nama proyek tidak boleh kosong.",
+          type: "warning",
+          allowOutsideClick: true,
+        });
+        return false;
+      }
+      @foreach($proyekScript as $data)
+      if(document.getElementById('namaProyek').value == "{{$data->nama}}"){
+        swal({
+          title: document.getElementById('namaProyek').value + " sudah ada.",
+          type: "warning",
+          allowOutsideClick: true,
+        });
+        return false;
+      }
+      @endforeach
+      if(document.getElementById('kodeMA').value === ''){
+        swal({
+          title: "Kode MA tidak boleh kosong.",
+          type: "warning",
+          allowOutsideClick: true,
+        });
+        return false;
+      }
+      if(document.getElementById('kategori').value === ''){
+        swal({
+          title: "Kategori tidak boleh kosong.",
+          type: "warning",
+          allowOutsideClick: true,
+        });
+        return false;
+      }
+      if(document.getElementById('pic').value === ''){
+        swal({
+          title: "PIC tidak boleh kosong.",
+          type: "warning",
+          allowOutsideClick: true,
+        });
+        return false;
+      }
     });
   });
 </script>

@@ -14,6 +14,7 @@ use App\KelengkapanProyek;
 use App\Tahun;
 use Auth;
 use File;
+use Alert;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -21,6 +22,7 @@ class ProjectController extends Controller
     public function list_proyek()
     {
         $this->data['proyek'] = DB::select('SELECT p.* FROM proyek p ORDER BY p.created_at DESC');
+        $this->data['proyekScript'] = $this->data['proyek'];
         $this->data['modalProyek'] = $this->data['proyek'];
         $kelengkapanProyek = DB::select('SELECT k.*, p.nama, p.jenis FROM kelengkapan_proyek k, proyek p WHERE p.id = k.id_proyek ORDER BY k.created_at DESC');
         $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
@@ -199,6 +201,8 @@ class ProjectController extends Controller
         $kelengkapan = new KelengkapanProyek;
         $kelengkapan->id_proyek = $proyek->id;
         $kelengkapan->save();
+
+        Alert::success("Proyek ditambahkan");
 
         return redirect('list-proyek');
     }

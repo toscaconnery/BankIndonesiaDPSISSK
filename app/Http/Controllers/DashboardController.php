@@ -113,7 +113,7 @@ class DashboardController extends Controller
 
             //Menghitung tahap pengajuan
             if($data->spesifikasi_kebutuhan == 'Done'){
-                $this->data['kelengkapanProyek'][$data->iid_proyekd]['pengajuan']++;
+                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
             }
             if($data->use_case_effort_estimation == 'Done'){
                 $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;

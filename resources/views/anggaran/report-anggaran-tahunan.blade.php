@@ -100,6 +100,7 @@
                     @endforeach
                   </tbody>
                 </table>
+                <center><a href="{{url('')}}/download-anggaran-tahunan"><button class="btn btn-success" style="font-weight: bold;">Download Laporan</button></a></center>
               </div>
               <!-- /.box -->
             </div>
