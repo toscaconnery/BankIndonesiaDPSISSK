@@ -17,6 +17,7 @@ class CreateTableMasterFile extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->string('tahapan');
+            $table->string('jenis');
             $table->timestamps();
         });
     }
