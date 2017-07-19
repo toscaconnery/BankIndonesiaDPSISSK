@@ -483,7 +483,30 @@ class AnggaranController extends Controller
 
     public function download_anggaran_tahunan()
     {
-        $this->data['anggaran'] = DB::select('SELECT a.*,used_ri+used_op as used_total, ROUND(used_ri * 100.0 / ri, 2) as persen_ri, ROUND(used_op * 100.0 / op, 2) as persen_op, nominal-used_ri-used_op as sisa, ROUND((used_ri+used_op) * 100.0 / nominal, 2) as persen_realisasi, ROUND(100-(used_ri+used_op) * 100.0 / nominal, 2) as persen_used FROM anggaran a ORDER BY a.created_at DESC');
+        $anggaran = DB::select('SELECT a.tahun AS "TAHUN", a.ri AS "RI", a.op AS "OP", a.nominal AS "TOTAL",  
+                                a.used_ri AS "REALISASI RI", ROUND(a.used_ri * 100.0 / a.ri, 2) AS "PERSEN REALISASI RI",
+                                a.used_op AS "REALISASI OP", ROUND(a.used_op * 100.0 / a.op, 2) AS "PERSEN REALISASI OP",
+                                a.used_ri + a.used_op AS "REALISASI TOTAL", ROUND((a.used_ri + a.used_op) * 100.0 / a.nominal, 2) AS "PERSEN REALISASI TOTAL",
+                                a.nominal - a.used_ri - a.used_op AS "SISA", ROUND((a.nominal - a.used_ri - a.used_op) * 100.0 / a.nominal) AS "PERSEN SISA"
+                                FROM anggaran a ORDER BY a.created_at ASC');
+        foreach($anggaran as $data){
+            $anggaranTahunan[] = (array)$data;
+        }
+        foreach($anggaranTahunan as $data){
+            if($data['REALISASI RI'] == 0){
+                $data['REALISASI RI'] = ROUND($data['REALISASI RI'] * 100.0, 2);
+                //number_format($data['REALISASI RI'], 2) * 100;
+            }
+        }
+        //dd($anggaranTahunan);
+        return Excel::create('Anggaran Tahunan', function($excel)use ($anggaranTahunan){
+            $excel->sheet('List Anggaran Tahunan', function($sheet) use ($anggaranTahunan){
+                $sheet->fromArray($anggaranTahunan);
+                $sheet->cell('A1:L1', function($cell){
+                    $cell->setFontColor("#dd4b38");
+                });
+            });
+        })->download('xlsx');
     }
 
     public function download_anggaran_bulanan($tahun_anggaran)
