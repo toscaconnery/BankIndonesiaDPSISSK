@@ -16,6 +16,7 @@ use Auth;
 use File;
 use Alert;
 use Illuminate\Support\Facades\Storage;
+use DateTime;
 
 class ProjectController extends Controller
 {
@@ -25,155 +26,213 @@ class ProjectController extends Controller
         $this->data['proyekScript'] = $this->data['proyek'];
         $this->data['modalProyek'] = $this->data['proyek'];
         $kelengkapanProyek = DB::select('SELECT k.*, p.nama, p.jenis FROM kelengkapan_proyek k, proyek p WHERE p.id = k.id_proyek ORDER BY k.created_at DESC');
-        $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
-        //dd($pic);
+        // $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
+        // //dd($pic);
         $this->data['kelengkapanProyek'] = array();
-        foreach($kelengkapanProyek as $data){
-            $this->data['kelengkapanProyek'][$data->id_proyek]['nama'] = $data->nama;
-            $this->data['kelengkapanProyek'][$data->id_proyek]['id'] = $data->id;
-            $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan'] = 0;
-            $this->data['kelengkapanProyek'][$data->id_proyek]['disain'] = 0;
-            $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan'] = 0;
-            $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian'] = 0;
-            $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi'] = 0;
-            $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi'] = 0;
+        // foreach($kelengkapanProyek as $data){
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['nama'] = $data->nama;
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['id'] = $data->id;
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan'] = 0;
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['disain'] = 0;
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan'] = 0;
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian'] = 0;
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi'] = 0;
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi'] = 0;
 
-            //Inisiasi PIC
-            $this->data['kelengkapanProyek'][$data->id_proyek]['picPengajuan'] = "-";
-            $this->data['kelengkapanProyek'][$data->id_proyek]['picDisain'] = "-";
-            $this->data['kelengkapanProyek'][$data->id_proyek]['picPengembangan'] = "-";
-            $this->data['kelengkapanProyek'][$data->id_proyek]['picPengujian'] = "-";
-            $this->data['kelengkapanProyek'][$data->id_proyek]['picSiapImplementasi'] = "-";
-            $this->data['kelengkapanProyek'][$data->id_proyek]['picImplementasi'] = "-";
+        //     //Inisiasi PIC
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['picPengajuan'] = "-";
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['picDisain'] = "-";
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['picPengembangan'] = "-";
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['picPengujian'] = "-";
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['picSiapImplementasi'] = "-";
+        //     $this->data['kelengkapanProyek'][$data->id_proyek]['picImplementasi'] = "-";
 
-            //Menghitung tahap pengajuan
-            if($data->spesifikasi_kebutuhan == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
-            }
-            if($data->use_case_effort_estimation == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
-            }
-            if($data->solusi_si == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
-            }
-            if($data->proposal == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
-            }
-            if($data->jadwal == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
-            }
+        //     //Menghitung tahap pengajuan
+        //     if($data->spesifikasi_kebutuhan == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
+        //     }
+        //     if($data->use_case_effort_estimation == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
+        //     }
+        //     if($data->solusi_si == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
+        //     }
+        //     if($data->proposal == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
+        //     }
+        //     if($data->jadwal == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengajuan']++;
+        //     }
 
-            //Menghitung tahap disain
-            if($data->fnds == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
-            }
-            if($data->disain_rinci == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
-            }
-            if($data->traceability_matrix == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
-            }
+        //     //Menghitung tahap disain
+        //     if($data->fnds == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
+        //     }
+        //     if($data->disain_rinci == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
+        //     }
+        //     if($data->traceability_matrix == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['disain']++;
+        //     }
 
-            //Menghitung tahap pengembangan
-            if($data->dokumentasi_program == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
-            }
-            if($data->paket_unit_test == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
-            }
-            if($data->laporan_unit_test == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
-            }
+        //     //Menghitung tahap pengembangan
+        //     if($data->dokumentasi_program == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
+        //     }
+        //     if($data->paket_unit_test == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
+        //     }
+        //     if($data->laporan_unit_test == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengembangan']++;
+        //     }
             
 
-            //Menghitung tahap pengujian
-            if($data->rencana_sit == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
-            }
-            if($data->paket_sit == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
-            }
-            if($data->laporan_sit == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
-            }
-            if($data->paket_test_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
-            }
-            if($data->rencana_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
-            }
-            if($data->ba_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
-            }
-            if($data->laporan_uat == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
-            }
+        //     //Menghitung tahap pengujian
+        //     if($data->rencana_sit == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
+        //     }
+        //     if($data->paket_sit == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
+        //     }
+        //     if($data->laporan_sit == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
+        //     }
+        //     if($data->paket_test_uat == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
+        //     }
+        //     if($data->rencana_uat == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
+        //     }
+        //     if($data->ba_uat == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
+        //     }
+        //     if($data->laporan_uat == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['pengujian']++;
+        //     }
             
-            //Menghitung tahap siap implementasi
-            if($data->juknis_instalasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+        //     //Menghitung tahap siap implementasi
+        //     if($data->juknis_instalasi == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+        //     }
+        //     if($data->juknis_operasional == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+        //     }
+        //     if($data->rencana_deployment == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+        //     }
+        //     if($data->ba_migrasi_data == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+        //     }
+        //     if($data->ba_serah_terima_operasional == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+        //     }
+        //     if($data->ba_serah_terima_psi == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+        //     }
+
+        //     //Menghitung tahap implementasi
+        //     if($data->rencana_implementasi == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
+        //     }
+        //     if($data->juknis_aplikasi == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
+        //     }
+        //     if($data->ba_implementasi == 'Done'){
+        //         $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
+        //     }
+            
+            // $this->data['kelengkapanProyek'][$data->id]['persenPengajuan'] = ($this->data['kelengkapanProyek'][$data->id]['pengajuan']/5) * 100;
+            // if($data->jenis == 'Outsource'){
+            //     $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/3) * 100;
+            // }
+            // elseif($data->jenis == 'Inhouse'){
+            //     $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/2) * 100;
+            // }
+            // $this->data['kelengkapanProyek'][$data->id]['persenPengembangan'] = ($this->data['kelengkapanProyek'][$data->id]['pengembangan']/3) * 100;
+            // $this->data['kelengkapanProyek'][$data->id]['persenPengujian'] = ($this->data['kelengkapanProyek'][$data->id]['pengujian']/7) * 100;
+            // $this->data['kelengkapanProyek'][$data->id]['persenSiapImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['siapImplementasi']/6) * 100;
+            // $this->data['kelengkapanProyek'][$data->id]['persenImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['implementasi']/3) * 100;
+        // }
+
+        // foreach($pic as $pic){
+        //     if($pic->nama == 'Pengajuan'){
+        //         $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengajuan'] = $pic->pic;
+        //     }
+        //     elseif($pic->nama == 'Disain'){
+        //         $this->data['kelengkapanProyek'][$pic->id_proyek]['picDisain'] = $pic->pic;
+        //     }
+        //     elseif($pic->nama == 'Pengembangan'){
+        //         $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengembangan'] = $pic->pic;
+        //     }
+        //     elseif($pic->nama == 'Pengujian'){
+        //         $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengujian'] = $pic->pic;
+        //     }
+        //     elseif($pic->nama == 'Siap Implementasi'){
+        //         $this->data['kelengkapanProyek'][$pic->id_proyek]['picSiapImplementasi'] = $pic->pic;
+        //     }
+        //     elseif($pic->nama == 'Implementasi'){
+        //         $this->data['kelengkapanProyek'][$pic->id_proyek]['picImplementasi'] = $pic->pic;
+        //     }
+        // }
+        $this->data['kelengkapanProyek'] = $this->cek_kelengkapan_proyek();
+        //dd($this->data['kelengkapanProyek']);
+        // dd($this->data['kelengkapanProyek'], $ha);
+        //dd($ha);
+        return view('proyek.list-proyek', $this->data);
+    }
+
+    public function cek_kelengkapan_proyek()
+    {
+        $proyek = DB::select('SELECT p.* FROM proyek p');
+        $listTahapanInhouse = DB::select('SELECT l.* FROM list_tahapan l WHERE l.jenis = "Inhouse"');
+        $listTahapanOutsource = DB::select('SELECT l.* FROM list_tahapan l');
+        $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
+        $tahapanSelesai = DB::select('SELECT k.id_proyek, COUNT(k.parameter) AS selesai, m.tahapan FROM master_file m, kelengkapan_proyek k WHERE m.nama = k.parameter AND k.status = "Done" GROUP BY k.id_proyek, m.tahapan');
+
+        $kelengkapanProyek = array();
+        foreach($proyek as $data){
+            $kelengkapanProyek[$data->id]['nama'] = $data->nama;
+            $kelengkapanProyek[$data->id]['id'] = $data->id;
+            $kelengkapanProyek[$data->id]['jenis'] = $data->jenis;
+            $kelengkapanProyek[$data->id]['listTahapan'] = array();
+
+            
+            if($kelengkapanProyek[$data->id]['jenis'] == "Inhouse"){
+                $kelengkapanProyek[$data->id]['listTahapan'] = DB::select('SELECT l.* FROM list_tahapan l WHERE l.jenis = "Inhouse"');
+                foreach($listTahapanInhouse as $list){
+                    $kelengkapanProyek[$data->id][$list->nama] = 0;
+                }
+                foreach($listTahapanInhouse as $list){
+                    $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
+                }
+                foreach($listTahapanInhouse as $list){
+                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //perlu pembagi disini
+                }
             }
-            if($data->juknis_operasional == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
-            }
-            if($data->rencana_deployment == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
-            }
-            if($data->ba_migrasi_data == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
-            }
-            if($data->ba_serah_terima_operasional == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
-            }
-            if($data->ba_serah_terima_psi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['siapImplementasi']++;
+            elseif($kelengkapanProyek[$data->id]['jenis'] == "Outsource"){
+                $kelengkapanProyek[$data->id]['listTahapan'] = DB::select('SELECT l.* FROM list_tahapan l');
+                foreach($listTahapanOutsource as $list){
+                    $kelengkapanProyek[$data->id][$list->nama] = 0;
+                }
+                foreach($listTahapanOutsource as $list){
+                    $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
+                }
+                foreach($listTahapanOutsource as $list){
+                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //perlu pembagi disini
+                }
             }
 
-            //Menghitung tahap implementasi
-            if($data->rencana_implementasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
-            }
-            if($data->juknis_aplikasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
-            }
-            if($data->ba_implementasi == 'Done'){
-                $this->data['kelengkapanProyek'][$data->id_proyek]['implementasi']++;
-            }
-            
-            $this->data['kelengkapanProyek'][$data->id]['persenPengajuan'] = ($this->data['kelengkapanProyek'][$data->id]['pengajuan']/5) * 100;
-            if($data->jenis == 'Outsource'){
-                $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/3) * 100;
-            }
-            elseif($data->jenis == 'Inhouse'){
-                $this->data['kelengkapanProyek'][$data->id]['persenDisain'] = ($this->data['kelengkapanProyek'][$data->id]['disain']/2) * 100;
-            }
-            $this->data['kelengkapanProyek'][$data->id]['persenPengembangan'] = ($this->data['kelengkapanProyek'][$data->id]['pengembangan']/3) * 100;
-            $this->data['kelengkapanProyek'][$data->id]['persenPengujian'] = ($this->data['kelengkapanProyek'][$data->id]['pengujian']/7) * 100;
-            $this->data['kelengkapanProyek'][$data->id]['persenSiapImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['siapImplementasi']/6) * 100;
-            $this->data['kelengkapanProyek'][$data->id]['persenImplementasi'] = ($this->data['kelengkapanProyek'][$data->id]['implementasi']/3) * 100;
         }
-
-        foreach($pic as $pic){
-            if($pic->nama == 'Pengajuan'){
-                $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengajuan'] = $pic->pic;
-            }
-            elseif($pic->nama == 'Disain'){
-                $this->data['kelengkapanProyek'][$pic->id_proyek]['picDisain'] = $pic->pic;
-            }
-            elseif($pic->nama == 'Pengembangan'){
-                $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengembangan'] = $pic->pic;
-            }
-            elseif($pic->nama == 'Pengujian'){
-                $this->data['kelengkapanProyek'][$pic->id_proyek]['picPengujian'] = $pic->pic;
-            }
-            elseif($pic->nama == 'Siap Implementasi'){
-                $this->data['kelengkapanProyek'][$pic->id_proyek]['picSiapImplementasi'] = $pic->pic;
-            }
-            elseif($pic->nama == 'Implementasi'){
-                $this->data['kelengkapanProyek'][$pic->id_proyek]['picImplementasi'] = $pic->pic;
-            }
+        foreach($pic as $data){
+            $kelengkapanProyek[$data->id_proyek]["PIC ".$data->nama] = $data->pic;
         }
-    	return view('proyek.list-proyek', $this->data);
+        
+        foreach($tahapanSelesai as $data){
+            $kelengkapanProyek[$data->id_proyek][$data->tahapan] = $data->selesai;
+        }
+        
+        return($kelengkapanProyek);
+
     }
 
     public function save_input_proyek() //done
@@ -198,9 +257,22 @@ class ProjectController extends Controller
         $proyek->save();
 
         //Mempersiapkan kelengkapan file proyek
-        $kelengkapan = new KelengkapanProyek;
-        $kelengkapan->id_proyek = $proyek->id;
-        $kelengkapan->save();
+        //Harusnya: query dulu semua masterfile, buat loop untuk masukin kelengkapan file sebanyak masterfile
+        if($proyek->jenis == "Inhouse"){
+            $masterFile = DB::select('SELECT m.* FROM master_file m WHERE m.jenis = "Inhouse"');
+        }
+        elseif($proyek->jenis == "Outsource"){
+            $masterFile = DB::select('SELECT m.* FROM master_file m');
+        }
+        foreach($masterFile as $data){
+            $kelengkapan = new KelengkapanProyek;
+            $kelengkapan->id_proyek = $proyek->id;
+            $kelengkapan->parameter = $data->nama;
+            $kelengkapan->save();
+        }
+        // $kelengkapan = new KelengkapanProyek;
+        // $kelengkapan->id_proyek = $proyek->id;
+        // $kelengkapan->save();
 
         Alert::success("Proyek ditambahkan");
 
@@ -257,7 +329,7 @@ class ProjectController extends Controller
         $this->data['modalTahapan'] = $this->data['tahapan'];
         $proyek = Proyek::find($id);
         $this->data['namaProyek'] = $proyek->nama;
-    	return view('proyek.input-tahap-proyek', $this->data);
+        return view('proyek.input-tahap-proyek', $this->data);
     }
 
     public function save_input_tahap_proyek($id)
@@ -447,8 +519,10 @@ class ProjectController extends Controller
             $tahapan->status = "Finish";
             $tahapan->tgl_real_selesai = date("Y-m-d");
             $tahapan->save();
+            Alert::success("Tahapan diselesaikan.");
             return redirect('input-tahap-proyek/'.$tahapan->id_proyek);
         }
+        Alert::warning("Selesaikan semua sub tahapan terlebih dahulu.");
         return redirect('input-sub-tahapan/'.$id);
     }
 
@@ -935,6 +1009,18 @@ class ProjectController extends Controller
             $diizinkan = $diizinkan + 1;
         }
         return $diizinkan; 
+    }
+
+    public function download_kalender_mingguan_proyek($tahun)
+    {
+        //dd($tahun);
+        $haha = DB::select('SELECT t.* FROM tahapan_proyek t WHERE YEAR(t.tgl_mulai) = '.$tahun);
+        
+        $tanggalStart = $tahun."-01-01";
+        $tanggalEnd = $tahun."-12-31";
+        $start = new DateTime($tanggalStart);
+        $end = new DateTime($tanggalEnd);
+
     }
 
 }

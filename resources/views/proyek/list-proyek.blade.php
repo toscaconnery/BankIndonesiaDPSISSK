@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SI PMO&RMS</title>
+  <title>SIMPANG BI</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{url('')}}/bootstrap2/css/bootstrap.min.css">
@@ -242,72 +242,22 @@
               <th style="width: 40px">Presentase</th>
               <th>PIC</th>
             </tr>
+            @php
+              $x = 1;
+            @endphp
+            @foreach($data['listTahapan'] as $list)
             <tr>
-              <td>1.</td>
-              <td>Pengajuan</td>
+              <td>{{$x++}}.</td>
+              <td>{{$list->nama}}</td>
               <td>
                 <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengajuan']}}%"></div>
+                  <div class="progress-bar progress-bar-primary" style="width: {{$data['Persen '.$list->nama]}}%"></div>
                 </div>
               </td>
-              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengajuan'],0); ?>%</span></td>
-              <td>{{$data['picPengajuan']}}</td>
+              <td><span class="badge bg-light-blue"><?php echo number_format($data['Persen '.$list->nama],0); ?>%</span></td>
+              <td>{{$data['PIC '.$list->nama]}}</td>
             </tr>
-            <tr>
-              <td>2.</td>
-              <td>Disain</td>
-              <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenDisain']}}%"></div>
-                </div>
-              </td>
-              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenDisain'],0); ?>%</span></td>
-              <td>{{$data['picDisain']}}</td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>Pengembangan</td>
-              <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengembangan']}}%"></div>
-                </div>
-              </td>
-              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengembangan'],0); ?>%</span></td>
-              <td>{{$data['picPengembangan']}}</td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td>Pengujian</td>
-              <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenPengujian']}}%"></div>
-                </div>
-              </td>
-              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenPengujian'],0); ?>%</span></td>
-              <td>{{$data['picPengujian']}}</td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td>Siap Implementasi</td>
-              <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenSiapImplementasi']}}%"></div>
-                </div>
-              </td>
-              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenSiapImplementasi'],0); ?>%</span></td>
-              <td>{{$data['picSiapImplementasi']}}</td>
-            </tr>
-            <tr>
-              <td>6.</td>
-              <td>Implementasi</td>
-              <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-primary" style="width: {{$data['persenImplementasi']}}%"></div>
-                </div>
-              </td>
-              <td><span class="badge bg-light-blue"><?php echo number_format($data['persenImplementasi'],0); ?>%</span></td>
-              <td>{{$data['picImplementasi']}}</td>
-            </tr>
+            @endforeach 
           </table>
         </div>
       </div>
@@ -347,7 +297,7 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{url('')}}/dist/js/demo.js"></script>
   <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
-    @include('sweet::alert')
+  @include('sweet::alert')
   <!-- page script -->
   <script>
       document.getElementById('ceklis').onchange = function() {
