@@ -367,6 +367,84 @@ class AnggaranController extends Controller
 
     public function download_anggaran_rinci($tahun_anggaran,$idbulan)
     {
+        //BAGIAN BULAN
+        $anggaran = Anggaran::where('tahun', $tahun_anggaran)->first();
+        if(!is_null($anggaran)){
+            $totalAnggaranRI = $anggaran->ri;
+            $totalAnggaranOP = $anggaran->op;
+            $totalAnggaranNominal = $anggaran->nominal;
+            for($i = 1; $i <= $idbulan; $i++){
+                $bulan[$i]['BULAN'] = $this->angka_ke_bulan($i);
+                $bulan[$i]['RI'] = 0;
+                $bulan[$i]['PENYERAPAN RI'] = 0;
+                $bulan[$i]['OP'] = 0;
+                $bulan[$i]['PENYERAPAN OP'] = 0;
+                $bulan[$i]['TOTAL'] = 0;
+                $bulan[$i]['PENYERAPAN TOTAL'] = 0;
+            }
+            $pencairanTahunan = DB::select('SELECT SUM(p.nominal) AS nominal, MONTH(p.tanggal_pencairan) AS bulan, p.kategori AS kategori  FROM pencairan p WHERE YEAR(p.tanggal_pencairan) = '.$tahun_anggaran.' GROUP BY MONTH(p.tanggal_pencairan), p.kategori');
+
+            foreach($pencairanTahunan as $data){
+                if($data->kategori == "RI"){
+                    $bulan[$data->bulan]['RI'] = $data->nominal;
+                }
+                elseif($data->kategori == "OP"){
+                    $bulan[$data->bulan]['OP'] = $data->nominal;
+                }   
+            }
+            $riRunDate = 0;
+            $opRunDate = 0;
+            $totalRunDate = 0;
+            for($i = 1; $i <= $idbulan; $i++){
+                //$bulan[$i]['PENYERAPAN RI'] =  number_format($bulan[$i]['PENYERAPAN RI'], 2, '.', '');
+                $bulan[$i]['PENYERAPAN RI'] =  round($bulan[$i]['PENYERAPAN RI'], 2);
+                $bulan[$i]['TOTAL'] = $bulan[$i]['RI'] + $bulan[$i]['OP'];
+                $riRunDate = $riRunDate + $bulan[$i]['RI'];
+                $opRunDate = $opRunDate + $bulan[$i]['OP'];
+                $totalRunDate = $totalRunDate + $bulan[$i]['TOTAL'];
+                $bulan[$i]['PENYERAPAN RI'] = ($riRunDate / (float) $totalAnggaranRI) * 100;
+                $bulan[$i]['PENYERAPAN OP'] = ($opRunDate / (float) $totalAnggaranOP) * 100;
+                $bulan[$i]['PENYERAPAN TOTAL'] = ($totalRunDate / (float) $totalAnggaranNominal) * 100;
+            }
+            for($i = 1; $i <= $idbulan; $i++){
+                if($bulan[$i]['RI'] == 0){
+                    $bulan[$i]['RI'] = "0";
+                }
+                if($bulan[$i]['OP'] == 0){
+                    $bulan[$i]['OP'] = "0";
+                }
+                if($bulan[$i]['TOTAL'] == 0){
+                    $bulan[$i]['TOTAL'] = "0";
+                }
+                if($bulan[$i]['PENYERAPAN RI'] == 0){
+                    $bulan[$i]['PENYERAPAN RI'] = "0";
+                }
+                if($bulan[$i]['PENYERAPAN OP'] == 0){
+                    $bulan[$i]['PENYERAPAN OP'] = "0";
+                }
+                if($bulan[$i]['PENYERAPAN TOTAL'] == 0){
+                    $bulan[$i]['PENYERAPAN TOTAL'] = "0";
+                }
+
+                $bulan[$i]['PENYERAPAN RI'] = $bulan[$i]['PENYERAPAN RI']."%";
+                $bulan[$i]['PENYERAPAN OP'] = $bulan[$i]['PENYERAPAN OP']."%";
+                $bulan[$i]['PENYERAPAN TOTAL'] = $bulan[$i]['PENYERAPAN TOTAL']."%";
+            }
+        }
+        $pengeluaranBulan = array();
+        $pengeluaranBulan[0] = $bulan[$idbulan];
+
+        //BAGIAN TAHUN
+        $pengeluaranTahun[0]['TAHUN'] = $anggaran->tahun;
+        $pengeluaranTahun[0]['RI'] = $anggaran->ri;
+        $pengeluaranTahun[0]['OP'] = $anggaran->op;
+        $pengeluaranTahun[0]['TOTAL'] = $anggaran->nominal;
+        $pengeluaranTahun[0]['REALISASI RI'] = $anggaran->used_ri;
+        $pengeluaranTahun[0]['REALISASI OP'] = $anggaran->used_op;
+        $pengeluaranTahun[0]['REALISASI TOTAL'] = $anggaran->used_ri + $anggaran->used_op;
+        $pengeluaranTahun[0]['SISA ANGGARAN'] = $anggaran->nominal - $anggaran->used_ri - $anggaran->used_op;
+
+        //BAGIAN RINCI
         $namaBulan = $this->angka_ke_bulan($idbulan);
         $type = "xlsx";
         $pengeluaranObject = DB::select('SELECT p.proyek AS "PROYEK", 
@@ -378,17 +456,57 @@ class AnggaranController extends Controller
                                         WHERE YEAR(p.tanggal_pencairan) = '.$tahun_anggaran.' AND 
                                         MONTH(p.tanggal_pencairan) = '.$idbulan.' ORDER BY p.tanggal_pencairan');
         foreach($pengeluaranObject as $data){
-            $pengeluaranArray[] = (array)$data;
+            $pengeluaranRinci[] = (array)$data;
         }
 
-        return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranArray){
-            $excel->sheet('Pengeluaran', function($sheet) use ($pengeluaranArray) {
-                $sheet->fromArray($pengeluaranArray);
+        return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranRinci, $pengeluaranBulan, $pengeluaranTahun){
+            $excel->sheet('Pengeluaran Rinci', function($sheet) use ($pengeluaranRinci) {
+                $sheet->fromArray($pengeluaranRinci);
+                $sheet->cell('A1:J1', function($cell){
+                    $cell->setFontColor("#dd4b38");
+                });
+            });
+            $excel->sheet('Data Bulan', function($sheet) use ($pengeluaranBulan) {
+                $sheet->fromArray($pengeluaranBulan);
+                $sheet->cell('A1:J1', function($cell){
+                    $cell->setFontColor("#dd4b38");
+                });
+            });
+            $excel->sheet('Data Tahun', function($sheet) use ($pengeluaranTahun) {
+                $sheet->fromArray($pengeluaranTahun);
                 $sheet->cell('A1:J1', function($cell){
                     $cell->setFontColor("#dd4b38");
                 });
             });
         })->download($type);
+    }
+
+    public function download_anggaran_tahunan()
+    {
+        $anggaran = DB::select('SELECT a.tahun AS "TAHUN", a.ri AS "RI", a.op AS "OP", a.nominal AS "TOTAL",  
+                                a.used_ri AS "REALISASI RI", ROUND(a.used_ri * 100.0 / a.ri, 2) AS "PERSEN REALISASI RI",
+                                a.used_op AS "REALISASI OP", ROUND(a.used_op * 100.0 / a.op, 2) AS "PERSEN REALISASI OP",
+                                a.used_ri + a.used_op AS "REALISASI TOTAL", ROUND((a.used_ri + a.used_op) * 100.0 / a.nominal, 2) AS "PERSEN REALISASI TOTAL",
+                                a.nominal - a.used_ri - a.used_op AS "SISA", ROUND((a.nominal - a.used_ri - a.used_op) * 100.0 / a.nominal) AS "PERSEN SISA"
+                                FROM anggaran a ORDER BY a.created_at ASC');
+        foreach($anggaran as $data){
+            $anggaranTahunan[] = (array)$data;
+        }
+        foreach($anggaranTahunan as $data){
+            if($data['REALISASI RI'] == 0){
+                $data['REALISASI RI'] = ROUND($data['REALISASI RI'] * 100.0, 2);
+                //number_format($data['REALISASI RI'], 2) * 100;
+            }
+        }
+        //dd($anggaranTahunan);
+        return Excel::create('Anggaran Tahunan', function($excel)use ($anggaranTahunan){
+            $excel->sheet('List Anggaran Tahunan', function($sheet) use ($anggaranTahunan){
+                $sheet->fromArray($anggaranTahunan);
+                $sheet->cell('A1:L1', function($cell){
+                    $cell->setFontColor("#dd4b38");
+                });
+            });
+        })->download('xlsx');
     }
 
     public function download_anggaran_bulanan($tahun_anggaran)

@@ -30,13 +30,7 @@ Route::get('delete-folder-sub-tahapan/{id_folder}', 'ProjectController@delete_fo
 Route::post('edit-tahapan-proyek/{id_tahapan}', 'ProjectController@edit_tahapan_proyek');
 
 // ARSIP
-
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');											// just template
-//Route::get('list-arsip-proyek/{id_tahun}', 'ArsipController@list_arsip_proyek');
-//Route::get('input-arsip', 'ArsipController@input_arsip');
-//Route::get('list-arsip', 'ArsipController@list_arsip');
-//Route::post('list-arsip', 'ArsipController@save_input_folder');
-
 Route::get('download-file/{id}', 'ArsipController@download_file');											//
 Route::get('list-tahun-arsip', 'ArsipController@list_tahun_arsip');											//
 Route::get('list-file-tahun-arsip/{tahun}', 'ArsipController@list_file_tahun_arsip');						//
@@ -67,6 +61,7 @@ Route::get('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranControll
 Route::post('report-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@save_edit_pengeluaran');
 Route::get('download-anggaran-rinci/{tahun_anggaran}/{idbulan}', 'AnggaranController@download_anggaran_rinci');
 Route::get('download-anggaran-bulanan/{tahun_anggaran}', 'AnggaranController@download_anggaran_bulanan');
+Route::get('download-anggaran-tahunan', 'AnggaranController@download_anggaran_tahunan');
 
 // ISSUE
 Route::get('list-issue', 'IssueController@list_issue');
