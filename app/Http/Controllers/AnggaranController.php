@@ -492,21 +492,28 @@ class AnggaranController extends Controller
         foreach($anggaran as $data){
             $anggaranTahunan[] = (array)$data;
         }
-        foreach($anggaranTahunan as $data){
-            if($data['REALISASI RI'] == 0){
-                $data['REALISASI RI'] = ROUND($data['REALISASI RI'] * 100.0, 2);
-                //number_format($data['REALISASI RI'], 2) * 100;
-            }
-        }
+            
         //dd($anggaranTahunan);
-        return Excel::create('Anggaran Tahunan', function($excel)use ($anggaranTahunan){
-            $excel->sheet('List Anggaran Tahunan', function($sheet) use ($anggaranTahunan){
-                $sheet->fromArray($anggaranTahunan);
-                $sheet->cell('A1:L1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+        if(isset($anggaranTahunan)){
+            foreach($anggaranTahunan as $data){
+                if($data['REALISASI RI'] == 0){
+                    $data['REALISASI RI'] = ROUND($data['REALISASI RI'] * 100.0, 2);
+                    //number_format($data['REALISASI RI'], 2) * 100;
+                }
+            }
+            return Excel::create('Anggaran Tahunan', function($excel)use ($anggaranTahunan){
+                $excel->sheet('List Anggaran Tahunan', function($sheet) use ($anggaranTahunan){
+                    $sheet->fromArray($anggaranTahunan);
+                    $sheet->cell('A1:L1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-        })->download('xlsx');
+            })->download('xlsx');
+        }
+        else{
+            Alert::error("Tidak ada data.");
+            return back();
+        }
     }
 
     public function download_anggaran_bulanan($tahun_anggaran)
