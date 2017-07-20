@@ -19,7 +19,7 @@ class DashboardController extends Controller
                                             WHERE i.status = "On Progress" 
                                             OR i.status = "Pending" 
                                             ORDER BY i.created_at DESC');
-        $this->data['anggaran'] = DB::select('SELECT tahun,ri,op,(ri-used_ri) as sisa_ri,(op-used_op) as sisa_op from anggaran where tahun=YEAR(now()) limit 1');
+        $this->data['anggaran'] = DB::select('SELECT tahun,ri,ao,(ri-used_ri) as sisa_ri,(ao-used_ao) as sisa_ao from anggaran where tahun=YEAR(now()) limit 1');
     	// dd($this->data['anggaran']);
         $this->data['anggaranada']=1;
         if(empty($this->data['anggaran']))
@@ -30,40 +30,40 @@ class DashboardController extends Controller
         // $this->data['anggaran2'] = 
         // dd($this->data['anggaran']);
         $this->data['januariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['januariOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['januariAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 1 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['februariRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['februariOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['februariAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 2 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['maretRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 3 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['maretOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 3 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['maretAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 3 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['aprilRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 4 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['aprilOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 4 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['aprilAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 4 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['meiRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) =  5 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['meiOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) =  5 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['meiAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) =  5 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['juniRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 6 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['juniOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 6 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['juniAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 6 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['juliRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 7 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['juliOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 7 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['juliAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 7 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['agustusRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 8 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['agustusOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 8 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['agustusAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 8 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['septemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 9 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['septemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 9 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['septemberAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 9 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['oktoberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 10 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['oktoberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 10 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['oktoberAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 10 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['novemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 11 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['novemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 11 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['novemberAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 11 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
         
         $this->data['desemberRI'] = DB::select('SELECT SUM(p.nominal) as sumri FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="RI"')[0];
-        $this->data['desemberOP'] = DB::select('SELECT SUM(p.nominal) as sumop FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="OP"')[0];
+        $this->data['desemberAO'] = DB::select('SELECT SUM(p.nominal) as sumao FROM pencairan p WHERE MONTH(p.tanggal_pencairan) = 12 AND YEAR(p.tanggal_pencairan) = YEAR(now()) AND p.kategori="AO"')[0];
 
         $this->data['forecast'] = $this->getEndYearForecast();
         $this->data['progressProyek'] = $this->getProgressProyek();

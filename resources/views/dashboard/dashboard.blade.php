@@ -68,7 +68,7 @@
                 <div class="inner">
                   <h3>Budget</h3>
                   <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->ri, 0, ',', '.') : 0}}</p>
-                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->op, 0, ',', '.') : 0}}</p>
+                  <p>AO : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->ao, 0, ',', '.') : 0}}</p>
 
                 </div>
                 <div class="icon">
@@ -80,7 +80,7 @@
                   <h3>Rest</h3>
 
                   <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_ri, 0, ',', '.') : 0}}</p>
-                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_op, 0, ',', '.') : 0}}</p>
+                  <p>AO : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_ao, 0, ',', '.') : 0}}</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -308,21 +308,21 @@
       {{isset($desemberRI->sumri) ? number_format($desemberRI->sumri, 0, ',', '.') : 0 }} 
       ]
     }, {
-      name: 'OP',
+      name: 'AO',
       data:
       [
-      {{isset($januariOP->sumop) ? number_format($januariOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($februariOP->sumop) ? number_format($februariOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($maretOP->sumop) ? number_format($maretOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($aprilOP->sumop) ? number_format($aprilOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($meiOP->sumop) ? number_format($meiOP->sumop, 0, ',', '.') : 0 }},  
-      {{isset($juniOP->sumop) ? $juniOP->sumop : 0 }}, 
-      {{isset($juliOP->sumop) ? $juliOP->sumop : 0 }}, 
-      {{isset($agustusOP->sumop) ? number_format($agustusOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($septemberOP->sumop) ? number_format($septemberOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($oktoberOP->sumop) ? number_format($oktoberOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($novemberOP->sumop) ? number_format($novemberOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($desemberOP->sumop) ? number_format($desemberOP->sumop, 0, ',', '.') : 0 }} 
+      {{isset($januariAO->sumao) ? number_format($januariAO->sumao, 0, ',', '.') : 0 }}, 
+      {{isset($februariAO->sumao) ? number_format($februariAO->sumao, 0, ',', '.') : 0 }}, 
+      {{isset($maretAO->sumao) ? number_format($maretAO->sumao, 0, ',', '.') : 0 }}, 
+      {{isset($aprilAO->sumao) ? number_format($aprilAO->sumao, 0, ',', '.') : 0 }}, 
+      {{isset($meiAO->sumao) ? number_format($meiAO->sumao, 0, ',', '.') : 0 }},  
+      {{isset($juniAO->sumao) ? $juniAO->sumao : 0 }}, 
+      {{isset($juliAO->sumao) ? $juliAO->sumao : 0 }}, 
+      {{isset($agustusAO->sumao) ? number_format($agustusAO->sumao, 0, ',', '.') : 0 }},
+      {{isset($septemberAO->sumao) ? number_format($septemberAO->sumao, 0, ',', '.') : 0 }},
+      {{isset($oktoberAO->sumao) ? number_format($oktoberAO->sumao, 0, ',', '.') : 0 }},
+      {{isset($novemberAO->sumao) ? number_format($novemberAO->sumao, 0, ',', '.') : 0 }},
+      {{isset($desemberAO->sumao) ? number_format($desemberAO->sumao, 0, ',', '.') : 0 }} 
       ]
     }]
   });

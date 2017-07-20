@@ -54,10 +54,10 @@
                     </tr>
                     <tr>
                       <th rowspan="2">RI</th>
-                      <th rowspan="2">OP</th>
+                      <th rowspan="2">AO</th>
                       <th rowspan="2">Total</th>
                       <th colspan="2">RI</th>
-                      <th colspan="2">OP</th>
+                      <th colspan="2">AO</th>
                       <th colspan="2">Total</th>
                       <th rowspan="2">Angka</th>
                       <th rowspan="2">%</th>
@@ -78,12 +78,12 @@
                     <tr>
                       <td align="center">{{$anggaran->tahun}}</td>
                       <td>Rp. {{ number_format($anggaran->ri, 0, ',', '.') }}</td>  {{-- ri dianggarkan --}}
-                      <td>Rp. {{ number_format($anggaran->op, 0, ',', '.') }}</td>  {{-- op dianggarkan --}}
+                      <td>Rp. {{ number_format($anggaran->ao, 0, ',', '.') }}</td>  {{-- ao dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->nominal, 0, ',', '.') }}</td>  {{-- total dianggarkan --}}
                       <td>Rp. {{ number_format($anggaran->used_ri, 0, ',', '.') }}</td>  {{-- ri realisasi --}}
                       <td>{{$anggaran->persen_ri}}%</td>  {{-- persen ri realisasi --}}
-                      <td>Rp. {{ number_format($anggaran->used_op, 0, ',', '.') }}</td>  {{-- op realisasi --}}
-                      <td>{{$anggaran->persen_op}}%</td> {{-- persen op realisasi --}}
+                      <td>Rp. {{ number_format($anggaran->used_ao, 0, ',', '.') }}</td>  {{-- ao realisasi --}}
+                      <td>{{$anggaran->persen_ao}}%</td> {{-- persen ao realisasi --}}
                       <td>Rp. {{ number_format($anggaran->used_total, 0, ',', '.') }}</td>  {{-- total realisasi --}}
                       <td>{{$anggaran->persen_realisasi}}%</td> {{-- persen total realisasi --}}
                       <td>Rp. {{ number_format($anggaran->sisa, 0, ',', '.') }}</td> {{-- sisa anggaran --}}
@@ -145,11 +145,11 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-md-3 control-label">Anggaran OP</label>
+                  <label for="inputEmail3" class="col-md-3 control-label">Anggaran AO</label>
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">Rp</span>
-                      <input type="number" class="form-control" id="opEdit{{$anggaranedit->id}}" name="opEdit" onkeyup="calc()" value="{{$anggaranedit->op}}">
+                      <input type="number" class="form-control" id="aoEdit{{$anggaranedit->id}}" name="aoEdit" onkeyup="calc()" value="{{$anggaranedit->ao}}">
                     </div>
                   </div>
                 </div>
@@ -211,11 +211,11 @@
               </div>
 
               <div class="form-group">
-                <label for="inputEmail3" class="col-md-3 control-label">Anggaran OP</label>
+                <label for="inputEmail3" class="col-md-3 control-label">Anggaran AO</label>
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon">Rp</span>
-                    <input type="number" class="form-control" id="op" name="op" onkeyup="calc()" autofocus required>
+                    <input type="number" class="form-control" id="ao" name="ao" onkeyup="calc()" autofocus required>
                   </div>
                 </div>
               </div>
@@ -279,9 +279,9 @@
               });
               return false;
             }
-            else if (document.getElementById('op').value === '') {
+            else if (document.getElementById('ao').value === '') {
               swal({
-                title: "Anggaran OP Harus Diisi!",
+                title: "Anggaran AO Harus Diisi!",
                 type: "warning", 
                 allowOutsideClick: true,
               });
@@ -302,7 +302,7 @@
       function calc()
       {
         var elm = document.forms["anggarantahunan"];
-        elm["nominal"].value = parseInt(elm["ri"].value) + parseInt(elm["op"].value);
+        elm["nominal"].value = parseInt(elm["ri"].value) + parseInt(elm["ao"].value);
       }
     </script>
     <script>
@@ -330,9 +330,9 @@
               });
               return false;
             }
-            else if (document.getElementById('opEdit{{$anggaranscript->id}}').value === '') {
+            else if (document.getElementById('aoEdit{{$anggaranscript->id}}').value === '') {
               swal({
-                title: "Anggaran OP Harus Diisi!",
+                title: "Anggaran AO Harus Diisi!",
                 type: "warning", 
                 allowOutsideClick: true,
               });
@@ -353,7 +353,7 @@
       $(document).ready(function(){
           $("#anggarantahunanedit{{$anggaranscript->id}}").keyup(function(){
               var val1 = +$("#riEdit{{$anggaranscript->id}}").val();
-              var val2 = +$("#opEdit{{$anggaranscript->id}}").val();
+              var val2 = +$("#aoEdit{{$anggaranscript->id}}").val();
               $("#nominalEdit{{$anggaranscript->id}}").val(val1+val2);
          });
       });

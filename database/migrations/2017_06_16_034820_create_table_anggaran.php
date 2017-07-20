@@ -19,9 +19,9 @@ class CreateTableAnggaran extends Migration
             $table->bigInteger('nominal');
             $table->string('pic');
             $table->bigInteger('ri');
-            $table->bigInteger('op');
+            $table->bigInteger('ao');
             $table->bigInteger('used_ri');
-            $table->bigInteger('used_op');
+            $table->bigInteger('used_ao');
             $table->timestamps();
         });
     }

@@ -108,7 +108,7 @@
                 <div class="col-md-9">
                   <select class="form-control" name="kategoriedit" id="kategoriedit{{$pengeluaran_rinci_edit->id}}" value="{{$pengeluaran_rinci_edit->kategori}}">
                     <option value="RI">RI</option>
-                    <option value="OP">OP</option>                 
+                    <option value="AO">AO</option>                 
                   </select>
                 </div>
               </div>
@@ -178,7 +178,7 @@
               <div class="col-md-9">
                 <select class="form-control" name="kategori" id="kategori">
                   <option value="RI">RI</option>
-                  <option value="OP">OP</option>                 
+                  <option value="AO">AO</option>                 
                 </select>
               </div>
             </div>
