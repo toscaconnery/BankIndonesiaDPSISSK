@@ -28,6 +28,7 @@ Route::get('delete-file-sub-tahapan/{id_file}', 'ProjectController@delete_file_s
 Route::get('delete-sub-tahapan/{id_sub_tahapan}', 'ProjectController@delete_sub_tahapan');
 Route::get('delete-folder-sub-tahapan/{id_folder}', 'ProjectController@delete_folder_sub_tahapan');
 Route::post('edit-tahapan-proyek/{id_tahapan}', 'ProjectController@edit_tahapan_proyek');
+Route::get('test/{tahun}', 'ProjectController@download_kalender_mingguan_proyek');
 
 // ARSIP
 Route::get('list-file-arsip', 'ArsipController@list_file_arsip');											// just template
