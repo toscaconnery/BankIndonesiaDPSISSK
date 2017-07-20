@@ -61,22 +61,22 @@
                     @endphp
                     @foreach($listFolderProyek as $data)
                     <tr onclick="window.document.location='{{url('')}}/list-arsip-tahapan-proyek/{{$data->id}}';">
-                      <td>{{$x++}}</td>
+                      <td align="center">{{$x++}}</td>
                       <td>{{$data->nama}}</td>
                       <td>Folder Proyek</td>
                       <td>{{$data->pic}}</td>
-                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
-                      <td><a href="{{url('')}}/list-arsip-tahapan-proyek/{{$data->id}}"><button>Detail</button></a></td>
+                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d F Y')}}</td>
+                      <td align="center"><a href="{{url('')}}/list-arsip-tahapan-proyek/{{$data->id}}"><button>Detail</button></a></td>
                     </tr>
                     @endforeach
                     @foreach($listFolderNonProyek as $data)
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip/{{$data->id}}';">
-                      <td>{{$x++}}</td>
+                      <td align="center">{{$x++}}</td>
                       <td>{{$data->nama}}</td>
                       <td>Folder</td>
                       <td>{{$data->pic}}</td>
-                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
-                      <td><a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button>Detail</button></a></td>
+                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d F Y')}}</td>
+                      <td align="center"><a href="{{url('')}}/list-file-arsip/{{$data->id}}"><button>Detail</button></a></td>
                     </tr>
                     @endforeach
                   </table>

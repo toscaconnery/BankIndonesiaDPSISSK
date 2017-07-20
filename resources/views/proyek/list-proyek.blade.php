@@ -88,10 +88,10 @@
                       <td>{{$proyek->nama}}</td>
                       <td align="center">{{$proyek->kategori}}</td>
                       <td>{{$proyek->pic}}</td>
-                      <td>{{$proyek->tgl_mulai}}</td>
-                      <td>{{$proyek->tgl_selesai}}</td>
-                      <td>{{$proyek->tgl_real_mulai ? $proyek->tgl_real_mulai : '-'}}</td>
-                      <td>{{$proyek->tgl_real_selesai ? $proyek->tgl_real_selesai : '-'}}</td>
+                      <td>{{date('d F Y',strtotime($proyek->tgl_mulai))}}</td>
+                      <td>{{date('d F Y',strtotime($proyek->tgl_selesai))}}</td>
+                      <td>{{$proyek->tgl_real_mulai ? date('d F Y',strtotime($proyek->tgl_real_mulai)) : '-'}}</td>
+                      <td>{{$proyek->tgl_real_selesai ? date('d F Y',strtotime($proyek->tgl_real_selesai)) : '-'}}</td>
                       <td align="center">{{$proyek->jenis}}</td>
                       <td align="center">{{$proyek->status}}</td>
                       <center>
@@ -226,7 +226,7 @@
   </div>
 
   @foreach($kelengkapanProyek as $data)
-  <div class="modal" id="modalKelengkapan{{$data['id']}}" tabindex="-1" role="dialog" aria-labelledby="kelengkapanLabel">
+  <div class="modal fade" id="modalKelengkapan{{$data['id']}}" tabindex="-1" role="dialog" aria-labelledby="kelengkapanLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

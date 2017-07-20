@@ -113,16 +113,12 @@
                   <br>
                   <thead>
                     <tr>
-                      <th width="1em">No</th>
+                      <th width="1em" align="center">No</th>
                       <th>Nama</th>
                       <th>Tipe</th>
                       <th>PIC</th>
                       <th>Tanggal</th>
-                      <th width="2em">
-                        <center>
-                          Action
-                        </center>
-                      </th>
+                      <th align="center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -131,17 +127,15 @@
                     @endphp
                     @foreach($folderSubTahapan as $data)
                     <tr>
-                      <td>{{ $x++ }}</td>
+                      <td align="center">{{ $x++ }}</td>
                       <td>{{ $data->nama }}</td>
                       <td>Folder</td>
                       <td>{{ $data->pic }}</td>
-                      <td>{{ $data->created_at }}</td>
-                      <center>
-                        <td width>
-                          <a href="{{url('')}}/list-file-sub-tahapan/{{ $id_sub_tahapan }}/{{ $data->id }}"><button class="btn btn-primary">Buka</button></a>
-                          <a href="{{url('')}}/delete-folder-sub-tahapan/{{ $data->id }}"><button class="btn btn-primary">Hapus</button></a>
-                        </td>
-                      </center>
+                      <td>{{date('d F Y',strtotime($data->created_at))}}</td>
+                      <td align="center">
+                        <a href="{{url('')}}/list-file-sub-tahapan/{{ $id_sub_tahapan }}/{{ $data->id }}"><button class="btn btn-primary">Buka</button></a>
+                        <a href="{{url('')}}/delete-folder-sub-tahapan/{{ $data->id }}"><button class="btn btn-primary">Hapus</button></a>
+                      </td>
                     </tr>
                     @endforeach
 
@@ -217,8 +211,6 @@
             </div>
           </div>
         </div>
-
-
         <br>
       </div>
       @include('layouts.footer')
