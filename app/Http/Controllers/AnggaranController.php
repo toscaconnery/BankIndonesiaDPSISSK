@@ -743,7 +743,12 @@ class AnggaranController extends Controller
         $keterangan = Input::get('keterangan');
         $year = intval($tanggal);
         // dd($year);
-
+        $anggaranTahunan = Anggaran::where('tahun', $year)->first();
+        if(!isset($anggaranTahunan)){
+            Alert::error("Tidak ada anggaran di tahun ".$year.".");
+            return back();
+        }
+        
         $pengeluaran = new Pencairan;
         $pengeluaran->tanggal_pencairan = $tanggal;
         $pengeluaran->nominal = $nominal;
