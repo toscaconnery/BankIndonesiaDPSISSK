@@ -8,7 +8,7 @@ class KelengkapanProyek extends Model
 {
     protected $table = 'kelengkapan_proyek';
     protected $fillable = [
-    	'id_proyek', 'parameter', 'status',
+    	'id_proyek', 'parameter', 'tahapan', 'status',
      //    'spesifikasi_kebutuhan', 'use_case_effort_estimation',
     	// 'solusi_si', 'proposal', 'jadwal',
     	// 'fnds', 'disain_rinci', 'traceability_matrix',

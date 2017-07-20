@@ -50,6 +50,7 @@ class CreateTableKelengkapanProyek extends Migration
             $table->increments('id');
             $table->integer('id_proyek');
             $table->string('parameter');
+            $table->string('tahapan');
             $table->string('status')->nullable();
             $table->timestamps();
         });

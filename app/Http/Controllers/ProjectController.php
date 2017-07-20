@@ -196,9 +196,22 @@ class ProjectController extends Controller
             $kelengkapanProyek[$data->id]['jenis'] = $data->jenis;
             $kelengkapanProyek[$data->id]['listTahapan'] = array();
 
-            
+            //dd($kelengkapanProyek[$data->id]['listTahapanPembagi']);
+            //harus mendapatkan jumlah sub tahapan tiap tahapan,
+            //menghitung jumlah sub tahapan yang sudah dikerjakan
+            //menghitung persen dengan kedua nilainya
+            $listSubTahapanSelesai = DB::select('SELECT k.tahapan, COUNT(k.parameter) AS jumlah FROM kelengkapan_proyek k WHERE k.id_proyek = '.$data->id.' AND k.status = "Done" GROUP BY k.tahapan');
+            $listSubTahapanPembagi = DB::select('SELECT k.tahapan, COUNT(k.parameter) AS jumlah FROM kelengkapan_proyek k WHERE k.id_proyek = '.$data->id.' GROUP BY k.tahapan');   //masukkan ke array biar bisa diakses dengan cepat dari pada looping object berkali-kali
+            $arrayPembagi = array();
+            foreach($listSubTahapanPembagi as $pembagi){
+                $arrayPembagi[$pembagi->tahapan] = $pembagi->jumlah;
+            }
+
             if($kelengkapanProyek[$data->id]['jenis'] == "Inhouse"){
                 $kelengkapanProyek[$data->id]['listTahapan'] = DB::select('SELECT l.* FROM list_tahapan l WHERE l.jenis = "Inhouse"');
+                $listTahapanPembagiInhouse2 = DB::select('SELECT m.tahapan AS tahapan, COUNT(m.nama) AS jumlah FROM master_file m WHERE m.jenis = "Inhouse" GROUP BY m.tahapan');
+            
+                //dd($listSubTahapanSelesai, $listSubTahapanPembagi);
                 foreach($listTahapanInhouse as $list){
                     $kelengkapanProyek[$data->id][$list->nama] = 0;
                 }
@@ -206,11 +219,18 @@ class ProjectController extends Controller
                     $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
                 }
                 foreach($listTahapanInhouse as $list){
-                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //perlu pembagi disini
+                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;
                 }
+                foreach($listSubTahapanSelesai as $list){
+                    $kelengkapanProyek[$data->id]["Persen ".$list->tahapan] = ($list->jumlah / (float) $arrayPembagi[$list->tahapan]) * 100;
+                }
+                // foreach($listTahapanPembagiInhouse as $list){
+                //     $kelengkapanProyek[$data->id]["Persen ".$list->tahapan] = 0; // / $list->jumlah;   //perlu pembagi disini
+                // }
             }
             elseif($kelengkapanProyek[$data->id]['jenis'] == "Outsource"){
                 $kelengkapanProyek[$data->id]['listTahapan'] = DB::select('SELECT l.* FROM list_tahapan l');
+                $listTahapanPembagiOutsource = DB::select('SELECT m.tahapan AS tahapan, COUNT(m.nama) AS jumlah FROM master_file m GROUP BY m.tahapan');
                 foreach($listTahapanOutsource as $list){
                     $kelengkapanProyek[$data->id][$list->nama] = 0;
                 }
@@ -218,7 +238,7 @@ class ProjectController extends Controller
                     $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
                 }
                 foreach($listTahapanOutsource as $list){
-                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //perlu pembagi disini
+                    $kelengkapanProyek[$data->id]["Persen ".$list->tahapan] = 0;   //perlu pembagi disini
                 }
             }
 
@@ -268,6 +288,7 @@ class ProjectController extends Controller
             $kelengkapan = new KelengkapanProyek;
             $kelengkapan->id_proyek = $proyek->id;
             $kelengkapan->parameter = $data->nama;
+            $kelengkapan->tahapan = $data->tahapan;
             $kelengkapan->save();
         }
         // $kelengkapan = new KelengkapanProyek;
@@ -532,7 +553,12 @@ class ProjectController extends Controller
         $this->data['sub'] = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
         $tahapan = TahapanProyek::find($id);
         $proyek = Proyek::find($tahapan->id_proyek);
-        $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND t.id = '.$id);
+        if($proyek->jenis == "Inhouse"){
+            $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND m.jenis = "Inhouse" AND t.id = '.$id);
+        }
+        elseif($proyek->jenis == "Outsource"){
+            $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND t.id = '.$id);
+        }
         $this->data['namaProyek'] = $proyek->nama;
         $this->data['namaTahapan'] = $tahapan->nama;
         $this->data['id_tahapan'] = $id;
