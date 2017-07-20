@@ -279,9 +279,7 @@ class ProjectController extends Controller
             //     dd("belum selesai", $proyek->tgl_real_selesai, $hariIni);
             // }
         }
-        else{
-            dd("kosong");
-        }
+
         $tahun = $proyek->tgl_mulai->format("Y");
 
         $proyek->save();
@@ -380,7 +378,8 @@ class ProjectController extends Controller
         $tahap->tgl_selesai = $tgl_selesai;
         $tahap->status = 'Pending';
         $tahap->save();
-        
+
+        Alert::success("Tahapan berhasil ditambahkan.");
         return redirect('input-tahap-proyek/'.$id);
     }
 
