@@ -260,8 +260,29 @@ class ProjectController extends Controller
         $tgl_selesai = date_create_from_format("m/d/Y", $text_tgl_selesai);
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
+        $tanggalRealisasi = Input::get('tanggalRealisasi');
+        if(!is_null(!$tanggalRealisasi)){
+            $text_tgl_mulai_realisasi = substr($tanggalRealisasi, 0, 10);
+            $text_tgl_selesai_realisasi = substr($tanggalRealisasi, 13, 23);
+            $tgl_mulai_realisasi = date_create_from_format("m/d/Y", $text_tgl_mulai_realisasi);
+            $tgl_selesai_realisasi = date_create_from_format("m/d/Y", $text_tgl_selesai_realisasi);
+            $proyek->tgl_real_mulai = $tgl_mulai_realisasi;
+            $proyek->tgl_real_selesai = $tgl_selesai_realisasi;
+            $proyek->status = "Finished";
+            //$hariIni = date_create(date("m/d/Y"), now());
+            //$hariIni = date_create(strtotime("now"));
+            // dd($hariIni);
+            // if($proyek->tgl_real_selesai < $hariIni){
+            //     dd("telah selesai", $proyek->tgl_real_selesai, $hariIni);
+            // }
+            // else{
+            //     dd("belum selesai", $proyek->tgl_real_selesai, $hariIni);
+            // }
+        }
+        else{
+            dd("kosong");
+        }
         $tahun = $proyek->tgl_mulai->format("Y");
-        $proyek->status = "Pending";
 
         $proyek->save();
 
@@ -1054,14 +1075,14 @@ class ProjectController extends Controller
             }
         }
 
-        // return Excel::create('Timeline Proyek', function($excel)use ($kalender){
-        //     $excel->sheet('Timeline Proyek', function($sheet) use ($kalender){
-        //         $sheet->fromArray($kalender);
-        //         $sheet->cell('A1:L1', function($cell){
-        //             $cell->setFontColor("#dd4b38");
-        //         });
-        //     });
-        // })->download('xlsx');
+        return Excel::create('Timeline Proyek', function($excel)use ($kalender){
+            $excel->sheet('Timeline Proyek', function($sheet) use ($kalender){
+                $sheet->fromArray($kalender);
+                $sheet->cell('A1:L1', function($cell){
+                    $cell->setFontColor("#dd4b38");
+                });
+            });
+        })->download('xlsx');
 
 
         //dd($tahun);
@@ -1078,12 +1099,12 @@ class ProjectController extends Controller
         
         // dd($tahapan);
         // $date= date("Y-m-d");
-        $date= "2017-02-27";
-        $tanggal = strtotime($date);
+        //$date= "2017-02-27";
+        //$tanggal = strtotime($date);
         //dd($tanggal);
-        $ha = $this->weekOfYear($tanggal);
+        //$ha = $this->weekOfYear($tanggal);
         //dd($date);
-        dd($ha,$date);
+        // dd($ha,$date);
         // dd($kalender);
     }
 
