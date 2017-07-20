@@ -46,7 +46,7 @@
                   <br>
                   <thead>
                     <tr href='{{url('')}}/list-file-arsip'>
-                      <th>No</th>
+                      <th width="1em">No</th>
                       <th>Nama</th>
                       <th>PIC</th>
                       <th>Tanggal Dibuat</th>
@@ -59,11 +59,11 @@
                     @endphp
                     @foreach($tahapan as $data)
                     <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
-                      <td>{{$x++}}</td>
+                      <td align="center">{{$x++}}</td>
                       <td>{{$data->nama}}</td>
                       <td>{{$data->pic}}</td>
-                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
-                      <td><a href="{{url('')}}/list-arsip-proyek/{{$data->id}}"><button>Detail</button></a></td>
+                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d F Y')}}</td>
+                      <td align="center"><a href="{{url('')}}/list-arsip-proyek/{{$data->id}}"><button>Detail</button></a></td>
                     </tr>
                     @endforeach
                   </table>

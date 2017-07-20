@@ -122,10 +122,10 @@
                             <img src="{{url('')}}/icon/check.png" class="pull-right">
                           @endif
                         </td>
-                        <td>{{$tahapan->tgl_mulai}}</td>
-                        <td>{{$tahapan->tgl_selesai}}</td>
-                        <td>{{$tahapan->tgl_real_mulai ? $tahapan->tgl_real_mulai : '-'}}</td>
-                        <td>{{$tahapan->tgl_real_selesai ? $tahapan->tgl_real_selesai : '-'}}</td>
+                        <td>{{date('d F Y',strtotime($tahapan->tgl_mulai))}}</td>
+                        <td>{{date('d F Y',strtotime($tahapan->tgl_selesai))}}</td>
+                        <td>{{$tahapan->tgl_real_mulai ? date('d F Y',strtotime($tahapan->tgl_real_mulai)) : '-'}}</td>
+                        <td>{{$tahapan->tgl_real_selesai ? date('d F Y',strtotime($tahapan->tgl_real_selesai)) : '-'}}</td>
                         <td>{{$tahapan->pic}}</td>
                         <td>{{$tahapan->status}}</td>
                           <center>

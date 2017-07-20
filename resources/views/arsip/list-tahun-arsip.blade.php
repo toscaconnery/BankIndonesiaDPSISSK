@@ -57,11 +57,11 @@
                   <tbody>
                     @foreach($tahun as $data)
                     <tr onclick="window.document.location='{{url('')}}/list-file-tahun-arsip/{{$data->tahun}}';">
-                      <td>{{$data->tahun}}</td>
-                      <td>{{$data->proyek}}</td>
-                      <td>{{$data->non_proyek}}</td>
-                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d-F-Y')}}</td>
-                      <td><a href="{{url('')}}/list-file-tahun-arsip/{{$data->tahun}}"><button>Detail</button></a></td>
+                      <td align="center">{{$data->tahun}}</td>
+                      <td align="center">{{$data->proyek}}</td>
+                      <td align="center">{{$data->non_proyek}}</td>
+                      <td>{{Carbon\Carbon::parse($data->created_at)->format('d F Y')}}</td>
+                      <td align="center"><a href="{{url('')}}/list-file-tahun-arsip/{{$data->tahun}}"><button>Detail</button></a></td>
                     </tr>
                     @endforeach
                   </table>

@@ -68,7 +68,7 @@
                 <div class="inner">
                   <h3>Budget</h3>
                   <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->ri, 0, ',', '.') : 0}}</p>
-                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->op, 0, ',', '.') : 0}}</p>
+                  <p>AO : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->ao, 0, ',', '.') : 0}}</p>
 
                 </div>
                 <div class="icon">
@@ -80,7 +80,7 @@
                   <h3>Rest</h3>
 
                   <p>RI : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_ri, 0, ',', '.') : 0}}</p>
-                  <p>OP : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_op, 0, ',', '.') : 0}}</p>
+                  <p>AO : Rp {{$anggaranada!=0 ? number_format($anggaran[0]->sisa_ao, 0, ',', '.') : 0}}</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -280,6 +280,8 @@
     },
     tooltip: {
       headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name} : </td>' +
+          '<td style="padding:0"><b>Rp {point.y}</b></td></tr>',
       footerFormat: '</table>',
       shared: true,
       useHTML: true
@@ -294,35 +296,35 @@
       name: 'RI',
       data: 
       [
-      {{isset($januariRI->sumri) ? number_format($januariRI->sumri, 0, ',', '.') : 0 }}, 
-      {{isset($februariRI->sumri) ? number_format($februariRI->sumri, 0, ',', '.') : 0 }}, 
-      {{isset($maretRI->sumri) ? number_format($maretRI->sumri, 0, ',', '.') : 0 }}, 
-      {{isset($aprilRI->sumri) ? number_format($aprilRI->sumri, 0, ',', '.') : 0 }}, 
-      {{isset($meiRI->sumri) ? number_format($meiRI->sumri, 0, ',', '.') : 0 }},  
+      {{isset($januariRI->sumri) ? $januariRI->sumri : 0 }}, 
+      {{isset($februariRI->sumri) ? $februariRI->sumri : 0 }}, 
+      {{isset($maretRI->sumri) ? $maretRI->sumri : 0 }}, 
+      {{isset($aprilRI->sumri) ? $aprilRI->sumri : 0 }}, 
+      {{isset($meiRI->sumri) ? $meiRI->sumri : 0 }},  
       {{isset($juniRI->sumri) ? $juniRI->sumri : 0 }}, 
       {{isset($juliRI->sumri) ? $juliRI->sumri : 0 }}, 
-      {{isset($agustusRI->sumri) ? number_format($agustusRI->sumri, 0, ',', '.') : 0 }},
-      {{isset($septemberRI->sumri) ? number_format($septemberRI->sumri, 0, ',', '.') : 0 }},
-      {{isset($oktoberRI->sumri) ? number_format($oktoberRI->sumri, 0, ',', '.') : 0 }},
-      {{isset($novemberRI->sumri) ? number_format($novemberRI->sumri, 0, ',', '.') : 0 }},
-      {{isset($desemberRI->sumri) ? number_format($desemberRI->sumri, 0, ',', '.') : 0 }} 
+      {{isset($agustusRI->sumri) ? $agustusRI->sumri : 0 }},
+      {{isset($septemberRI->sumri) ? $septemberRI->sumri : 0 }},
+      {{isset($oktoberRI->sumri) ? $oktoberRI->sumri : 0 }},
+      {{isset($novemberRI->sumri) ? $novemberRI->sumri : 0 }},
+      {{isset($desemberRI->sumri) ? $desemberRI->sumri : 0 }} 
       ]
     }, {
-      name: 'OP',
+      name: 'AO',
       data:
       [
-      {{isset($januariOP->sumop) ? number_format($januariOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($februariOP->sumop) ? number_format($februariOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($maretOP->sumop) ? number_format($maretOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($aprilOP->sumop) ? number_format($aprilOP->sumop, 0, ',', '.') : 0 }}, 
-      {{isset($meiOP->sumop) ? number_format($meiOP->sumop, 0, ',', '.') : 0 }},  
-      {{isset($juniOP->sumop) ? $juniOP->sumop : 0 }}, 
-      {{isset($juliOP->sumop) ? $juliOP->sumop : 0 }}, 
-      {{isset($agustusOP->sumop) ? number_format($agustusOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($septemberOP->sumop) ? number_format($septemberOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($oktoberOP->sumop) ? number_format($oktoberOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($novemberOP->sumop) ? number_format($novemberOP->sumop, 0, ',', '.') : 0 }},
-      {{isset($desemberOP->sumop) ? number_format($desemberOP->sumop, 0, ',', '.') : 0 }} 
+      {{isset($januariAO->sumao) ? $januariAO->sumao : 0 }}, 
+      {{isset($februariAO->sumao) ? $februariAO->sumao : 0 }}, 
+      {{isset($maretAO->sumao) ? $maretAO->sumao : 0 }}, 
+      {{isset($aprilAO->sumao) ? $aprilAO->sumao : 0 }}, 
+      {{isset($meiAO->sumao) ? $meiAO->sumao : 0 }},  
+      {{isset($juniAO->sumao) ? $juniAO->sumao : 0 }}, 
+      {{isset($juliAO->sumao) ? $juliAO->sumao : 0 }}, 
+      {{isset($agustusAO->sumao) ? $agustusAO->sumao : 0 }},
+      {{isset($septemberAO->sumao) ? $septemberAO->sumao : 0 }},
+      {{isset($oktoberAO->sumao) ? $oktoberAO->sumao : 0 }},
+      {{isset($novemberAO->sumao) ? $novemberAO->sumao : 0 }},
+      {{isset($desemberAO->sumao) ? $desemberAO->sumao : 0 }}  
       ]
     }]
   });

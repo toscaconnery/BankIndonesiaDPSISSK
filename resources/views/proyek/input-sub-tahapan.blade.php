@@ -115,18 +115,18 @@
                           <img src="{{url('')}}/icon/check.png" class="pull-right">
                         @endif
                       </td>
-                      <td>{{$sub->tgl_mulai}} - {{$sub->tgl_selesai}}</td>
+                      <td>{{date('d F Y',strtotime($sub->tgl_mulai))}} - {{date('d F Y',strtotime($sub->tgl_selesai))}}</td>
                       <td>
                         @if($sub->tgl_real_selesai)
-                        {{$sub->tgl_real_mulai}} - {{$sub->tgl_real_selesai}}
+                        {{date('d F Y',strtotime($sub->tgl_real_mulai))}} - {{date('d F Y',strtotime($sub->tgl_real_selesai))}}
                         @elseif($sub->tgl_real_mulai)
-                        {{$sub->tgl_real_mulai}} - Sekarang
+                        {{date('d F Y',strtotime($sub->tgl_real_mulai))}} - Sekarang
                         @else
                         Belum ada progress
                         @endif
                       </td>
                       <td>{{$sub->pic}}</td>
-                      <td>{{$sub->status}}</td>
+                      <td align="center">{{$sub->status}}</td>
                       <td align="center">
                         {{-- jika belum dimulai --}}
                         @if($sub->status == "Pending")
