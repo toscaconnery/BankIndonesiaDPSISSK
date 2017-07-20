@@ -235,7 +235,7 @@
               <div class="form-group">
                 <div class="modal-footer">
                   <button type="reset" class="btn btn-danger">Reset</button>
-                  <button type="submit" id="validasiform" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="buttonSaveAnggaran" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </form>
@@ -270,7 +270,17 @@
     </script>
     <script>
       $(function() {
-        $("#validasiform").click(function (event) {
+        $("#buttonSaveAnggaran").click(function (event) {
+            @foreach($listAnggaran as $data)
+              if(document.getElementById('pilihtahun').value == "{{$data->tahun}}"){
+                swal({
+                  title: document.getElementById('pilihtahun').value + " sudah ada.",
+                  type: "warning",
+                  allowOutsideClick: true,
+                });
+                return false;
+              }
+              @endforeach
             if (document.getElementById('ri').value === '') {
               swal({
                 title: "Anggaran RI Harus Diisi!",

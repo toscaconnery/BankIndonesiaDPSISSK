@@ -19,6 +19,7 @@ class AnggaranController extends Controller
         $this->data['anggaran'] = DB::select('SELECT a.*,used_ri+used_ao as used_total, ROUND(used_ri * 100.0 / ri, 2) as persen_ri, ROUND(used_ao * 100.0 / ao, 2) as persen_ao, nominal-used_ri-used_ao as sisa, ROUND((used_ri+used_ao) * 100.0 / nominal, 2) as persen_realisasi, ROUND(100-(used_ri+used_ao) * 100.0 / nominal, 2) as persen_used FROM anggaran a ORDER BY a.created_at DESC');
         $this->data['anggaranedit'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
         $this->data['anggaranscript'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
+        $this->data['listAnggaran'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
         return view('anggaran.report-anggaran-tahunan', $this->data);
     }
 
