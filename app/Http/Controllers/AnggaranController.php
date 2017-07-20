@@ -677,6 +677,10 @@ class AnggaranController extends Controller
     	$nominal = Input::get('nominal');
         $ri = Input::get('ri');
         $ao = Input::get('ao');
+        if($ri + $ao != $nominal){
+            Alert::error("Total anggaran salah.");
+            return back();
+        }
 
         $anggaran = new Anggaran;
         $anggaran->tahun = $tahun;
