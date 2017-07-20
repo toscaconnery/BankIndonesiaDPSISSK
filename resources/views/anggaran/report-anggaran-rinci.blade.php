@@ -36,15 +36,14 @@
 
       <section class="content">
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
-                <div class="col-md-7">
-                  <button class="btn btn-primary" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button>
-                </div>
-
+                <button class="btn btn-primary" style="font-weight: bold;" data-toggle="modal" data-target="#myModal2">Pencairan Baru</button>
                 <table id="example1" class="table table-bordered table-striped">
+                <br>
+                <br>
                   <thead>
                     <tr>
                       <th>Proyek</th>
