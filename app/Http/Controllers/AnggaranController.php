@@ -459,26 +459,32 @@ class AnggaranController extends Controller
             $pengeluaranRinci[] = (array)$data;
         }
 
-        return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranRinci, $pengeluaranBulan, $pengeluaranTahun){
-            $excel->sheet('Pengeluaran Rinci', function($sheet) use ($pengeluaranRinci) {
-                $sheet->fromArray($pengeluaranRinci);
-                $sheet->cell('A1:J1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+        if(isset($pengeluaranRinci)){
+            return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranRinci, $pengeluaranBulan, $pengeluaranTahun){
+                $excel->sheet('Pengeluaran Rinci', function($sheet) use ($pengeluaranRinci) {
+                    $sheet->fromArray($pengeluaranRinci);
+                    $sheet->cell('A1:J1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-            $excel->sheet('Data Bulan', function($sheet) use ($pengeluaranBulan) {
-                $sheet->fromArray($pengeluaranBulan);
-                $sheet->cell('A1:J1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+                $excel->sheet('Data Bulan', function($sheet) use ($pengeluaranBulan) {
+                    $sheet->fromArray($pengeluaranBulan);
+                    $sheet->cell('A1:J1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-            $excel->sheet('Data Tahun', function($sheet) use ($pengeluaranTahun) {
-                $sheet->fromArray($pengeluaranTahun);
-                $sheet->cell('A1:J1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+                $excel->sheet('Data Tahun', function($sheet) use ($pengeluaranTahun) {
+                    $sheet->fromArray($pengeluaranTahun);
+                    $sheet->cell('A1:J1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-        })->download($type);
+            })->download($type);
+        }
+        else{
+            Alert::error("Tidak ada data.");
+            return back();
+        }
     }
 
     public function download_anggaran_tahunan()
