@@ -187,7 +187,7 @@ class ProjectController extends Controller
         $listTahapanInhouse = DB::select('SELECT l.* FROM list_tahapan l WHERE l.jenis = "Inhouse"');
         $listTahapanOutsource = DB::select('SELECT l.* FROM list_tahapan l');
         $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
-        $tahapanSelesai = DB::select('SELECT k.id_proyek, COUNT(k.parameter) AS selesai, m.tahapan FROM master_file m, kelengkapan_proyek k WHERE m.nama = k.parameter AND k.status = "Done" GROUP BY k.id_proyek, m.tahapan');
+        // $tahapanSelesai = DB::select('SELECT k.id_proyek, COUNT(k.parameter) AS selesai, m.tahapan FROM master_file m, kelengkapan_proyek k WHERE m.nama = k.parameter AND k.status = "Done" GROUP BY k.id_proyek, m.tahapan');
 
         $kelengkapanProyek = array();
         foreach($proyek as $data){
@@ -196,10 +196,6 @@ class ProjectController extends Controller
             $kelengkapanProyek[$data->id]['jenis'] = $data->jenis;
             $kelengkapanProyek[$data->id]['listTahapan'] = array();
 
-            //dd($kelengkapanProyek[$data->id]['listTahapanPembagi']);
-            //harus mendapatkan jumlah sub tahapan tiap tahapan,
-            //menghitung jumlah sub tahapan yang sudah dikerjakan
-            //menghitung persen dengan kedua nilainya
             $listSubTahapanSelesai = DB::select('SELECT k.tahapan, COUNT(k.parameter) AS jumlah FROM kelengkapan_proyek k WHERE k.id_proyek = '.$data->id.' AND k.status = "Done" GROUP BY k.tahapan');
             $listSubTahapanPembagi = DB::select('SELECT k.tahapan, COUNT(k.parameter) AS jumlah FROM kelengkapan_proyek k WHERE k.id_proyek = '.$data->id.' GROUP BY k.tahapan');   //masukkan ke array biar bisa diakses dengan cepat dari pada looping object berkali-kali
             $arrayPembagi = array();
@@ -214,31 +210,24 @@ class ProjectController extends Controller
                 //dd($listSubTahapanSelesai, $listSubTahapanPembagi);
                 foreach($listTahapanInhouse as $list){
                     $kelengkapanProyek[$data->id][$list->nama] = 0;
-                }
-                foreach($listTahapanInhouse as $list){
                     $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
+                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //Inisialisasi persen
                 }
-                foreach($listTahapanInhouse as $list){
-                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;
+
+                foreach($listSubTahapanSelesai as $listSelesai){
+                    $kelengkapanProyek[$data->id]["Persen ".$listSelesai->tahapan] = ($listSelesai->jumlah / (float) $arrayPembagi[$listSelesai->tahapan]) * 100;
                 }
-                foreach($listSubTahapanSelesai as $list){
-                    $kelengkapanProyek[$data->id]["Persen ".$list->tahapan] = ($list->jumlah / (float) $arrayPembagi[$list->tahapan]) * 100;
-                }
-                // foreach($listTahapanPembagiInhouse as $list){
-                //     $kelengkapanProyek[$data->id]["Persen ".$list->tahapan] = 0; // / $list->jumlah;   //perlu pembagi disini
-                // }
             }
             elseif($kelengkapanProyek[$data->id]['jenis'] == "Outsource"){
                 $kelengkapanProyek[$data->id]['listTahapan'] = DB::select('SELECT l.* FROM list_tahapan l');
                 $listTahapanPembagiOutsource = DB::select('SELECT m.tahapan AS tahapan, COUNT(m.nama) AS jumlah FROM master_file m GROUP BY m.tahapan');
                 foreach($listTahapanOutsource as $list){
                     $kelengkapanProyek[$data->id][$list->nama] = 0;
-                }
-                foreach($listTahapanOutsource as $list){
                     $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
+                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //Inisialisasi persen
                 }
-                foreach($listTahapanOutsource as $list){
-                    $kelengkapanProyek[$data->id]["Persen ".$list->tahapan] = 0;   //perlu pembagi disini
+                foreach($listSubTahapanSelesai as $listSelesai){
+                    $kelengkapanProyek[$data->id]["Persen ".$listSelesai->tahapan] = ($listSelesai->jumlah / (float) $arrayPembagi[$listSelesai->tahapan]) * 100;
                 }
             }
 
@@ -247,9 +236,9 @@ class ProjectController extends Controller
             $kelengkapanProyek[$data->id_proyek]["PIC ".$data->nama] = $data->pic;
         }
         
-        foreach($tahapanSelesai as $data){
-            $kelengkapanProyek[$data->id_proyek][$data->tahapan] = $data->selesai;
-        }
+        // foreach($tahapanSelesai as $data){
+        //     $kelengkapanProyek[$data->id_proyek][$data->tahapan] = $data->selesai;
+        // }
         
         return($kelengkapanProyek);
 
