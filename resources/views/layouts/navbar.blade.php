@@ -8,7 +8,7 @@
           @if(is_null(Auth::user()->image_path))
           <img src="{{url('')}}/icon/account.png" class="img-circle" alt="User Image">
           @else
-          <img src="{{url('')}}/{{Auth::user()->image_path}}" alt="User Image">
+          <img src="{{url('')}}/{{Auth::user()->image_path}}" style="width: 50px; height: 50px;" alt="User Image">
           @endif
         @else
           <img src="{{url('')}}/icon/account.png" class="img-circle" alt="User Image">
