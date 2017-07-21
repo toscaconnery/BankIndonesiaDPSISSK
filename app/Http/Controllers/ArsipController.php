@@ -27,8 +27,8 @@ class ArsipController extends Controller
 
     public function list_arsip_tahapan_proyek($id_folder_proyek)    //See tahapan project on certain project
     {
-        $parentFolder = TabelFolder::find($id_folder_proyek)->first();
-        $proyek = Proyek::find($parentFolder->id_proyek)->first();
+        $parentFolder = TabelFolder::find($id_folder_proyek);
+        $proyek = Proyek::find($parentFolder->id_proyek);
         $this->data['namaProyek'] = $proyek->nama;
         $tahun = date("Y");
         $this->data['tahun'] = $tahun;
