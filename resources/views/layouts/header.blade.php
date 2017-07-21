@@ -53,7 +53,6 @@
               <li class="user-header">
                 <p>
                   Anda harus login terlebih dahulu.
-                  <small>Hehe</small>
                 </p>
               </li>
               <!-- Menu Footer-->
