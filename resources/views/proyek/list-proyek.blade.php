@@ -162,7 +162,7 @@
                   <option value="Program Strategis">Program Strategis</option>
                   <option value="Ad-Hoc">Ad-Hoc</option>
                   <option value="Small">Small</option>
-                  <option value="PKSI - Non Proyek">PKSI - Non Proyek</option>
+                  <option value="PKSI - Non Proyek Strategis">PKSI - Non Proyek Strategis</option>
                 </datalist>
               </div>
             </div>
