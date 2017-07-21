@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <title>SIMPANG BI</title>
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{url('')}}/bootstrap2/css/bootstrap.min.css">
   <!-- Font Awesome -->

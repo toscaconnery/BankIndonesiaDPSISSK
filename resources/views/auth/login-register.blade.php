@@ -2,7 +2,11 @@
 <html >
 <head>
   <meta charset="UTF-8">
+<<<<<<< HEAD
   <title>Sign-Up/Login SIMPANG BI</title>
+=======
+  <title>SIMPANG BI - Sign-Up/Login</title>
+>>>>>>> edbccd5aee8d050b7737202ef757a4b4b2292d39
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">

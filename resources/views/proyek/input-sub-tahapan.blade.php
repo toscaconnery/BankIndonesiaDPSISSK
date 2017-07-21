@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SI PMO&RMS</title>
+  <title>SIMPANG BI</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{url('')}}/bootstrap2/css/bootstrap.min.css">
@@ -30,6 +30,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -58,8 +60,8 @@
                 <form action="" method="post">
                   <div class="form-group">
                     <label>Sub Tahapan</label>
-                    <input name="namaSubTahapan" type="text" list="kategori" class="form-control" placeholder="Nama Sub Tahapan"/>
-                      <datalist id="kategori">
+                    <input name="namaSubTahapan" id="namaSubTahapan" type="text" list="listSubTahapan" class="form-control" placeholder="Nama Sub Tahapan"/>
+                      <datalist id="listSubTahapan">
                         @foreach($optionSubTahapan as $data)
                           <option value="{{$data->nama}}">{{$data->nama}}</option>
                         @endforeach
@@ -67,7 +69,7 @@
                   </div>
                   <div class="form-group">
                     <label>PIC</label>
-                    <input name="pic" type="text" class="form-control" id="namatahapan" placeholder="Nama PIC">
+                    <input name="pic" type="text" class="form-control" id="picSubTahapan" placeholder="Nama PIC">
                   </div>
                   <div class="form-group">
                     <label>Jadwal Sub Tahapan:</label>
@@ -83,7 +85,7 @@
                     {{ csrf_field() }}
                   </div>
                   <a href="{{url('')}}/selesaikan-semua-sub-tahapan/{{$id_tahapan}}"><button type="button" class="btn btn-primary" style="float: left;">Semuanya Telah Selesai</button></a>
-                  <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+                  <button id="buttonSaveSubTahapan" type="submit" class="btn btn-primary" style="float: right;">Submit</button>
                 </form>
 
                 <!-- /.form group -->
@@ -201,6 +203,8 @@
     <script src="{{url('')}}/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{url('')}}/dist/js/demo.js"></script>
+    <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
     <!-- page script -->
     <script>
       $(function () {
@@ -217,6 +221,28 @@
         });
       });
     </script>
+    <script type="text/javascript">
+  $(function(){
+    $("#buttonSaveSubTahapan").click(function(event){
+      if(document.getElementById('namaSubTahapan').value === ''){
+        swal({
+          title: "Nama sub tahapan tidak boleh kosong.",
+          type: "warning",
+          allowOutsideClick: true,
+        });
+        return false;
+      }
+      if(document.getElementById('picSubTahapan').value === ''){
+        swal({
+          title: "Nama PIC tidak boleh kosong.",
+          type: "warning",
+          allowOutsideClick: true,
+        });
+        return false;
+      }
+    });
+  });
+</script>
     <script>
       $(function () {
     //Initialize Select2 Elements

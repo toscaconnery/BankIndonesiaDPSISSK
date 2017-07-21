@@ -183,7 +183,7 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-3 control-label">Rencana Realisasi</label> 
               <div class="col-sm-9">
-                <input name="tanggalrealisasi" type="text" class="form-control" id="rencanajadwal2" disabled>
+                <input name="tanggalRealisasi" type="text" class="form-control" id="rencanajadwal2" disabled>
               </div>
             </div>
 
@@ -205,7 +205,7 @@
               <div class="col-sm-offset-3 col-sm-9">
                 <div class="checkbox pull-right">
                   <label>
-                    <input type="checkbox" id="ceklis">Proyek Sudah Berjalan
+                    <input type="checkbox" id="ceklis">Proyek telah selesai.
                   </label>
                 </div>
               </div>

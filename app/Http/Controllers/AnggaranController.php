@@ -19,6 +19,7 @@ class AnggaranController extends Controller
         $this->data['anggaran'] = DB::select('SELECT a.*,used_ri+used_ao as used_total, ROUND(used_ri * 100.0 / ri, 2) as persen_ri, ROUND(used_ao * 100.0 / ao, 2) as persen_ao, nominal-used_ri-used_ao as sisa, ROUND((used_ri+used_ao) * 100.0 / nominal, 2) as persen_realisasi, ROUND(100-(used_ri+used_ao) * 100.0 / nominal, 2) as persen_used FROM anggaran a ORDER BY a.created_at DESC');
         $this->data['anggaranedit'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
         $this->data['anggaranscript'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
+        $this->data['listAnggaran'] = DB::select('SELECT a.* FROM anggaran a ORDER BY a.created_at DESC');
         return view('anggaran.report-anggaran-tahunan', $this->data);
     }
 
@@ -459,26 +460,32 @@ class AnggaranController extends Controller
             $pengeluaranRinci[] = (array)$data;
         }
 
-        return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranRinci, $pengeluaranBulan, $pengeluaranTahun){
-            $excel->sheet('Pengeluaran Rinci', function($sheet) use ($pengeluaranRinci) {
-                $sheet->fromArray($pengeluaranRinci);
-                $sheet->cell('A1:J1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+        if(isset($pengeluaranRinci)){
+            return Excel::create('Anggaran Rinci '.$namaBulan.' '.$tahun_anggaran, function($excel) use ($pengeluaranRinci, $pengeluaranBulan, $pengeluaranTahun){
+                $excel->sheet('Pengeluaran Rinci', function($sheet) use ($pengeluaranRinci) {
+                    $sheet->fromArray($pengeluaranRinci);
+                    $sheet->cell('A1:J1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-            $excel->sheet('Data Bulan', function($sheet) use ($pengeluaranBulan) {
-                $sheet->fromArray($pengeluaranBulan);
-                $sheet->cell('A1:J1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+                $excel->sheet('Data Bulan', function($sheet) use ($pengeluaranBulan) {
+                    $sheet->fromArray($pengeluaranBulan);
+                    $sheet->cell('A1:J1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-            $excel->sheet('Data Tahun', function($sheet) use ($pengeluaranTahun) {
-                $sheet->fromArray($pengeluaranTahun);
-                $sheet->cell('A1:J1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+                $excel->sheet('Data Tahun', function($sheet) use ($pengeluaranTahun) {
+                    $sheet->fromArray($pengeluaranTahun);
+                    $sheet->cell('A1:J1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-        })->download($type);
+            })->download($type);
+        }
+        else{
+            Alert::error("Tidak ada data.");
+            return back();
+        }
     }
 
     public function download_anggaran_tahunan()
@@ -492,21 +499,28 @@ class AnggaranController extends Controller
         foreach($anggaran as $data){
             $anggaranTahunan[] = (array)$data;
         }
-        foreach($anggaranTahunan as $data){
-            if($data['REALISASI RI'] == 0){
-                $data['REALISASI RI'] = ROUND($data['REALISASI RI'] * 100.0, 2);
-                //number_format($data['REALISASI RI'], 2) * 100;
-            }
-        }
+            
         //dd($anggaranTahunan);
-        return Excel::create('Anggaran Tahunan', function($excel)use ($anggaranTahunan){
-            $excel->sheet('List Anggaran Tahunan', function($sheet) use ($anggaranTahunan){
-                $sheet->fromArray($anggaranTahunan);
-                $sheet->cell('A1:L1', function($cell){
-                    $cell->setFontColor("#dd4b38");
+        if(isset($anggaranTahunan)){
+            foreach($anggaranTahunan as $data){
+                if($data['REALISASI RI'] == 0){
+                    $data['REALISASI RI'] = ROUND($data['REALISASI RI'] * 100.0, 2);
+                    //number_format($data['REALISASI RI'], 2) * 100;
+                }
+            }
+            return Excel::create('Anggaran Tahunan', function($excel)use ($anggaranTahunan){
+                $excel->sheet('List Anggaran Tahunan', function($sheet) use ($anggaranTahunan){
+                    $sheet->fromArray($anggaranTahunan);
+                    $sheet->cell('A1:L1', function($cell){
+                        $cell->setFontColor("#dd4b38");
+                    });
                 });
-            });
-        })->download('xlsx');
+            })->download('xlsx');
+        }
+        else{
+            Alert::error("Tidak ada data.");
+            return back();
+        }
     }
 
     public function download_anggaran_bulanan($tahun_anggaran)
@@ -663,6 +677,10 @@ class AnggaranController extends Controller
     	$nominal = Input::get('nominal');
         $ri = Input::get('ri');
         $ao = Input::get('ao');
+        if($ri + $ao != $nominal){
+            Alert::error("Total anggaran salah.");
+            return back();
+        }
 
         $anggaran = new Anggaran;
         $anggaran->tahun = $tahun;
@@ -725,7 +743,12 @@ class AnggaranController extends Controller
         $keterangan = Input::get('keterangan');
         $year = intval($tanggal);
         // dd($year);
-
+        $anggaranTahunan = Anggaran::where('tahun', $year)->first();
+        if(!isset($anggaranTahunan)){
+            Alert::error("Tidak ada anggaran di tahun ".$year.".");
+            return back();
+        }
+        
         $pengeluaran = new Pencairan;
         $pengeluaran->tanggal_pencairan = $tanggal;
         $pengeluaran->nominal = $nominal;

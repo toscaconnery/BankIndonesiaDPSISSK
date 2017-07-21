@@ -187,7 +187,7 @@ class ProjectController extends Controller
         $listTahapanInhouse = DB::select('SELECT l.* FROM list_tahapan l WHERE l.jenis = "Inhouse"');
         $listTahapanOutsource = DB::select('SELECT l.* FROM list_tahapan l');
         $pic = DB::select('SELECT t.pic, t.nama, t.id_proyek FROM tahapan_proyek t');
-        $tahapanSelesai = DB::select('SELECT k.id_proyek, COUNT(k.parameter) AS selesai, m.tahapan FROM master_file m, kelengkapan_proyek k WHERE m.nama = k.parameter AND k.status = "Done" GROUP BY k.id_proyek, m.tahapan');
+        // $tahapanSelesai = DB::select('SELECT k.id_proyek, COUNT(k.parameter) AS selesai, m.tahapan FROM master_file m, kelengkapan_proyek k WHERE m.nama = k.parameter AND k.status = "Done" GROUP BY k.id_proyek, m.tahapan');
 
         $kelengkapanProyek = array();
         foreach($proyek as $data){
@@ -196,29 +196,38 @@ class ProjectController extends Controller
             $kelengkapanProyek[$data->id]['jenis'] = $data->jenis;
             $kelengkapanProyek[$data->id]['listTahapan'] = array();
 
-            
+            $listSubTahapanSelesai = DB::select('SELECT k.tahapan, COUNT(k.parameter) AS jumlah FROM kelengkapan_proyek k WHERE k.id_proyek = '.$data->id.' AND k.status = "Done" GROUP BY k.tahapan');
+            $listSubTahapanPembagi = DB::select('SELECT k.tahapan, COUNT(k.parameter) AS jumlah FROM kelengkapan_proyek k WHERE k.id_proyek = '.$data->id.' GROUP BY k.tahapan');   //masukkan ke array biar bisa diakses dengan cepat dari pada looping object berkali-kali
+            $arrayPembagi = array();
+            foreach($listSubTahapanPembagi as $pembagi){
+                $arrayPembagi[$pembagi->tahapan] = $pembagi->jumlah;
+            }
+
             if($kelengkapanProyek[$data->id]['jenis'] == "Inhouse"){
                 $kelengkapanProyek[$data->id]['listTahapan'] = DB::select('SELECT l.* FROM list_tahapan l WHERE l.jenis = "Inhouse"');
+                $listTahapanPembagiInhouse2 = DB::select('SELECT m.tahapan AS tahapan, COUNT(m.nama) AS jumlah FROM master_file m WHERE m.jenis = "Inhouse" GROUP BY m.tahapan');
+            
+                //dd($listSubTahapanSelesai, $listSubTahapanPembagi);
                 foreach($listTahapanInhouse as $list){
                     $kelengkapanProyek[$data->id][$list->nama] = 0;
-                }
-                foreach($listTahapanInhouse as $list){
                     $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
+                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //Inisialisasi persen
                 }
-                foreach($listTahapanInhouse as $list){
-                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //perlu pembagi disini
+
+                foreach($listSubTahapanSelesai as $listSelesai){
+                    $kelengkapanProyek[$data->id]["Persen ".$listSelesai->tahapan] = ($listSelesai->jumlah / (float) $arrayPembagi[$listSelesai->tahapan]) * 100;
                 }
             }
             elseif($kelengkapanProyek[$data->id]['jenis'] == "Outsource"){
                 $kelengkapanProyek[$data->id]['listTahapan'] = DB::select('SELECT l.* FROM list_tahapan l');
+                $listTahapanPembagiOutsource = DB::select('SELECT m.tahapan AS tahapan, COUNT(m.nama) AS jumlah FROM master_file m GROUP BY m.tahapan');
                 foreach($listTahapanOutsource as $list){
                     $kelengkapanProyek[$data->id][$list->nama] = 0;
-                }
-                foreach($listTahapanOutsource as $list){
                     $kelengkapanProyek[$data->id]["PIC ".$list->nama] = "-";
+                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //Inisialisasi persen
                 }
-                foreach($listTahapanOutsource as $list){
-                    $kelengkapanProyek[$data->id]["Persen ".$list->nama] = 0;   //perlu pembagi disini
+                foreach($listSubTahapanSelesai as $listSelesai){
+                    $kelengkapanProyek[$data->id]["Persen ".$listSelesai->tahapan] = ($listSelesai->jumlah / (float) $arrayPembagi[$listSelesai->tahapan]) * 100;
                 }
             }
 
@@ -227,9 +236,9 @@ class ProjectController extends Controller
             $kelengkapanProyek[$data->id_proyek]["PIC ".$data->nama] = $data->pic;
         }
         
-        foreach($tahapanSelesai as $data){
-            $kelengkapanProyek[$data->id_proyek][$data->tahapan] = $data->selesai;
-        }
+        // foreach($tahapanSelesai as $data){
+        //     $kelengkapanProyek[$data->id_proyek][$data->tahapan] = $data->selesai;
+        // }
         
         return($kelengkapanProyek);
 
@@ -251,8 +260,27 @@ class ProjectController extends Controller
         $tgl_selesai = date_create_from_format("m/d/Y", $text_tgl_selesai);
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
+        $tanggalRealisasi = Input::get('tanggalRealisasi');
+        if(!is_null(!$tanggalRealisasi)){
+            $text_tgl_mulai_realisasi = substr($tanggalRealisasi, 0, 10);
+            $text_tgl_selesai_realisasi = substr($tanggalRealisasi, 13, 23);
+            $tgl_mulai_realisasi = date_create_from_format("m/d/Y", $text_tgl_mulai_realisasi);
+            $tgl_selesai_realisasi = date_create_from_format("m/d/Y", $text_tgl_selesai_realisasi);
+            $proyek->tgl_real_mulai = $tgl_mulai_realisasi;
+            $proyek->tgl_real_selesai = $tgl_selesai_realisasi;
+            $proyek->status = "Finished";
+            //$hariIni = date_create(date("m/d/Y"), now());
+            //$hariIni = date_create(strtotime("now"));
+            // dd($hariIni);
+            // if($proyek->tgl_real_selesai < $hariIni){
+            //     dd("telah selesai", $proyek->tgl_real_selesai, $hariIni);
+            // }
+            // else{
+            //     dd("belum selesai", $proyek->tgl_real_selesai, $hariIni);
+            // }
+        }
+
         $tahun = $proyek->tgl_mulai->format("Y");
-        $proyek->status = "Pending";
 
         $proyek->save();
 
@@ -268,6 +296,7 @@ class ProjectController extends Controller
             $kelengkapan = new KelengkapanProyek;
             $kelengkapan->id_proyek = $proyek->id;
             $kelengkapan->parameter = $data->nama;
+            $kelengkapan->tahapan = $data->tahapan;
             $kelengkapan->save();
         }
         // $kelengkapan = new KelengkapanProyek;
@@ -349,7 +378,8 @@ class ProjectController extends Controller
         $tahap->tgl_selesai = $tgl_selesai;
         $tahap->status = 'Pending';
         $tahap->save();
-        
+
+        Alert::success("Tahapan berhasil ditambahkan.");
         return redirect('input-tahap-proyek/'.$id);
     }
 
@@ -532,7 +562,12 @@ class ProjectController extends Controller
         $this->data['sub'] = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
         $tahapan = TahapanProyek::find($id);
         $proyek = Proyek::find($tahapan->id_proyek);
-        $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND t.id = '.$id);
+        if($proyek->jenis == "Inhouse"){
+            $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND m.jenis = "Inhouse" AND t.id = '.$id);
+        }
+        elseif($proyek->jenis == "Outsource"){
+            $this->data['optionSubTahapan'] = DB::select('SELECT m.* FROM master_file m, tahapan_proyek t WHERE m.tahapan = t.nama AND t.id = '.$id);
+        }
         $this->data['namaProyek'] = $proyek->nama;
         $this->data['namaTahapan'] = $tahapan->nama;
         $this->data['id_tahapan'] = $id;
@@ -1039,14 +1074,14 @@ class ProjectController extends Controller
             }
         }
 
-        // return Excel::create('Timeline Proyek', function($excel)use ($kalender){
-        //     $excel->sheet('Timeline Proyek', function($sheet) use ($kalender){
-        //         $sheet->fromArray($kalender);
-        //         $sheet->cell('A1:L1', function($cell){
-        //             $cell->setFontColor("#dd4b38");
-        //         });
-        //     });
-        // })->download('xlsx');
+        return Excel::create('Timeline Proyek', function($excel)use ($kalender){
+            $excel->sheet('Timeline Proyek', function($sheet) use ($kalender){
+                $sheet->fromArray($kalender);
+                $sheet->cell('A1:L1', function($cell){
+                    $cell->setFontColor("#dd4b38");
+                });
+            });
+        })->download('xlsx');
 
 
         //dd($tahun);
@@ -1063,12 +1098,12 @@ class ProjectController extends Controller
         
         // dd($tahapan);
         // $date= date("Y-m-d");
-        $date= "2017-02-27";
-        $tanggal = strtotime($date);
+        //$date= "2017-02-27";
+        //$tanggal = strtotime($date);
         //dd($tanggal);
-        $ha = $this->weekOfYear($tanggal);
+        //$ha = $this->weekOfYear($tanggal);
         //dd($date);
-        dd($ha,$date);
+        // dd($ha,$date);
         // dd($kalender);
     }
 
