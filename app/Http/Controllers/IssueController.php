@@ -11,6 +11,11 @@ use Alert;
 
 class IssueController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function list_issue()
     {
         $this->data['issue'] = DB::select('SELECT i.* FROM issue i 

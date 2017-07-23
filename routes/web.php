@@ -5,8 +5,8 @@
 // });
 
 Route::get('/', 'DashboardController@index');
-
 Route::get('dashboard', 'DashboardController@index');
+Route::get('/home', 'DashboardController@index')->name('home');
 
 // PROYEK
 Route::get('list-proyek', 'ProjectController@list_proyek');
@@ -46,11 +46,6 @@ Route::post('tambah-folder-dalam-tahun/{tahun}', 'ArsipController@tambah_folder_
 Route::post('tambah-folder-arsip/{id_folder}', 'ArsipController@tambah_folder_arsip');
 Route::post('upload-file-arsip/{id_folder}', 'ArsipController@upload_file_arsip');
 
-
-//Route::get('list-arsip-folder', 'ArsipController@list_arsip_folder');
-// Route::get('mlbi/{id}/{deeppath?}', 'ArsipController@mlbi');
-//Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
-
 // ANGGARAN
 Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
 Route::post('report-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
@@ -77,18 +72,12 @@ Route::post('edit-profile', 'ProfileController@save_edit_profile');
 Route::get('forgot-password', 'ProfileController@forgot_password');
 Auth::routes();
 
-Route::get('/home', 'DashboardController@index')->name('home');
 
+// AUTH
 Route::get('logout', 'Auth\LoginController@logout');
-
 Route::get('autentikasi', 'ProfileController@halaman_autentikasi');
 Route::post('forgot-password', 'ProfileController@forgot_password');
 Route::post('reset-password', 'ProfileController@reset_password');
-// Route::get('autentikasi', function() {
-// 	return view('auth.login-register');
-// });
-
-//Route::get('forgot-password', 'ProfileController@forgot_password');
 
 Route::get('autentikasi2', function() {
 	return view('auth.login-register2');

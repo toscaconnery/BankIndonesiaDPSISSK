@@ -32,7 +32,6 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        // if user have role
         if (auth()->check()) {
             Alert::success("Anda Berhasil Login!");
             return $this->redirectTo = '/';
