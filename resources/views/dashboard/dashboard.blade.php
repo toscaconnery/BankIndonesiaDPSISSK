@@ -252,8 +252,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('')}}/dist/js/demo.js"></script>
 <!-- page script -->
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="{{url('')}}/js/highchart.js"></script>
+<script src="{{url('')}}/js/exporting.js"></script>
+<script src="{{url('')}}/js/offline.js"></script>
 <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
 @include('sweet::alert')
 <script>

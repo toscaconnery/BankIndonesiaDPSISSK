@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <title>SIMPANG BI - Sign-Up/Login</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  
+  <link rel="stylesheet" href="{{url('')}}/css/normalize.min.css">
   <link rel="stylesheet" href="{{url('')}}/css/bootstrap.css">
   <link rel="stylesheet" href="{{url('')}}/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="{{url('')}}/sweetalert/dist/sweetalert.css">
@@ -204,7 +203,7 @@
     </div><!-- tab-content -->
   </div> <!-- /form -->
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="{{url('')}}/js/jquery213.min.js"></script>
   <script src="js/index.js"></script>
   <script src="{{url('')}}/bootstrap2/js/bootstrap.min.js"></script>
   <script src="{{url('')}}/sweetalert/dist/sweetalert.min.js"></script>
