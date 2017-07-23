@@ -27,7 +27,7 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          {{$tahun}} > {{$namaProyek}}
+          <a href="{{url('')}}/list-file-tahun-arsip/{{$tahun}}">{{$tahun}}</a> > {{$namaProyek}}
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-file"></i> Arsip</a></li>
@@ -40,7 +40,7 @@
             <div class="box">
               <!-- /.box-header -->
               <div class="box-body">
-                <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Tambah Folder</button>
+                {{-- <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Tambah Folder</button> --}}
                 <table id="example1" class="table table-bordered table-striped">
                   <br>
                   <br>
@@ -50,7 +50,7 @@
                       <th>Nama</th>
                       <th>PIC</th>
                       <th>Tanggal Dibuat</th>
-                      <th>Action</th>
+                      {{-- <th>Action</th> --}}
                     </tr>
                   </thead>
                   <tbody>
@@ -58,12 +58,13 @@
                       $x = 1;
                     @endphp
                     @foreach($tahapan as $data)
-                    <tr onclick="window.document.location='{{url('')}}/list-file-arsip';">
+                    <tr>
                       <td align="center">{{$x++}}</td>
                       <td>{{$data->nama}}</td>
                       <td>{{$data->pic}}</td>
                       <td>{{Carbon\Carbon::parse($data->created_at)->format('d F Y')}}</td>
-                      <td align="center"><a href="{{url('')}}/list-arsip-proyek/{{$data->id}}"><button>Detail</button></a></td>
+                      {{-- <td><button>Detail</button></a></td> --}}
+                      {{-- align="center"><a href="{/{url('')}/}/list-arsip-proyek/{/{$data->id}/}" --}}
                     </tr>
                     @endforeach
                   </table>
