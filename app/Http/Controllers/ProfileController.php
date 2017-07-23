@@ -82,13 +82,13 @@ class ProfileController extends Controller
                 return redirect('autentikasi');
             }
             else{
-                Alert::error('Konfirmasi password salah!');
-                return back();
+                Alert::warning('Konfirmasi password salah!');
+                return redirect('autentikasi');;
             }
         }
         else{
-            Alert::error('Jawaban tidak benar!');
-            return back();
+            Alert::warning('Jawaban tidak benar!');
+            return redirect('autentikasi');;
         }
     }
 }
