@@ -109,7 +109,7 @@
             <div style="overflow-y: scroll; height: 30em">
             <!-- bawah ini aku kasihin if FAISHAL-->
             @if(isset($kelengkapanProyek))
-            {
+            
               @foreach($kelengkapanProyek as $data)
               <div class="info-box bg-aqua">
                 <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
@@ -127,11 +127,11 @@
                 <!-- /.info-box-content -->
               </div>
               @endforeach
-            }
+            
             @else
-            {
+            
               halo
-            }
+            
             @endif
             </div>
           </div>

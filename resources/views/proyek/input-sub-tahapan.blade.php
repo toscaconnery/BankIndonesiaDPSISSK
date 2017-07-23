@@ -84,7 +84,16 @@
                     <input type="hidden" name="id_tahapan" value="{{$id_tahapan}}">
                     {{ csrf_field() }}
                   </div>
+                  <!-- nih aku edit bawah nih FAISHAL -->
+                  @if(!is_null($sub))
+                  
                   <a href="{{url('')}}/selesaikan-semua-sub-tahapan/{{$id_tahapan}}"><button type="button" class="btn btn-primary" style="float: left;">Semuanya Telah Selesai</button></a>
+                  
+                  @else
+                  
+                  <button type="button" class="btn btn-primary" style="float: left;" disabled>Semuanya Telah Selesai</button></a>
+                  
+                  @endif
                   <button id="buttonSaveSubTahapan" type="submit" class="btn btn-primary" style="float: right;">Submit</button>
                 </form>
 

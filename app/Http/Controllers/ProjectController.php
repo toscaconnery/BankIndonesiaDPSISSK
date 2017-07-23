@@ -251,7 +251,8 @@ class ProjectController extends Controller
         $proyek->kodema = Input::get('kodema');
         $proyek->kategori = Input::get('kategori');
         $proyek->pic = Input::get('pic');
-        $proyek->status = Input::get('status');
+        // bawah nih aku edit tadi FAISHAL
+        $proyek->status = "Pending";
         $proyek->jenis = Input::get('jenis');
         $tanggal = Input::get('tanggal');
         $text_tgl_mulai = substr($tanggal, 0 ,10);
@@ -261,7 +262,8 @@ class ProjectController extends Controller
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
         $tanggalRealisasi = Input::get('tanggalRealisasi');
-        if(!is_null(!$tanggalRealisasi)){
+        // nih bawah nih aku edit tadi FAISHAL
+        if(!is_null($tanggalRealisasi)){ 
             $text_tgl_mulai_realisasi = substr($tanggalRealisasi, 0, 10);
             $text_tgl_selesai_realisasi = substr($tanggalRealisasi, 13, 23);
             $tgl_mulai_realisasi = date_create_from_format("m/d/Y", $text_tgl_mulai_realisasi);

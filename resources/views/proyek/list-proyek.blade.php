@@ -193,10 +193,11 @@
               </label>
               <div class="col-sm-9">
                 <label>Inhouse
-                  <input name="jenis" type="radio" name="status" value="Inhouse" class="minimal" checked>
+                <!-- ini ada aku ubah tadi ada 2 name, yg name = "status ku ubah FAISHAL" -->
+                  <input name="jenis" type="radio" value="Inhouse" class="minimal" checked>
                 </label>
                 <label style='margin-left:30px;'>Outsource
-                  <input  name="jenis" type="radio" name="status" value="Outsource" class="minimal">
+                  <input  name="jenis" type="radio" value="Outsource" class="minimal">
                 </label>
               </div>
             </div>
