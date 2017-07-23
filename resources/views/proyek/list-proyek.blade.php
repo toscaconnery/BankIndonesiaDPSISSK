@@ -94,20 +94,18 @@
                       <td>{{$proyek->tgl_real_selesai ? date('d F Y',strtotime($proyek->tgl_real_selesai)) : '-'}}</td>
                       <td align="center">{{$proyek->jenis}}</td>
                       <td align="center">{{$proyek->status}}</td>
-                      <center>
-                        <td>
-                          @if($proyek->status == "Pending")
-                          <a href='{{url('')}}/mulai-proyek/{{$proyek->id}}'>
-                            <button class="btn btn-primary">Mulai</button>
-                          </a>
-                          @else
-                          <a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'>
-                            <button class="btn btn-primary">Detail</button>
-                          </a>
-                          @endif
-                        </td>
-                      </center>
-                      <center><td><button class="btn btn-info" data-id="{!! $proyek->id !!}" data-toggle="modal" data-target="#modalKelengkapan{{$proyek->id}}">Progress</button></td></center>
+                      <td align="center">
+                        @if($proyek->status == "Pending")
+                        <a href='{{url('')}}/mulai-proyek/{{$proyek->id}}'>
+                          <button class="btn btn-primary">Mulai</button>
+                        </a>
+                        @else
+                        <a href='{{url('')}}/input-tahap-proyek/{{$proyek->id}}'>
+                          <button class="btn btn-primary">Detail</button>
+                        </a>
+                        @endif
+                      </td>
+                      <td align="center"><button class="btn btn-info" data-id="{!! $proyek->id !!}" data-toggle="modal" data-target="#modalKelengkapan{{$proyek->id}}">Progress</button></td>
                     </tr>
                     @endforeach
                   </tbody>
