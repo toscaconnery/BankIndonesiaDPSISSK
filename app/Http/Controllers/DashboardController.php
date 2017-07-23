@@ -335,7 +335,7 @@ class DashboardController extends Controller
         //         $this->data['kelengkapanProyek'][$data->id_proyek]['deadlineProgress'] = DB::select('SELECT t.* FROM tahapan_proyek t WHERE t.id_proyek = '.$data->id_proyek.' AND t.nama = "Implementasi"')[0]->tgl_selesai;
         //     }
         // }
-        return $this->data['kelengkapanProyek'];
+        return $this->data; //ini yang ku rubah FAISHAL
     }
 
     // public function getProgressProyek()
