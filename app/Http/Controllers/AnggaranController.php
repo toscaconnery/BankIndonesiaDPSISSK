@@ -356,16 +356,6 @@ class AnggaranController extends Controller
         return view('anggaran.report-anggaran-bulanan', $this->data);
     }
 
-    public function input_anggaran_tahunan()
-    {
-    	return view('anggaran.input-anggaran-tahunan');
-    }
-
-    public function input_pencairan_anggaran()
-    {
-        return view('anggaran.input-pencairan-anggaran');
-    }
-
     public function download_anggaran_rinci($tahun_anggaran,$idbulan)
     {
         //BAGIAN BULAN
@@ -397,7 +387,6 @@ class AnggaranController extends Controller
             $aoRunDate = 0;
             $totalRunDate = 0;
             for($i = 1; $i <= $idbulan; $i++){
-                //$bulan[$i]['PENYERAPAN RI'] =  number_format($bulan[$i]['PENYERAPAN RI'], 2, '.', '');
                 $bulan[$i]['PENYERAPAN RI'] =  round($bulan[$i]['PENYERAPAN RI'], 2);
                 $bulan[$i]['TOTAL'] = $bulan[$i]['RI'] + $bulan[$i]['AO'];
                 $riRunDate = $riRunDate + $bulan[$i]['RI'];
@@ -500,12 +489,10 @@ class AnggaranController extends Controller
             $anggaranTahunan[] = (array)$data;
         }
             
-        //dd($anggaranTahunan);
         if(isset($anggaranTahunan)){
             foreach($anggaranTahunan as $data){
                 if($data['REALISASI RI'] == 0){
                     $data['REALISASI RI'] = ROUND($data['REALISASI RI'] * 100.0, 2);
-                    //number_format($data['REALISASI RI'], 2) * 100;
                 }
             }
             return Excel::create('Anggaran Tahunan', function($excel)use ($anggaranTahunan){
@@ -556,7 +543,6 @@ class AnggaranController extends Controller
             $aoRunDate = 0;
             $totalRunDate = 0;
             for($i = 1; $i <= 12; $i++){
-                //$bulan[$i]['PENYERAPAN RI'] =  number_format($bulan[$i]['PENYERAPAN RI'], 2, '.', '');
                 $bulan[$i]['PENYERAPAN RI'] =  round($bulan[$i]['PENYERAPAN RI'], 2);
                 $bulan[$i]['TOTAL'] = $bulan[$i]['RI'] + $bulan[$i]['AO'];
                 $riRunDate = $riRunDate + $bulan[$i]['RI'];
@@ -566,8 +552,7 @@ class AnggaranController extends Controller
                 $bulan[$i]['PENYERAPAN AO'] = ($aoRunDate / (float) $totalAnggaranAO) * 100;
                 $bulan[$i]['PENYERAPAN TOTAL'] = ($totalRunDate / (float) $totalAnggaranNominal) * 100;
             }
-            //dd($bulan);
-
+            
             for($i = 1; $i <= 12; $i++){
                 if($bulan[$i]['RI'] == 0){
                     $bulan[$i]['RI'] = "0";
@@ -742,7 +727,7 @@ class AnggaranController extends Controller
         $nominal = Input::get('nominal');
         $keterangan = Input::get('keterangan');
         $year = intval($tanggal);
-        // dd($year);
+        
         $anggaranTahunan = Anggaran::where('tahun', $year)->first();
         if(!isset($anggaranTahunan)){
             Alert::error("Tidak ada anggaran di tahun ".$year.".");
@@ -795,9 +780,8 @@ class AnggaranController extends Controller
         $keteranganedit = Input::get('keteranganedit');
         $idpencairan = Input::get('idpencairan');
         $year = intval($tanggaledit);
-        // dd($year);
         $tgl_real = date("Y-m-d", strtotime($tanggaledit));
-        // dd($tgl_real);
+        
         if( Auth::check() )
         {
             $picedit = Auth::user()->name;
@@ -869,8 +853,6 @@ class AnggaranController extends Controller
             $pencairan[] = (array)$data;
         }
         
-        //$pencairan = Pencairan::get()->toArray();
-        //dd($pencairan);
         return Excel::create('contohFileExcel', function($excel) use ($pencairan){
             $excel->sheet('mySheet', function($sheet) use ($pencairan) {
                 $sheet->fromArray($pencairan);

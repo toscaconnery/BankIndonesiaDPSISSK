@@ -76,7 +76,8 @@
                       <td>{{isset($januariAO->sumao) ? round($persenjanuariAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totaljanuari, 0, ',', '.')}}</td>
                       <td>{{$totaljanuari==0 ? '-' : round($persenttljanuari,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/1">{{$jlhpengeluaranjanuari}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/1"><button class="btn btn-standard">{{$jlhpengeluaranjanuari}}</button></a></td>
+
                     </tr>
                     <tr>
                       <td>2</td>
@@ -87,7 +88,7 @@
                       <td>{{isset($februariAO->sumao) ? round($persenfebruariAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totalfebruari, 0, ',', '.')}}</td>
                       <td>{{$totalfebruari==0 ? '-' : round($persenttlfebruari,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/2">{{$jlhpengeluaranfebruari}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/2"><button class="btn btn-standard">{{$jlhpengeluaranfebruari}}</button></a></td>
                     </tr>
                     <tr>
                       <td>3</td>
@@ -98,7 +99,7 @@
                       <td>{{isset($maretAO->sumao) ? round($persenmaretAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totalmaret, 0, ',', '.')}}</td>
                       <td>{{$totalmaret==0 ? '-' : round($persenttlmaret,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/3">{{$jlhpengeluaranmaret}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/3"><button class="btn btn-standard">{{$jlhpengeluaranmaret}}</button></a></td>
                     </tr>
                     <tr>
                       <td>4</td>
@@ -109,7 +110,7 @@
                       <td>{{isset($aprilAO->sumao) ? round($persenaprilAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totalapril, 0, ',', '.')}}</td>
                       <td>{{$totalapril==0 ? '-' : round($persenttlapril,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/4">{{$jlhpengeluaranapril}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/4"><button class="btn btn-standard">{{$jlhpengeluaranapril}}</button></a></td>
                     </tr>
                     <tr>
                       <td>5</td>
@@ -120,7 +121,7 @@
                       <td>{{isset($meiAO->sumao) ? round($persenmeiAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totalmei, 0, ',', '.')}}</td>
                       <td>{{$totalmei==0 ? '-' : round($persenttlmei,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/5">{{$jlhpengeluaranmei}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/5"><button class="btn btn-standard">{{$jlhpengeluaranmei}}</button></a></td>
                     </tr>
                     <tr>
                       <td>6</td>
@@ -131,7 +132,7 @@
                       <td>{{isset($juniAO->sumao) ? round($persenjuniAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totaljuni, 0, ',', '.')}}</td>
                       <td>{{$totaljuni==0 ? '-' : round($persenttljuni,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/6">{{$jlhpengeluaranjuni}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/6"><button class="btn btn-standard">{{$jlhpengeluaranjuni}}</button></a></td>
                     </tr>
                     <tr>
                       <td>7</td>
@@ -142,7 +143,7 @@
                       <td>{{isset($juliAO->sumao) ? round($persenjuliAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totaljuli, 0, ',', '.')}}</td>
                       <td>{{$totaljuli==0 ? '-' : round($persenttljuli,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/7">{{$jlhpengeluaranjuli}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/7"><button class="btn btn-standard">{{$jlhpengeluaranjuli}}</button></a></td>
                     </tr>
                     <tr>
                       <td>8</td>
@@ -153,7 +154,7 @@
                       <td>{{isset($agustusAO->sumao) ? round($persenagustusAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totalagustus, 0, ',', '.')}}</td>
                       <td>{{$totalagustus==0 ? '-' : round($persenttlagustus,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/8">{{$jlhpengeluaranagustus}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/8"><button class="btn btn-standard">{{$jlhpengeluaranagustus}}</button></a></td>
                     </tr>
                     <tr>
                       <td>9</td>
@@ -164,7 +165,7 @@
                       <td>{{isset($septemberAO->sumao) ? round($persenseptemberAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totalseptember, 0, ',', '.')}}</td>
                       <td>{{$totalseptember==0 ? '-' : round($persenttlseptember,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/9">{{$jlhpengeluaranseptember}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/9"><button class="btn btn-standard">{{$jlhpengeluaranseptember}}</button></a></td>
                     </tr>
                     <tr>
                       <td>10</td>
@@ -175,7 +176,7 @@
                       <td>{{isset($oktoberAO->sumao) ? round($persenoktoberAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totaloktober, 0, ',', '.')}}</td>
                       <td>{{$totaloktober==0 ? '-' : round($persenttloktober,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/10">{{$jlhpengeluaranoktober}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/10"><button class="btn btn-standard">{{$jlhpengeluaranoktober}}</button></a></td>
                     </tr>
                     <tr>
                       <td>11</td>
@@ -186,7 +187,7 @@
                       <td>{{isset($novemberAO->sumao) ? round($persennovemberAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totalnovember, 0, ',', '.')}}</td>
                       <td>{{$totalnovember==0 ? '-' : round($persenttlnovember,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/11">{{$jlhpengeluarannovember}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/11"><button class="btn btn-standard">{{$jlhpengeluarannovember}}</button></a></td>
                     </tr>
                     <tr>
                       <td>12</td>
@@ -197,7 +198,7 @@
                       <td>{{isset($desemberAO->sumao) ? round($persendesemberAO,2).' %' : '-' }}</td>
                       <td>Rp {{number_format($totaldesember, 0, ',', '.')}}</td>
                       <td>{{$totaldesember==0 ? '-' : round($persenttldesember,2).' %'}}</td>
-                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/12">{{$jlhpengeluarandesember}}</a></td>
+                      <td align="center"><a href="{{url('')}}/report-anggaran-rinci/{{$tahun_anggaran}}/12"><button class="btn btn-standard">{{$jlhpengeluarandesember}}</button></a></td>
                     </tr>
                   </tbody>
                 </table>

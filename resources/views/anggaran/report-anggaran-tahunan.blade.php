@@ -274,7 +274,7 @@
             @foreach($listAnggaran as $data)
               if(document.getElementById('pilihtahun').value == "{{$data->tahun}}"){
                 swal({
-                  title: document.getElementById('pilihtahun').value + " sudah ada.",
+                  title: " Anggaran " + document.getElementById('pilihtahun').value + " sudah ada",
                   type: "warning",
                   allowOutsideClick: true,
                 });

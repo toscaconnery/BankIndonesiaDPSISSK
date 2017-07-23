@@ -52,7 +52,6 @@ Route::post('upload-file-arsip/{id_folder}', 'ArsipController@upload_file_arsip'
 //Route::post('tambah-file-sub-tahapan-proyek', 'ArsipController@tambah_file_sub_tahapan_proyek');
 
 // ANGGARAN
-Route::get('input-anggaran-tahunan', 'AnggaranController@input_anggaran_tahunan');
 Route::get('report-anggaran-tahunan', 'AnggaranController@report_anggaran_tahunan');
 Route::post('report-anggaran-tahunan', 'AnggaranController@save_input_anggaran_tahunan');
 Route::post('edit-anggaran-tahunan', 'AnggaranController@save_edit_anggaran_tahunan');
