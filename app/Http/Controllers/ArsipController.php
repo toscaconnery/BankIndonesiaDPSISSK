@@ -17,7 +17,10 @@ use File;
 
 class ArsipController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }   
 
     public function list_tahun_arsip()  //See all available year
     {

@@ -57,7 +57,7 @@ class ProfileController extends Controller
 
     public function halaman_autentikasi()
     {
-        return view('auth.login-register');
+        return view('auth.login');
     }
 
     public function forgot_password(Request $request)
