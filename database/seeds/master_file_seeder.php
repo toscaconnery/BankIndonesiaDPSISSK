@@ -52,7 +52,7 @@ class master_file_seeder extends Seeder
         DB::table('master_file')->insert(array(
             'nama' => 'FNDS',
             'tahapan' => 'Disain',
-            'jenis' => 'Outsource',
+            'jenis' => 'Inhouse',
             'created_at' => '2017-06-06',
             'updated_at' => '2017-06-06',
         ));

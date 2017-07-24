@@ -1,8 +1,13 @@
 <?php
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+/*
+Pengembang berikutnya bisa mendownload sourcecode terbaru dari kodingan ini dari:
+Github => https://github.com/toscayconnery/BankIndonesiaDPSISSK
+
+Creator :
+Tosca Yoel Connery	=>	toscayoelconnery@gmail.com
+Faishal Ilham		=>	faishal15@gmail.com
+*/
 
 Route::get('/', 'DashboardController@index');
 Route::get('dashboard', 'DashboardController@index');
