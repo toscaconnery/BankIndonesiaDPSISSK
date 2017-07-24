@@ -48,6 +48,7 @@ class ProfileController extends Controller
 	    		}
 	    		$user->save();
     		}
+            Alert::success('Profile berhasil diubah.');
     		return redirect('dashboard');
     	}
     	else{
