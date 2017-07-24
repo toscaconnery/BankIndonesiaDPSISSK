@@ -249,14 +249,14 @@ class ProjectController extends Controller
 
     }
 
-    public function save_input_proyek() //done
+    public function save_input_proyek()
     {
         $proyek = new Proyek;
         $proyek->nama = Input::get('nama');
         $proyek->kodema = Input::get('kodema');
         $proyek->kategori = Input::get('kategori');
         $proyek->pic = Input::get('pic');
-        // bawah nih aku edit tadi FAISHAL
+
         $proyek->status = "Pending";
         $proyek->jenis = Input::get('jenis');
         $tanggal = Input::get('tanggal');
@@ -267,7 +267,7 @@ class ProjectController extends Controller
         $proyek->tgl_mulai = $tgl_mulai;
         $proyek->tgl_selesai = $tgl_selesai;
         $tanggalRealisasi = Input::get('tanggalRealisasi');
-        // nih bawah nih aku edit tadi FAISHAL
+
         if(!is_null($tanggalRealisasi)){ 
             $text_tgl_mulai_realisasi = substr($tanggalRealisasi, 0, 10);
             $text_tgl_selesai_realisasi = substr($tanggalRealisasi, 13, 23);
@@ -276,15 +276,6 @@ class ProjectController extends Controller
             $proyek->tgl_real_mulai = $tgl_mulai_realisasi;
             $proyek->tgl_real_selesai = $tgl_selesai_realisasi;
             $proyek->status = "Finished";
-            //$hariIni = date_create(date("m/d/Y"), now());
-            //$hariIni = date_create(strtotime("now"));
-            // dd($hariIni);
-            // if($proyek->tgl_real_selesai < $hariIni){
-            //     dd("telah selesai", $proyek->tgl_real_selesai, $hariIni);
-            // }
-            // else{
-            //     dd("belum selesai", $proyek->tgl_real_selesai, $hariIni);
-            // }
         }
 
         $tahun = $proyek->tgl_mulai->format("Y");
@@ -292,13 +283,7 @@ class ProjectController extends Controller
         $proyek->save();
 
         //Mempersiapkan kelengkapan file proyek
-        //Harusnya: query dulu semua masterfile, buat loop untuk masukin kelengkapan file sebanyak masterfile
-        if($proyek->jenis == "Inhouse"){
-            $masterFile = DB::select('SELECT m.* FROM master_file m WHERE m.jenis = "Inhouse"');
-        }
-        elseif($proyek->jenis == "Outsource"){
-            $masterFile = DB::select('SELECT m.* FROM master_file m');
-        }
+        $masterFile = DB::select('SELECT m.* FROM master_file m');
         foreach($masterFile as $data){
             $kelengkapan = new KelengkapanProyek;
             $kelengkapan->id_proyek = $proyek->id;
@@ -306,12 +291,8 @@ class ProjectController extends Controller
             $kelengkapan->tahapan = $data->tahapan;
             $kelengkapan->save();
         }
-        // $kelengkapan = new KelengkapanProyek;
-        // $kelengkapan->id_proyek = $proyek->id;
-        // $kelengkapan->save();
 
         Alert::success("Proyek ditambahkan");
-
         return redirect('list-proyek');
     }
 
@@ -544,10 +525,15 @@ class ProjectController extends Controller
         //cek semua sub tahapan telah selesai
         $subTahapan = DB::select('SELECT s.* FROM sub_tahapan_proyek s WHERE s.id_tahapan = '.$id);
         $selesai = 1;
+        $jumlahSubTahapan = 0;
         foreach($subTahapan as $data){
+            $jumlahSubTahapan = $jumlahSubTahapan + 1;
             if(is_null($data->tgl_real_selesai)){
                 $selesai = 0;
             }
+        }
+        if($jumlahSubTahapan == 0){
+            $selesai = 0;
         }
         
         if($selesai == 1){
